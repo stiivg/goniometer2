@@ -14,6 +14,7 @@
 		64A432361FBD141A005D2FC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64A432341FBD141A005D2FC2 /* LaunchScreen.storyboard */; };
 		64A432411FBD141B005D2FC2 /* goniometerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A432401FBD141B005D2FC2 /* goniometerTests.swift */; };
 		64A4324C1FBD141B005D2FC2 /* goniometerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A4324B1FBD141B005D2FC2 /* goniometerUITests.swift */; };
+		64A4325C1FBD1A94005D2FC2 /* knee_flexion.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		64A432471FBD141B005D2FC2 /* goniometerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = goniometerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64A4324B1FBD141B005D2FC2 /* goniometerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goniometerUITests.swift; sourceTree = "<group>"; };
 		64A4324D1FBD141B005D2FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = knee_flexion.png; path = ../../../../Desktop/knee_flexion.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				64A4322D1FBD141A005D2FC2 /* ViewController.swift */,
 				64A4322F1FBD141A005D2FC2 /* Main.storyboard */,
 				64A432321FBD141A005D2FC2 /* Assets.xcassets */,
+				64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */,
 				64A432341FBD141A005D2FC2 /* LaunchScreen.storyboard */,
 				64A432371FBD141A005D2FC2 /* Info.plist */,
 			);
@@ -234,6 +237,7 @@
 			files = (
 				64A432361FBD141A005D2FC2 /* LaunchScreen.storyboard in Resources */,
 				64A432331FBD141A005D2FC2 /* Assets.xcassets in Resources */,
+				64A4325C1FBD1A94005D2FC2 /* knee_flexion.png in Resources */,
 				64A432311FBD141A005D2FC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
