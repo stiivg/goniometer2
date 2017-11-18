@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     let beginLineLayer = CAShapeLayer()
     let endLineLayer = CAShapeLayer()
 
+    let textLayer = CATextLayer()
+
     var beginDotPosition = CGPoint(x: 100, y: 300)
     var middleDotPosition = CGPoint(x: 100, y: 200)
     var endDotPosition = CGPoint(x: 150, y: 200)
@@ -60,6 +62,7 @@ class ViewController: UIViewController {
             
             drawDots()
             drawLines()
+            drawAngle()
         }
     }
 
@@ -70,6 +73,8 @@ class ViewController: UIViewController {
         
         drawDots()
         drawLines()
+        drawAngle()
+        
         view.layer.addSublayer(beginLineLayer)
         view.layer.addSublayer(endLineLayer)
 
@@ -78,7 +83,9 @@ class ViewController: UIViewController {
         view.layer.addSublayer(middleDotLayer)
         view.layer.addSublayer(endDotLayer)
         view.isUserInteractionEnabled = true
-        
+  
+        view.layer.addSublayer(textLayer)
+
     }
     
     func drawDots() {
@@ -108,7 +115,7 @@ class ViewController: UIViewController {
         beginPath.addLine(to: dotPositions[1])
         
         beginLineLayer.path = beginPath.cgPath
-        beginLineLayer.lineWidth = 1.0
+        beginLineLayer.lineWidth = 2.0
         //        beginLineLayer.fillColor = nil
         //        beginLineLayer.opacity = 1.0
         beginLineLayer.strokeColor = UIColor.cyan.cgColor
@@ -121,9 +128,25 @@ class ViewController: UIViewController {
         endLineLayer.lineWidth = 2.0
         //        endLineLayer.fillColor = nil
         //        endLineLayer.opacity = 1.0
-        endLineLayer.strokeColor = UIColor.black.cgColor
+        endLineLayer.strokeColor = UIColor.cyan.cgColor
         
     }
+    func drawAngle() {
+        textLayer.frame = CGRect(x: 10, y: 80, width: view.bounds.width, height: 50)
+        let string = String(152)
+        
+        textLayer.string = string
+        
+        let fontName: CFString = "HelveticaNeue" as CFString
+        textLayer.font = CTFontCreateWithName(fontName, 16, nil)
+        
+        textLayer.foregroundColor = UIColor.darkGray.cgColor
+        textLayer.isWrapped = true
+        textLayer.alignmentMode = kCAAlignmentLeft
+        textLayer.contentsScale = UIScreen.main.scale
+
+    }
+ 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
