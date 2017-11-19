@@ -34,6 +34,8 @@ class ViewController: UIViewController {
     
     var panStart = CGPoint(x: 0, y: 0)
     
+    var flexionAngle = CGFloat()
+    
     //MARK Actions
     @IBAction func handleDotPan(_ gestureRecognizer: UIPanGestureRecognizer) {
         if gestureRecognizer.state == .began {
@@ -133,9 +135,8 @@ class ViewController: UIViewController {
     }
     func drawAngle() {
         textLayer.frame = CGRect(x: 10, y: 80, width: view.bounds.width, height: 50)
-        let string = String(152)
-        
-        textLayer.string = string
+        calcAngle()
+        textLayer.string = String(format: "%.1f", flexionAngle)
         
         let fontName: CFString = "HelveticaNeue" as CFString
         textLayer.font = CTFontCreateWithName(fontName, 16, nil)
@@ -145,6 +146,17 @@ class ViewController: UIViewController {
         textLayer.alignmentMode = kCAAlignmentLeft
         textLayer.contentsScale = UIScreen.main.scale
 
+    }
+    func calcAngle() {
+        let distance01 = hypot(dotPositions[0].x - dotPositions[1].x, dotPositions[0].y - dotPositions[1].y)
+        let distance12 = hypot(dotPositions[1].x - dotPositions[2].x, dotPositions[1].y - dotPositions[2].y)
+        let distance02 = hypot(dotPositions[0].x - dotPositions[2].x, dotPositions[0].y - dotPositions[2].y)
+
+        let cosAngleNumerator = pow(distance01, 2) +  pow(distance12, 2)  - pow(distance02, 2)
+        let cosAngleDenominator = 2 * distance01 * distance12
+        let cosAngle = cosAngleNumerator / cosAngleDenominator
+        let angleRadians = acos(cosAngle)
+        flexionAngle = 180 - (angleRadians * CGFloat(180 / CGFloat.pi));
     }
  
 
