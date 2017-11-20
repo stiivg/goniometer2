@@ -8,11 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate {
 
     //MARK: Properties
     @IBOutlet weak var kneeImage: UIImageView!
     @IBOutlet var panGesture: UIPanGestureRecognizer!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var imageViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cameraButton: UIButton!
     
     var dotLayer = CAShapeLayer()
     var dotStartPosition = CGPoint(x: 100, y: 200)
@@ -67,6 +74,32 @@ class ViewController: UIViewController {
             drawAngle()
         }
     }
+    
+
+    var imagePicker = UIImagePickerController()
+    
+    @IBAction func cameraBtnClicked(_ sender: UIButton) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            print("Button capture")
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum;
+            imagePicker.allowsEditing = false
+            
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        
+        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
+        self.dismiss(animated: true, completion: { () -> Void in
+            
+        })
+        
+        kneeImage.image = image
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +123,24 @@ class ViewController: UIViewController {
 
     }
     
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        updateMinZoomScaleForSize(view.bounds.size)
+//    }
+//    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
+//        let widthScale = size.width / kneeImage.bounds.width
+//        let heightScale = size.height / kneeImage.bounds.height
+//        let minScale = min(widthScale, heightScale)
+//
+//        scrollView.minimumZoomScale = minScale
+//        scrollView.zoomScale = minScale
+//    }
+//
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return kneeImage
+    }
+
     func drawDots() {
         let beginOrigin = CGPoint(x: dotPositions[0].x - 6, y: dotPositions[0].y - 6)
         let beginDotPath = UIBezierPath(ovalIn: CGRect(origin: beginOrigin, size: CGSize(width: 12, height: 12)))
@@ -134,16 +185,16 @@ class ViewController: UIViewController {
         
     }
     func drawAngle() {
-        textLayer.frame = CGRect(x: 10, y: 80, width: view.bounds.width, height: 50)
+        textLayer.frame = CGRect(x: 10, y: 80, width: view.bounds.width/2, height: 50)
         calcAngle()
-        textLayer.string = String(format: "%.1f", flexionAngle)
+        textLayer.string = String(format: "%.1f", flexionAngle) + "\u{00B0}"
         
         let fontName: CFString = "HelveticaNeue" as CFString
         textLayer.font = CTFontCreateWithName(fontName, 16, nil)
         
         textLayer.foregroundColor = UIColor.darkGray.cgColor
         textLayer.isWrapped = true
-        textLayer.alignmentMode = kCAAlignmentLeft
+        textLayer.alignmentMode = kCAAlignmentRight
         textLayer.contentsScale = UIScreen.main.scale
 
     }

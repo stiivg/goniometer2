@@ -18,14 +18,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-6O-yXR">
-                                <rect key="frame" x="67" y="147" width="240" height="372"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="-3" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="SSW-rO-n9c">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-6O-yXR">
+                                        <rect key="frame" x="0.0" y="0.0" width="1728" height="1128"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="vQa-6O-yXR" firstAttribute="top" secondItem="SSW-rO-n9c" secondAttribute="top" id="5AE-FF-hyI"/>
+                                    <constraint firstItem="vQa-6O-yXR" firstAttribute="leading" secondItem="SSW-rO-n9c" secondAttribute="leading" id="V78-FH-2Tu"/>
+                                    <constraint firstAttribute="bottom" secondItem="vQa-6O-yXR" secondAttribute="bottom" id="d67-SY-hsL"/>
+                                    <constraint firstAttribute="trailing" secondItem="vQa-6O-yXR" secondAttribute="trailing" id="i1F-zV-VZK"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ggy-o0-cC2"/>
+                                </connections>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SSW-rO-n9c" secondAttribute="bottom" id="boD-fv-y9y"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fC5-pX-IOf"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pUx-Zs-YCi"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wP5-dt-4ie"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="7Qn-Bd-reb" appends="YES" id="dKa-ZA-eBM"/>
@@ -34,6 +53,7 @@
                     <connections>
                         <outlet property="kneeImage" destination="vQa-6O-yXR" id="T4b-ZC-nB9"/>
                         <outlet property="panGesture" destination="7Qn-Bd-reb" id="8aj-FN-l0q"/>
+                        <outlet property="scrollView" destination="SSW-rO-n9c" id="BEr-Vz-i2F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
