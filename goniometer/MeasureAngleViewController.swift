@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate {
+class MeasureAngleViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate {
 
     //MARK: Properties
-    @IBOutlet weak var kneeImage: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet var panGesture: UIPanGestureRecognizer!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -77,29 +77,24 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
 
     var imagePicker = UIImagePickerController()
-    
-    @IBAction func cameraBtnClicked(_ sender: UIButton) {
-        
-        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+
+    @IBAction func photoFromLibrary(_ sender: UIBarButtonItem) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             print("Button capture")
             
-            imagePicker.delegate = self
-            imagePicker.sourceType = .savedPhotosAlbum;
+            imagePicker.sourceType = .photoLibrary;
             imagePicker.allowsEditing = false
             
             self.present(imagePicker, animated: true, completion: nil)
         }
-        
-        
     }
-    
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
-        self.dismiss(animated: true, completion: { () -> Void in
-            
-        })
-        
-        kneeImage.image = image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
+        imageView.contentMode = .scaleAspectFit //3
+        imageView.image = chosenImage //4
+        dismiss(animated:true, completion: nil) //5
     }
+ 
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,24 +116,27 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
   
         view.layer.addSublayer(textLayer)
 
+        imagePicker.delegate = self
+
     }
     
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        updateMinZoomScaleForSize(view.bounds.size)
-//    }
-//    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
-//        let widthScale = size.width / kneeImage.bounds.width
-//        let heightScale = size.height / kneeImage.bounds.height
-//        let minScale = min(widthScale, heightScale)
-//
-//        scrollView.minimumZoomScale = minScale
-//        scrollView.zoomScale = minScale
-//    }
-//
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        updateMinZoomScaleForSize(view.bounds.size)
+    }
+    //Limit zoom out to Aspect FIt
+    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
+        let widthScale = size.width / imageView.bounds.width
+        let heightScale = size.height / imageView.bounds.height
+        let minScale = min(widthScale, heightScale)
+
+        scrollView.minimumZoomScale = minScale
+        scrollView.zoomScale = minScale
+    }
+
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return kneeImage
+        return imageView
     }
 
     func drawDots() {
