@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MeasureAngleViewController
 //  goniometer
 //
 //  Created by Steven Gallagher on 11/15/17.
@@ -79,10 +79,10 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     var imagePicker = UIImagePickerController()
 
     @IBAction func photoFromLibrary(_ sender: UIBarButtonItem) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             print("Button capture")
             
-            imagePicker.sourceType = .photoLibrary;
+            imagePicker.sourceType = .savedPhotosAlbum;
             imagePicker.allowsEditing = false
             
             self.present(imagePicker, animated: true, completion: nil)
@@ -105,16 +105,16 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         drawLines()
         drawAngle()
         
-        view.layer.addSublayer(beginLineLayer)
-        view.layer.addSublayer(endLineLayer)
+        imageView.layer.addSublayer(beginLineLayer)
+        imageView.layer.addSublayer(endLineLayer)
 
  
-        view.layer.addSublayer(beginDotLayer)
-        view.layer.addSublayer(middleDotLayer)
-        view.layer.addSublayer(endDotLayer)
+        imageView.layer.addSublayer(beginDotLayer)
+        imageView.layer.addSublayer(middleDotLayer)
+        imageView.layer.addSublayer(endDotLayer)
         view.isUserInteractionEnabled = true
   
-        view.layer.addSublayer(textLayer)
+        imageView.layer.addSublayer(textLayer)
 
         imagePicker.delegate = self
 
@@ -124,7 +124,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         super.viewWillLayoutSubviews()
         updateMinZoomScaleForSize(view.bounds.size)
     }
-    //Limit zoom out to Aspect FIt
+    //Limit zoom out to Aspect Fit
     fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
         let widthScale = size.width / imageView.bounds.width
         let heightScale = size.height / imageView.bounds.height
