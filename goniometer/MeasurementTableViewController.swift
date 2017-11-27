@@ -33,8 +33,19 @@ class MeasurementTableViewController: UITableViewController {
     }
     
     @IBAction func saveMeasurementsDetail(_ segue: UIStoryboardSegue) {
+        
+        guard let measurementDetailsViewController = segue.source as? MeasurementDetailsViewController,
+            let measurement = measurementDetailsViewController.measurement else {
+                return
+        }
+        
+        // add the new measurement to the measurements array
+        measurements.append(measurement)
+        
+        // update the tableView
+        let indexPath = IndexPath(row: measurements.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

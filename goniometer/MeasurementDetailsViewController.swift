@@ -10,6 +10,20 @@ import UIKit
 
 class MeasurementDetailsViewController: UITableViewController {
 
+   
+    // MARK: - Properties
+    var measurement: Measurement?
+    
+    @IBOutlet weak var jointLabel: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
+        if segue.identifier == "SaveMeasurementDetail",
+            let name = nameTextField.text {
+            measurement = Measurement(name: name, joint: "Left Knee", angle: 142, date: "10/13/17")
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,12 +43,12 @@ class MeasurementDetailsViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
     /*
@@ -92,4 +106,13 @@ class MeasurementDetailsViewController: UITableViewController {
     }
     */
 
+}
+// MARK: - UITableViewDelegate
+extension MeasurementDetailsViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            nameTextField.becomeFirstResponder()
+        }
+    }
 }
