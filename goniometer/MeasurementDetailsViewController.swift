@@ -14,14 +14,25 @@ class MeasurementDetailsViewController: UITableViewController {
     // MARK: - Properties
     var measurement: Measurement?
     
+    var joint: String = "Knee" {
+        didSet {
+            jointLabel.text = joint
+        }
+    }
+    
     @IBOutlet weak var jointLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     
+
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         if segue.identifier == "SaveMeasurementDetail",
             let name = nameTextField.text {
-            measurement = Measurement(name: name, joint: "Left Knee", angle: 142, date: "10/13/17")
+            measurement = Measurement(name: name, joint: joint, angle: 142, date: "10/13/17")
+        }
+        if segue.identifier == "PickJoint",
+            let jointPickerViewController = segue.destination as? JointPickerViewController {
+            jointPickerViewController.selectedJoint = joint
         }
     }
     override func viewDidLoad() {
@@ -107,6 +118,17 @@ class MeasurementDetailsViewController: UITableViewController {
     */
 
 }
+// MARK: - IBActions
+extension MeasurementDetailsViewController {
+    
+    @IBAction func unwindWithSelectedJoint(segue: UIStoryboardSegue) {
+        if let jointPickerViewController = segue.source as? JointPickerViewController,
+            let selectedJoint = jointPickerViewController.selectedJoint {
+            joint = selectedJoint
+        }
+    }
+}
+
 // MARK: - UITableViewDelegate
 extension MeasurementDetailsViewController {
     
