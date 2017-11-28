@@ -19,20 +19,29 @@ class MeasurementDetailsViewController: UITableViewController {
             jointLabel.text = joint
         }
     }
-    
+    var direction: String = "Flexion" {
+        didSet {
+            directionLabel.text = direction
+        }
+    }
+
     @IBOutlet weak var jointLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var directionLabel: UILabel!
     
-
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         if segue.identifier == "SaveMeasurementDetail",
             let name = nameTextField.text {
-            measurement = Measurement(name: name, joint: joint, angle: 142, date: "10/13/17")
+            measurement = Measurement(name: name, joint: joint, direction: direction, angle: 142, date: "10/13/17")
         }
         if segue.identifier == "PickJoint",
             let jointPickerViewController = segue.destination as? JointPickerViewController {
             jointPickerViewController.selectedJoint = joint
+        }
+        if segue.identifier == "PickDirection",
+            let directionPickerViewController = segue.destination as? DirectionPickerViewController {
+            directionPickerViewController.selectedDirection = direction
         }
     }
     override func viewDidLoad() {
@@ -52,15 +61,15 @@ class MeasurementDetailsViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 2
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        // #warning Incomplete implementation, return the number of rows
+//        return 1
+//    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -125,6 +134,12 @@ extension MeasurementDetailsViewController {
         if let jointPickerViewController = segue.source as? JointPickerViewController,
             let selectedJoint = jointPickerViewController.selectedJoint {
             joint = selectedJoint
+        }
+    }
+    @IBAction func unwindWithSelectedDirection(segue: UIStoryboardSegue) {
+        if let directionPickerViewController = segue.source as? DirectionPickerViewController,
+            let selectedDirection = directionPickerViewController.selectedDirection {
+            direction = selectedDirection
         }
     }
 }

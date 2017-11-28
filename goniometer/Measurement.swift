@@ -13,6 +13,7 @@ struct Measurement {
     // MARK: - Properties
     var name: String?
     var joint: String?
+    var direction: String?
     var angle: Float
     var date: String?
 }
