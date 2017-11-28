@@ -23,7 +23,7 @@ class MeasurementCell: UITableViewCell {
             guard let measurement = measurement else { return }
             
             nameLabel.text = measurement.name
-            jointLabel.text = measurement.joint! + " " + measurement.direction!
+            jointLabel.text = measurement.side! + " " +  measurement.joint! + " " + measurement.direction!
             angleLabel.text = String(format: "%.1f", measurement.angle) + "\u{00B0}"
             dateLabel.text = measurement.date
 //            angleImageView.image = image(forRating: player.rating)

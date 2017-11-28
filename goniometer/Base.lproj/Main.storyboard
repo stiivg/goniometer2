@@ -182,6 +182,9 @@
                                                         <segment title="Left"/>
                                                         <segment title="Right"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="sideControl:" destination="4Cq-03-mwV" eventType="valueChanged" id="oiG-UY-JqA"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -279,6 +282,7 @@
                         <outlet property="directionLabel" destination="Kom-bF-FHX" id="LTI-TS-fvY"/>
                         <outlet property="jointLabel" destination="2pS-X0-8zy" id="9U0-uc-8WW"/>
                         <outlet property="nameTextField" destination="Wqv-Hc-iMY" id="FTr-9D-9g2"/>
+                        <outlet property="sideControl" destination="Lot-SH-zl3" id="mzD-Dm-429"/>
                     </connections>
                 </tableViewController>
                 <exit id="LCm-7a-oL4" userLabel="Exit" sceneMemberID="exit"/>

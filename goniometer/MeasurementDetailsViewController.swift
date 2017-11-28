@@ -25,15 +25,26 @@ class MeasurementDetailsViewController: UITableViewController {
         }
     }
 
+    var side: String = "Right" {
+        didSet {
+            var index = 0  //assume Left
+            if side == "Right" {
+                index = 1
+            }
+            sideControl.selectedSegmentIndex = index
+        }
+    }
+
     @IBOutlet weak var jointLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var directionLabel: UILabel!
+    @IBOutlet weak var sideControl: UISegmentedControl!
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         if segue.identifier == "SaveMeasurementDetail",
             let name = nameTextField.text {
-            measurement = Measurement(name: name, joint: joint, direction: direction, angle: 142, date: "10/13/17")
+            measurement = Measurement(name: name, joint: joint, side: side, direction: direction, angle: 142, date: "10/13/17")
         }
         if segue.identifier == "PickJoint",
             let jointPickerViewController = segue.destination as? JointPickerViewController {
@@ -47,6 +58,7 @@ class MeasurementDetailsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        side = "Right" //initialize the default value
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -129,7 +141,14 @@ class MeasurementDetailsViewController: UITableViewController {
 }
 // MARK: - IBActions
 extension MeasurementDetailsViewController {
-    
+    @IBAction func sideControl(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            side = "Left"
+        } else {
+            side = "Right"
+        }
+    }
+
     @IBAction func unwindWithSelectedJoint(segue: UIStoryboardSegue) {
         if let jointPickerViewController = segue.source as? JointPickerViewController,
             let selectedJoint = jointPickerViewController.selectedJoint {
