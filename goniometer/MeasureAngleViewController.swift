@@ -105,16 +105,16 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         drawLines()
         drawAngle()
         
-        imageView.layer.addSublayer(beginLineLayer)
-        imageView.layer.addSublayer(endLineLayer)
+        view.layer.addSublayer(beginLineLayer)
+        view.layer.addSublayer(endLineLayer)
 
  
-        imageView.layer.addSublayer(beginDotLayer)
-        imageView.layer.addSublayer(middleDotLayer)
-        imageView.layer.addSublayer(endDotLayer)
+        view.layer.addSublayer(beginDotLayer)
+        view.layer.addSublayer(middleDotLayer)
+        view.layer.addSublayer(endDotLayer)
         view.isUserInteractionEnabled = true
   
-        imageView.layer.addSublayer(textLayer)
+        view.layer.addSublayer(textLayer)
 
         imagePicker.delegate = self
 

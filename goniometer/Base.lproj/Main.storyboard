@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -181,7 +182,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="jointLabel" destination="2pS-X0-8zy" id="9U0-uc-8WW"/>
                         <outlet property="nameTextField" destination="Wqv-Hc-iMY" id="FTr-9D-9g2"/>
@@ -242,66 +243,77 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MeasurementCell" rowHeight="128" id="3GM-dK-KcL" userLabel="Measurement Cell" customClass="MeasurementCell" customModule="goniometer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="414" height="128"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MeasurementCell" rowHeight="100" id="3GM-dK-KcL" userLabel="Measurement Cell" customClass="MeasurementCell" customModule="goniometer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3GM-dK-KcL" id="drw-6h-fBh">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="127.66666666666667"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="99.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CuZ-Pc-K9O">
-                                            <rect key="frame" x="20" y="0.0" width="356" height="127.66666666666667"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CuZ-Pc-K9O">
+                                            <rect key="frame" x="20" y="0.0" width="356" height="99.666666666666671"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MKz-Q5-w2P">
-                                                    <rect key="frame" x="0.0" y="0.0" width="97" height="127.66666666666667"/>
-                                                </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Jf7-5M-Dwo" userLabel="Text Stack View">
-                                                    <rect key="frame" x="97" y="0.0" width="259" height="127.66666666666667"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jf7-5M-Dwo" userLabel="Text Stack View">
+                                                    <rect key="frame" x="0.0" y="10" width="216" height="79.666666666666671"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zkw-gO-Lvs">
-                                                            <rect key="frame" x="0.0" y="0.0" width="199" height="38"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zkw-gO-Lvs">
+                                                            <rect key="frame" x="0.0" y="0.0" width="206" height="26"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="28F-al-8ZO">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="199" height="21"/>
+                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" placeholder="Lana Chan" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="28F-al-8ZO">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="106.66666666666667" height="26"/>
                                                                     <nil key="textColor"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Joint" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4LX-zX-XyQ">
-                                                                    <rect key="frame" x="0.0" y="21" width="199" height="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
-                                                                </textField>
-                                                            </subviews>
-                                                        </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nhN-Vp-VJD">
-                                                            <rect key="frame" x="199" y="0.0" width="60" height="44"/>
-                                                            <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgh-Oz-wTp">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
-                                                                </textField>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Angle" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VWL-yp-RXg">
-                                                                    <rect key="frame" x="0.0" y="17" width="60" height="27"/>
+                                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="130" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="VWL-yp-RXg">
+                                                                    <rect key="frame" x="114.66666666666666" y="0.0" width="91.333333333333343" height="26"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="28F-al-8ZO" firstAttribute="bottom" secondItem="VWL-yp-RXg" secondAttribute="bottom" id="mlX-tW-fjH"/>
+                                                            </constraints>
                                                         </stackView>
+                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Date" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="zgh-Oz-wTp">
+                                                            <rect key="frame" x="0.0" y="27" width="85.333333333333329" height="25.666666666666671"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Joint" placeholder="Left Knee" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="4LX-zX-XyQ">
+                                                            <rect key="frame" x="0.0" y="53.666666666666657" width="85.333333333333329" height="26"/>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="zkw-gO-Lvs" secondAttribute="trailing" constant="10" id="Wn1-3z-HUV"/>
+                                                        <constraint firstItem="zgh-Oz-wTp" firstAttribute="centerX" secondItem="4LX-zX-XyQ" secondAttribute="centerX" id="cuH-Oi-CLX"/>
+                                                    </constraints>
                                                 </stackView>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MKz-Q5-w2P">
+                                                    <rect key="frame" x="216" y="5" width="140" height="89.666666666666671"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="140" id="rdt-V6-9fX"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Jf7-5M-Dwo" secondAttribute="bottom" constant="10" id="DAr-Nc-O5n"/>
+                                                <constraint firstItem="Jf7-5M-Dwo" firstAttribute="top" secondItem="CuZ-Pc-K9O" secondAttribute="top" constant="10" id="LKL-pd-a95"/>
+                                                <constraint firstAttribute="bottom" secondItem="MKz-Q5-w2P" secondAttribute="bottom" constant="5" id="OAV-Se-TIQ"/>
+                                                <constraint firstItem="MKz-Q5-w2P" firstAttribute="top" secondItem="CuZ-Pc-K9O" secondAttribute="top" constant="5" id="l2s-iK-6WP"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="CuZ-Pc-K9O" secondAttribute="bottom" id="WVp-Zo-iJp"/>
-                                        <constraint firstAttribute="trailing" secondItem="CuZ-Pc-K9O" secondAttribute="trailing" id="gsl-aE-3tw"/>
-                                        <constraint firstItem="CuZ-Pc-K9O" firstAttribute="leading" secondItem="drw-6h-fBh" secondAttribute="leadingMargin" id="lhW-BU-6dc"/>
-                                        <constraint firstItem="CuZ-Pc-K9O" firstAttribute="centerY" secondItem="drw-6h-fBh" secondAttribute="centerY" id="pmH-ZG-aYM"/>
+                                        <constraint firstItem="CuZ-Pc-K9O" firstAttribute="leading" secondItem="drw-6h-fBh" secondAttribute="leadingMargin" id="E0K-pY-I16"/>
+                                        <constraint firstAttribute="trailing" secondItem="CuZ-Pc-K9O" secondAttribute="trailing" id="Oke-eh-sH1"/>
+                                        <constraint firstItem="CuZ-Pc-K9O" firstAttribute="top" secondItem="drw-6h-fBh" secondAttribute="top" id="hIg-jP-WoI"/>
+                                        <constraint firstItem="CuZ-Pc-K9O" firstAttribute="centerY" secondItem="drw-6h-fBh" secondAttribute="centerY" id="sMw-hk-7FZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -310,6 +322,7 @@
                                     <outlet property="dateLabel" destination="zgh-Oz-wTp" id="XBz-Bg-OlA"/>
                                     <outlet property="jointLabel" destination="4LX-zX-XyQ" id="wZx-Ju-i8m"/>
                                     <outlet property="nameLabel" destination="28F-al-8ZO" id="Mhx-99-1fb"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="jBQ-hV-JPc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -331,7 +344,7 @@
                     </items>
                 </navigationBar>
             </objects>
-            <point key="canvasLocation" x="-1104" y="175"/>
+            <point key="canvasLocation" x="-1104.3478260869565" y="174.45652173913044"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cD4-Zg-qy3">
