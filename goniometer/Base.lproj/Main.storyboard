@@ -433,15 +433,15 @@
                                                                 <constraint firstItem="28F-al-8ZO" firstAttribute="bottom" secondItem="VWL-yp-RXg" secondAttribute="bottom" id="mlX-tW-fjH"/>
                                                             </constraints>
                                                         </stackView>
-                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Date" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="zgh-Oz-wTp">
+                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Joint" placeholder="Left Knee" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="4LX-zX-XyQ">
                                                             <rect key="frame" x="0.0" y="27" width="85.333333333333329" height="25.666666666666671"/>
-                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
-                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Joint" placeholder="Left Knee" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="4LX-zX-XyQ">
+                                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Date" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="zgh-Oz-wTp">
                                                             <rect key="frame" x="0.0" y="53.666666666666657" width="85.333333333333329" height="26"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
@@ -545,40 +545,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqT-iR-QU0">
-                                <rect key="frame" x="20" y="64" width="188" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="130" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RTo-fq-seT">
-                                <rect key="frame" x="255" y="65" width="97" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZLA-SY-gcJ">
-                                <rect key="frame" x="20" y="103" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Joint" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVK-ly-bMt">
-                                <rect key="frame" x="20" y="141" width="232" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="pIF-iP-GIe" userLabel="Text Stack View">
+                                <rect key="frame" x="15" y="79" width="384" height="83"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="enL-zV-feD">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="27"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" placeholder="Patient Name" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Adu-Pt-GiT">
+                                                <rect key="frame" x="0.0" y="0.0" width="131.33333333333334" height="27"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="130" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Bry-ac-otL">
+                                                <rect key="frame" x="139.33333333333337" y="0.0" width="244.66666666666663" height="27"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Adu-Pt-GiT" firstAttribute="bottom" secondItem="Bry-ac-otL" secondAttribute="bottom" id="7MO-tL-Y7o"/>
+                                        </constraints>
+                                    </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Joint" placeholder="Left Knee" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ix3-PV-9PP">
+                                        <rect key="frame" x="0.0" y="28" width="85.333333333333329" height="27"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Date" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="PTl-Zc-xNi">
+                                        <rect key="frame" x="0.0" y="56" width="85.333333333333329" height="27"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="PTl-Zc-xNi" firstAttribute="centerX" secondItem="ix3-PV-9PP" secondAttribute="centerX" id="NWa-Th-05C"/>
+                                    <constraint firstAttribute="trailing" secondItem="enL-zV-feD" secondAttribute="trailing" id="aBw-YS-V0d"/>
+                                </constraints>
+                            </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="TWL-OL-Yfn">
                                 <rect key="frame" x="20" y="194" width="374" height="202"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pIF-iP-GIe" firstAttribute="trailing" secondItem="ke4-Tl-G6I" secondAttribute="trailing" constant="-15" id="JpH-ae-9mQ"/>
+                            <constraint firstItem="pIF-iP-GIe" firstAttribute="leading" secondItem="ke4-Tl-G6I" secondAttribute="leading" constant="15" id="YbW-Rf-tLV"/>
+                            <constraint firstItem="pIF-iP-GIe" firstAttribute="top" secondItem="ke4-Tl-G6I" secondAttribute="top" constant="15" id="aig-tr-HbI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ke4-Tl-G6I"/>
                     </view>
                     <navigationItem key="navigationItem" title="Measurement" id="LYk-1A-4pe">
@@ -587,7 +605,11 @@
                                 <segue destination="D0d-tr-5KK" kind="unwind" unwindAction="cancelToMeasurementsViewController:" id="Mk1-HB-Xtl"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="ucV-Vn-pVn"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="ucV-Vn-pVn">
+                            <connections>
+                                <segue destination="2Me-CJ-evZ" kind="presentation" id="sV7-zC-Uan"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAH-Xg-eGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -599,4 +621,7 @@
     <resources>
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="sV7-zC-Uan"/>
+    </inferredMetricsTieBreakers>
 </document>
