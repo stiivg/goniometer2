@@ -59,6 +59,7 @@ class MeasurementDetailsViewController: UITableViewController {
         super.viewDidLoad()
 
         side = "Right" //initialize the default value
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -141,6 +142,14 @@ class MeasurementDetailsViewController: UITableViewController {
 }
 // MARK: - IBActions
 extension MeasurementDetailsViewController {
+    //MARK Actions
+    @IBAction func cancelToMeasurementDetailsViewController(_ segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func saveMeasurementDetail(_ segue: UIStoryboardSegue) {
+    }
+
+    
     @IBAction func sideControl(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             side = "Left"

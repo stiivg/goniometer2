@@ -42,8 +42,8 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     var panStart = CGPoint(x: 0, y: 0)
     
     var flexionAngle = CGFloat()
-    
-    //MARK Actions
+
+        
     @IBAction func handleDotPan(_ gestureRecognizer: UIPanGestureRecognizer) {
         if gestureRecognizer.state == .began {
             panStart = gestureRecognizer.location(in: self.view)
@@ -89,10 +89,10 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         }
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
-        imageView.contentMode = .scaleAspectFit //3
-        imageView.image = chosenImage //4
-        dismiss(animated:true, completion: nil) //5
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = chosenImage
+        dismiss(animated:true, completion: nil)
     }
  
 

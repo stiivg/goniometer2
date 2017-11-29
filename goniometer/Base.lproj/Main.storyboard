@@ -42,7 +42,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySP-AM-yOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-304" y="929"/>
+            <point key="canvasLocation" x="1287" y="929"/>
         </scene>
         <!--Measure Angle View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -107,13 +107,17 @@
                             <outletCollection property="gestureRecognizers" destination="7Qn-Bd-reb" appends="YES" id="dKa-ZA-eBM"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Lana" leftItemsSupplementBackButton="YES" id="AJ7-s2-Afn">
-                        <barButtonItem key="leftBarButtonItem" title="List" id="JKJ-aK-vCV">
+                    <navigationItem key="navigationItem" title="Measurement" leftItemsSupplementBackButton="YES" id="AJ7-s2-Afn">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JKJ-aK-vCV">
                             <connections>
-                                <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="cancelToMeasurementsViewController:" id="VBm-lK-jiG"/>
+                                <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="cancelToMeasurementDetailsViewController:" id="Q12-NK-t75"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="Q6b-Xq-cTs"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Q6b-Xq-cTs">
+                            <connections>
+                                <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="saveMeasurementDetail:" id="jgk-IP-748"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="vQa-6O-yXR" id="3TT-ii-SqR"/>
@@ -129,7 +133,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="499" y="929"/>
+            <point key="canvasLocation" x="2219" y="929"/>
         </scene>
         <!--Add Measurement-->
         <scene sceneID="NZj-U0-s18">
@@ -267,6 +271,9 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="HqX-SW-5e6" secondAttribute="trailing" id="uNa-Vz-uVF"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Kn6-kf-16v" kind="presentation" id="dL4-B6-PnK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -341,7 +348,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KS7-M5-sHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="f7q-6v-x27" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1289" y="172"/>
+            <point key="canvasLocation" x="1287" y="-532"/>
         </scene>
         <!--Choose Motion-->
         <scene sceneID="FTR-wD-5UU">
@@ -382,7 +389,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KgX-oE-jak" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="jQK-CJ-cA3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2063" y="177"/>
+            <point key="canvasLocation" x="1287" y="175"/>
         </scene>
         <!--Measurements View Controller-->
         <scene sceneID="iMu-KV-AtS">
@@ -409,14 +416,14 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zkw-gO-Lvs">
                                                             <rect key="frame" x="0.0" y="0.0" width="206" height="26"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" placeholder="Lana Chan" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="28F-al-8ZO">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="106.66666666666667" height="26"/>
+                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" placeholder="Patient Name" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="28F-al-8ZO">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="131.33333333333334" height="26"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="130" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="VWL-yp-RXg">
-                                                                    <rect key="frame" x="114.66666666666666" y="0.0" width="91.333333333333343" height="26"/>
+                                                                    <rect key="frame" x="139.33333333333334" y="0.0" width="66.666666666666657" height="26"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -472,7 +479,7 @@
                                     <outlet property="dateLabel" destination="zgh-Oz-wTp" id="XBz-Bg-OlA"/>
                                     <outlet property="jointLabel" destination="4LX-zX-XyQ" id="wZx-Ju-i8m"/>
                                     <outlet property="nameLabel" destination="28F-al-8ZO" id="Mhx-99-1fb"/>
-                                    <segue destination="Kn6-kf-16v" kind="presentation" id="yML-0r-Hbg"/>
+                                    <segue destination="adA-rs-A8j" kind="presentation" id="rkK-zT-Y39"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -513,6 +520,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rJz-nF-2pX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-304.34782608695656" y="173.64130434782609"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lqJ-IA-O5o">
+            <objects>
+                <navigationController id="adA-rs-A8j" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hK2-ga-iNY">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bym-mG-EaY" kind="relationship" relationship="rootViewController" id="tVP-2s-sRB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nIe-hh-aal" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1104" y="884"/>
+        </scene>
+        <!--Measurement-->
+        <scene sceneID="AMN-M5-zhT">
+            <objects>
+                <viewController id="bym-mG-EaY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gIR-F9-dUh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqT-iR-QU0">
+                                <rect key="frame" x="20" y="64" width="188" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="130" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RTo-fq-seT">
+                                <rect key="frame" x="255" y="65" width="97" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZLA-SY-gcJ">
+                                <rect key="frame" x="20" y="103" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Joint" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVK-ly-bMt">
+                                <rect key="frame" x="20" y="141" width="232" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="TWL-OL-Yfn">
+                                <rect key="frame" x="20" y="194" width="374" height="202"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="ke4-Tl-G6I"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Measurement" id="LYk-1A-4pe">
+                        <barButtonItem key="leftBarButtonItem" title="List" id="Gbm-pv-4ZC">
+                            <connections>
+                                <segue destination="D0d-tr-5KK" kind="unwind" unwindAction="cancelToMeasurementsViewController:" id="Mk1-HB-Xtl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="ucV-Vn-pVn"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oAH-Xg-eGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="D0d-tr-5KK" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-304.34782608695656" y="883.69565217391312"/>
         </scene>
     </scenes>
     <resources>
