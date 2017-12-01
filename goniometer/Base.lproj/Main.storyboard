@@ -236,7 +236,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kom-bF-FHX" userLabel="Direction Label">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kom-bF-FHX" userLabel="Motion Label">
                                                     <rect key="frame" x="332" y="11.999999999999998" width="44" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -246,7 +246,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Hvo-Ej-K1q" kind="show" identifier="PickDirection" id="BNd-1P-vDo"/>
+                                            <segue destination="Hvo-Ej-K1q" kind="show" identifier="PickMotion" id="BNd-1P-vDo"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -298,8 +298,8 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="directionLabel" destination="Kom-bF-FHX" id="LTI-TS-fvY"/>
                         <outlet property="jointLabel" destination="2pS-X0-8zy" id="9U0-uc-8WW"/>
+                        <outlet property="motionLabel" destination="Kom-bF-FHX" id="Lfn-un-fxa"/>
                         <outlet property="nameTextField" destination="Wqv-Hc-iMY" id="FTr-9D-9g2"/>
                         <outlet property="sideControl" destination="Lot-SH-zl3" id="mzD-Dm-429"/>
                     </connections>
@@ -353,13 +353,13 @@
         <!--Choose Motion-->
         <scene sceneID="FTR-wD-5UU">
             <objects>
-                <tableViewController title="Choose Motion" id="Hvo-Ej-K1q" customClass="DirectionPickerViewController" customModule="goniometer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Choose Motion" id="Hvo-Ej-K1q" customClass="MotionPickerViewController" customModule="goniometer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="s92-bZ-sfj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DirectionCell" textLabel="lDv-xE-hGG" style="IBUITableViewCellStyleDefault" id="Iqx-nJ-QDE" userLabel="DirectionCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MotionCell" textLabel="lDv-xE-hGG" style="IBUITableViewCellStyleDefault" id="Iqx-nJ-QDE">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Iqx-nJ-QDE" id="CMY-hZ-1rW">

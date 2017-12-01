@@ -12,16 +12,16 @@ class MeasurementDetailsViewController: UITableViewController {
 
    
     // MARK: - Properties
-    var measurement: Measurement?
+    var measurement: MeasurementStruct?
     
     var joint: String = "Knee" {
         didSet {
             jointLabel.text = joint
         }
     }
-    var direction: String = "Flexion" {
+    var motion: String = "Flexion" {
         didSet {
-            directionLabel.text = direction
+            motionLabel.text = motion
         }
     }
 
@@ -37,22 +37,22 @@ class MeasurementDetailsViewController: UITableViewController {
 
     @IBOutlet weak var jointLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var directionLabel: UILabel!
+    @IBOutlet weak var motionLabel: UILabel!
     @IBOutlet weak var sideControl: UISegmentedControl!
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         if segue.identifier == "SaveMeasurementDetail",
             let name = nameTextField.text {
-            measurement = Measurement(name: name, joint: joint, side: side, direction: direction, angle: 142, date: "10/13/17")
+            measurement = MeasurementStruct(name: name, joint: joint, side: side, motion: motion, angle: 142, date: "10/13/17")
         }
         if segue.identifier == "PickJoint",
             let jointPickerViewController = segue.destination as? JointPickerViewController {
             jointPickerViewController.selectedJoint = joint
         }
         if segue.identifier == "PickDirection",
-            let directionPickerViewController = segue.destination as? DirectionPickerViewController {
-            directionPickerViewController.selectedDirection = direction
+            let motionPickerViewController = segue.destination as? MotionPickerViewController {
+            motionPickerViewController.selectedMotion = motion
         }
     }
     override func viewDidLoad() {
@@ -165,9 +165,9 @@ extension MeasurementDetailsViewController {
         }
     }
     @IBAction func unwindWithSelectedDirection(segue: UIStoryboardSegue) {
-        if let directionPickerViewController = segue.source as? DirectionPickerViewController,
-            let selectedDirection = directionPickerViewController.selectedDirection {
-            direction = selectedDirection
+        if let motionPickerViewController = segue.source as? MotionPickerViewController,
+            let selectedDirection = motionPickerViewController.selectedMotion {
+            motion = selectedDirection
         }
     }
 }

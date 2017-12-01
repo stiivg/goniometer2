@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct Measurement {
+struct MeasurementStruct {
     
     // MARK: - Properties
     var name: String?
     var joint: String?
     var side: String?
-    var direction: String?
+    var motion: String?
     var angle: Float
     var date: String?
 }

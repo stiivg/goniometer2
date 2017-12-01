@@ -8,10 +8,10 @@
 
 import UIKit
 
-class DirectionPickerViewController: UITableViewController {
+class MotionPickerViewController: UITableViewController {
     
         // MARK: - Properties
-        var directions = [
+        var motions = [
             "Flexion",
             "Extension",
             "Abduction",
@@ -19,16 +19,16 @@ class DirectionPickerViewController: UITableViewController {
             "Pronation"
         ]
         
-        var selectedDirection: String? {
+        var selectedMotion: String? {
             didSet {
-                if let selectedDirection = selectedDirection,
-                    let index = directions.index(of: selectedDirection) {
-                    selectedDirectionIndex = index
+                if let selectedMotion = selectedMotion,
+                    let index = motions.index(of: selectedMotion) {
+                    selectedMotionIndex = index
                 }
             }
         }
         
-        var selectedDirectionIndex: Int?
+        var selectedMotionIndex: Int?
         
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             
@@ -39,7 +39,7 @@ class DirectionPickerViewController: UITableViewController {
             }
             
             let index = indexPath.row
-            selectedDirection = directions[index]
+            selectedMotion = motions[index]
         }
         
         override func viewDidLoad() {
@@ -59,15 +59,15 @@ class DirectionPickerViewController: UITableViewController {
         
         // MARK: - Table view data source
         override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return directions.count
+            return motions.count
         }
         
         
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DirectionCell", for: indexPath)
-            cell.textLabel?.text = directions[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MotionCell", for: indexPath)
+            cell.textLabel?.text = motions[indexPath.row]
             
-            if indexPath.row == selectedDirectionIndex {
+            if indexPath.row == selectedMotionIndex {
                 cell.accessoryType = .checkmark
             } else {
                 cell.accessoryType = .none
@@ -80,12 +80,12 @@ class DirectionPickerViewController: UITableViewController {
             tableView.deselectRow(at: indexPath, animated: true)
             
             // Other row is selected - need to deselect it
-            if let index = selectedDirectionIndex {
+            if let index = selectedMotionIndex {
                 let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
                 cell?.accessoryType = .none
             }
             
-            selectedDirection = directions[indexPath.row]
+            selectedMotion = motions[indexPath.row]
             
             // update the checkmark for the current row
             let cell = tableView.cellForRow(at: indexPath)
