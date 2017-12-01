@@ -219,7 +219,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Mfa-Wt-D90" kind="show" identifier="PickJoint" id="b74-LM-2Nt"/>
+                                            <segue destination="Mfa-Wt-D90" kind="show" identifier="PickJoint" id="O3q-KL-J2c"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="a56-Za-KvF" detailTextLabel="Kom-bF-FHX" style="IBUITableViewCellStyleValue1" id="wBV-UG-RJ4">
@@ -313,9 +313,9 @@
         <scene sceneID="fKL-P6-Kqg">
             <objects>
                 <tableViewController title="Choose Joint" id="Mfa-Wt-D90" customClass="JointPickerViewController" customModule="goniometer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3bS-A0-rCm">
+                    <tableView key="view" clipsSubviews="YES" contentMode="center" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3bS-A0-rCm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="JointCell" textLabel="1nP-ln-OVq" style="IBUITableViewCellStyleDefault" id="3WY-Fj-dKF">
@@ -416,14 +416,14 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zkw-gO-Lvs">
                                                             <rect key="frame" x="0.0" y="0.0" width="206" height="26"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" placeholder="Patient Name" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="28F-al-8ZO">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="131.33333333333334" height="26"/>
+                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" placeholder="Patient Name" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="28F-al-8ZO">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="156" height="26"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="130" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="VWL-yp-RXg">
-                                                                    <rect key="frame" x="139.33333333333334" y="0.0" width="66.666666666666657" height="26"/>
+                                                                    <rect key="frame" x="164" y="0.0" width="42" height="26"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                     <textInputTraits key="textInputTraits"/>
@@ -451,7 +451,7 @@
                                                         <constraint firstItem="zgh-Oz-wTp" firstAttribute="centerX" secondItem="4LX-zX-XyQ" secondAttribute="centerX" id="cuH-Oi-CLX"/>
                                                     </constraints>
                                                 </stackView>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MKz-Q5-w2P">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="MKz-Q5-w2P">
                                                     <rect key="frame" x="216" y="5" width="140" height="89.666666666666671"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="140" id="rdt-V6-9fX"/>
@@ -568,14 +568,14 @@
                                             <constraint firstItem="Adu-Pt-GiT" firstAttribute="bottom" secondItem="Bry-ac-otL" secondAttribute="bottom" id="7MO-tL-Y7o"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Joint" placeholder="Left Knee" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ix3-PV-9PP">
-                                        <rect key="frame" x="0.0" y="28" width="85.333333333333329" height="27"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Measurement" placeholder="Left Knee" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ix3-PV-9PP">
+                                        <rect key="frame" x="0.0" y="28" width="121" height="27"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Date" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="PTl-Zc-xNi">
-                                        <rect key="frame" x="0.0" y="56" width="85.333333333333329" height="27"/>
+                                        <rect key="frame" x="0.0" y="56" width="121" height="27"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -622,6 +622,6 @@
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sV7-zC-Uan"/>
+        <segue reference="mds-mj-B3b"/>
     </inferredMetricsTieBreakers>
 </document>
