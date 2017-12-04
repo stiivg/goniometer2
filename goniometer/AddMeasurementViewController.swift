@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MeasurementDetailsViewController: UITableViewController {
+class AddMeasurementViewController: UITableViewController {
 
    
     // MARK: - Properties
@@ -44,7 +44,7 @@ class MeasurementDetailsViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         if segue.identifier == "SaveMeasurementDetail",
             let name = nameTextField.text {
-            measurement = MeasurementStruct(name: name, joint: joint, side: side, motion: motion, angle: 142, date: "10/13/17")
+            measurement = MeasurementStruct(name: name, joint: joint, side: side, motion: motion, angle: 142, date: "10-13-2017")
         }
         if segue.identifier == "PickJoint",
             let jointPickerViewController = segue.destination as? JointPickerViewController {
@@ -141,7 +141,7 @@ class MeasurementDetailsViewController: UITableViewController {
 
 }
 // MARK: - IBActions
-extension MeasurementDetailsViewController {
+extension AddMeasurementViewController {
     //MARK Actions
     @IBAction func cancelToMeasurementDetailsViewController(_ segue: UIStoryboardSegue) {
     }
@@ -173,7 +173,7 @@ extension MeasurementDetailsViewController {
 }
 
 // MARK: - UITableViewDelegate
-extension MeasurementDetailsViewController {
+extension AddMeasurementViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {

@@ -138,7 +138,7 @@
         <!--Add Measurement-->
         <scene sceneID="NZj-U0-s18">
             <objects>
-                <tableViewController title="Add Measurement" automaticallyAdjustsScrollViewInsets="NO" id="4Cq-03-mwV" customClass="MeasurementDetailsViewController" customModule="goniometer" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Add Measurement" automaticallyAdjustsScrollViewInsets="NO" id="4Cq-03-mwV" customClass="AddMeasurementViewController" customModule="goniometer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="nn7-Tf-Ked">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -622,6 +622,6 @@
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mds-mj-B3b"/>
+        <segue reference="sV7-zC-Uan"/>
     </inferredMetricsTieBreakers>
 </document>

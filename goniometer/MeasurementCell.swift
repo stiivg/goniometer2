@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MeasurementCell: UITableViewCell {
     
@@ -18,15 +19,22 @@ class MeasurementCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UITextField!
     
     // MARK: - Properties
-    var measurement: MeasurementStruct? {
+    var measurement: NSManagedObject? {
         didSet {
             guard let measurement = measurement else { return }
             
-            nameLabel.text = measurement.name
-            jointLabel.text = measurement.side! + " " +  measurement.joint! + " " + measurement.motion!
-            angleLabel.text = String(format: "%.1f", measurement.angle) + "\u{00B0}"
-            dateLabel.text = measurement.date
-//            angleImageView.image = image(forRating: player.rating)
+            nameLabel.text = measurement.value(forKeyPath: "name") as? String
+            
+            let joint = measurement.value(forKeyPath: "joint") as? String
+            let side = measurement.value(forKeyPath: "side") as? String
+            let motion = measurement.value(forKeyPath: "motion") as? String
+            jointLabel.text = side! + " " +  joint! + " " + motion!
+            angleLabel.text = String(format: "%.1f", (measurement.value(forKeyPath: "angle") as? Float)!) + "\u{00B0}"
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd-yyyy"
+            let dateObj = measurement.value(forKeyPath: "date") as? Date
+            dateLabel.text = dateFormatter.string(from: dateObj!)
         }
     }
     

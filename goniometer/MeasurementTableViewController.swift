@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class MeasurementTableViewController: UITableViewController {
 
     // MARK: - Properties
-    var measurements = SampleData.generateMeasurementsData()
-
+    var measurements: [NSManagedObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +24,44 @@ class MeasurementTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //1
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Measurement")
+        
+        //3
+        do {
+            measurements = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        //TEMP to clear core data
+        
+//        for bas: AnyObject in measurements
+//        {
+//            managedContext.delete(bas as! NSManagedObject)
+//        }
+//
+//        measurements.removeAll(keepingCapacity: false)
+//        do {
+//            try managedContext.save()
+//        } catch let error as NSError {
+//            print("Could not save. \(error), \(error.userInfo)")
+//        }
+//        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,18 +72,52 @@ class MeasurementTableViewController: UITableViewController {
     }
     
     @IBAction func saveMeasurementsDetail(_ segue: UIStoryboardSegue) {
-        
-        guard let measurementDetailsViewController = segue.source as? MeasurementDetailsViewController,
-            let measurement = measurementDetailsViewController.measurement else {
+        guard let measurementDetailsViewController = segue.source as? AddMeasurementViewController,
+            let measurementValues = measurementDetailsViewController.measurement else {
                 return
         }
         
-        // add the new measurement to the measurements array
-        measurements.append(measurement)
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
         
-        // update the tableView
-        let indexPath = IndexPath(row: measurements.count - 1, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        // 1
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        // 2
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Measurement", in: managedContext)!
+        
+        let measurement = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        // 3
+        measurement.setValue(measurementValues.name, forKeyPath: "name")
+        measurement.setValue(measurementValues.joint, forKeyPath: "joint")
+        measurement.setValue(measurementValues.motion, forKeyPath: "motion")
+        measurement.setValue(measurementValues.side, forKeyPath: "side")
+        measurement.setValue(measurementValues.angle, forKeyPath: "angle")
+        
+        let dateString = measurementValues.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        
+        let dateObj = dateFormatter.date(from: dateString!)
+
+        measurement.setValue(dateObj, forKeyPath: "date")
+
+        // 4
+        do {
+            try managedContext.save()
+            measurements.append(measurement)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+        
+         // update the tableView
+        self.tableView.reloadData()
     }
     // MARK: - Table view data source
 
@@ -59,9 +132,13 @@ class MeasurementTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MeasurementCell", for: indexPath) as! MeasurementCell
         
-        let measurement = measurements[indexPath.row]
-        cell.measurement = measurement
+        if measurements.count > 0 {
+            let measurement = measurements[indexPath.row]
+            cell.measurement = measurement
+        }
         return cell
+
+ 
     }
 
     /*
