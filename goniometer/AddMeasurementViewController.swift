@@ -35,8 +35,9 @@ class AddMeasurementViewController: UITableViewController {
         }
     }
 
-    @IBOutlet weak var jointLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBOutlet weak var jointLabel: UILabel!
     @IBOutlet weak var motionLabel: UILabel!
     @IBOutlet weak var sideControl: UISegmentedControl!
     

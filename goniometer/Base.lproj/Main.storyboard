@@ -540,7 +540,7 @@
         <!--Measurement-->
         <scene sceneID="AMN-M5-zhT">
             <objects>
-                <viewController id="bym-mG-EaY" sceneMemberID="viewController">
+                <viewController id="bym-mG-EaY" customClass="SingleMeasurementViewController" customModule="goniometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gIR-F9-dUh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -611,6 +611,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="angleImageView" destination="TWL-OL-Yfn" id="AzB-F5-ucN"/>
+                        <outlet property="angleLabel" destination="Bry-ac-otL" id="rdg-gr-2Ls"/>
+                        <outlet property="dateLabel" destination="PTl-Zc-xNi" id="Ws4-mG-AXI"/>
+                        <outlet property="jointLabel" destination="ix3-PV-9PP" id="1GU-C9-30r"/>
+                        <outlet property="nameLabel" destination="Adu-Pt-GiT" id="1hT-Kr-KPy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAH-Xg-eGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="D0d-tr-5KK" userLabel="Exit" sceneMemberID="exit"/>
@@ -622,6 +629,6 @@
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sV7-zC-Uan"/>
+        <segue reference="mds-mj-B3b"/>
     </inferredMetricsTieBreakers>
 </document>

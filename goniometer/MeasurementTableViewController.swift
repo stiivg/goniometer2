@@ -46,8 +46,8 @@ class MeasurementTableViewController: UITableViewController {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        //TEMP to clear core data
         
+        //TEMP to clear core data
 //        for bas: AnyObject in measurements
 //        {
 //            managedContext.delete(bas as! NSManagedObject)
@@ -82,17 +82,11 @@ class MeasurementTableViewController: UITableViewController {
                 return
         }
         
-        // 1
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        // 2
-        let entity =
-            NSEntityDescription.entity(forEntityName: "Measurement", in: managedContext)!
+        let managedContext =  appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Measurement", in: managedContext)!
         
         let measurement = NSManagedObject(entity: entity, insertInto: managedContext)
         
-        // 3
         measurement.setValue(measurementValues.name, forKeyPath: "name")
         measurement.setValue(measurementValues.joint, forKeyPath: "joint")
         measurement.setValue(measurementValues.motion, forKeyPath: "motion")
@@ -107,7 +101,6 @@ class MeasurementTableViewController: UITableViewController {
 
         measurement.setValue(dateObj, forKeyPath: "date")
 
-        // 4
         do {
             try managedContext.save()
             measurements.append(measurement)
@@ -176,14 +169,26 @@ class MeasurementTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
+        let nav = segue.destination as! UINavigationController
+        let singleViewController = nav.topViewController as? SingleMeasurementViewController
+        
+        let mCell = sender as? MeasurementCell
         // Pass the selected object to the new view controller.
+        singleViewController?.measurement = mCell?.measurement
     }
-    */
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
