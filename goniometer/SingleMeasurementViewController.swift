@@ -45,10 +45,7 @@ class SingleMeasurementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
-        //Called on return to list not on entry
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -64,5 +61,47 @@ class SingleMeasurementViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    // MARK: - Navigation
+    //Editing this measurement has been cancelled - rollback the changes
+    @IBAction func cancelMeasurementEdit(_ segue: UIStoryboardSegue) {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =  appDelegate.persistentContainer.viewContext
+        managedContext.rollback() // Undo any edits
+    }
+    
+    //Editing this measurement has finished - save the changes
+    @IBAction func saveMeasurementEdit(_ segue: UIStoryboardSegue) {
+        //Notify the edit view to complete all edits
+        let addMeasurementViewController = segue.source as? AddMeasurementViewController
+        addMeasurementViewController?.completeEdit()
+
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+
+        let managedContext =  appDelegate.persistentContainer.viewContext
+
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SingleToEditMeasurement" {
+            let nav = segue.destination as! UINavigationController
+            let addMeasurementViewController = nav.topViewController as? AddMeasurementViewController
+        
+            // Pass the selected object to the new view controller.
+            addMeasurementViewController?.measurement = measurement
+        }
+    }
 
 }

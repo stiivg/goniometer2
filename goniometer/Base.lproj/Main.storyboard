@@ -26,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGM-ck-lst" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1988" y="176"/>
+            <point key="canvasLocation" x="-2736" y="159"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0hi-1E-88x">
@@ -287,12 +287,12 @@
                     <navigationItem key="navigationItem" title="Add Measurement" id="oUU-N6-McE">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Vze-Y6-2BI">
                             <connections>
-                                <segue destination="LCm-7a-oL4" kind="unwind" unwindAction="cancelToMeasurementsViewController:" id="GoN-m7-GDY"/>
+                                <segue destination="LCm-7a-oL4" kind="unwind" unwindAction="cancelMeasurementEdit:" id="IQl-lL-Zjq"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="n5Z-tb-bDq">
                             <connections>
-                                <segue destination="LCm-7a-oL4" kind="unwind" identifier="SaveMeasurementDetail" unwindAction="saveMeasurementsDetail:" id="N9a-3w-0IV"/>
+                                <segue destination="LCm-7a-oL4" kind="unwind" unwindAction="saveMeasurementEdit:" id="YUk-BB-LJE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -479,7 +479,7 @@
                                     <outlet property="dateLabel" destination="zgh-Oz-wTp" id="XBz-Bg-OlA"/>
                                     <outlet property="jointLabel" destination="4LX-zX-XyQ" id="wZx-Ju-i8m"/>
                                     <outlet property="nameLabel" destination="28F-al-8ZO" id="Mhx-99-1fb"/>
-                                    <segue destination="adA-rs-A8j" kind="presentation" id="rkK-zT-Y39"/>
+                                    <segue destination="adA-rs-A8j" kind="presentation" identifier="CellToSingleMeasurement" id="rkK-zT-Y39"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -487,7 +487,7 @@
                     <navigationItem key="navigationItem" title="Measurements" id="TpC-TP-4ZC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HIm-Zk-f28">
                             <connections>
-                                <segue destination="2Me-CJ-evZ" kind="presentation" id="mds-mj-B3b"/>
+                                <segue destination="2Me-CJ-evZ" kind="presentation" identifier="ListToAddMeasurement" id="mds-mj-B3b"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -501,7 +501,7 @@
                     </items>
                 </navigationBar>
             </objects>
-            <point key="canvasLocation" x="-1104.3478260869565" y="174.45652173913044"/>
+            <point key="canvasLocation" x="-1852" y="158"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cD4-Zg-qy3">
@@ -535,7 +535,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIe-hh-aal" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1104" y="884"/>
+            <point key="canvasLocation" x="-1852" y="883"/>
         </scene>
         <!--Measurement-->
         <scene sceneID="AMN-M5-zhT">
@@ -602,12 +602,12 @@
                     <navigationItem key="navigationItem" title="Measurement" id="LYk-1A-4pe">
                         <barButtonItem key="leftBarButtonItem" title="List" id="Gbm-pv-4ZC">
                             <connections>
-                                <segue destination="D0d-tr-5KK" kind="unwind" unwindAction="cancelToMeasurementsViewController:" id="Mk1-HB-Xtl"/>
+                                <segue destination="D0d-tr-5KK" kind="unwind" unwindAction="cancelToMeasurementsViewController:" id="EkB-zY-Sgb"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="ucV-Vn-pVn">
                             <connections>
-                                <segue destination="2Me-CJ-evZ" kind="presentation" id="sV7-zC-Uan"/>
+                                <segue destination="2Me-CJ-evZ" kind="presentation" identifier="SingleToEditMeasurement" id="sV7-zC-Uan"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -622,7 +622,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAH-Xg-eGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="D0d-tr-5KK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-304.34782608695656" y="883.69565217391312"/>
+            <point key="canvasLocation" x="-1065" y="883"/>
         </scene>
     </scenes>
     <resources>

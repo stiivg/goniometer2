@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Measurement" representedClassName="Measurement" syncable="YES" codeGenerationType="class">
-        <attribute name="angle" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="joint" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="motion" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="side" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Measurement" representedClassName="Measurement" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="angle" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" defaultDateTimeInterval="534021960" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="joint" attributeType="String" defaultValueString="Knee" syncable="YES"/>
+        <attribute name="motion" attributeType="String" defaultValueString="Flexion" syncable="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString="name" syncable="YES"/>
+        <attribute name="side" attributeType="String" defaultValueString="Left" syncable="YES"/>
     </entity>
     <elements>
         <element name="Measurement" positionX="-63" positionY="-18" width="128" height="135"/>

@@ -69,11 +69,21 @@ class MeasurementTableViewController: UITableViewController {
     // MARK: - IBActions
     
     @IBAction func cancelToMeasurementsViewController(_ segue: UIStoryboardSegue) {
+        // update the tableView
+        self.tableView.reloadData()
     }
     
-    @IBAction func saveMeasurementsDetail(_ segue: UIStoryboardSegue) {
+    @IBAction func cancelMeasurementEdit(_ segue: UIStoryboardSegue) {
+    }
+    
+    // Return from creating new measurement
+    @IBAction func saveMeasurementEdit(_ segue: UIStoryboardSegue) {
+        //Notify the edit view to complete all edits
+        let addMeasurementViewController = segue.source as? AddMeasurementViewController
+        addMeasurementViewController?.completeEdit()
+        
         guard let measurementDetailsViewController = segue.source as? AddMeasurementViewController,
-            let measurementValues = measurementDetailsViewController.measurement else {
+            let measurement = measurementDetailsViewController.measurement else {
                 return
         }
         
@@ -83,24 +93,7 @@ class MeasurementTableViewController: UITableViewController {
         }
         
         let managedContext =  appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Measurement", in: managedContext)!
         
-        let measurement = NSManagedObject(entity: entity, insertInto: managedContext)
-        
-        measurement.setValue(measurementValues.name, forKeyPath: "name")
-        measurement.setValue(measurementValues.joint, forKeyPath: "joint")
-        measurement.setValue(measurementValues.motion, forKeyPath: "motion")
-        measurement.setValue(measurementValues.side, forKeyPath: "side")
-        measurement.setValue(measurementValues.angle, forKeyPath: "angle")
-        
-        let dateString = measurementValues.date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        
-        let dateObj = dateFormatter.date(from: dateString!)
-
-        measurement.setValue(dateObj, forKeyPath: "date")
-
         do {
             try managedContext.save()
             measurements.append(measurement)
@@ -173,12 +166,33 @@ class MeasurementTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nav = segue.destination as! UINavigationController
-        let singleViewController = nav.topViewController as? SingleMeasurementViewController
         
-        let mCell = sender as? MeasurementCell
-        // Pass the selected object to the new view controller.
-        singleViewController?.measurement = mCell?.measurement
+        
+        if segue.identifier == "ListToAddMeasurement" {
+            let nav = segue.destination as! UINavigationController
+            let addMeasurementViewController = nav.topViewController as? AddMeasurementViewController
+            
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                    return
+            }
+            
+            //Create a new measurement object
+            let managedContext = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "Measurement", in: managedContext)!
+            let measurement = NSManagedObject(entity: entity, insertInto: managedContext)
+            
+            // Pass a new object to the addMeasurement view controller.
+            addMeasurementViewController?.measurement = measurement
+        }
+        
+        if segue.identifier == "CellToSingleMeasurement" {
+            let nav = segue.destination as! UINavigationController
+            let singleViewController = nav.topViewController as? SingleMeasurementViewController
+            
+            let mCell = sender as? MeasurementCell
+            // Pass the selected object to the new view controller.
+            singleViewController?.measurement = mCell?.measurement
+        }
     }
 
     
