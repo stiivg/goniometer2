@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64161F131FD9A22800DC25CF /* AngleTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64161F121FD9A22800DC25CF /* AngleTool.swift */; };
 		6426B9C31FC5F8EC00D81163 /* MeasurementTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426B9C21FC5F8EC00D81163 /* MeasurementTableViewController.swift */; };
 		6426B9CB1FC602C800D81163 /* MeasurementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426B9CA1FC602C800D81163 /* MeasurementCell.swift */; };
 		645C758D1FD1DAA800053C4F /* Goniometer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 645C758B1FD1DAA800053C4F /* Goniometer.xcdatamodeld */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		64161F121FD9A22800DC25CF /* AngleTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleTool.swift; sourceTree = "<group>"; };
 		6426B9C21FC5F8EC00D81163 /* MeasurementTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementTableViewController.swift; sourceTree = "<group>"; };
 		6426B9CA1FC602C800D81163 /* MeasurementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementCell.swift; sourceTree = "<group>"; };
 		645C758C1FD1DAA800053C4F /* Goniometer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Goniometer.xcdatamodel; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				645C758B1FD1DAA800053C4F /* Goniometer.xcdatamodeld */,
+				64161F121FD9A22800DC25CF /* AngleTool.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				64E626AE1FCC75A20068879F /* JointPickerViewController.swift in Sources */,
 				64613C001FC65CDE00362CBD /* AddMeasurementViewController.swift in Sources */,
 				645C758D1FD1DAA800053C4F /* Goniometer.xcdatamodeld in Sources */,
+				64161F131FD9A22800DC25CF /* AngleTool.swift in Sources */,
 				64A4322C1FBD141A005D2FC2 /* AppDelegate.swift in Sources */,
 				645C758F1FD5AE8300053C4F /* SingleMeasurementViewController.swift in Sources */,
 			);
