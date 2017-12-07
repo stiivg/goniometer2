@@ -181,19 +181,18 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
         }
         
         self.managedContext =  appDelegate.persistentContainer.viewContext
 
-        //display the image
-        if let imageData = measurement?.value(forKey: "thumbnail") {
-            let testImage = UIImage(data: imageData as! Data)
-            imageView.image = testImage
+        //display the full resolution image
+        let fullResEntity = measurement?.value(forKey: "fullRes") as? NSManagedObject
+        if let fullImageData = fullResEntity?.value(forKey: "imageData") {
+            let fullImage = UIImage(data: fullImageData as! Data)
+            imageView.image = fullImage
         }
-
         dotPositions = [beginDotPosition, middleDotPosition, endDotPosition]
         
         drawDots()

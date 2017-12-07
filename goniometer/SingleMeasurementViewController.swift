@@ -71,9 +71,8 @@ class SingleMeasurementViewController: UIViewController {
     // MARK: - Navigation
     //Editing this measurement has been cancelled - rollback the changes
     @IBAction func cancelMeasurementEdit(_ segue: UIStoryboardSegue) {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
         }
         
         let managedContext =  appDelegate.persistentContainer.viewContext
@@ -86,9 +85,8 @@ class SingleMeasurementViewController: UIViewController {
         let addMeasurementViewController = segue.source as? AddMeasurementViewController
         addMeasurementViewController?.completeEdit()
 
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
         }
 
         let managedContext =  appDelegate.persistentContainer.viewContext
