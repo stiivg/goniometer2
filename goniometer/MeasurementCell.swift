@@ -31,6 +31,12 @@ class MeasurementCell: UITableViewCell {
             jointLabel.text = side! + " " +  joint! + " " + motion!
             angleLabel.text = String(format: "%.1f", (measurement.value(forKeyPath: "angle") as? Float)!) + "\u{00B0}"
             
+            //display the image
+            if let imageData = measurement.value(forKey: "thumbnail") {
+                let testImage = UIImage(data: imageData as! Data)
+                angleImageView.image = testImage
+            }
+            
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy"
             let dateObj = measurement.value(forKeyPath: "date") as? Date

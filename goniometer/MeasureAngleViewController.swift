@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class MeasureAngleViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate {
 
     //MARK: Properties
+    var measurement: NSManagedObject?
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet var panGesture: UIPanGestureRecognizer!
     
@@ -20,6 +23,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var imageViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var angleText: UILabel!
     
     var dotLayer = CAShapeLayer()
     var dotStartPosition = CGPoint(x: 100, y: 200)
@@ -41,9 +45,11 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     var panStart = CGPoint(x: 0, y: 0)
     
-    var flexionAngle = CGFloat()
+    var measuredAngle = CGFloat()
+    
+    // moc
+    var managedContext : NSManagedObjectContext?
 
-        
     @IBAction func handleDotPan(_ gestureRecognizer: UIPanGestureRecognizer) {
         if gestureRecognizer.state == .began {
             panStart = gestureRecognizer.location(in: self.view)
@@ -92,13 +98,102 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.contentMode = .scaleAspectFit
         imageView.image = chosenImage
+//        prepareImageForSaving(image: chosenImage)
         dismiss(animated:true, completion: nil)
+    }
+    
+    //Save last edit to image
+    func completeEdit() {
+        prepareImageForSaving(image: imageView.image!)
+        measurement?.setValue(measuredAngle, forKey: "angle")
+    }
+    
+    func prepareImageForSaving(image:UIImage) {
+        
+        // use date as unique id
+        let date : Double = NSDate().timeIntervalSince1970
+        
+        // dispatch with gcd.
+        
+        // create NSData from UIImage
+        guard let imageData = UIImageJPEGRepresentation(image, 1) else {
+            // handle failed conversion
+            print("jpg error")
+            return
+        }
+        
+        //TODO capture the angle dots and lines in image
+        // scale image, I chose the size of the VC because it is easy
+        let thumbnail = image.scale(toSize: self.view.frame.size)
+        
+        guard let thumbnailData  = UIImageJPEGRepresentation(thumbnail, 0.7) else {
+            // handle failed conversion
+            print("jpg error")
+            return
+        }
+        
+        // send to save function
+        self.saveImage(imageData: imageData as NSData, thumbnailData: thumbnailData as NSData, date: date)
+            
+    }
+    
+    func saveImage(imageData:NSData, thumbnailData:NSData, date: Double) {
+        
+        // create new objects in moc
+        guard let moc = self.managedContext else {
+            return
+        }
+        
+
+//        guard let fullRes = NSEntityDescription.insertNewObject(forEntityName: "FullRes", into: moc) as? FullRes else {
+//            // handle failed new object in moc
+//            print("moc error")
+//            return
+//        }
+        
+        //Create a new fulleRes object
+        let entity = NSEntityDescription.entity(forEntityName: "FullRes", in: moc)!
+        let fullRes = NSManagedObject(entity: entity, insertInto: moc)
+
+        //set image data of fullres
+        fullRes.setValue(imageData, forKey: "imageData")
+        
+        
+        //set image data of thumbnail
+        measurement?.setValue(thumbnailData, forKey: "thumbnail")
+        //set link to fullRes image
+        measurement?.setValue(fullRes, forKey: "fullRes")
+        
+        // save the new objects
+        do {
+            try moc.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+        
+        // clear the moc
+        moc.refreshAllObjects()
     }
  
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        self.managedContext =  appDelegate.persistentContainer.viewContext
+
+        //display the image
+        if let imageData = measurement?.value(forKey: "thumbnail") {
+            let testImage = UIImage(data: imageData as! Data)
+            imageView.image = testImage
+        }
+
         dotPositions = [beginDotPosition, middleDotPosition, endDotPosition]
         
         drawDots()
@@ -114,7 +209,6 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         view.layer.addSublayer(endDotLayer)
         view.isUserInteractionEnabled = true
   
-        view.layer.addSublayer(textLayer)
 
         imagePicker.delegate = self
 
@@ -182,20 +276,12 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         endLineLayer.strokeColor = UIColor.cyan.cgColor
         
     }
+    
     func drawAngle() {
-        textLayer.frame = CGRect(x: 10, y: 80, width: view.bounds.width/2, height: 50)
         calcAngle()
-        textLayer.string = String(format: "%.1f", flexionAngle) + "\u{00B0}"
-        
-        let fontName: CFString = "HelveticaNeue" as CFString
-        textLayer.font = CTFontCreateWithName(fontName, 16, nil)
-        
-        textLayer.foregroundColor = UIColor.darkGray.cgColor
-        textLayer.isWrapped = true
-        textLayer.alignmentMode = kCAAlignmentRight
-        textLayer.contentsScale = UIScreen.main.scale
-
+        angleText.text = String(format: "%.1f", measuredAngle) + "\u{00B0}"
     }
+    
     func calcAngle() {
         let distance01 = hypot(dotPositions[0].x - dotPositions[1].x, dotPositions[0].y - dotPositions[1].y)
         let distance12 = hypot(dotPositions[1].x - dotPositions[2].x, dotPositions[1].y - dotPositions[2].y)
@@ -205,7 +291,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         let cosAngleDenominator = 2 * distance01 * distance12
         let cosAngle = cosAngleNumerator / cosAngleDenominator
         let angleRadians = acos(cosAngle)
-        flexionAngle = 180 - (angleRadians * CGFloat(180 / CGFloat.pi));
+        measuredAngle = 180 - (angleRadians * CGFloat(180 / CGFloat.pi));
     }
  
 
@@ -216,4 +302,29 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
    
 
 }
+extension CGSize {
+    
+    func resizeFill(toSize: CGSize) -> CGSize {
+        
+        let scale : CGFloat = (self.height / self.width) < (toSize.height / toSize.width) ? (self.height / toSize.height) : (self.width / toSize.width)
+        return CGSize(width: (self.width / scale), height: (self.height / scale))
+        
+    }
+}
 
+extension UIImage {
+    
+    func scale(toSize newSize:CGSize) -> UIImage {
+        
+        // make sure the new size has the correct aspect ratio
+        let aspectFill = self.size.resizeFill(toSize: newSize)
+        
+        UIGraphicsBeginImageContextWithOptions(aspectFill, true, 1.0);
+        self.draw(in: CGRect(x: 0, y: 0, width: aspectFill.width, height: aspectFill.height))
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return newImage
+    }
+    
+}

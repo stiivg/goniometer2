@@ -48,26 +48,83 @@ class MeasurementTableViewController: UITableViewController {
         }
         
         //TEMP to clear core data
-//        for bas: AnyObject in measurements
-//        {
-//            managedContext.delete(bas as! NSManagedObject)
-//        }
-//
-//        measurements.removeAll(keepingCapacity: false)
-//        do {
-//            try managedContext.save()
-//        } catch let error as NSError {
-//            print("Could not save. \(error), \(error.userInfo)")
-//        }
-//        self.tableView.reloadData()
+//        clearCoreDate()
+        
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    // MARK: - IBActions
     
+    func clearCoreDate() {
+        clearAllFullRes()
+        clearAllMeasurments()
+    }
+    
+    func clearAllFullRes() {
+        var fullResList: [NSManagedObject] = []
+
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FullRes")
+
+        do {
+            fullResList = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        for bas: AnyObject in fullResList
+        {
+            managedContext.delete(bas as! NSManagedObject)
+        }
+        
+        fullResList.removeAll(keepingCapacity: false)
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+
+    }
+    
+    func clearAllMeasurments() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Measurement")
+        
+        do {
+            measurements = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        for bas: AnyObject in measurements
+        {
+            managedContext.delete(bas as! NSManagedObject)
+        }
+        
+        measurements.removeAll(keepingCapacity: false)
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
+    // MARK: - IBActions
+
     @IBAction func cancelToMeasurementsViewController(_ segue: UIStoryboardSegue) {
         // update the tableView
         self.tableView.reloadData()

@@ -17,6 +17,7 @@ class SingleMeasurementViewController: UIViewController {
     @IBOutlet weak var jointLabel: UITextField!
     @IBOutlet weak var angleLabel: UITextField!
     @IBOutlet weak var dateLabel: UITextField!
+    @IBOutlet weak var imageView: UIImageView!
     
     // MARK: - Properties
     var measurement: NSManagedObject?
@@ -31,6 +32,12 @@ class SingleMeasurementViewController: UIViewController {
         let motion = measurement.value(forKeyPath: "motion") as? String
         jointLabel.text = side! + " " +  joint! + " " + motion!
         angleLabel.text = String(format: "%.1f", (measurement.value(forKeyPath: "angle") as? Float)!) + "\u{00B0}"
+        
+        //display the image
+        if let imageData = measurement.value(forKey: "thumbnail") {
+            let testImage = UIImage(data: imageData as! Data)
+            imageView.image = testImage
+        }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"

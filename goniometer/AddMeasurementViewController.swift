@@ -30,10 +30,18 @@ class AddMeasurementViewController: UITableViewController {
     @IBOutlet weak var jointLabel: UILabel!
     @IBOutlet weak var motionLabel: UILabel!
     @IBOutlet weak var sideControl: UISegmentedControl!
+    @IBOutlet weak var imageView: UIImageView!
     
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
+        if segue.identifier == "AddToAngleMeasure" {
+            let nav = segue.destination as! UINavigationController
+            let measureAngleViewController = nav.topViewController as? MeasureAngleViewController
+            
+            // Pass the selected object to the new view controller.
+            measureAngleViewController?.measurement = measurement
+        }
         if segue.identifier == "PickJoint",
             let jointPickerViewController = segue.destination as? JointPickerViewController {
             jointPickerViewController.selectedJoint = measurement?.value(forKeyPath: "joint") as? String
@@ -55,10 +63,17 @@ class AddMeasurementViewController: UITableViewController {
         side = (measurement.value(forKeyPath: "side") as? String)!
         motionLabel.text = measurement.value(forKeyPath: "motion") as? String
         
+        //display the image
+        if let imageData = measurement.value(forKey: "thumbnail") {
+            let testImage = UIImage(data: imageData as! Data)
+            imageView.image = testImage
+        }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
         let dateObj = measurement.value(forKeyPath: "date") as? Date
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         updateValues()
@@ -142,22 +157,34 @@ class AddMeasurementViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
     
 }
 // MARK: - IBActions
 extension AddMeasurementViewController {
     //MARK Actions
+    @IBAction func cancelNewImage(segue: UIStoryboardSegue) {
+    }
     
+    @IBAction func saveNewImage(segue: UIStoryboardSegue) {
+        //Notify the measure angle view to complete all edits
+        let measureAngleViewController = segue.source as? MeasureAngleViewController
+        measureAngleViewController?.completeEdit() //Saves to moc
+
+//        guard let appDelegate =
+//            UIApplication.shared.delegate as? AppDelegate else {
+//                return
+//        }
+//
+//        let managedContext =  appDelegate.persistentContainer.viewContext
+//
+//        do {
+//            try managedContext.save()
+//        } catch let error as NSError {
+//            print("Could not save. \(error), \(error.userInfo)")
+//        }
+    }
+
     @IBAction func sideControl(_ sender: UISegmentedControl) {
         var sideText = "Right"
         if sender.selectedSegmentIndex == 0 {

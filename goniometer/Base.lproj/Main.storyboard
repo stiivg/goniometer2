@@ -52,23 +52,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Angle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgB-kD-Owf">
+                                <rect key="frame" x="0.0" y="79" width="414" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="-3" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="SSW-rO-n9c">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="114.33333333333331" width="414" height="621.66666666666674"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-6O-yXR" userLabel="Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="1467" height="1271"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="1467" id="D3x-Ol-GC2"/>
-                                            <constraint firstAttribute="height" constant="1271" id="oXt-CO-quR"/>
+                                            <constraint firstAttribute="height" constant="1271" id="ZdA-Yg-lOg"/>
+                                            <constraint firstAttribute="width" constant="1467" id="xLq-xa-VhX"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="vQa-6O-yXR" secondAttribute="trailing" constant="-1053" id="03S-gL-Qvg"/>
-                                    <constraint firstItem="vQa-6O-yXR" firstAttribute="leading" secondItem="SSW-rO-n9c" secondAttribute="leading" id="B8r-8o-jI1"/>
-                                    <constraint firstItem="vQa-6O-yXR" firstAttribute="top" secondItem="SSW-rO-n9c" secondAttribute="top" id="LVK-HN-wLr"/>
-                                    <constraint firstAttribute="bottom" secondItem="vQa-6O-yXR" secondAttribute="bottom" constant="-633" id="dSo-V9-mu1"/>
+                                    <constraint firstAttribute="trailing" secondItem="vQa-6O-yXR" secondAttribute="trailing" constant="-1053" id="OCy-JD-sZc"/>
+                                    <constraint firstItem="vQa-6O-yXR" firstAttribute="top" secondItem="SSW-rO-n9c" secondAttribute="top" id="gH5-Fv-mvV"/>
+                                    <constraint firstItem="vQa-6O-yXR" firstAttribute="leading" secondItem="SSW-rO-n9c" secondAttribute="leading" id="qq6-U3-ekH"/>
+                                    <constraint firstAttribute="bottom" secondItem="vQa-6O-yXR" secondAttribute="bottom" constant="-620" id="wPP-Xy-6Cy"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ggy-o0-cC2"/>
@@ -94,13 +100,16 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ab4-9S-2or" secondAttribute="bottom" id="3av-1v-NIO"/>
-                            <constraint firstItem="SSW-rO-n9c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3dV-0f-bGe"/>
-                            <constraint firstItem="SSW-rO-n9c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="AtT-IC-0df"/>
-                            <constraint firstItem="Ab4-9S-2or" firstAttribute="trailing" secondItem="SSW-rO-n9c" secondAttribute="trailing" id="LGL-aD-YWh"/>
-                            <constraint firstItem="SSW-rO-n9c" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ew5-9w-T6C"/>
-                            <constraint firstItem="Ab4-9S-2or" firstAttribute="leading" secondItem="SSW-rO-n9c" secondAttribute="leading" id="m69-CC-SIu"/>
-                            <constraint firstAttribute="trailing" secondItem="SSW-rO-n9c" secondAttribute="trailing" id="vtk-nt-KWg"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="leading" secondItem="hgB-kD-Owf" secondAttribute="leading" id="4Ct-WO-WpC"/>
+                            <constraint firstItem="hgB-kD-Owf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BDw-v2-vRy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hgB-kD-Owf" secondAttribute="trailing" id="KWa-T6-FTy"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="leading" secondItem="Ab4-9S-2or" secondAttribute="leading" id="NRi-Jr-lz4"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Oe3-kr-Fha"/>
+                            <constraint firstItem="hgB-kD-Owf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="WoR-AV-Wnt"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="top" secondItem="hgB-kD-Owf" secondAttribute="bottom" constant="15" id="Xe1-FN-2tz"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="trailing" secondItem="Ab4-9S-2or" secondAttribute="trailing" id="hbu-72-HF7"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="trailing" secondItem="hgB-kD-Owf" secondAttribute="trailing" id="ken-rT-N6r"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="bottom" secondItem="Ab4-9S-2or" secondAttribute="bottom" id="o82-Eb-Hpk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
@@ -110,16 +119,17 @@
                     <navigationItem key="navigationItem" title="Measurement" leftItemsSupplementBackButton="YES" id="AJ7-s2-Afn">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JKJ-aK-vCV">
                             <connections>
-                                <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="cancelToMeasurementDetailsViewController:" id="Q12-NK-t75"/>
+                                <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="cancelNewImageWithSegue:" id="MGI-gp-vyc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Q6b-Xq-cTs">
                             <connections>
-                                <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="saveMeasurementDetail:" id="jgk-IP-748"/>
+                                <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="saveNewImageWithSegue:" id="e6b-KL-brT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="angleText" destination="hgB-kD-Owf" id="Zhi-O4-brc"/>
                         <outlet property="imageView" destination="vQa-6O-yXR" id="3TT-ii-SqR"/>
                         <outlet property="panGesture" destination="7Qn-Bd-reb" id="8aj-FN-l0q"/>
                         <outlet property="scrollView" destination="SSW-rO-n9c" id="BEr-Vz-i2F"/>
@@ -133,7 +143,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2219" y="929"/>
+            <point key="canvasLocation" x="2218.840579710145" y="928.53260869565224"/>
         </scene>
         <!--Add Measurement-->
         <scene sceneID="NZj-U0-s18">
@@ -260,8 +270,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="246.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="HqX-SW-5e6">
-                                                    <rect key="frame" x="21" y="11" width="348" height="225"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="HqX-SW-5e6">
+                                                    <rect key="frame" x="20" y="11" width="348" height="225"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -272,7 +282,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Kn6-kf-16v" kind="presentation" id="dL4-B6-PnK"/>
+                                            <segue destination="Kn6-kf-16v" kind="presentation" identifier="AddToAngleMeasure" id="dL4-B6-PnK"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -298,6 +308,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="imageView" destination="HqX-SW-5e6" id="9kv-CQ-4dr"/>
                         <outlet property="jointLabel" destination="2pS-X0-8zy" id="9U0-uc-8WW"/>
                         <outlet property="motionLabel" destination="Kom-bF-FHX" id="Lfn-un-fxa"/>
                         <outlet property="nameTextField" destination="Wqv-Hc-iMY" id="FTr-9D-9g2"/>
@@ -615,6 +626,7 @@
                         <outlet property="angleImageView" destination="TWL-OL-Yfn" id="AzB-F5-ucN"/>
                         <outlet property="angleLabel" destination="Bry-ac-otL" id="rdg-gr-2Ls"/>
                         <outlet property="dateLabel" destination="PTl-Zc-xNi" id="Ws4-mG-AXI"/>
+                        <outlet property="imageView" destination="TWL-OL-Yfn" id="3WL-Bl-sgE"/>
                         <outlet property="jointLabel" destination="ix3-PV-9PP" id="1GU-C9-30r"/>
                         <outlet property="nameLabel" destination="Adu-Pt-GiT" id="1hT-Kr-KPy"/>
                     </connections>
