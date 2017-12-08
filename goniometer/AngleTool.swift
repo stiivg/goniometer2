@@ -24,6 +24,8 @@ class AngleTool {
     var dotLayer = CAShapeLayer()
     var dotStartPosition = CGPoint(x: 100, y: 200)
 
+    let dotDiameter = CGFloat(40)
+    let dotRadius = CGFloat(20)
     let beginDotLayer = CAShapeLayer()
     let middleDotLayer = CAShapeLayer()
     let endDotLayer = CAShapeLayer()
@@ -37,7 +39,6 @@ class AngleTool {
         
         dotPositions = [beginDotPosition, middleDotPosition, endDotPosition]
         
-        drawTool()
 
     }
     
@@ -49,8 +50,30 @@ class AngleTool {
         imageView.layer.addSublayer(beginDotLayer)
         imageView.layer.addSublayer(middleDotLayer)
         imageView.layer.addSublayer(endDotLayer)
+                
+        let frame = imageView.frame as CGRect
+        
+        dotPositions[1] = imageView.center
+        dotPositions[0] = dotPositions[1]
+        dotPositions[0].y += frame.height/10
+        
+        dotPositions[2] = dotPositions[1]
+        dotPositions[2].x += frame.width/10
+
+        drawTool()
 
     }
+    
+    func pointInTool(inside point: CGPoint) -> Bool {
+        for position in dotPositions {
+            let distance = hypot(position.x - point.x, position.y - point.y)
+            if distance < 20 {
+                return true
+            }
+        }
+        return false
+    }
+
     
     func doHandleDotPan(gestureRecognizer: UIPanGestureRecognizer, view: UIView) {
         if gestureRecognizer.state == .began {
@@ -88,20 +111,20 @@ class AngleTool {
     }
 
     func drawDots() {
-        let beginOrigin = CGPoint(x: dotPositions[0].x - 6, y: dotPositions[0].y - 6)
-        let beginDotPath = UIBezierPath(ovalIn: CGRect(origin: beginOrigin, size: CGSize(width: 12, height: 12)))
+        let beginOrigin = CGPoint(x: dotPositions[0].x - dotRadius, y: dotPositions[0].y - dotRadius)
+        let beginDotPath = UIBezierPath(ovalIn: CGRect(origin: beginOrigin, size: CGSize(width: dotDiameter, height: dotDiameter)))
         
         beginDotLayer.path = beginDotPath.cgPath
         beginDotLayer.fillColor = UIColor.red.cgColor
         
-        let middleOrigin = CGPoint(x: dotPositions[1].x - 6, y: dotPositions[1].y - 6)
-        let middleDotPath = UIBezierPath(ovalIn: CGRect(origin: middleOrigin, size: CGSize(width: 12, height: 12)))
+        let middleOrigin = CGPoint(x: dotPositions[1].x - dotRadius, y: dotPositions[1].y - dotRadius)
+        let middleDotPath = UIBezierPath(ovalIn: CGRect(origin: middleOrigin, size: CGSize(width: dotDiameter, height: dotDiameter)))
         
         middleDotLayer.path = middleDotPath.cgPath
         middleDotLayer.fillColor = UIColor.green.cgColor
         
-        let endOrigin = CGPoint(x: dotPositions[2].x - 6, y: dotPositions[2].y - 6)
-        let endDotPath = UIBezierPath(ovalIn: CGRect(origin: endOrigin, size: CGSize(width: 12, height: 12)))
+        let endOrigin = CGPoint(x: dotPositions[2].x - dotRadius, y: dotPositions[2].y - dotRadius)
+        let endDotPath = UIBezierPath(ovalIn: CGRect(origin: endOrigin, size: CGSize(width: dotDiameter, height: dotDiameter)))
         
         endDotLayer.path = endDotPath.cgPath
         endDotLayer.fillColor = UIColor.blue.cgColor
@@ -133,7 +156,8 @@ class AngleTool {
 
     func drawAngle() {
         calcAngle()
-        angleLabel.text = String(format: "%.1f", measuredAngle) + "\u{00B0}"
+        let angleText = String(format: "%.1f", measuredAngle) + "\u{00B0}"
+//        angleLabel.text = angleText
     }
     
 

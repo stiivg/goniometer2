@@ -20,13 +20,15 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet var panGesture: UIPanGestureRecognizer!
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: GestureScrollView!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var angleText: UILabel!
     
     @IBAction func handleDotPan(_ gestureRecognizer: UIPanGestureRecognizer) {
-        angleTool.doHandleDotPan(gestureRecognizer: gestureRecognizer, view: self.view)
+        angleTool.doHandleDotPan(gestureRecognizer: gestureRecognizer, view: self.imageView)
     }
+    
+    
     
     var imagePicker = UIImagePickerController()
 
@@ -39,6 +41,8 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         angleTool.drawAngle()
         
         imaging.setMeasurementObj(measurementObj: measurement!)
+        
+        scrollView.setAngleTool(theAngleTool: angleTool)
         
         //display the full resolution image
         let fullResEntity = measurement?.value(forKey: "fullRes") as? NSManagedObject
