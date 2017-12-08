@@ -41,7 +41,7 @@ class AngleTool {
 
     }
     
-    func addToolLayers(imageView: UIView) {
+    func setImageView(imageView: UIView) {
         imageView.layer.addSublayer(beginLineLayer)
         imageView.layer.addSublayer(endLineLayer)
         
