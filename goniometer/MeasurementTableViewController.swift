@@ -60,7 +60,7 @@ class MeasurementTableViewController: UITableViewController {
     
     func clearCoreDate() {
         clearAllFullRes()
-        clearAllMeasurments()
+        clearAllMeasurements()
     }
     
     func clearAllFullRes() {
@@ -94,7 +94,7 @@ class MeasurementTableViewController: UITableViewController {
 
     }
     
-    func clearAllMeasurments() {
+    func clearAllMeasurements() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -131,6 +131,12 @@ class MeasurementTableViewController: UITableViewController {
     }
     
     @IBAction func cancelMeasurementEdit(_ segue: UIStoryboardSegue) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext =  appDelegate.persistentContainer.viewContext
+        managedContext.rollback() // Undo any edits
     }
     
     // Return from creating new measurement

@@ -73,15 +73,15 @@ class Imaging {
         //set image data of thumbnail
         measurement?.setValue(thumbnailData, forKey: "thumbnail")
         
-        // save the new objects
-        do {
-            try managedContext.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
-        
-        // clear the managedContext
-        managedContext.refreshAllObjects()
+//        // save the new objects
+//        do {
+//            try managedContext.save()
+//        } catch {
+//            fatalError("Failure to save context: \(error)")
+//        }
+//        
+//        // clear the managedContext
+//        managedContext.refreshAllObjects()
     }
     
 }

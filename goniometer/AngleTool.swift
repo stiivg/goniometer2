@@ -53,6 +53,8 @@ class AngleTool {
     //Restore dot positions from core data or use default
     func restoreLocation() {
 //        if dataObj != nil {
+        let fullResEntity = measurement?.value(forKey: "fullRes") as? NSManagedObject
+        if fullResEntity != nil {
             dotPositions[0].x = measurement?.value(forKeyPath: "beginX") as! CGFloat
             dotPositions[0].y = measurement?.value(forKeyPath: "beginY") as! CGFloat
             
@@ -61,14 +63,14 @@ class AngleTool {
             
             dotPositions[2].x = measurement?.value(forKeyPath: "endX") as! CGFloat
             dotPositions[2].y = measurement?.value(forKeyPath: "endY") as! CGFloat
-//        } else {
-//            dotPositions[1] = (imageView?.center)!
-//            dotPositions[0] = dotPositions[1]
-//            dotPositions[0].y += (imageView?.frame.height)!/10
-//
-//            dotPositions[2] = dotPositions[1]
-//            dotPositions[2].x += (imageView?.frame.width)!/10
-//        }
+        } else {
+            dotPositions[1] = (imageView?.center)!
+            dotPositions[0] = dotPositions[1]
+            dotPositions[0].y += (imageView?.frame.height)!/10
+
+            dotPositions[2] = dotPositions[1]
+            dotPositions[2].x += (imageView?.frame.width)!/10
+        }
     }
     
     //Save dot positions to core data

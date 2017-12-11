@@ -164,7 +164,7 @@ class AddMeasurementViewController: UITableViewController {
 extension AddMeasurementViewController {
     //MARK Actions
     @IBAction func cancelNewImage(segue: UIStoryboardSegue) {
-    }
+   }
     
     @IBAction func saveNewImage(segue: UIStoryboardSegue) {
         //Notify the measure angle view to complete all edits
