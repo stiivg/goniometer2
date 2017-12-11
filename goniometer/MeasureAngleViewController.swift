@@ -35,6 +35,8 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        angleTool.setMeasurementObj(measurementObj: measurement!)
+
         // Do any additional setup after loading the view, typically from a nib.
         angleTool.setImageView(imageView: imageView)
         angleTool.angleLabel = angleText
@@ -74,8 +76,10 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     func completeEdit() {
         imaging.prepareImageForSaving(imageView: imageView)
         measurement?.setValue(angleTool.measuredAngle, forKey: "angle")
+        angleTool.saveLocation()
     }
     
+   
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         updateMinZoomScaleForSize(view.bounds.size)

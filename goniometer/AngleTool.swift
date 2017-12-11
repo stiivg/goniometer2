@@ -8,8 +8,13 @@
 
 
 import UIKit
+import CoreData
 
 class AngleTool {
+    
+    var imageView: UIView?
+
+    var measurement: NSManagedObject?
     
     var beginDotPosition = CGPoint(x: 100, y: 300)
     var middleDotPosition = CGPoint(x: 100, y: 200)
@@ -39,10 +44,47 @@ class AngleTool {
         
         dotPositions = [beginDotPosition, middleDotPosition, endDotPosition]
         
+    }
+    
+    func setMeasurementObj(measurementObj: NSManagedObject) {
+        measurement = measurementObj
+    }
 
+    //Restore dot positions from core data or use default
+    func restoreLocation() {
+//        if dataObj != nil {
+            dotPositions[0].x = measurement?.value(forKeyPath: "beginX") as! CGFloat
+            dotPositions[0].y = measurement?.value(forKeyPath: "beginY") as! CGFloat
+            
+            dotPositions[1].x = measurement?.value(forKeyPath: "middleX") as! CGFloat
+            dotPositions[1].y = measurement?.value(forKeyPath: "middleY") as! CGFloat
+            
+            dotPositions[2].x = measurement?.value(forKeyPath: "endX") as! CGFloat
+            dotPositions[2].y = measurement?.value(forKeyPath: "endY") as! CGFloat
+//        } else {
+//            dotPositions[1] = (imageView?.center)!
+//            dotPositions[0] = dotPositions[1]
+//            dotPositions[0].y += (imageView?.frame.height)!/10
+//
+//            dotPositions[2] = dotPositions[1]
+//            dotPositions[2].x += (imageView?.frame.width)!/10
+//        }
+    }
+    
+    //Save dot positions to core data
+    func saveLocation() {
+        measurement?.setValue(dotPositions[0].x, forKey: "beginX")
+        measurement?.setValue(dotPositions[0].y, forKey: "beginY")
+        
+        measurement?.setValue(dotPositions[1].x, forKey: "middleX")
+        measurement?.setValue(dotPositions[1].y, forKey: "middleY")
+        
+        measurement?.setValue(dotPositions[2].x, forKey: "endX")
+        measurement?.setValue(dotPositions[2].y, forKey: "endY")
     }
     
     func setImageView(imageView: UIView) {
+        self.imageView = imageView
         imageView.layer.addSublayer(beginLineLayer)
         imageView.layer.addSublayer(endLineLayer)
         
@@ -50,15 +92,8 @@ class AngleTool {
         imageView.layer.addSublayer(beginDotLayer)
         imageView.layer.addSublayer(middleDotLayer)
         imageView.layer.addSublayer(endDotLayer)
-                
-        let frame = imageView.frame as CGRect
         
-        dotPositions[1] = imageView.center
-        dotPositions[0] = dotPositions[1]
-        dotPositions[0].y += frame.height/10
-        
-        dotPositions[2] = dotPositions[1]
-        dotPositions[2].x += frame.width/10
+        restoreLocation()
 
         drawTool()
 
@@ -67,7 +102,7 @@ class AngleTool {
     func pointInTool(inside point: CGPoint) -> Bool {
         for position in dotPositions {
             let distance = hypot(position.x - point.x, position.y - point.y)
-            if distance < 20 {
+            if distance < 30 {
                 return true
             }
         }
@@ -110,6 +145,7 @@ class AngleTool {
         drawAngle()
     }
 
+    
     func drawDots() {
         let beginOrigin = CGPoint(x: dotPositions[0].x - dotRadius, y: dotPositions[0].y - dotRadius)
         let beginDotPath = UIBezierPath(ovalIn: CGRect(origin: beginOrigin, size: CGSize(width: dotDiameter, height: dotDiameter)))

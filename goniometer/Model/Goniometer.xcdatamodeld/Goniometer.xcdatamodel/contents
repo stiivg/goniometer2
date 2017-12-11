@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="FullRes" representedClassName="FullRes" syncable="YES" codeGenerationType="class">
         <attribute name="imageData" optional="YES" attributeType="Binary" storedInTruthFile="YES" syncable="YES"/>
         <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Measurement" inverseName="fullRes" inverseEntity="Measurement" syncable="YES"/>
     </entity>
     <entity name="Measurement" representedClassName="Measurement" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="angle" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="beginX" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="beginY" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" defaultDateTimeInterval="534021960" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="endX" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endY" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="joint" attributeType="String" defaultValueString="Knee" syncable="YES"/>
+        <attribute name="middleX" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="middleY" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="motion" attributeType="String" defaultValueString="Flexion" syncable="YES"/>
         <attribute name="name" attributeType="String" defaultValueString="name" syncable="YES"/>
         <attribute name="side" attributeType="String" defaultValueString="Left" syncable="YES"/>
@@ -15,7 +21,7 @@
         <relationship name="fullRes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FullRes" inverseName="thumbnail" inverseEntity="FullRes" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Measurement" positionX="-344" positionY="-45" width="128" height="163"/>
-        <element name="FullRes" positionX="-54" positionY="45" width="128" height="75"/>
+        <element name="FullRes" positionX="-54" positionY="45" width="128" height="73"/>
+        <element name="Measurement" positionX="-344" positionY="-45" width="128" height="253"/>
     </elements>
 </model>

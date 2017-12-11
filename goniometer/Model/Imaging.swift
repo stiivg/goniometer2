@@ -52,18 +52,26 @@ class Imaging {
         }
         let managedContext =  appDelegate.persistentContainer.viewContext
         
-        //Create a new fulleRes object
-        let entity = NSEntityDescription.entity(forEntityName: "FullRes", in: managedContext)!
-        let fullRes = NSManagedObject(entity: entity, insertInto: managedContext)
+        let fullResEntity = measurement?.value(forKey: "fullRes") as? NSManagedObject
+        var fullRes = NSManagedObject()
         
-        //set image data of fullres
-        fullRes.setValue(imageData, forKey: "imageData")
-        
+        if (fullResEntity == nil) {
+            //Create a new fulleRes object
+            let entity = NSEntityDescription.entity(forEntityName: "FullRes", in: managedContext)!
+            fullRes = NSManagedObject(entity: entity, insertInto: managedContext)
+            
+            //set image data of fullres
+            fullRes.setValue(imageData, forKey: "imageData")
+            //set link to fullRes image
+            measurement?.setValue(fullRes, forKey: "fullRes")
+        } else {
+            //set image data of existing fullres
+            fullResEntity?.setValue(imageData, forKey: "imageData")
+        }
+
         
         //set image data of thumbnail
         measurement?.setValue(thumbnailData, forKey: "thumbnail")
-        //set link to fullRes image
-        measurement?.setValue(fullRes, forKey: "fullRes")
         
         // save the new objects
         do {
