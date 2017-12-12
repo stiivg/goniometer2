@@ -29,8 +29,8 @@ class AngleTool {
     var dotLayer = CAShapeLayer()
     var dotStartPosition = CGPoint(x: 100, y: 200)
 
-    let dotDiameter = CGFloat(40)
-    let dotRadius = CGFloat(20)
+    let dotDiameter = CGFloat(10)
+    let dotRadius = CGFloat(5)
     let beginDotLayer = CAShapeLayer()
     let middleDotLayer = CAShapeLayer()
     let endDotLayer = CAShapeLayer()
@@ -165,8 +165,7 @@ class AngleTool {
         let endDotPath = UIBezierPath(ovalIn: CGRect(origin: endOrigin, size: CGSize(width: dotDiameter, height: dotDiameter)))
         
         endDotLayer.path = endDotPath.cgPath
-        endDotLayer.fillColor = UIColor.blue.cgColor
-        
+        endDotLayer.fillColor = UIColor.blue.cgColor        
     }
 
     func drawLines() {

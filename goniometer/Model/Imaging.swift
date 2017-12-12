@@ -29,12 +29,13 @@ class Imaging {
             print("jpg error")
             return
         }
-        
+
         //TODO capture the angle dots and lines in image
         // scale image to imageview size
-        let thumbnail = imageView.image?.scale(toSize: imageView.frame.size)
-        
-        guard let thumbnailData  = UIImageJPEGRepresentation(thumbnail!, 0.7) else {
+        let thumbnail = createThumbnail(imageView: imageView, toSize: imageView.frame.size)
+//        let thumbnail = imageView.image?.scale(toSize: imageView.frame.size)
+
+        guard let thumbnailData  = UIImageJPEGRepresentation(thumbnail, 0.7) else {
             // handle failed conversion
             print("jpg error")
             return
@@ -73,15 +74,62 @@ class Imaging {
         //set image data of thumbnail
         measurement?.setValue(thumbnailData, forKey: "thumbnail")
         
-//        // save the new objects
-//        do {
-//            try managedContext.save()
-//        } catch {
-//            fatalError("Failure to save context: \(error)")
-//        }
-//        
-//        // clear the managedContext
-//        managedContext.refreshAllObjects()
+    }
+    
+    func createThumbnail(imageView:UIImageView, toSize newSize:CGSize) -> UIImage {
+        
+        let thumbImage = imageView.image!
+        // make sure the new size has the correct aspect ratio
+        let aspectFill = thumbImage.size.resizeFill(toSize: newSize)
+        UIGraphicsBeginImageContextWithOptions(aspectFill, true, 1.0);
+        thumbImage.draw(in: CGRect(x: 0, y: 0, width: aspectFill.width, height: aspectFill.height))
+
+        let imageRect = calculateRectOfImageInImageView(imageView: imageView)
+        
+        
+        
+        let xScale = aspectFill.width / imageRect.width
+        let yScale = aspectFill.height / imageRect.height
+
+        //scale the context for the sublayer rendering
+        let ctx = UIGraphicsGetCurrentContext()
+        ctx?.scaleBy(x: xScale, y: yScale)
+        ctx?.translateBy(x: -imageRect.origin.x, y: -imageRect.origin.y)
+//        thumbImage.draw(at: CGPoint(x: 0, y: 0))
+        imageView.layer.sublayers![0].render(in: ctx!)
+        imageView.layer.sublayers![1].render(in: ctx!)
+        imageView.layer.sublayers![2].render(in: ctx!)
+        imageView.layer.sublayers![3].render(in: ctx!)
+        imageView.layer.sublayers![4].render(in: ctx!)
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+
+    // MARK: - Create Rect
+    func calculateRectOfImageInImageView(imageView: UIImageView) -> CGRect {
+        let imageViewSize = imageView.frame.size
+        let imgSize = imageView.image?.size
+        
+        guard let imageSize = imgSize, imgSize != nil else {
+            return CGRect.zero
+        }
+        
+        let scaleWidth = imageViewSize.width / imageSize.width
+        let scaleHeight = imageViewSize.height / imageSize.height
+        let aspect = fmin(scaleWidth, scaleHeight)
+        
+        var imageRect = CGRect(x: 0, y: 0, width: imageSize.width * aspect, height: imageSize.height * aspect)
+        // Center image
+        imageRect.origin.x = (imageViewSize.width - imageRect.size.width) / 2
+        imageRect.origin.y = (imageViewSize.height - imageRect.size.height) / 2
+        
+        // Add imageView offset
+        imageRect.origin.x += imageView.frame.origin.x
+        imageRect.origin.y += imageView.frame.origin.y
+        
+        return imageRect
     }
     
 }
@@ -101,7 +149,7 @@ extension UIImage {
         
         // make sure the new size has the correct aspect ratio
         let aspectFill = self.size.resizeFill(toSize: newSize)
-        
+
         UIGraphicsBeginImageContextWithOptions(aspectFill, true, 1.0);
         self.draw(in: CGRect(x: 0, y: 0, width: aspectFill.width, height: aspectFill.height))
         let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
