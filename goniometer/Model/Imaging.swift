@@ -31,10 +31,10 @@ class Imaging {
         }
 
         //TODO capture the angle dots and lines in image
-        // scale image to imageview size
-        let thumbnail = createThumbnail(imageView: imageView, toSize: imageView.frame.size)
-//        let thumbnail = imageView.image?.scale(toSize: imageView.frame.size)
-
+        // scale image to a good thumbnail size
+        let thumnbnailSize = CGSize(width: 800, height: 600)
+        let thumbnail = createThumbnail(imageView: imageView, toSize: thumnbnailSize)
+        
         guard let thumbnailData  = UIImageJPEGRepresentation(thumbnail, 0.7) else {
             // handle failed conversion
             print("jpg error")
@@ -109,7 +109,7 @@ class Imaging {
 
     // MARK: - Create Rect
     func calculateRectOfImageInImageView(imageView: UIImageView) -> CGRect {
-        let imageViewSize = imageView.frame.size
+        let imageViewSize = imageView.bounds.size
         let imgSize = imageView.image?.size
         
         guard let imageSize = imgSize, imgSize != nil else {

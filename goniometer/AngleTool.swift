@@ -194,7 +194,7 @@ class AngleTool {
     func drawAngle() {
         calcAngle()
         let angleText = String(format: "%.1f", measuredAngle) + "\u{00B0}"
-//        angleLabel.text = angleText
+        angleLabel.text = angleText
     }
     
 

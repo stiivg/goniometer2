@@ -34,9 +34,9 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        angleTool.setMeasurementObj(measurementObj: measurement!)
+        updateMinZoomScaleForSize(view.bounds.size)
 
+        angleTool.setMeasurementObj(measurementObj: measurement!)
         // Do any additional setup after loading the view, typically from a nib.
         angleTool.setImageView(imageView: imageView)
         angleTool.angleLabel = angleText
@@ -80,10 +80,10 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     }
     
    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        updateMinZoomScaleForSize(view.bounds.size)
-    }
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        updateMinZoomScaleForSize(view.bounds.size)
+//    }
     
     //Limit zoom out to Aspect Fit
     fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
@@ -92,6 +92,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         let minScale = min(widthScale, heightScale)
 
         scrollView.minimumZoomScale = minScale
+        //Default to the full image in view
         scrollView.zoomScale = minScale
     }
 
