@@ -29,11 +29,19 @@ class AngleTool {
     var dotLayer = CAShapeLayer()
     var dotStartPosition = CGPoint(x: 100, y: 200)
 
-    let dotDiameter = CGFloat(10)
-    let dotRadius = CGFloat(5)
+    let dotDiameter = CGFloat(20)
+    let dotRadius = CGFloat(10)
+    let dotLineWidth = CGFloat(2)
+    let lineWidth = CGFloat(5)
+    let ExtensionLength = CGFloat(60)
+    
     let beginDotLayer = CAShapeLayer()
     let middleDotLayer = CAShapeLayer()
     let endDotLayer = CAShapeLayer()
+    
+    let beginLineMask = CAShapeLayer()
+    let endLineMask = CAShapeLayer()
+
 
     let beginLineLayer = CAShapeLayer()
     let endLineLayer = CAShapeLayer()
@@ -151,42 +159,73 @@ class AngleTool {
     func drawDots() {
         let beginOrigin = CGPoint(x: dotPositions[0].x - dotRadius, y: dotPositions[0].y - dotRadius)
         let beginDotPath = UIBezierPath(ovalIn: CGRect(origin: beginOrigin, size: CGSize(width: dotDiameter, height: dotDiameter)))
-        
-        beginDotLayer.path = beginDotPath.cgPath
-        beginDotLayer.fillColor = UIColor.red.cgColor
-        
+
         let middleOrigin = CGPoint(x: dotPositions[1].x - dotRadius, y: dotPositions[1].y - dotRadius)
         let middleDotPath = UIBezierPath(ovalIn: CGRect(origin: middleOrigin, size: CGSize(width: dotDiameter, height: dotDiameter)))
-        
-        middleDotLayer.path = middleDotPath.cgPath
-        middleDotLayer.fillColor = UIColor.green.cgColor
         
         let endOrigin = CGPoint(x: dotPositions[2].x - dotRadius, y: dotPositions[2].y - dotRadius)
         let endDotPath = UIBezierPath(ovalIn: CGRect(origin: endOrigin, size: CGSize(width: dotDiameter, height: dotDiameter)))
         
+        beginDotLayer.path = beginDotPath.cgPath
+        beginDotLayer.lineWidth = dotLineWidth
+        beginDotLayer.strokeColor = UIColor.magenta.cgColor
+        beginDotLayer.fillColor = UIColor.clear.cgColor
+
+        let beginClippingPath = beginDotPath
+        beginClippingPath.append(middleDotPath)
+        //invert the clipping path
+        beginClippingPath.append(UIBezierPath(rect: (imageView?.bounds)!))
+        beginLineMask.fillRule = kCAFillRuleEvenOdd
+        
+        beginLineMask.path = beginClippingPath.cgPath
+
+        middleDotLayer.path = middleDotPath.cgPath
+        middleDotLayer.lineWidth = dotLineWidth
+        middleDotLayer.strokeColor = UIColor.magenta.cgColor
+        middleDotLayer.fillColor = UIColor.clear.cgColor
+        
         endDotLayer.path = endDotPath.cgPath
-        endDotLayer.fillColor = UIColor.blue.cgColor        
-    }
+        endDotLayer.lineWidth = dotLineWidth
+        endDotLayer.strokeColor = UIColor.cyan.cgColor
+        endDotLayer.fillColor = UIColor.clear.cgColor
+
+        let endClippingPath = endDotPath
+        endClippingPath.append(middleDotPath)
+       //invert the clipping path
+        endClippingPath.append(UIBezierPath(rect: (imageView?.bounds)!))
+        endLineMask.fillRule = kCAFillRuleEvenOdd
+        
+        endLineMask.path = endClippingPath.cgPath
+}
 
     func drawLines() {
         let beginPath = UIBezierPath()
         beginPath.move(to: dotPositions[0])
-        beginPath.addLine(to: dotPositions[1])
         
+        //calculate extended end point
+        let dX = dotPositions[1].x - dotPositions[0].x
+        let dY = dotPositions[1].y - dotPositions[0].y
+        let length = hypot(dX, dY)
+        let ratio = ExtensionLength / length
+
+        let extensionEndPosition = CGPoint(x: dotPositions[1].x + ratio * dX, y: dotPositions[1].y + ratio * dY)
+        
+        beginPath.addLine(to: extensionEndPosition)
+        
+        beginLineLayer.mask = beginLineMask
         beginLineLayer.path = beginPath.cgPath
-        beginLineLayer.lineWidth = 2.0
-        //        beginLineLayer.fillColor = nil
-        //        beginLineLayer.opacity = 1.0
-        beginLineLayer.strokeColor = UIColor.cyan.cgColor
-        
+        beginLineLayer.lineWidth = lineWidth
+        beginLineLayer.strokeColor = UIColor.magenta.cgColor
+        beginLineLayer.lineCap = kCALineJoinRound
+
         let endPath = UIBezierPath()
         endPath.move(to: dotPositions[1])
         endPath.addLine(to: dotPositions[2])
+
         
+        endLineLayer.mask = endLineMask
         endLineLayer.path = endPath.cgPath
-        endLineLayer.lineWidth = 2.0
-        //        endLineLayer.fillColor = nil
-        //        endLineLayer.opacity = 1.0
+        endLineLayer.lineWidth = lineWidth
         endLineLayer.strokeColor = UIColor.cyan.cgColor
         
     }
