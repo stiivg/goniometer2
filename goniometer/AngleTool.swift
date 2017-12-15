@@ -38,6 +38,7 @@ class AngleTool {
     let beginDotLayer = CAShapeLayer()
     let middleDotLayer = CAShapeLayer()
     let endDotLayer = CAShapeLayer()
+    let textLayer = CATextLayer()
     
     let beginLineMask = CAShapeLayer()
     let endLineMask = CAShapeLayer()
@@ -51,6 +52,7 @@ class AngleTool {
     init() {
         
         dotPositions = [beginDotPosition, middleDotPosition, endDotPosition]
+        initTextLayer()
         
     }
     
@@ -102,6 +104,8 @@ class AngleTool {
         imageView.layer.addSublayer(beginDotLayer)
         imageView.layer.addSublayer(middleDotLayer)
         imageView.layer.addSublayer(endDotLayer)
+        
+        imageView.layer.addSublayer(textLayer)
         
         restoreLocation()
 
@@ -230,10 +234,30 @@ class AngleTool {
         
     }
 
+    fileprivate func initTextLayer() {
+        let fontName: CFString = "HelveticaNeue" as CFString
+        textLayer.frame.size = CGSize(width: 100, height: 50)
+        textLayer.font = CTFontCreateWithName(fontName, 8, nil)
+        textLayer.fontSize = 24
+        textLayer.borderColor = UIColor.black.cgColor
+        textLayer.borderWidth = 2.0
+        textLayer.opacity = 0.4
+        //        textLayer.anchorPoint = CGPoint(x: 1, y: 1)
+        
+        textLayer.foregroundColor = UIColor.darkGray.cgColor
+        textLayer.backgroundColor = UIColor.white.cgColor
+        textLayer.alignmentMode = kCAAlignmentCenter
+        textLayer.contentsScale = UIScreen.main.scale
+    }
+    
     func drawAngle() {
         calcAngle()
         let angleText = String(format: "%.1f", measuredAngle) + "\u{00B0}"
-        angleLabel.text = angleText
+        let textOrigin = dotPositions[1]
+        textLayer.string = angleText
+        textLayer.frame.origin = textOrigin
+
+      
     }
     
 
