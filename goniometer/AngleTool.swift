@@ -41,7 +41,7 @@ class AngleTool {
     let beginDotLayer = CAShapeLayer()
     let middleDotLayer = CAShapeLayer()
     let endDotLayer = CAShapeLayer()
-    let textFillLayer = CAShapeLayer()
+    let animationLayer = CAShapeLayer()
     let textLayer = CATextLayer()
     
     let beginLineMask = CAShapeLayer()
@@ -102,6 +102,7 @@ class AngleTool {
     
     func setImageView(imageView: UIView) {
         self.imageView = imageView
+//        imageView.layer.addSublayer(animationLayer)
         imageView.layer.addSublayer(arcLineLayer)
         imageView.layer.addSublayer(beginLineLayer)
         imageView.layer.addSublayer(endLineLayer)
@@ -111,8 +112,9 @@ class AngleTool {
         imageView.layer.addSublayer(middleDotLayer)
         imageView.layer.addSublayer(endDotLayer)
         
-        imageView.layer.addSublayer(textFillLayer)
         imageView.layer.addSublayer(textLayer)
+        
+        beginLineLayer.addSublayer(animationLayer) //Animation obeys the line mask to keep the dot clear
         
         restoreLocation()
 
@@ -167,10 +169,12 @@ class AngleTool {
         drawLines()
         drawAngleArc()
         drawAngle()
+        
+        dotAnimation()
     }
 
     
-    func drawDots() {
+    fileprivate func drawDots() {
         let beginOrigin = CGPoint(x: dotPositions[0].x - dotRadius, y: dotPositions[0].y - dotRadius)
         let beginDotPath = UIBezierPath(ovalIn: CGRect(origin: beginOrigin, size: CGSize(width: dotDiameter, height: dotDiameter)))
 
@@ -210,9 +214,36 @@ class AngleTool {
         endLineMask.fillRule = kCAFillRuleEvenOdd
         
         endLineMask.path = endClippingPath.cgPath
-}
+    }
+    
+    fileprivate func dotAnimation() {
+//         setup
+        let startOrigin = CGPoint(x: dotPositions[0].x - dotRadius, y: dotPositions[0].y - dotRadius)
+        let startPath = UIBezierPath(ovalIn: CGRect(origin: startOrigin , size: CGSize(width: dotDiameter, height: dotDiameter)))
+        let endSize = CGSize(width: dotDiameter * 2.5, height: dotDiameter * 2.5)
+        let endOrigin = CGPoint(x:dotPositions[0].x - endSize.width / 2, y:dotPositions[0].y - endSize.height / 2)
+        
+        let endPath = UIBezierPath(ovalIn: CGRect(origin: endOrigin, size: endSize))
+        
+        animationLayer.path = startPath.cgPath
+        animationLayer.fillColor = UIColor.white.cgColor
+        animationLayer.opacity = 0.3
 
-    func drawLines() {
+        // animate
+        let animation = CABasicAnimation(keyPath: "path")
+        
+        animation.toValue = endPath.cgPath
+        animation.duration = 2
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut) // animation curve is Ease Out
+        animation.fillMode = kCAFillModeBoth // keep to value after finishing
+        animation.isRemovedOnCompletion = false // don't remove after finishing
+        animation.autoreverses = true
+        animation.repeatCount = HUGE // repeat forver
+
+        animationLayer.add(animation, forKey: animation.keyPath)
+    }
+
+    fileprivate func drawLines() {
         let beginPath = UIBezierPath()
         beginPath.move(to: dotPositions[0])
         
@@ -249,12 +280,10 @@ class AngleTool {
         textLayer.frame.size = CGSize(width: 60, height: 20)
         textLayer.font = CTFontCreateWithName(fontName, 8, nil)
         textLayer.fontSize = 16
-//        textLayer.borderColor = UIColor.black.cgColor
-//        textLayer.borderWidth = 2.0
-//        textLayer.opacity = 0.4
+        textLayer.opacity = 0.6
         
         textLayer.foregroundColor = UIColor.black.cgColor
-        textLayer.backgroundColor = UIColor.clear.cgColor
+        textLayer.backgroundColor = UIColor.white.cgColor
         textLayer.alignmentMode = kCAAlignmentCenter
         textLayer.contentsScale = UIScreen.main.scale
     }
@@ -276,28 +305,22 @@ class AngleTool {
     
     fileprivate func drawAngle() {
         let angleText = String(format: "%.1f", measuredAngle) + "\u{00B0}"
-        let textCenter = CGPoint(x: textLayer.frame.width / 2, y: textLayer.frame.height / 2)
-        var textOrigin = textPoint()
-        drawTextFill(textOrigin: textOrigin)
-
-        textOrigin.x -= textCenter.x
-        textOrigin.y -= textCenter.y
-
+        
         textLayer.string = angleText
-        textLayer.frame.origin = textOrigin
+        textLayer.position = textPoint()
     }
     
-    fileprivate func drawTextFill(textOrigin: CGPoint) {
-        let fillWidth = textLayer.frame.width
-        let fillHeight = textLayer.frame.height
-        let rect = CGRect(x: textOrigin.x - fillWidth / 2, y: textOrigin.y - fillHeight / 2, width: fillWidth, height: fillHeight)
-        let textFillPath = UIBezierPath(roundedRect: rect, cornerRadius: CGFloat(3))
-        
-        textFillLayer.path = textFillPath.cgPath
-        textFillLayer.strokeColor = UIColor.clear.cgColor
-        textFillLayer.fillColor = UIColor.white.cgColor
-        textFillLayer.opacity = 0.6
-    }
+//    fileprivate func drawTextFill(textOrigin: CGPoint) {
+//        let fillWidth = textLayer.frame.width
+//        let fillHeight = textLayer.frame.height
+//        let rect = CGRect(x: textOrigin.x - fillWidth / 2, y: textOrigin.y - fillHeight / 2, width: fillWidth, height: fillHeight)
+//        let textFillPath = UIBezierPath(roundedRect: rect, cornerRadius: CGFloat(3))
+//
+//        textFillLayer.path = textFillPath.cgPath
+//        textFillLayer.strokeColor = UIColor.clear.cgColor
+//        textFillLayer.fillColor = UIColor.white.cgColor
+//        textFillLayer.opacity = 0.6
+//    }
     
     fileprivate func textPoint() -> CGPoint {
         let textAngle =  mainArmAngle() - measuredAngle / 2 * CGFloat(CGFloat.pi / 180)
