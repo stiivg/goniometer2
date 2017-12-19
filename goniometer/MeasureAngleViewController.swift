@@ -22,7 +22,6 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     @IBOutlet weak var scrollView: GestureScrollView!
     @IBOutlet weak var cameraButton: UIButton!
-    @IBOutlet weak var angleText: UILabel!
     
     @IBAction func handleDotPan(_ gestureRecognizer: UIPanGestureRecognizer) {
         angleTool.doHandleDotPan(gestureRecognizer: gestureRecognizer, view: self.imageView)

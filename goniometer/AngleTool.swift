@@ -41,6 +41,7 @@ class AngleTool {
     let beginDotLayer = CAShapeLayer()
     let middleDotLayer = CAShapeLayer()
     let endDotLayer = CAShapeLayer()
+    let textFillLayer = CAShapeLayer()
     let textLayer = CATextLayer()
     
     let beginLineMask = CAShapeLayer()
@@ -110,6 +111,7 @@ class AngleTool {
         imageView.layer.addSublayer(middleDotLayer)
         imageView.layer.addSublayer(endDotLayer)
         
+        imageView.layer.addSublayer(textFillLayer)
         imageView.layer.addSublayer(textLayer)
         
         restoreLocation()
@@ -244,17 +246,15 @@ class AngleTool {
 
     fileprivate func initTextLayer() {
         let fontName: CFString = "HelveticaNeue" as CFString
-        textLayer.frame.size = CGSize(width: 80, height: 30)
+        textLayer.frame.size = CGSize(width: 60, height: 20)
         textLayer.font = CTFontCreateWithName(fontName, 8, nil)
-        textLayer.fontSize = 24
-        textLayer.borderColor = UIColor.black.cgColor
-        textLayer.borderWidth = 2.0
-//        textLayer.isOpaque = true
-        textLayer.opacity = 0.4
-        //        textLayer.anchorPoint = CGPoint(x: 1, y: 1)
+        textLayer.fontSize = 16
+//        textLayer.borderColor = UIColor.black.cgColor
+//        textLayer.borderWidth = 2.0
+//        textLayer.opacity = 0.4
         
-        textLayer.foregroundColor = UIColor.darkGray.cgColor
-        textLayer.backgroundColor = UIColor.white.cgColor
+        textLayer.foregroundColor = UIColor.black.cgColor
+        textLayer.backgroundColor = UIColor.clear.cgColor
         textLayer.alignmentMode = kCAAlignmentCenter
         textLayer.contentsScale = UIScreen.main.scale
     }
@@ -276,19 +276,31 @@ class AngleTool {
     
     fileprivate func drawAngle() {
         let angleText = String(format: "%.1f", measuredAngle) + "\u{00B0}"
-        let textCenter = CGPoint(x: 40, y: 15)
+        let textCenter = CGPoint(x: textLayer.frame.width / 2, y: textLayer.frame.height / 2)
         var textOrigin = textPoint()
+        drawTextFill(textOrigin: textOrigin)
+
         textOrigin.x -= textCenter.x
         textOrigin.y -= textCenter.y
 
-
         textLayer.string = angleText
         textLayer.frame.origin = textOrigin
-
-      
     }
+    
+    fileprivate func drawTextFill(textOrigin: CGPoint) {
+        let fillWidth = textLayer.frame.width
+        let fillHeight = textLayer.frame.height
+        let rect = CGRect(x: textOrigin.x - fillWidth / 2, y: textOrigin.y - fillHeight / 2, width: fillWidth, height: fillHeight)
+        let textFillPath = UIBezierPath(roundedRect: rect, cornerRadius: CGFloat(3))
+        
+        textFillLayer.path = textFillPath.cgPath
+        textFillLayer.strokeColor = UIColor.clear.cgColor
+        textFillLayer.fillColor = UIColor.white.cgColor
+        textFillLayer.opacity = 0.6
+    }
+    
     fileprivate func textPoint() -> CGPoint {
-        let textAngle =  mainArmAngle() // + measuredAngle / 2 * CGFloat(CGFloat.pi / 180)
+        let textAngle =  mainArmAngle() - measuredAngle / 2 * CGFloat(CGFloat.pi / 180)
         let textOffset = CGPoint(x: angleTextDistance * cos(textAngle), y: angleTextDistance * sin(textAngle))
         let textPoint = CGPoint(x: dotPositions[1].x + textOffset.x, y: dotPositions[1].y + textOffset.y)
         

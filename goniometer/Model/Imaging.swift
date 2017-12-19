@@ -101,6 +101,7 @@ class Imaging {
         imageView.layer.sublayers![2].render(in: ctx!)
         imageView.layer.sublayers![3].render(in: ctx!)
         imageView.layer.sublayers![4].render(in: ctx!)
+        imageView.layer.sublayers![5].render(in: ctx!)
         let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
