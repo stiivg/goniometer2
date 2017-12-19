@@ -39,8 +39,6 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         angleTool.setMeasurementObj(measurementObj: measurement!)
         // Do any additional setup after loading the view, typically from a nib.
         angleTool.setImageView(imageView: imageView)
-        angleTool.angleLabel = angleText
-        angleTool.drawAngle()
         
         imaging.setMeasurementObj(measurementObj: measurement!)
         

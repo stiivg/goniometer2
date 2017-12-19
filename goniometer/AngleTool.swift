@@ -101,6 +101,7 @@ class AngleTool {
     
     func setImageView(imageView: UIView) {
         self.imageView = imageView
+        imageView.layer.addSublayer(arcLineLayer)
         imageView.layer.addSublayer(beginLineLayer)
         imageView.layer.addSublayer(endLineLayer)
         
@@ -108,7 +109,6 @@ class AngleTool {
         imageView.layer.addSublayer(beginDotLayer)
         imageView.layer.addSublayer(middleDotLayer)
         imageView.layer.addSublayer(endDotLayer)
-        imageView.layer.addSublayer(arcLineLayer)
         
         imageView.layer.addSublayer(textLayer)
         
@@ -159,6 +159,8 @@ class AngleTool {
     }
     
     func drawTool() {
+        calcAngle()
+
         drawDots()
         drawLines()
         drawAngleArc()
@@ -259,9 +261,11 @@ class AngleTool {
     
     fileprivate func drawAngleArc() {
         let arcLineOrigin = CGPoint(x: dotPositions[1].x, y: dotPositions[1].y)
-        let arcLinePath = UIBezierPath.init(arcCenter: arcLineOrigin, radius: arcRadius, startAngle: minorArmAngle(), endAngle: mainArmAngle() , clockwise: true)
-        
-//        let arcLinePath = UIBezierPath(ovalIn: CGRect(origin: arcLineOrigin, size: CGSize(width: 2 * arcRadius, height: 2 * arcRadius)))
+        var clockwise = true
+        if measuredAngle > 0 {
+            clockwise = false
+        }
+        let arcLinePath = UIBezierPath.init(arcCenter: arcLineOrigin, radius: arcRadius, startAngle: mainArmAngle(), endAngle: minorArmAngle() , clockwise: clockwise)
         
         arcLineLayer.path = arcLinePath.cgPath
         arcLineLayer.lineWidth = arcLineWidth
@@ -270,8 +274,7 @@ class AngleTool {
         
     }
     
-    func drawAngle() {
-        calcAngle()
+    fileprivate func drawAngle() {
         let angleText = String(format: "%.1f", measuredAngle) + "\u{00B0}"
         let textCenter = CGPoint(x: 40, y: 15)
         var textOrigin = textPoint()
@@ -286,7 +289,7 @@ class AngleTool {
     }
     fileprivate func textPoint() -> CGPoint {
         let textAngle =  mainArmAngle() // + measuredAngle / 2 * CGFloat(CGFloat.pi / 180)
-        let textOffset = CGPoint(x: angleTextDistance * sin(textAngle), y: angleTextDistance * cos(textAngle))
+        let textOffset = CGPoint(x: angleTextDistance * cos(textAngle), y: angleTextDistance * sin(textAngle))
         let textPoint = CGPoint(x: dotPositions[1].x + textOffset.x, y: dotPositions[1].y + textOffset.y)
         
         return textPoint
@@ -294,7 +297,7 @@ class AngleTool {
     
     //use difference of main arm angle and minor arm angle
     fileprivate func calcAngle() {
-        let diff = (minorArmAngle() - mainArmAngle()) * CGFloat(180 / CGFloat.pi)
+        let diff = (mainArmAngle() - minorArmAngle()) * CGFloat(180 / CGFloat.pi)
         let absDiff = abs(diff)
         measuredAngle = diff
         //Reduce angles over 180
@@ -306,37 +309,31 @@ class AngleTool {
         }
     }
     
-    //Down is zero, positive is counter clockwise
-    //down = 0, right = 1.5, left = -1.5, up +/-3
+    //Right is zero, positive is clockwise 0 to 2xPI
     fileprivate func mainArmAngle() -> CGFloat {
         let dX = dotPositions[1].x - dotPositions[0].x
         let dY = dotPositions[1].y - dotPositions[0].y
-        var mainArmAngle = atan(dX / dY)
-        if dY < 0 {
-            if dX < 0 {
-                mainArmAngle -= CGFloat.pi
-            } else {
-                mainArmAngle += CGFloat.pi
-            }
+        var mainArmAngle = atan(dY / dX)
+        if dX < 0 {
+            mainArmAngle = CGFloat.pi + mainArmAngle
+        } else if dY < 0 {
+            mainArmAngle = 2 * CGFloat.pi + mainArmAngle
         }
-        print("Main= " + String(format: "%.1f", mainArmAngle))
+//        print("Main= " + String(format: "%.1f", mainArmAngle))
         return mainArmAngle
     }
     
-    //Down is zero, positive is counter clockwise
-    //down = 0, right = 1.5, left = -1.5, up +/-3
+    //Right is zero, positive is clockwise 0 to 2xPI
     fileprivate func minorArmAngle() -> CGFloat {
         let dX = dotPositions[2].x - dotPositions[1].x
         let dY = dotPositions[2].y - dotPositions[1].y
-        var minorArmAngle = atan(dX / dY)
-        if dY < 0 {
-            if dX < 0 {
-                minorArmAngle -= CGFloat.pi
-            } else {
-                minorArmAngle += CGFloat.pi
-            }
+        var minorArmAngle = atan(dY / dX)
+        if dX < 0 {
+            minorArmAngle = CGFloat.pi + minorArmAngle
+        } else if dY < 0 {
+            minorArmAngle = 2 * CGFloat.pi + minorArmAngle
         }
-        print("Minor= " + String(format: "%.1f", minorArmAngle))
+//        print("Minor= " + String(format: "%.1f", minorArmAngle))
         return minorArmAngle
     }
     
