@@ -34,7 +34,7 @@ class AngleTool {
     let dotLineWidth = CGFloat(2)
     let lineWidth = CGFloat(5)
     let ExtensionLength = CGFloat(60)
-    let angleTextDistance = CGFloat(60)
+    let angleTextDistance = CGFloat(65)
     let arcRadius = CGFloat(40)
     let arcLineWidth = CGFloat(1)
     
@@ -191,6 +191,7 @@ class AngleTool {
 
         let beginClippingPath = beginDotPath
         beginClippingPath.append(middleDotPath)
+        beginClippingPath.append(endDotPath) //all three dots for animation layer added to the beginline
         //invert the clipping path
         beginClippingPath.append(UIBezierPath(rect: (imageView?.bounds)!))
         beginLineMask.fillRule = kCAFillRuleEvenOdd
@@ -217,30 +218,63 @@ class AngleTool {
     }
     
     fileprivate func dotAnimation() {
-//         setup
+
+        //  setup for begin dot animation
         let startOrigin = CGPoint(x: dotPositions[0].x - dotRadius, y: dotPositions[0].y - dotRadius)
         let startPath = UIBezierPath(ovalIn: CGRect(origin: startOrigin , size: CGSize(width: dotDiameter, height: dotDiameter)))
         let endSize = CGSize(width: dotDiameter * 2.5, height: dotDiameter * 2.5)
         let endOrigin = CGPoint(x:dotPositions[0].x - endSize.width / 2, y:dotPositions[0].y - endSize.height / 2)
         
         let endPath = UIBezierPath(ovalIn: CGRect(origin: endOrigin, size: endSize))
+ 
+        //  setup for middle dot animation
+        let startOrigin1 = CGPoint(x: dotPositions[1].x - dotRadius, y: dotPositions[1].y - dotRadius)
+        let startPath1 = UIBezierPath(ovalIn: CGRect(origin: startOrigin1 , size: CGSize(width: dotDiameter, height: dotDiameter)))
+        let endSize1 = CGSize(width: dotDiameter * 2.5, height: dotDiameter * 2.5)
+        let endOrigin1 = CGPoint(x:dotPositions[1].x - endSize1.width / 2, y:dotPositions[1].y - endSize1.height / 2)
         
-        animationLayer.path = startPath.cgPath
-        animationLayer.fillColor = UIColor.white.cgColor
-        animationLayer.opacity = 0.3
+        let endPath1 = UIBezierPath(ovalIn: CGRect(origin: endOrigin1, size: endSize1))
+        
+        //  setup for end dot animation
+        let startOrigin2 = CGPoint(x: dotPositions[2].x - dotRadius, y: dotPositions[2].y - dotRadius)
+        let startPath2 = UIBezierPath(ovalIn: CGRect(origin: startOrigin2 , size: CGSize(width: dotDiameter, height: dotDiameter)))
+        let endSize2 = CGSize(width: dotDiameter * 2.5, height: dotDiameter * 2.5)
+        let endOrigin2 = CGPoint(x:dotPositions[2].x - endSize2.width / 2, y:dotPositions[2].y - endSize2.height / 2)
+        
+        let endPath2 = UIBezierPath(ovalIn: CGRect(origin: endOrigin2, size: endSize2))
 
-        // animate
+        // Combine all three start and end paths
+        startPath.append(startPath1)
+        startPath.append(startPath2)
+        endPath.append(endPath1)
+        endPath.append(endPath2)
+        
+        // Create the path animation
         let animation = CABasicAnimation(keyPath: "path")
         
+        animation.fromValue = startPath.cgPath
         animation.toValue = endPath.cgPath
         animation.duration = 2
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut) // animation curve is Ease Out
         animation.fillMode = kCAFillModeBoth // keep to value after finishing
         animation.isRemovedOnCompletion = false // don't remove after finishing
-        animation.autoreverses = true
-        animation.repeatCount = HUGE // repeat forver
+        //        animation.autoreverses = true
+        animation.repeatCount = HUGE // repeat forever
 
-        animationLayer.add(animation, forKey: animation.keyPath)
+        // Create the fade animation
+        let fadeAnimation = CABasicAnimation(keyPath: "opacity")
+        fadeAnimation.fromValue = 0.4
+        fadeAnimation.toValue = 0.0
+        
+        // Group the path and fade animations
+        let group = CAAnimationGroup()
+        group.isRemovedOnCompletion = false // don't remove after finishing
+        group.repeatCount = HUGE
+        group.animations = [animation, fadeAnimation]
+        group.duration = 2
+        
+        animationLayer.add(group, forKey: "path")
+        animationLayer.fillColor = UIColor.white.cgColor
     }
 
     fileprivate func drawLines() {
@@ -267,12 +301,10 @@ class AngleTool {
         endPath.move(to: dotPositions[1])
         endPath.addLine(to: dotPositions[2])
 
-        
         endLineLayer.mask = endLineMask
         endLineLayer.path = endPath.cgPath
         endLineLayer.lineWidth = lineWidth
         endLineLayer.strokeColor = UIColor.cyan.cgColor
-        
     }
 
     fileprivate func initTextLayer() {
