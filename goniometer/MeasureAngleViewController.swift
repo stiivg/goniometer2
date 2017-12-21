@@ -37,8 +37,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
 
         angleTool.setMeasurementObj(measurementObj: measurement!)
         // Do any additional setup after loading the view, typically from a nib.
-        angleTool.setImageView(imageView: imageView)
-                
+        
         //Enable touches near the measuring dota
         scrollView.setAngleTool(theAngleTool: angleTool)
         
@@ -48,7 +47,10 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
             let fullImage = UIImage(data: fullImageData as! Data)
             imageView.image = fullImage
         }
-        
+
+        //call after image has been loaded
+        angleTool.setImageView(imageView: imageView)
+
         imagePicker.delegate = self
     }
     

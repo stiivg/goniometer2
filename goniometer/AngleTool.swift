@@ -12,7 +12,7 @@ import CoreData
 
 class AngleTool {
     
-    var imageView: UIView?
+    var imageView: UIImageView?
 
     var measurement: NSManagedObject?
     
@@ -55,10 +55,8 @@ class AngleTool {
     var angleLabel = UILabel()
 
     init() {
-        
         dotPositions = [beginDotPosition, middleDotPosition, endDotPosition]
         initTextLayer()
-        
     }
     
     func setMeasurementObj(measurementObj: NSManagedObject) {
@@ -66,18 +64,24 @@ class AngleTool {
     }
 
     //Restore dot positions from core data or use default
-    func restoreLocation() {
-//        if dataObj != nil {
+    fileprivate func restoreLocation() {
         let fullResEntity = measurement?.value(forKey: "fullRes") as? NSManagedObject
         if fullResEntity != nil {
-            dotPositions[0].x = measurement?.value(forKeyPath: "beginX") as! CGFloat
-            dotPositions[0].y = measurement?.value(forKeyPath: "beginY") as! CGFloat
+            //convert pixel positions to image view locations
+            let imageTransform = calculateImageTransform(imageView: imageView!)
+            var pixelPosition = CGPoint()
             
-            dotPositions[1].x = measurement?.value(forKeyPath: "middleX") as! CGFloat
-            dotPositions[1].y = measurement?.value(forKeyPath: "middleY") as! CGFloat
+            pixelPosition.x = measurement?.value(forKeyPath: "beginX") as! CGFloat
+            pixelPosition.y = measurement?.value(forKeyPath: "beginY") as! CGFloat
+            dotPositions[0] = convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
             
-            dotPositions[2].x = measurement?.value(forKeyPath: "endX") as! CGFloat
-            dotPositions[2].y = measurement?.value(forKeyPath: "endY") as! CGFloat
+            pixelPosition.x = measurement?.value(forKeyPath: "middleX") as! CGFloat
+            pixelPosition.y = measurement?.value(forKeyPath: "middleY") as! CGFloat
+            dotPositions[1] = convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
+            
+            pixelPosition.x = measurement?.value(forKeyPath: "endX") as! CGFloat
+            pixelPosition.y = measurement?.value(forKeyPath: "endY") as! CGFloat
+            dotPositions[2] = convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
         } else {
             dotPositions[1] = (imageView?.center)!
             dotPositions[0] = dotPositions[1]
@@ -88,19 +92,71 @@ class AngleTool {
         }
     }
     
-    //Save dot positions to core data
+    //Save dot positions as image pixels to core data
     func saveLocation() {
-        measurement?.setValue(dotPositions[0].x, forKey: "beginX")
-        measurement?.setValue(dotPositions[0].y, forKey: "beginY")
+        let imageTransform = calculateImageTransform(imageView: imageView!)
+        var pixelDotPosition = CGPoint()
         
-        measurement?.setValue(dotPositions[1].x, forKey: "middleX")
-        measurement?.setValue(dotPositions[1].y, forKey: "middleY")
+        pixelDotPosition = convertLocationToPixel(location: dotPositions[0], origin: imageTransform.rect.origin, scale: imageTransform.scale)
+        measurement?.setValue(pixelDotPosition.x, forKey: "beginX")
+        measurement?.setValue(pixelDotPosition.y, forKey: "beginY")
+
+        pixelDotPosition = convertLocationToPixel(location: dotPositions[1], origin: imageTransform.rect.origin, scale: imageTransform.scale)
+        measurement?.setValue(pixelDotPosition.x, forKey: "middleX")
+        measurement?.setValue(pixelDotPosition.y, forKey: "middleY")
+
+        pixelDotPosition = convertLocationToPixel(location: dotPositions[2], origin: imageTransform.rect.origin, scale: imageTransform.scale)
+        measurement?.setValue(pixelDotPosition.x, forKey: "endX")
+        measurement?.setValue(pixelDotPosition.y, forKey: "endY")
+    }
+ 
+    //Scale the pixel position to a location in the image view
+    fileprivate func convertPixelToLocation(position: CGPoint, origin: CGPoint, scale: CGFloat) -> CGPoint {
+        var location = CGPoint()
         
-        measurement?.setValue(dotPositions[2].x, forKey: "endX")
-        measurement?.setValue(dotPositions[2].y, forKey: "endY")
+        location.x = position.x * scale + origin.x
+        location.y = position.y * scale + origin.y
+        
+        return location
     }
     
-    func setImageView(imageView: UIView) {
+    //Scale the location in the image view to a pixel location
+    fileprivate func convertLocationToPixel(location: CGPoint, origin: CGPoint, scale: CGFloat) -> CGPoint {
+        var pixelDotPosition = CGPoint()
+
+        pixelDotPosition.x = (location.x - origin.x) / scale
+        pixelDotPosition.y = (location.y - origin.y) / scale
+        
+        return pixelDotPosition
+    }
+    
+    // Assumes the image is aspectFit in imageview
+    //centered with either width or height the same
+    fileprivate func calculateImageTransform(imageView: UIImageView) -> (rect:CGRect, scale:CGFloat) {
+        let imageViewSize = imageView.bounds.size
+        let imgSize = imageView.image?.size
+        
+        guard let imageSize = imgSize, imgSize != nil else {
+            return (CGRect.zero, CGFloat(1))
+        }
+        
+        let scaleWidth = imageViewSize.width / imageSize.width
+        let scaleHeight = imageViewSize.height / imageSize.height
+        let aspect = fmin(scaleWidth, scaleHeight)
+        
+        var imageRect = CGRect(x: 0, y: 0, width: imageSize.width * aspect, height: imageSize.height * aspect)
+        // Center image
+        imageRect.origin.x = (imageViewSize.width - imageRect.size.width) / 2
+        imageRect.origin.y = (imageViewSize.height - imageRect.size.height) / 2
+        
+        // Add imageView offset
+        imageRect.origin.x += imageView.frame.origin.x
+        imageRect.origin.y += imageView.frame.origin.y
+        
+        return (imageRect, aspect)
+    }
+    
+    func setImageView(imageView: UIImageView) {
         self.imageView = imageView
         
         //Add all the tool layers and the animation layer
