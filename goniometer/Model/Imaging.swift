@@ -13,10 +13,6 @@ class Imaging {
 
     var measurement: NSManagedObject?
 
-    init() {
-    
-    }
-    
     func setMeasurementObj(measurementObj: NSManagedObject) {
         measurement = measurementObj
     }
@@ -30,7 +26,6 @@ class Imaging {
             return
         }
 
-        //TODO capture the angle dots and lines in image
         // scale image to a good thumbnail size
         let thumnbnailSize = CGSize(width: 800, height: 600)
         let thumbnail = createThumbnail(imageView: imageView, toSize: thumnbnailSize)
@@ -43,10 +38,9 @@ class Imaging {
         
         // send to save function
         self.saveImage(imageData: imageData as NSData, thumbnailData: thumbnailData as NSData)
-        
     }
     
-    func saveImage(imageData:NSData, thumbnailData:NSData) {
+    fileprivate func saveImage(imageData:NSData, thumbnailData:NSData) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -73,20 +67,17 @@ class Imaging {
         
         //set image data of thumbnail
         measurement?.setValue(thumbnailData, forKey: "thumbnail")
-        
     }
     
-    func createThumbnail(imageView:UIImageView, toSize newSize:CGSize) -> UIImage {
-        
+    fileprivate func createThumbnail(imageView:UIImageView, toSize newSize:CGSize) -> UIImage {
         let thumbImage = imageView.image!
         // make sure the new size has the correct aspect ratio
+        //it is aspectFill so can be larger in one direction than the standard
         let aspectFill = thumbImage.size.resizeFill(toSize: newSize)
         UIGraphicsBeginImageContextWithOptions(aspectFill, true, 1.0);
         thumbImage.draw(in: CGRect(x: 0, y: 0, width: aspectFill.width, height: aspectFill.height))
 
         let imageRect = calculateRectOfImageInImageView(imageView: imageView)
-        
-        
         
         let xScale = aspectFill.width / imageRect.width
         let yScale = aspectFill.height / imageRect.height
@@ -108,8 +99,9 @@ class Imaging {
         return newImage
     }
 
-    // MARK: - Create Rect
-    func calculateRectOfImageInImageView(imageView: UIImageView) -> CGRect {
+    // Assumes the image is aspectFit in imageview
+    //centered with either width or height the same
+    fileprivate func calculateRectOfImageInImageView(imageView: UIImageView) -> CGRect {
         let imageViewSize = imageView.bounds.size
         let imgSize = imageView.image?.size
         
@@ -134,6 +126,7 @@ class Imaging {
     }
     
 }
+
 extension CGSize {
     
     func resizeFill(toSize: CGSize) -> CGSize {

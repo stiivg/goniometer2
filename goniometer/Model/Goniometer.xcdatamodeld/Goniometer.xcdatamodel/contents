@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1036" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1114" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="FullRes" representedClassName="FullRes" syncable="YES" codeGenerationType="class">
         <attribute name="imageData" optional="YES" attributeType="Binary" storedInTruthFile="YES" syncable="YES"/>
         <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Measurement" inverseName="fullRes" inverseEntity="Measurement" syncable="YES"/>
@@ -16,12 +16,15 @@
         <attribute name="middleY" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="motion" attributeType="String" defaultValueString="Flexion" syncable="YES"/>
         <attribute name="name" attributeType="String" defaultValueString="name" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="side" attributeType="String" defaultValueString="Left" syncable="YES"/>
         <attribute name="thumbnail" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="fullRes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FullRes" inverseName="thumbnail" inverseEntity="FullRes" syncable="YES"/>
     </entity>
     <elements>
         <element name="FullRes" positionX="-54" positionY="45" width="128" height="73"/>
-        <element name="Measurement" positionX="-344" positionY="-45" width="128" height="253"/>
+        <element name="Measurement" positionX="-344" positionY="-45" width="128" height="298"/>
     </elements>
 </model>

@@ -38,9 +38,8 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         angleTool.setMeasurementObj(measurementObj: measurement!)
         // Do any additional setup after loading the view, typically from a nib.
         angleTool.setImageView(imageView: imageView)
-        
-        imaging.setMeasurementObj(measurementObj: measurement!)
-        
+                
+        //Enable touches near the measuring dota
         scrollView.setAngleTool(theAngleTool: angleTool)
         
         //display the full resolution image
@@ -52,6 +51,24 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         
         imagePicker.delegate = self
     }
+    
+//    func imageDetails(imageview: UIImageView) {
+//        print(String(describing: imageView))
+//        let mode = imageView.contentMode
+//        let screenScale = UIScreen.main.scale
+//        let width = imageView.frame.width
+//        let height = imageView.frame.height
+//        let widthInPixels = imageView.frame.width * UIScreen.main.scale
+//        let heightInPixels = imageView.frame.height * UIScreen.main.scale
+//
+//        let image = imageview.image
+//        let imageScale = (image?.scale)!
+//        let imsgeWidthInPixels = (image?.size.width)! * (image?.scale)!
+//        let imageHeightInPixels = (image?.size.height)! * (image?.scale)!
+//        let imsgeWidth = (image?.size.width)!
+//        let imageHeight = (image?.size.height)!
+//
+//    }
 
     @IBAction func photoFromLibrary(_ sender: UIBarButtonItem) {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){

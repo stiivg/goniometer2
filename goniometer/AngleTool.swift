@@ -81,10 +81,10 @@ class AngleTool {
         } else {
             dotPositions[1] = (imageView?.center)!
             dotPositions[0] = dotPositions[1]
-            dotPositions[0].y += (imageView?.frame.height)!/10
+            dotPositions[0].y += (imageView?.frame.height)!/3
 
             dotPositions[2] = dotPositions[1]
-            dotPositions[2].x += (imageView?.frame.width)!/10
+            dotPositions[2].x += (imageView?.frame.width)!/5
         }
     }
     
@@ -102,11 +102,11 @@ class AngleTool {
     
     func setImageView(imageView: UIView) {
         self.imageView = imageView
-//        imageView.layer.addSublayer(animationLayer)
+        
+        //Add all the tool layers and the animation layer
         imageView.layer.addSublayer(arcLineLayer)
         imageView.layer.addSublayer(beginLineLayer)
         imageView.layer.addSublayer(endLineLayer)
-        
         
         imageView.layer.addSublayer(beginDotLayer)
         imageView.layer.addSublayer(middleDotLayer)
@@ -122,10 +122,11 @@ class AngleTool {
 
     }
     
+    //Detect touches close to tool point
     func pointInTool(inside point: CGPoint) -> Bool {
         for position in dotPositions {
             let distance = hypot(position.x - point.x, position.y - point.y)
-            if distance < 30 {
+            if distance < 30 { //Touch within 30 units
                 return true
             }
         }
@@ -210,7 +211,7 @@ class AngleTool {
 
         let endClippingPath = endDotPath
         endClippingPath.append(middleDotPath)
-       //invert the clipping path
+        //invert the clipping path
         endClippingPath.append(UIBezierPath(rect: (imageView?.bounds)!))
         endLineMask.fillRule = kCAFillRuleEvenOdd
         
@@ -362,9 +363,9 @@ class AngleTool {
         return textPoint
     }
     
-    //use difference of main arm angle and minor arm angle
+    //use difference of main arm angle and minor arm angle +/-180 degrees
     fileprivate func calcAngle() {
-        let diff = (mainArmAngle() - minorArmAngle()) * CGFloat(180 / CGFloat.pi)
+        let diff = (mainArmAngle() - minorArmAngle()) * CGFloat(180 / CGFloat.pi) //convert radians to degrees
         let absDiff = abs(diff)
         measuredAngle = diff
         //Reduce angles over 180

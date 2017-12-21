@@ -260,7 +260,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="246.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="HqX-SW-5e6">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="HqX-SW-5e6">
                                                     <rect key="frame" x="20" y="11" width="348" height="225"/>
                                                 </imageView>
                                             </subviews>
