@@ -53,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="-3" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="SSW-rO-n9c" customClass="GestureScrollView" customModule="goniometer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="628"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-6O-yXR" userLabel="Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="622"/>
@@ -95,12 +95,12 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5el-JK-Ixk"/>
-                            <constraint firstItem="SSW-rO-n9c" firstAttribute="leading" secondItem="Ab4-9S-2or" secondAttribute="leading" id="NRi-Jr-lz4"/>
-                            <constraint firstItem="SSW-rO-n9c" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Oe3-kr-Fha"/>
-                            <constraint firstItem="SSW-rO-n9c" firstAttribute="trailing" secondItem="Ab4-9S-2or" secondAttribute="trailing" id="hbu-72-HF7"/>
-                            <constraint firstItem="SSW-rO-n9c" firstAttribute="bottom" secondItem="Ab4-9S-2or" secondAttribute="bottom" id="o82-Eb-Hpk"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="bottom" secondItem="Ab4-9S-2or" secondAttribute="top" id="Oe3-kr-Fha"/>
+                            <constraint firstItem="Ab4-9S-2or" firstAttribute="leading" secondItem="SSW-rO-n9c" secondAttribute="leading" id="dYL-3N-9HD"/>
+                            <constraint firstItem="Ab4-9S-2or" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="o82-Eb-Hpk"/>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tBD-BO-qw8"/>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tiU-TW-eSB"/>
+                            <constraint firstItem="Ab4-9S-2or" firstAttribute="trailing" secondItem="SSW-rO-n9c" secondAttribute="trailing" id="zT9-Zc-3Z1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
