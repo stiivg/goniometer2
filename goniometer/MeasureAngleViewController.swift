@@ -37,6 +37,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
 
         angleTool.setMeasurementObj(measurementObj: measurement!)
         // Do any additional setup after loading the view, typically from a nib.
+        imaging.setMeasurementObj(measurementObj: measurement!)
         
         //Enable touches near the measuring dota
         scrollView.setAngleTool(theAngleTool: angleTool)
