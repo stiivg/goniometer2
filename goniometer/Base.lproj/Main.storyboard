@@ -55,20 +55,20 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="-3" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="SSW-rO-n9c" customClass="GestureScrollView" customModule="goniometer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="414" height="628"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-6O-yXR" userLabel="Image View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="622"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-6O-yXR" userLabel="Image View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="600" id="aYv-Zr-eRz"/>
-                                            <constraint firstAttribute="height" constant="622" id="gNp-ZB-WED"/>
+                                            <constraint firstAttribute="height" constant="300" id="gNp-ZB-WED"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="vQa-6O-yXR" secondAttribute="trailing" id="ZKo-tz-Loc"/>
+                                    <constraint firstItem="vQa-6O-yXR" firstAttribute="trailing" secondItem="SSW-rO-n9c" secondAttribute="trailing" id="ZKo-tz-Loc"/>
                                     <constraint firstItem="vQa-6O-yXR" firstAttribute="leading" secondItem="SSW-rO-n9c" secondAttribute="leading" id="gss-en-7gR"/>
                                     <constraint firstItem="vQa-6O-yXR" firstAttribute="top" secondItem="SSW-rO-n9c" secondAttribute="top" id="q54-ZZ-aHt"/>
-                                    <constraint firstAttribute="bottom" secondItem="vQa-6O-yXR" secondAttribute="bottom" id="ye4-wS-g3p"/>
+                                    <constraint firstItem="vQa-6O-yXR" firstAttribute="bottom" secondItem="SSW-rO-n9c" secondAttribute="bottom" id="ye4-wS-g3p"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ggy-o0-cC2"/>
@@ -120,7 +120,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageHeightConstraint" destination="gNp-ZB-WED" id="vSh-8u-OOx"/>
                         <outlet property="imageView" destination="vQa-6O-yXR" id="3TT-ii-SqR"/>
+                        <outlet property="imageWidthConstraint" destination="aYv-Zr-eRz" id="b4O-mC-QHJ"/>
                         <outlet property="panGesture" destination="7Qn-Bd-reb" id="8aj-FN-l0q"/>
                         <outlet property="scrollView" destination="SSW-rO-n9c" id="BEr-Vz-i2F"/>
                     </connections>

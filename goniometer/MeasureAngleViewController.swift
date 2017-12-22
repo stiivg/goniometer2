@@ -16,6 +16,8 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     var angleTool = AngleTool()
     
     var imaging = Imaging()
+    @IBOutlet weak var imageWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet var panGesture: UIPanGestureRecognizer!
@@ -30,10 +32,15 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     
     var imagePicker = UIImagePickerController()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateMinZoomScaleForSize(view.bounds.size)
+    //Scrollview bounds are not set in viewDidLoad need to wait for layout complete
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        //make the image view fill the scroll view 414 628
+        imageWidthConstraint.constant = scrollView.bounds.width
+        imageHeightConstraint.constant = scrollView.bounds.height
+        imageView.bounds = scrollView.bounds
+        imageView.frame = scrollView.bounds
 
         angleTool.setMeasurementObj(measurementObj: measurement!)
         // Do any additional setup after loading the view, typically from a nib.
@@ -49,6 +56,8 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
             imageView.image = fullImage
         }
 
+        updateMinZoomScaleForSize(scrollView.bounds.size)
+        
         //call after image has been loaded
         angleTool.setImageView(imageView: imageView)
 
