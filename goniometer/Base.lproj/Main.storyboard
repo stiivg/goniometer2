@@ -96,11 +96,11 @@
                         <constraints>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5el-JK-Ixk"/>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="bottom" secondItem="Ab4-9S-2or" secondAttribute="top" id="Oe3-kr-Fha"/>
-                            <constraint firstItem="Ab4-9S-2or" firstAttribute="leading" secondItem="SSW-rO-n9c" secondAttribute="leading" id="dYL-3N-9HD"/>
+                            <constraint firstItem="Ab4-9S-2or" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dYL-3N-9HD"/>
                             <constraint firstItem="Ab4-9S-2or" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="o82-Eb-Hpk"/>
-                            <constraint firstItem="SSW-rO-n9c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tBD-BO-qw8"/>
+                            <constraint firstItem="SSW-rO-n9c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tBD-BO-qw8"/>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tiU-TW-eSB"/>
-                            <constraint firstItem="Ab4-9S-2or" firstAttribute="trailing" secondItem="SSW-rO-n9c" secondAttribute="trailing" id="zT9-Zc-3Z1"/>
+                            <constraint firstItem="Ab4-9S-2or" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zT9-Zc-3Z1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
