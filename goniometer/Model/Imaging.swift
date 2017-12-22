@@ -111,8 +111,11 @@ class Imaging {
         
         let scaleWidth = imageViewSize.width / imageSize.width
         let scaleHeight = imageViewSize.height / imageSize.height
-        let aspect = fmin(scaleWidth, scaleHeight)
-        
+        var aspect = fmin(scaleWidth, scaleHeight)
+        if imageView.contentMode == .scaleAspectFill {
+            aspect = fmax(scaleWidth, scaleHeight)
+        }
+
         var imageRect = CGRect(x: 0, y: 0, width: imageSize.width * aspect, height: imageSize.height * aspect)
         // Center image
         imageRect.origin.x = (imageViewSize.width - imageRect.size.width) / 2
