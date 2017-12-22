@@ -119,7 +119,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
 
         scrollView.minimumZoomScale = minScale
         //Default to the full image in view
-        scrollView.zoomScale = minScale
+//        scrollView.zoomScale = minScale
     }
 
     

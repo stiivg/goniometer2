@@ -55,7 +55,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="-3" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="SSW-rO-n9c" customClass="GestureScrollView" customModule="goniometer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="414" height="628"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-6O-yXR" userLabel="Image View">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-6O-yXR" userLabel="Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -586,17 +586,21 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="PTl-Zc-xNi" firstAttribute="centerX" secondItem="ix3-PV-9PP" secondAttribute="centerX" id="NWa-Th-05C"/>
+                                    <constraint firstAttribute="height" constant="83" id="UJc-qd-zTG"/>
                                     <constraint firstAttribute="trailing" secondItem="enL-zV-feD" secondAttribute="trailing" id="aBw-YS-V0d"/>
                                 </constraints>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="TWL-OL-Yfn">
-                                <rect key="frame" x="20" y="194" width="374" height="202"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="TWL-OL-Yfn">
+                                <rect key="frame" x="20" y="194" width="374" height="542"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TWL-OL-Yfn" firstAttribute="centerX" secondItem="pIF-iP-GIe" secondAttribute="centerX" id="1ZY-Qq-YEa"/>
+                            <constraint firstItem="TWL-OL-Yfn" firstAttribute="top" secondItem="pIF-iP-GIe" secondAttribute="bottom" constant="32" id="DAc-6V-9nQ"/>
                             <constraint firstItem="pIF-iP-GIe" firstAttribute="trailing" secondItem="ke4-Tl-G6I" secondAttribute="trailing" constant="-15" id="JpH-ae-9mQ"/>
+                            <constraint firstItem="TWL-OL-Yfn" firstAttribute="leading" secondItem="gIR-F9-dUh" secondAttribute="leadingMargin" id="MzQ-IN-7vP"/>
+                            <constraint firstItem="ke4-Tl-G6I" firstAttribute="bottom" secondItem="TWL-OL-Yfn" secondAttribute="bottom" id="YK8-tO-SRm"/>
                             <constraint firstItem="pIF-iP-GIe" firstAttribute="leading" secondItem="ke4-Tl-G6I" secondAttribute="leading" constant="15" id="YbW-Rf-tLV"/>
                             <constraint firstItem="pIF-iP-GIe" firstAttribute="top" secondItem="ke4-Tl-G6I" secondAttribute="top" constant="15" id="aig-tr-HbI"/>
                         </constraints>
@@ -633,6 +637,6 @@
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mds-mj-B3b"/>
+        <segue reference="sV7-zC-Uan"/>
     </inferredMetricsTieBreakers>
 </document>
