@@ -29,18 +29,25 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         angleTool.doHandleDotPan(gestureRecognizer: gestureRecognizer, view: self.imageView)
     }
     
-    
-    
     var imagePicker = UIImagePickerController()
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
     //Scrollview bounds are not set in viewDidLoad need to wait for layout complete
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        //make the image view fill the scroll view 414 628
         imageWidthConstraint.constant = scrollView.bounds.width
         imageHeightConstraint.constant = scrollView.bounds.height
-        imageView.bounds = scrollView.bounds
-        imageView.frame = scrollView.bounds
+
+        //make the image view fill the scroll view 414 628
+        var zeroOriginScrollBounds = scrollView.bounds
+        zeroOriginScrollBounds.origin.x = 0
+        zeroOriginScrollBounds.origin.y = 0
+
+        imageView.bounds = zeroOriginScrollBounds
+        imageView.frame = zeroOriginScrollBounds
 
         angleTool.setMeasurementObj(measurementObj: measurement!)
         // Do any additional setup after loading the view, typically from a nib.
@@ -81,7 +88,14 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
 //        let imageHeight = (image?.size.height)!
 //
 //    }
-
+    @IBAction func shootPhoto(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            imagePicker.sourceType = .camera;
+            
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func photoFromLibrary(_ sender: UIBarButtonItem) {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             imagePicker.sourceType = .savedPhotosAlbum;
@@ -100,6 +114,9 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     //Save last edit to image
     func completeEdit() {
+        let sbounds = scrollView.bounds
+        let iBounds = imageView.bounds
+        
         imaging.prepareImageForSaving(imageView: imageView)
         measurement?.setValue(angleTool.measuredAngle, forKey: "angle")
         angleTool.saveLocation()
@@ -116,6 +133,9 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         let widthScale = size.width / imageView.bounds.width
         let heightScale = size.height / imageView.bounds.height
         let minScale = min(widthScale, heightScale)
+
+        let sbounds = scrollView.bounds
+        let iBounds = imageView.bounds
 
         scrollView.minimumZoomScale = minScale
         //Default to the full image in view
