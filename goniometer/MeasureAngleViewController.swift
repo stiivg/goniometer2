@@ -11,6 +11,8 @@ import CoreData
 
 class MeasureAngleViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate {
 
+    var joints = BodyJoints()
+    
     //MARK: Properties
     var measurement: NSManagedObject?
     var angleTool = AngleTool()

@@ -4,6 +4,22 @@
         <attribute name="imageData" optional="YES" attributeType="Binary" storedInTruthFile="YES" syncable="YES"/>
         <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Measurement" inverseName="fullRes" inverseEntity="Measurement" syncable="YES"/>
     </entity>
+    <entity name="JointMotion" representedClassName="JointMotion" syncable="YES" codeGenerationType="class">
+        <attribute name="axisAlignment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="axisLabelCommon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="axisLabelMedical" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="motionCommon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="motionMedical" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movingAlignment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movingLabelCommon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="movingLabelMedical" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nameCommon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nameMedical" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationaryAlignment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationaryLabelCommon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationaryLabelMedical" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="testPosition" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Measurement" representedClassName="Measurement" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="angle" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="beginX" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -25,6 +41,7 @@
     </entity>
     <elements>
         <element name="FullRes" positionX="-54" positionY="45" width="128" height="73"/>
+        <element name="JointMotion" positionX="-198" positionY="90" width="128" height="255"/>
         <element name="Measurement" positionX="-344" positionY="-45" width="128" height="298"/>
     </elements>
 </model>

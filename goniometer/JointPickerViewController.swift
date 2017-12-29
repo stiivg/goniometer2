@@ -8,17 +8,28 @@
 
 import UIKit
 
+
 class JointPickerViewController: UITableViewController {
     
     // MARK: - Properties
     var joints = [
+        //Upper Body
+        "Jaw",
+        "Neck",
+        "Back",
         "Shoulder",
         "Elbow",
+        "Forearm",
         "Wrist",
-        "Hand",
+        "Knuckle",
+        "Finger",
+        "Thumb",
+        //Lower Body
         "Hip",
         "Knee",
-        "Ankle"
+        "Ankle",
+        "Heel",
+        "Toe"
     ]
     
     var selectedJoint: String? {
