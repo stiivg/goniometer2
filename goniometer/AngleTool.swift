@@ -29,14 +29,17 @@ class AngleTool {
     var dotLayer = CAShapeLayer()
     var dotStartPosition = CGPoint(x: 100, y: 200)
 
-    let dotDiameter = CGFloat(20)
-    let dotRadius = CGFloat(10)
-    let dotLineWidth = CGFloat(2)
-    let lineWidth = CGFloat(5)
-    let ExtensionLength = CGFloat(60)
-    let angleTextDistance = CGFloat(65)
-    let arcRadius = CGFloat(40)
-    let arcLineWidth = CGFloat(1)
+    //tool dimensions
+    var dotDiameter = CGFloat(20)
+    var dotRadius = CGFloat(10)
+    var dotLineWidth = CGFloat(2)
+    var lineWidth = CGFloat(5)
+    var ExtensionLength = CGFloat(60)
+    var angleTextDistance = CGFloat(65)
+    var arcRadius = CGFloat(40)
+    var arcLineWidth = CGFloat(1)
+    var fontFrameSize = CGSize(width: 60, height: 20)
+    var angleFontSize = CGFloat(16)
     
     let beginDotLayer = CAShapeLayer()
     let middleDotLayer = CAShapeLayer()
@@ -160,6 +163,13 @@ class AngleTool {
     }
     
     func setImageView(imageView: UIImageView) {
+        //If not the first imageview then just recalc the tool location and redraw
+        //Needed for rotation of screen
+        if self.imageView != nil {
+            restoreLocation()
+            drawTool()
+            return //
+        }
         self.imageView = imageView
         
         //Add all the tool layers and the animation layer
@@ -176,6 +186,10 @@ class AngleTool {
         beginLineLayer.addSublayer(animationLayer) //Animation obeys the line mask to keep the dot clear
         
         restoreLocation()
+        
+        print(imageView.bounds)
+        
+        scaleTool(scale: imageView.bounds.height / 777)
 
         drawTool()
 
@@ -231,6 +245,20 @@ class AngleTool {
         drawAngle()
         
         dotAnimation()
+    }
+    
+    //Scale the angle tool
+    fileprivate func scaleTool(scale: CGFloat) {
+        dotDiameter *= scale
+        dotRadius *= scale
+        dotLineWidth *= scale
+        lineWidth *= scale
+        ExtensionLength *= scale
+        angleTextDistance *= scale
+        arcRadius *= scale
+        arcLineWidth *= scale
+
+        scaleTextLayer(scale: scale)
     }
 
     
@@ -369,15 +397,23 @@ class AngleTool {
 
     fileprivate func initTextLayer() {
         let fontName: CFString = "HelveticaNeue" as CFString
-        textLayer.frame.size = CGSize(width: 60, height: 20)
         textLayer.font = CTFontCreateWithName(fontName, 8, nil)
-        textLayer.fontSize = 16
         textLayer.opacity = 0.6
         
         textLayer.foregroundColor = UIColor.black.cgColor
         textLayer.backgroundColor = UIColor.white.cgColor
         textLayer.alignmentMode = kCAAlignmentCenter
         textLayer.contentsScale = UIScreen.main.scale
+        
+        scaleTextLayer(scale: 1.0)
+    }
+    
+    fileprivate func scaleTextLayer(scale: CGFloat) {
+        fontFrameSize = CGSize(width: fontFrameSize.width * scale, height: fontFrameSize.height * scale)
+        angleFontSize *= scale
+
+        textLayer.frame.size = fontFrameSize
+        textLayer.fontSize = angleFontSize
     }
     
     fileprivate func drawAngleArc() {

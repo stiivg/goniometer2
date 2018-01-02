@@ -11,7 +11,7 @@ import CoreData
 
 class MeasureAngleViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate {
 
-    var joints = BodyJoints()
+//    var joints = BodyJoints()
     
     //MARK: Properties
     var measurement: NSManagedObject?
@@ -40,13 +40,13 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     //Scrollview bounds are not set in viewDidLoad need to wait for layout complete
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        imageWidthConstraint.constant = scrollView.bounds.width
-        imageHeightConstraint.constant = scrollView.bounds.height
+        let imageWidth = scrollView.bounds.width
+        let imageHeight = scrollView.bounds.height
+        imageWidthConstraint.constant = imageWidth
+        imageHeightConstraint.constant = imageHeight
 
         //make the image view fill the scroll view 414 628
-        var zeroOriginScrollBounds = scrollView.bounds
-        zeroOriginScrollBounds.origin.x = 0
-        zeroOriginScrollBounds.origin.y = 0
+        let zeroOriginScrollBounds = CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight)
 
         imageView.bounds = zeroOriginScrollBounds
         imageView.frame = zeroOriginScrollBounds
@@ -55,7 +55,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         // Do any additional setup after loading the view, typically from a nib.
         imaging.setMeasurementObj(measurementObj: measurement!)
         
-        //Enable touches near the measuring dota
+        //Used to detect touches near the measuring dots
         scrollView.setAngleTool(theAngleTool: angleTool)
         
         //display the full resolution image
@@ -124,24 +124,20 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         angleTool.saveLocation()
     }
     
-   
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        updateMinZoomScaleForSize(view.bounds.size)
-//    }
-    
+
     //Limit zoom out to Aspect Fit
     fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
         let widthScale = size.width / imageView.bounds.width
         let heightScale = size.height / imageView.bounds.height
         let minScale = min(widthScale, heightScale)
 
-        let sbounds = scrollView.bounds
-        let iBounds = imageView.bounds
+//        print(scrollView.bounds)
+//        print(imageView.bounds)
+//        print(minScale)
 
         scrollView.minimumZoomScale = minScale
         //Default to the full image in view
-//        scrollView.zoomScale = minScale
+        scrollView.zoomScale = minScale
     }
 
     
