@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Photos
 
 class MeasureAngleViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate {
 
@@ -112,6 +113,22 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         imageView.contentMode = .scaleAspectFit
         imageView.image = chosenImage
         dismiss(animated:true, completion: nil)
+        
+        //clear the link to fullRes image
+        //TODO May need to update the fullRes data to this new image
+        measurement?.setValue(nil, forKey: "fullRes")
+        
+        if let assertURL = info[UIImagePickerControllerReferenceURL] as? NSURL {
+            let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assertURL as URL], options: nil)
+            if let asset = fetchResult.firstObject { //PHUnauthorizedFetchResult in simulator
+                // Here is the date when your image was taken
+                print(asset.creationDate)
+                let photoDate = asset.creationDate
+                measurement?.setValue(photoDate, forKey: "date")
+
+            }
+        }
+        
     }
     
     //Save last edit to image
