@@ -121,8 +121,6 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         if let assertURL = info[UIImagePickerControllerReferenceURL] as? NSURL {
             let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assertURL as URL], options: nil)
             if let asset = fetchResult.firstObject { //PHUnauthorizedFetchResult in simulator
-                // Here is the date when your image was taken
-                print(asset.creationDate)
                 let photoDate = asset.creationDate
                 measurement?.setValue(photoDate, forKey: "date")
 
@@ -133,9 +131,6 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     //Save last edit to image
     func completeEdit() {
-        let sbounds = scrollView.bounds
-        let iBounds = imageView.bounds
-        
         imaging.prepareImageForSaving(imageView: imageView)
         measurement?.setValue(angleTool.measuredAngle, forKey: "angle")
         angleTool.saveLocation()

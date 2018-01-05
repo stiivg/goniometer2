@@ -12,8 +12,8 @@ import CoreData
 class MeasurementTableViewController: UITableViewController {
 
     // MARK: - Properties
-    var measurements: [NSManagedObject] = []
-    
+    var allMeasurements = [NSManagedObject]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,25 +27,8 @@ class MeasurementTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //1
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        //2
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "Measurement")
-        
-        //3
-        do {
-            measurements = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
+        allMeasurements = MeasurementsAPI.shared.getMeasurements()
+
         
         //TEMP to clear core data
 //        clearCoreDate()
@@ -58,112 +41,27 @@ class MeasurementTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func clearCoreDate() {
-        clearAllFullRes()
-        clearAllMeasurements()
-    }
-    
-    func clearAllFullRes() {
-        var fullResList: [NSManagedObject] = []
-
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FullRes")
-
-        do {
-            fullResList = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-        for bas: AnyObject in fullResList
-        {
-            managedContext.delete(bas as! NSManagedObject)
-        }
-        
-        fullResList.removeAll(keepingCapacity: false)
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-
-    }
-    
-    func clearAllMeasurements() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Measurement")
-        
-        do {
-            measurements = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-        for bas: AnyObject in measurements
-        {
-            managedContext.delete(bas as! NSManagedObject)
-        }
-        
-        measurements.removeAll(keepingCapacity: false)
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-        
-    }
-    
     // MARK: - IBActions
 
     @IBAction func cancelToMeasurementsViewController(_ segue: UIStoryboardSegue) {
         // update the tableView
         self.tableView.reloadData()
+        //TODO scroll to the current measurement in the collection
     }
     
     @IBAction func cancelMeasurementEdit(_ segue: UIStoryboardSegue) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext =  appDelegate.persistentContainer.viewContext
-        managedContext.rollback() // Undo any edits
+        MeasurementsAPI.shared.cancelMeasurementEdit()
     }
     
     // Return from creating new measurement
     @IBAction func saveMeasurementEdit(_ segue: UIStoryboardSegue) {
         //Notify the edit view to complete all edits
-        let addMeasurementViewController = segue.source as? AddMeasurementViewController
-        addMeasurementViewController?.completeEdit()
+        let addMeasurementViewController = segue.source as! AddMeasurementViewController
+        addMeasurementViewController.completeEdit()
         
-        guard let measurementDetailsViewController = segue.source as? AddMeasurementViewController,
-            let measurement = measurementDetailsViewController.measurement else {
-                return
-        }
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =  appDelegate.persistentContainer.viewContext
-        
-        do {
-            try managedContext.save()
-            measurements.append(measurement)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-        
+        let measurement = addMeasurementViewController.measurement!
+         
+        MeasurementsAPI.shared.addMeasurement(measurement: measurement)
         
          // update the tableView
         self.tableView.reloadData()
@@ -175,14 +73,14 @@ class MeasurementTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return measurements.count
+        return allMeasurements.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MeasurementCell", for: indexPath) as! MeasurementCell
         
-        if measurements.count > 0 {
-            let measurement = measurements[indexPath.row]
+        if allMeasurements.count > 0 {
+            let measurement = allMeasurements[indexPath.row]
             cell.measurement = measurement
         }
         return cell
@@ -235,26 +133,17 @@ class MeasurementTableViewController: UITableViewController {
             let nav = segue.destination as! UINavigationController
             let addMeasurementViewController = nav.topViewController as? AddMeasurementViewController
             
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                    return
-            }
-            
-            //Create a new measurement object
-            let managedContext = appDelegate.persistentContainer.viewContext
-            let entity = NSEntityDescription.entity(forEntityName: "Measurement", in: managedContext)!
-            let measurement = NSManagedObject(entity: entity, insertInto: managedContext)
-            
+            let newMeasurement = MeasurementsAPI.shared.newMeasurement()
             // Pass a new object to the addMeasurement view controller.
-            addMeasurementViewController?.measurement = measurement
+            addMeasurementViewController?.measurement = newMeasurement
         }
         
         if segue.identifier == "CellToSingleMeasurement" {
-            let nav = segue.destination as! UINavigationController
-            let singleViewController = nav.topViewController as? SingleMeasurementViewController
+            let indexPath = self.tableView.indexPathForSelectedRow
             
-            let mCell = sender as? MeasurementCell
-            // Pass the selected object to the new view controller.
-            singleViewController?.measurement = mCell?.measurement
+            let nav = segue.destination as! UINavigationController
+            let mCollectionView = nav.topViewController as! MeasurementCollectionViewController
+            mCollectionView.displayIndex = indexPath!
         }
     }
 

@@ -15,6 +15,10 @@
 		645C758D1FD1DAA800053C4F /* Goniometer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 645C758B1FD1DAA800053C4F /* Goniometer.xcdatamodeld */; };
 		645C758F1FD5AE8300053C4F /* SingleMeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645C758E1FD5AE8300053C4F /* SingleMeasurementViewController.swift */; };
 		64613C001FC65CDE00362CBD /* AddMeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64613BFF1FC65CDE00362CBD /* AddMeasurementViewController.swift */; };
+		64A01D121FFEA162007A6C58 /* MeasurementCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A01D111FFEA162007A6C58 /* MeasurementCollectionViewController.swift */; };
+		64A01D141FFEA469007A6C58 /* MeasurementCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A01D131FFEA469007A6C58 /* MeasurementCollectionCell.swift */; };
+		64A01D161FFEF6CD007A6C58 /* Measurements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A01D151FFEF6CD007A6C58 /* Measurements.swift */; };
+		64A01D181FFEFB45007A6C58 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A01D171FFEFB45007A6C58 /* PersistencyManager.swift */; };
 		64A4322C1FBD141A005D2FC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A4322B1FBD141A005D2FC2 /* AppDelegate.swift */; };
 		64A4322E1FBD141A005D2FC2 /* MeasureAngleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A4322D1FBD141A005D2FC2 /* MeasureAngleViewController.swift */; };
 		64A432311FBD141A005D2FC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64A4322F1FBD141A005D2FC2 /* Main.storyboard */; };
@@ -54,6 +58,10 @@
 		645C758C1FD1DAA800053C4F /* Goniometer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Goniometer.xcdatamodel; sourceTree = "<group>"; };
 		645C758E1FD5AE8300053C4F /* SingleMeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMeasurementViewController.swift; sourceTree = "<group>"; };
 		64613BFF1FC65CDE00362CBD /* AddMeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeasurementViewController.swift; sourceTree = "<group>"; };
+		64A01D111FFEA162007A6C58 /* MeasurementCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementCollectionViewController.swift; sourceTree = "<group>"; };
+		64A01D131FFEA469007A6C58 /* MeasurementCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementCollectionCell.swift; sourceTree = "<group>"; };
+		64A01D151FFEF6CD007A6C58 /* Measurements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurements.swift; sourceTree = "<group>"; };
+		64A01D171FFEFB45007A6C58 /* PersistencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
 		64A432281FBD141A005D2FC2 /* goniometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goniometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64A4322B1FBD141A005D2FC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64A4322D1FBD141A005D2FC2 /* MeasureAngleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureAngleViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +112,8 @@
 				645C758B1FD1DAA800053C4F /* Goniometer.xcdatamodeld */,
 				64161F141FDA107800DC25CF /* Imaging.swift */,
 				64B58ADF1FF0046F00B64631 /* BodyJoints.swift */,
+				64A01D151FFEF6CD007A6C58 /* Measurements.swift */,
+				64A01D171FFEFB45007A6C58 /* PersistencyManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -138,6 +148,7 @@
 				64613BFF1FC65CDE00362CBD /* AddMeasurementViewController.swift */,
 				645C75661FD0814F00053C4F /* Model */,
 				6426B9CA1FC602C800D81163 /* MeasurementCell.swift */,
+				64A01D131FFEA469007A6C58 /* MeasurementCollectionCell.swift */,
 				64161F161FDB09A700DC25CF /* GestureScrollView.swift */,
 				64161F121FD9A22800DC25CF /* AngleTool.swift */,
 				64E626AF1FCDEB4F0068879F /* DirectionPickerViewController.swift */,
@@ -145,6 +156,7 @@
 				645C758E1FD5AE8300053C4F /* SingleMeasurementViewController.swift */,
 				64A432321FBD141A005D2FC2 /* Assets.xcassets */,
 				64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */,
+				64A01D111FFEA162007A6C58 /* MeasurementCollectionViewController.swift */,
 				64A432371FBD141A005D2FC2 /* Info.plist */,
 				6426B9C21FC5F8EC00D81163 /* MeasurementTableViewController.swift */,
 			);
@@ -310,11 +322,15 @@
 				6426B9C31FC5F8EC00D81163 /* MeasurementTableViewController.swift in Sources */,
 				6426B9CB1FC602C800D81163 /* MeasurementCell.swift in Sources */,
 				64161F151FDA107800DC25CF /* Imaging.swift in Sources */,
+				64A01D161FFEF6CD007A6C58 /* Measurements.swift in Sources */,
+				64A01D141FFEA469007A6C58 /* MeasurementCollectionCell.swift in Sources */,
 				64E626AE1FCC75A20068879F /* JointPickerViewController.swift in Sources */,
 				64613C001FC65CDE00362CBD /* AddMeasurementViewController.swift in Sources */,
 				645C758D1FD1DAA800053C4F /* Goniometer.xcdatamodeld in Sources */,
 				64161F131FD9A22800DC25CF /* AngleTool.swift in Sources */,
 				64A4322C1FBD141A005D2FC2 /* AppDelegate.swift in Sources */,
+				64A01D181FFEFB45007A6C58 /* PersistencyManager.swift in Sources */,
+				64A01D121FFEA162007A6C58 /* MeasurementCollectionViewController.swift in Sources */,
 				645C758F1FD5AE8300053C4F /* SingleMeasurementViewController.swift in Sources */,
 				64161F171FDB09A700DC25CF /* GestureScrollView.swift in Sources */,
 			);
