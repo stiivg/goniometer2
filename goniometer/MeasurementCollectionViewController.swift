@@ -46,15 +46,19 @@ class MeasurementCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
+        if segue.identifier == "CollectionToAngleMeasure" {
+            let nav = segue.destination as! UINavigationController
+            let measureAngleViewController = nav.topViewController as? MeasureAngleViewController
+            let visibleCells = collectionView?.visibleCells as! [MeasurementCollectionCell]
+            let measurement = visibleCells[0].measurement
+            // Pass the selected object to the new view controller.
+            measureAngleViewController?.measurement = measurement
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
     
@@ -85,7 +89,25 @@ class MeasurementCollectionViewController: UICollectionViewController {
         self.collectionView!.scrollToItem(at:index, at: .right, animated: false)
     }
     
-//    func collectionView(_ collectionView: UICollectionView,
+    @IBAction func cancelMeasurementEdit(_ segue: UIStoryboardSegue) {
+        MeasurementsAPI.shared.cancelMeasurementEdit()
+    }
+    
+    // Return from creating new measurement
+    @IBAction func saveMeasurementEdit(_ segue: UIStoryboardSegue) {
+        //Notify the edit view to complete all edits
+        let measureAngleViewController = segue.source as! MeasureAngleViewController
+        measureAngleViewController.completeEdit()
+        
+        let measurement = measureAngleViewController.measurement!
+        
+        MeasurementsAPI.shared.addMeasurement(measurement: measurement)
+        
+        // update the tableView
+        self.collectionView!.reloadData()
+    }
+    
+    //    func collectionView(_ collectionView: UICollectionView,
 //                                 layout collectionViewLayout: UICollectionViewLayout,
 //                                 sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: view.frame.width, height: view.frame.height)

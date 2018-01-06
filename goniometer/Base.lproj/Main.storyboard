@@ -128,13 +128,17 @@
                                 <segue destination="TF4-8U-wdb" kind="unwind" unwindAction="cancelToMeasurementsViewController:" id="7mU-wi-PW0"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="8qV-YU-0XE"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="8qV-YU-0XE">
+                            <connections>
+                                <segue destination="Kn6-kf-16v" kind="presentation" identifier="CollectionToAngleMeasure" id="I2D-vl-wmx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hex-D1-wO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="TF4-8U-wdb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-150" y="917.5"/>
+            <point key="canvasLocation" x="128" y="159"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0hi-1E-88x">
@@ -150,7 +154,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySP-AM-yOH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1287" y="929"/>
+            <point key="canvasLocation" x="128" y="1155"/>
         </scene>
         <!--Measure Angle View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -218,12 +222,14 @@
                     <navigationItem key="navigationItem" title="Measurement" leftItemsSupplementBackButton="YES" id="AJ7-s2-Afn">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JKJ-aK-vCV">
                             <connections>
-                                <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="cancelNewImageWithSegue:" id="MGI-gp-vyc"/>
+                                <action selector="cancelMeasurementEdit:" destination="6Nm-aJ-mXO" id="8JG-Jm-hHa"/>
+                                <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="cancelMeasurementEdit:" id="XSv-Ds-esV"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Q6b-Xq-cTs">
                             <connections>
-                                <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="saveNewImageWithSegue:" id="e6b-KL-brT"/>
+                                <action selector="saveMeasurementEdit:" destination="6Nm-aJ-mXO" id="b59-cj-Wlo"/>
+                                <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="saveMeasurementEdit:" id="Gqu-LT-3R2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -243,7 +249,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2218.840579710145" y="928.53260869565224"/>
+            <point key="canvasLocation" x="1198" y="1155"/>
         </scene>
         <!--Add Measurement-->
         <scene sceneID="NZj-U0-s18">
@@ -382,9 +388,6 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="HqX-SW-5e6" secondAttribute="trailing" id="uNa-Vz-uVF"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Kn6-kf-16v" kind="presentation" identifier="AddToAngleMeasure" id="dL4-B6-PnK"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -419,7 +422,7 @@
                 <exit id="LCm-7a-oL4" userLabel="Exit" sceneMemberID="exit"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECl-I0-dhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="496.875" y="173.75"/>
+            <point key="canvasLocation" x="356" y="-700"/>
         </scene>
         <!--Choose Joint-->
         <scene sceneID="fKL-P6-Kqg">
@@ -460,7 +463,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KS7-M5-sHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="f7q-6v-x27" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1287" y="-532"/>
+            <point key="canvasLocation" x="1286" y="-845"/>
         </scene>
         <!--Choose Motion-->
         <scene sceneID="FTR-wD-5UU">
@@ -501,7 +504,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KgX-oE-jak" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="jQK-CJ-cA3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1287" y="175"/>
+            <point key="canvasLocation" x="1286" y="-115"/>
         </scene>
         <!--Measurements View Controller-->
         <scene sceneID="iMu-KV-AtS">
@@ -599,7 +602,7 @@
                     <navigationItem key="navigationItem" title="Measurements" id="TpC-TP-4ZC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HIm-Zk-f28">
                             <connections>
-                                <segue destination="2Me-CJ-evZ" kind="presentation" identifier="ListToAddMeasurement" id="mds-mj-B3b"/>
+                                <segue destination="Kn6-kf-16v" kind="presentation" identifier="ListToAddMeasurement" id="cKH-wP-YSi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -631,7 +634,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rJz-nF-2pX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-270" y="174"/>
+            <point key="canvasLocation" x="-497" y="-699"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lqJ-IA-O5o">
@@ -647,7 +650,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIe-hh-aal" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1853" y="905"/>
+            <point key="canvasLocation" x="-842" y="159"/>
         </scene>
         <!--Measurement-->
         <scene sceneID="AMN-M5-zhT">
@@ -739,13 +742,13 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAH-Xg-eGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="D0d-tr-5KK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-1200" y="1609"/>
+            <point key="canvasLocation" x="-1453" y="-700"/>
         </scene>
     </scenes>
     <resources>
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sV7-zC-Uan"/>
+        <segue reference="cKH-wP-YSi"/>
     </inferredMetricsTieBreakers>
 </document>

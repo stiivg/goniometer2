@@ -162,28 +162,7 @@ class AddMeasurementViewController: UITableViewController {
 }
 // MARK: - IBActions
 extension AddMeasurementViewController {
-    //MARK Actions
-    @IBAction func cancelNewImage(segue: UIStoryboardSegue) {
-   }
-    
-    @IBAction func saveNewImage(segue: UIStoryboardSegue) {
-        //Notify the measure angle view to complete all edits
-        let measureAngleViewController = segue.source as? MeasureAngleViewController
-        measureAngleViewController?.completeEdit() //Saves to moc
 
-//        guard let appDelegate =
-//            UIApplication.shared.delegate as? AppDelegate else {
-//                return
-//        }
-//
-//        let managedContext =  appDelegate.persistentContainer.viewContext
-//
-//        do {
-//            try managedContext.save()
-//        } catch let error as NSError {
-//            print("Could not save. \(error), \(error.userInfo)")
-//        }
-    }
 
     @IBAction func sideControl(_ sender: UISegmentedControl) {
         var sideText = "Right"

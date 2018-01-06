@@ -56,10 +56,10 @@ class MeasurementTableViewController: UITableViewController {
     // Return from creating new measurement
     @IBAction func saveMeasurementEdit(_ segue: UIStoryboardSegue) {
         //Notify the edit view to complete all edits
-        let addMeasurementViewController = segue.source as! AddMeasurementViewController
-        addMeasurementViewController.completeEdit()
+        let measureAngleViewController = segue.source as! MeasureAngleViewController
+        measureAngleViewController.completeEdit()
         
-        let measurement = addMeasurementViewController.measurement!
+        let measurement = measureAngleViewController.measurement!
          
         MeasurementsAPI.shared.addMeasurement(measurement: measurement)
         
@@ -122,6 +122,7 @@ class MeasurementTableViewController: UITableViewController {
         return true
     }
     */
+    
 
     // MARK: - Navigation
 
@@ -131,11 +132,11 @@ class MeasurementTableViewController: UITableViewController {
         
         if segue.identifier == "ListToAddMeasurement" {
             let nav = segue.destination as! UINavigationController
-            let addMeasurementViewController = nav.topViewController as? AddMeasurementViewController
+            let measureAngleViewController = nav.topViewController as! MeasureAngleViewController
             
             let newMeasurement = MeasurementsAPI.shared.newMeasurement()
             // Pass a new object to the addMeasurement view controller.
-            addMeasurementViewController?.measurement = newMeasurement
+            measureAngleViewController.measurement = newMeasurement
         }
         
         if segue.identifier == "CellToSingleMeasurement" {
