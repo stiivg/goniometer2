@@ -59,9 +59,7 @@ class MeasurementTableViewController: UITableViewController {
         let measureAngleViewController = segue.source as! MeasureAngleViewController
         measureAngleViewController.completeEdit()
         
-        let measurement = measureAngleViewController.measurement!
-         
-        MeasurementsAPI.shared.addMeasurement(measurement: measurement)
+        MeasurementsAPI.shared.saveMeasurement()
         
          // update the tableView
         self.tableView.reloadData()
@@ -88,26 +86,27 @@ class MeasurementTableViewController: UITableViewController {
  
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
+            let measurement = allMeasurements[indexPath.row]
+            MeasurementsAPI.shared.deleteMeasurement(measurement: measurement)
+            allMeasurements = MeasurementsAPI.shared.getMeasurements()
 
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+
+
+    /*
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {

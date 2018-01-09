@@ -93,15 +93,13 @@ class MeasurementCollectionViewController: UICollectionViewController {
         MeasurementsAPI.shared.cancelMeasurementEdit()
     }
     
-    // Return from creating new measurement
+    // Return from editing existing measurement
     @IBAction func saveMeasurementEdit(_ segue: UIStoryboardSegue) {
         //Notify the edit view to complete all edits
         let measureAngleViewController = segue.source as! MeasureAngleViewController
         measureAngleViewController.completeEdit()
         
-        let measurement = measureAngleViewController.measurement!
-        
-        MeasurementsAPI.shared.addMeasurement(measurement: measurement)
+        MeasurementsAPI.shared.saveMeasurement()
         
         // update the tableView
         self.collectionView!.reloadData()

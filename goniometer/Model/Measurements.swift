@@ -12,30 +12,24 @@ import CoreData
 
 //A singleton class to contain the measurement data
 final class MeasurementsAPI {
-    
-    private var measurements = [NSManagedObject]()
+    private let moc: NSManagedObjectContext
 
     static let shared =  MeasurementsAPI()
     
     private init() {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Measurement")
-        
-        do {
-            measurements = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        moc = appDelegate.persistentContainer.viewContext
     }
     
     func getMeasurements() -> [NSManagedObject] {
+        var measurements = [NSManagedObject]()
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Measurement")
+        
+        do {
+            measurements = try moc.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
         return measurements
     }
     
@@ -50,32 +44,31 @@ final class MeasurementsAPI {
         return measurement
     }
     
-    func addMeasurement(measurement: NSManagedObject) {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext =  appDelegate.persistentContainer.viewContext
-        
+    func saveMeasurement() {
         do {
-            try managedContext.save()
-            measurements.append(measurement)
+            try moc.save()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
     }
     
-    func deleteMeasurement(at index: Int) {
+    //Note not saved so can be rolled back
+    func deleteFullRes(measurement: NSManagedObject) {
+        let fullResEntity = measurement.value(forKey: "fullRes") as? NSManagedObject
+        
+        if fullResEntity != nil {
+            moc.delete(fullResEntity!)
+        }
+    }
+    
+    func deleteMeasurement(measurement: NSManagedObject) {
+        self.deleteFullRes(measurement: measurement)
+        moc.delete(measurement)
+        self.saveMeasurement()
     }
     
     func cancelMeasurementEdit() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext =  appDelegate.persistentContainer.viewContext
-        managedContext.rollback() // Undo any edits
+        moc.rollback() // Undo any edits
     }
     
     fileprivate func clearCoreDate() {
@@ -86,60 +79,36 @@ final class MeasurementsAPI {
     fileprivate func clearAllFullRes() {
         var fullResList: [NSManagedObject] = []
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FullRes")
         
         do {
-            fullResList = try managedContext.fetch(fetchRequest)
+            fullResList = try moc.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         
         for bas: AnyObject in fullResList
         {
-            managedContext.delete(bas as! NSManagedObject)
+            moc.delete(bas as! NSManagedObject)
         }
         
         fullResList.removeAll(keepingCapacity: false)
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+        
+        self.saveMeasurement()
         
     }
     
     fileprivate func clearAllMeasurements() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Measurement")
-        
-        do {
-            measurements = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
+        var measurements = self.getMeasurements()
+
         for bas: AnyObject in measurements
         {
-            managedContext.delete(bas as! NSManagedObject)
+            moc.delete(bas as! NSManagedObject)
         }
         
         measurements.removeAll(keepingCapacity: false)
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
+        
+        self.saveMeasurement()
         
     }
     

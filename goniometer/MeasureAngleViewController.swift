@@ -113,10 +113,12 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         imageView.contentMode = .scaleAspectFit
         imageView.image = chosenImage
         dismiss(animated:true, completion: nil)
-        
+
+        MeasurementsAPI.shared.deleteFullRes(measurement: measurement!)
+
         //clear the link to fullRes image
-        //TODO May need to update the fullRes data to this new image
         measurement?.setValue(nil, forKey: "fullRes")
+        
         
         if let assertURL = info[UIImagePickerControllerReferenceURL] as? NSURL {
             let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assertURL as URL], options: nil)
