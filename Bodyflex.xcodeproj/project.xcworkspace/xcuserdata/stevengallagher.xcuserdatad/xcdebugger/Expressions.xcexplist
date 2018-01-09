@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "MeasureAngleViewController.imagePickerController(_:didFinishPickingMediaWithInfo:):MeasureAngleViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "imageView.image">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementTableViewController.prepare(for:sender:):MeasurementTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MeasureAngleViewController.viewDidLayoutSubviews():MeasureAngleViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "imageView.bounds">
+            </PersistentString>
+            <PersistentString
+               value = "imageView.frame">
+            </PersistentString>
+            <PersistentString
+               value = "imageView.image">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementCollectionViewController.collectionView(_:cellForItemAt:):MeasurementCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.bounds">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AngleTool.restoreLocation():AngleTool.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dotPositions[0]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementCollectionViewController.scrollToIndex(index:):MeasurementCollectionViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AngleTool.setImageView(imageView:):AngleTool.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementCollectionViewController.collectionView(_:layout:sizeForItemAt:):MeasurementCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView.bounds">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementCollectionViewController.prepare(for:sender:):MeasurementCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView?.visibleCells">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BodyJoints.jointMotions():BodyJoints.swift">
+      </ContextState>
+      <ContextState
+         contextName = "BodyJoints.saveJoint():BodyJoints.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
