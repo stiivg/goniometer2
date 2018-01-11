@@ -12,7 +12,7 @@ import CoreData
 class MeasurementTableViewController: UITableViewController {
 
     // MARK: - Properties
-    var allMeasurements = [NSManagedObject]()
+    var allMeasurements = MeasurementsAPI.shared.getMeasurements()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +26,7 @@ class MeasurementTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        allMeasurements = MeasurementsAPI.shared.getMeasurements()
-
-        
+                
         //TEMP to clear core data
 //        clearCoreDate()
         
@@ -60,7 +57,8 @@ class MeasurementTableViewController: UITableViewController {
         measureAngleViewController.completeEdit()
         
         MeasurementsAPI.shared.saveMeasurement()
-        
+        allMeasurements = MeasurementsAPI.shared.getMeasurements()
+
          // update the tableView
         self.tableView.reloadData()
     }
@@ -135,7 +133,7 @@ class MeasurementTableViewController: UITableViewController {
             
             let newMeasurement = MeasurementsAPI.shared.newMeasurement()
             // Pass a new object to the addMeasurement view controller.
-            measureAngleViewController.measurement = newMeasurement
+            measureAngleViewController.setMeasurement(newMeasurement: newMeasurement)
         }
         
         if segue.identifier == "CellToSingleMeasurement" {

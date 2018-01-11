@@ -1,5 +1,5 @@
 //
-//  MeasurementDetailsViewController.swift
+//  SelectJointViewController.swift
 //  bodyflex
 //
 //  Created by Steven Gallagher on 11/22/17.
@@ -9,11 +9,11 @@
 import UIKit
 import CoreData
 
-class AddMeasurementViewController: UITableViewController {
+class SelectJointViewController: UITableViewController {
 
    
     // MARK: - Properties
-    var measurement: NSManagedObject?
+    var measurement = Measurement()
     
     var side: String = "Right" {
         didSet {
@@ -24,13 +24,10 @@ class AddMeasurementViewController: UITableViewController {
             sideControl.selectedSegmentIndex = index
         }
     }
-
-    @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var jointLabel: UILabel!
     @IBOutlet weak var motionLabel: UILabel!
     @IBOutlet weak var sideControl: UISegmentedControl!
-    @IBOutlet weak var imageView: UIImageView!
     
 
     // MARK: - Navigation
@@ -40,38 +37,24 @@ class AddMeasurementViewController: UITableViewController {
             let measureAngleViewController = nav.topViewController as? MeasureAngleViewController
             
             // Pass the selected object to the new view controller.
-            measureAngleViewController?.measurement = measurement
+            measureAngleViewController?.setMeasurement(newMeasurement: measurement)
         }
         if segue.identifier == "PickJoint",
             let jointPickerViewController = segue.destination as? JointPickerViewController {
-            jointPickerViewController.selectedJoint = measurement?.value(forKeyPath: "joint") as? String
+            jointPickerViewController.selectedJoint = measurement.joint
         }
         if segue.identifier == "PickMotion",
             let motionPickerViewController = segue.destination as? MotionPickerViewController {
-            motionPickerViewController.selectedMotion = measurement?.value(forKeyPath: "motion") as? String
+            motionPickerViewController.selectedMotion = measurement.motion
         }
         //Save edit now so update on return has edited value
         completeEdit()
     }
     
     func updateValues() {
-        guard let measurement = measurement else { return }
-        
-        let name = measurement.value(forKeyPath: "name") as? String
-        nameTextField.text = name
-        jointLabel.text = measurement.value(forKeyPath: "joint") as? String
-        side = (measurement.value(forKeyPath: "side") as? String)!
-        motionLabel.text = measurement.value(forKeyPath: "motion") as? String
-        
-        //display the image
-        if let imageData = measurement.value(forKey: "thumbnail") {
-            let testImage = UIImage(data: imageData as! Data)
-            imageView.image = testImage
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        let dateObj = measurement.value(forKeyPath: "date") as? Date
+        jointLabel.text = measurement.joint
+        side = measurement.side!
+        motionLabel.text = measurement.motion
     }
     
     
@@ -92,8 +75,6 @@ class AddMeasurementViewController: UITableViewController {
     
     //Save last edit to name field
     func completeEdit() {
-        let newName = nameTextField.text
-        measurement?.setValue(newName, forKey: "name")
     }
 
     override func didReceiveMemoryWarning() {
@@ -161,7 +142,7 @@ class AddMeasurementViewController: UITableViewController {
     
 }
 // MARK: - IBActions
-extension AddMeasurementViewController {
+extension SelectJointViewController {
 
 
     @IBAction func sideControl(_ sender: UISegmentedControl) {
@@ -169,29 +150,20 @@ extension AddMeasurementViewController {
         if sender.selectedSegmentIndex == 0 {
             sideText = "Left"
         }
-        measurement?.setValue(sideText, forKey: "side")
+        measurement.side = sideText
     }
 
     @IBAction func unwindWithSelectedJoint(segue: UIStoryboardSegue) {
         if let jointPickerViewController = segue.source as? JointPickerViewController,
             let selectedJoint = jointPickerViewController.selectedJoint {
-            measurement?.setValue(selectedJoint, forKey: "joint")
+            measurement.joint = selectedJoint
         }
     }
     @IBAction func unwindWithSelectedDirection(segue: UIStoryboardSegue) {
         if let motionPickerViewController = segue.source as? MotionPickerViewController,
             let selectedMotion = motionPickerViewController.selectedMotion {
-            measurement?.setValue(selectedMotion, forKey: "motion")
+            measurement.motion = selectedMotion
         }
     }
 }
 
-// MARK: - UITableViewDelegate
-extension AddMeasurementViewController {
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            nameTextField.becomeFirstResponder()
-        }
-    }
-}

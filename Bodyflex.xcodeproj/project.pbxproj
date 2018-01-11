@@ -13,8 +13,7 @@
 		6426B9C31FC5F8EC00D81163 /* MeasurementTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426B9C21FC5F8EC00D81163 /* MeasurementTableViewController.swift */; };
 		6426B9CB1FC602C800D81163 /* MeasurementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426B9CA1FC602C800D81163 /* MeasurementCell.swift */; };
 		645C758D1FD1DAA800053C4F /* Bodyflex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 645C758B1FD1DAA800053C4F /* Bodyflex.xcdatamodeld */; };
-		645C758F1FD5AE8300053C4F /* SingleMeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645C758E1FD5AE8300053C4F /* SingleMeasurementViewController.swift */; };
-		64613C001FC65CDE00362CBD /* AddMeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64613BFF1FC65CDE00362CBD /* AddMeasurementViewController.swift */; };
+		64613C001FC65CDE00362CBD /* SelectJointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64613BFF1FC65CDE00362CBD /* SelectJointViewController.swift */; };
 		64A01D121FFEA162007A6C58 /* MeasurementCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A01D111FFEA162007A6C58 /* MeasurementCollectionViewController.swift */; };
 		64A01D141FFEA469007A6C58 /* MeasurementCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A01D131FFEA469007A6C58 /* MeasurementCollectionCell.swift */; };
 		64A01D161FFEF6CD007A6C58 /* Measurements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A01D151FFEF6CD007A6C58 /* Measurements.swift */; };
@@ -56,8 +55,7 @@
 		6426B9C21FC5F8EC00D81163 /* MeasurementTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementTableViewController.swift; sourceTree = "<group>"; };
 		6426B9CA1FC602C800D81163 /* MeasurementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementCell.swift; sourceTree = "<group>"; };
 		645C758C1FD1DAA800053C4F /* Bodyflex.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bodyflex.xcdatamodel; sourceTree = "<group>"; };
-		645C758E1FD5AE8300053C4F /* SingleMeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMeasurementViewController.swift; sourceTree = "<group>"; };
-		64613BFF1FC65CDE00362CBD /* AddMeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeasurementViewController.swift; sourceTree = "<group>"; };
+		64613BFF1FC65CDE00362CBD /* SelectJointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectJointViewController.swift; sourceTree = "<group>"; };
 		64A01D111FFEA162007A6C58 /* MeasurementCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementCollectionViewController.swift; sourceTree = "<group>"; };
 		64A01D131FFEA469007A6C58 /* MeasurementCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementCollectionCell.swift; sourceTree = "<group>"; };
 		64A01D151FFEF6CD007A6C58 /* Measurements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurements.swift; sourceTree = "<group>"; };
@@ -145,7 +143,7 @@
 				64A4322D1FBD141A005D2FC2 /* MeasureAngleViewController.swift */,
 				64A432341FBD141A005D2FC2 /* LaunchScreen.storyboard */,
 				64A4322F1FBD141A005D2FC2 /* Main.storyboard */,
-				64613BFF1FC65CDE00362CBD /* AddMeasurementViewController.swift */,
+				64613BFF1FC65CDE00362CBD /* SelectJointViewController.swift */,
 				645C75661FD0814F00053C4F /* Model */,
 				6426B9CA1FC602C800D81163 /* MeasurementCell.swift */,
 				64A01D131FFEA469007A6C58 /* MeasurementCollectionCell.swift */,
@@ -153,7 +151,6 @@
 				64161F121FD9A22800DC25CF /* AngleTool.swift */,
 				64E626AF1FCDEB4F0068879F /* DirectionPickerViewController.swift */,
 				64E626AD1FCC75A20068879F /* JointPickerViewController.swift */,
-				645C758E1FD5AE8300053C4F /* SingleMeasurementViewController.swift */,
 				64A432321FBD141A005D2FC2 /* Assets.xcassets */,
 				64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */,
 				64A01D111FFEA162007A6C58 /* MeasurementCollectionViewController.swift */,
@@ -325,13 +322,12 @@
 				64A01D161FFEF6CD007A6C58 /* Measurements.swift in Sources */,
 				64A01D141FFEA469007A6C58 /* MeasurementCollectionCell.swift in Sources */,
 				64E626AE1FCC75A20068879F /* JointPickerViewController.swift in Sources */,
-				64613C001FC65CDE00362CBD /* AddMeasurementViewController.swift in Sources */,
+				64613C001FC65CDE00362CBD /* SelectJointViewController.swift in Sources */,
 				645C758D1FD1DAA800053C4F /* Bodyflex.xcdatamodeld in Sources */,
 				64161F131FD9A22800DC25CF /* AngleTool.swift in Sources */,
 				64A4322C1FBD141A005D2FC2 /* AppDelegate.swift in Sources */,
 				64A01D181FFEFB45007A6C58 /* PersistencyManager.swift in Sources */,
 				64A01D121FFEA162007A6C58 /* MeasurementCollectionViewController.swift in Sources */,
-				645C758F1FD5AE8300053C4F /* SingleMeasurementViewController.swift in Sources */,
 				64161F171FDB09A700DC25CF /* GestureScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

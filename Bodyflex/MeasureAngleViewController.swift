@@ -15,7 +15,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
 //    var joints = BodyJoints()
     
     //MARK: Properties
-    var measurement: NSManagedObject?
+    private var measurement = MeasurementsAPI.shared.newMeasurement()
     var angleTool = AngleTool()
     
     var imaging = Imaging()
@@ -28,17 +28,46 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var scrollView: GestureScrollView!
     @IBOutlet weak var cameraButton: UIButton!
     
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var jointLabel: UITextField!
+    @IBOutlet weak var dateLabel: UITextField!
+    
+    
     @IBAction func handleDotPan(_ gestureRecognizer: UIPanGestureRecognizer) {
         angleTool.doHandleDotPan(gestureRecognizer: gestureRecognizer, view: self.imageView)
     }
     
     var imagePicker = UIImagePickerController()
     
+    func setMeasurement(newMeasurement: Measurement) {
+        MeasurementsAPI.shared.deleteMeasurement(measurement: measurement)
+        self.measurement = newMeasurement
+    }
+
+    func updateValues() {
+        let jointMotion = measurement.jointMotion
+        nameLabel.text = measurement.name
+        let joint = jointMotion?.nameCommon
+        let side = jointMotion?.side
+        let motion = jointMotion?.motionCommon
+        jointLabel.text = side! + " " +  joint! + " " + motion!
+               
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let dateObj = measurement.date
+        dateLabel.text = dateFormatter.string(from: dateObj!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateValues()
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
     }
     
     //Scrollview bounds are not set in viewDidLoad need to wait for layout complete
+    //May be called multiple times if layout changed such as screen rotate
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let imageWidth = scrollView.bounds.width
@@ -52,17 +81,17 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         imageView.bounds = zeroOriginScrollBounds
         imageView.frame = zeroOriginScrollBounds
 
-        angleTool.setMeasurementObj(measurementObj: measurement!)
+        angleTool.setMeasurementObj(measurementObj: measurement)
         // Do any additional setup after loading the view, typically from a nib.
-        imaging.setMeasurementObj(measurementObj: measurement!)
+        imaging.setMeasurementObj(measurementObj: measurement)
         
         //Used to detect touches near the measuring dots
         scrollView.setAngleTool(theAngleTool: angleTool)
         
         //display the full resolution image
-        let fullResEntity = measurement?.value(forKey: "fullRes") as? NSManagedObject
-        if let fullImageData = fullResEntity?.value(forKey: "imageData") {
-            let fullImage = UIImage(data: fullImageData as! Data)
+        let fullResEntity = measurement.fullRes
+        if let fullImageData = fullResEntity?.imageData {
+            let fullImage = UIImage(data: fullImageData)
             imageView.image = fullImage
         }
 
@@ -108,24 +137,36 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         }
     }
     
+    @IBAction func MeasurementTouchDown(_ sender: Any) {
+        //Segue modally to joint editor
+        performSegue(withIdentifier: "measurementToEditor", sender: nil)
+        
+    }
+    
+    @IBAction func cancelSelectJointMotion(_ segue: UIStoryboardSegue) {
+    }
+    
+    // Return from editing joint and motion
+    @IBAction func saveSelectJointMotion(_ segue: UIStoryboardSegue) {
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.contentMode = .scaleAspectFit
         imageView.image = chosenImage
         dismiss(animated:true, completion: nil)
 
-        MeasurementsAPI.shared.deleteFullRes(measurement: measurement!)
+        MeasurementsAPI.shared.deleteFullRes(measurement: measurement)
 
         //clear the link to fullRes image
-        measurement?.setValue(nil, forKey: "fullRes")
+        measurement.fullRes = nil
         
         
         if let assertURL = info[UIImagePickerControllerReferenceURL] as? NSURL {
             let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assertURL as URL], options: nil)
             if let asset = fetchResult.firstObject { //PHUnauthorizedFetchResult in simulator
                 let photoDate = asset.creationDate
-                measurement?.setValue(photoDate, forKey: "date")
-
+                measurement.date = photoDate
             }
         }
         
@@ -134,7 +175,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     //Save last edit to image
     func completeEdit() {
         imaging.prepareImageForSaving(imageView: imageView)
-        measurement?.setValue(angleTool.measuredAngle, forKey: "angle")
+        measurement.angle = Float(angleTool.measuredAngle)
         angleTool.saveLocation()
     }
     
@@ -154,6 +195,16 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         scrollView.zoomScale = minScale
     }
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "measurementToEditor" {
+            let nav = segue.destination as! UINavigationController
+            let selectJointViewController = nav.topViewController as? SelectJointViewController
+            
+            // Pass the selected object to the new view controller.
+            selectJointViewController?.measurement = measurement
+        }
+    }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView

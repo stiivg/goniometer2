@@ -21,25 +21,35 @@ final class MeasurementsAPI {
         moc = appDelegate.persistentContainer.viewContext
     }
     
-    func getMeasurements() -> [NSManagedObject] {
-        var measurements = [NSManagedObject]()
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Measurement")
+    func getMeasurements() -> [Measurement] {
+        var measurements: [Measurement]
         
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Measurement")
+
         do {
-            measurements = try moc.fetch(fetchRequest)
+            measurements = try moc.fetch(fetchRequest) as! [Measurement]
         } catch let error as NSError {
+            let entity = NSEntityDescription.entity(forEntityName: "Measurement", in: moc)!
+            let defaultMeasurement = Measurement.init(entity: entity, insertInto: moc)
+            measurements = [defaultMeasurement] //Should never be used: required to compile
+
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         return measurements
     }
     
-    func newMeasurement() -> NSManagedObject {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
+    func newMeasurement() -> Measurement {
+        
         //Create a new measurement object
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Measurement", in: managedContext)!
-        let measurement = NSManagedObject(entity: entity, insertInto: managedContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Measurement", in: moc)!
+        let measurement = NSManagedObject(entity: entity, insertInto: moc) as! Measurement
+
+        //Create a new jointMotion object
+        let jointMotionEntity = NSEntityDescription.entity(forEntityName: "JointMotion", in: moc)!
+        let jointMotion = NSManagedObject(entity: jointMotionEntity, insertInto: moc) as! JointMotion
+        
+        //set link to jointMotion
+        measurement.jointMotion = jointMotion
 
         return measurement
     }
@@ -49,6 +59,15 @@ final class MeasurementsAPI {
             try moc.save()
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    //Note not saved so can be rolled back
+    func deleteJointMotion(measurement: NSManagedObject) {
+        let jointMotionEntity = measurement.value(forKey: "jointMotion") as? NSManagedObject
+        
+        if jointMotionEntity != nil {
+            moc.delete(jointMotionEntity!)
         }
     }
     
@@ -63,8 +82,8 @@ final class MeasurementsAPI {
     
     func deleteMeasurement(measurement: NSManagedObject) {
         self.deleteFullRes(measurement: measurement)
+        self.deleteJointMotion(measurement: measurement)
         moc.delete(measurement)
-        self.saveMeasurement()
     }
     
     func cancelMeasurementEdit() {

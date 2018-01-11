@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "MeasurementsAPI.cancelMeasurementEdit():Measurements.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "moc.hasChanges()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementCollectionViewController.scrollToIndex(index:):MeasurementCollectionViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "MeasureAngleViewController.imagePickerController(_:didFinishPickingMediaWithInfo:):MeasureAngleViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -28,14 +39,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MeasurementCollectionViewController.collectionView(_:cellForItemAt:):MeasurementCollectionViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "cell.bounds">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "AngleTool.restoreLocation():AngleTool.swift">
          <PersistentStrings>
             <PersistentString
@@ -44,10 +47,35 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MeasurementCollectionViewController.scrollToIndex(index:):MeasurementCollectionViewController.swift">
+         contextName = "AngleTool.setImageView(imageView:):AngleTool.swift">
       </ContextState>
       <ContextState
-         contextName = "AngleTool.setImageView(imageView:):AngleTool.swift">
+         contextName = "MeasurementCollectionViewController.viewWillAppear(_:):MeasurementCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "allMeasurements">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BodyJoints.saveJoint():BodyJoints.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AddMeasurementViewController.prepare(for:sender:):AddMeasurementViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "jointPickerViewController.selectedJoint">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BodyJoints.jointMotions():BodyJoints.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MeasureAngleViewController.setMeasurement(newMeasurement:):MeasureAngleViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementTableViewController.saveMeasurementEdit(_:):MeasurementTableViewController.swift">
       </ContextState>
       <ContextState
          contextName = "MeasurementCollectionViewController.collectionView(_:layout:sizeForItemAt:):MeasurementCollectionViewController.swift">
@@ -61,18 +89,20 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MeasurementCollectionViewController.collectionView(_:cellForItemAt:):MeasurementCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.bounds">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MeasurementCollectionViewController.prepare(for:sender:):MeasurementCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "collectionView?.visibleCells">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "BodyJoints.jointMotions():BodyJoints.swift">
-      </ContextState>
-      <ContextState
-         contextName = "BodyJoints.saveJoint():BodyJoints.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -28,13 +28,11 @@ class MeasurementCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
     // MARK: - Properties
-    var allMeasurements = [NSManagedObject]()
-    
-    
+    var allMeasurements = MeasurementsAPI.shared.getMeasurements()
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        allMeasurements = MeasurementsAPI.shared.getMeasurements()
 
         self.collectionView?.reloadData()
         
@@ -56,7 +54,7 @@ class MeasurementCollectionViewController: UICollectionViewController {
             let visibleCells = collectionView?.visibleCells as! [MeasurementCollectionCell]
             let measurement = visibleCells[0].measurement
             // Pass the selected object to the new view controller.
-            measureAngleViewController?.measurement = measurement
+            measureAngleViewController?.setMeasurement(newMeasurement: measurement!)
         }
     }
 
