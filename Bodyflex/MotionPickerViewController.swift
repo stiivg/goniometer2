@@ -9,20 +9,21 @@
 import UIKit
 
 class MotionPickerViewController: UITableViewController {
-    
-        // MARK: - Properties
-        var motions = [
-            "Flexion",
-            "Extension",
-            "Abduction",
-            "Supination",
-            "Pronation"
-        ]
-        
-        var selectedMotion: String? {
+    var jointMotions: [MotionStruct]?
+//        // MARK: - Properties
+//        var motions = [
+//            "Flexion",
+//            "Extension",
+//            "Abduction",
+//            "Supination",
+//            "Pronation"
+//        ]
+//    
+
+        var selectedMotion: MotionStruct? {
             didSet {
                 if let selectedMotion = selectedMotion,
-                    let index = motions.index(of: selectedMotion) {
+                    let index = jointMotions?.index(where: { $0.motion.common == selectedMotion.motion.common }) {
                     selectedMotionIndex = index
                 }
             }
@@ -32,14 +33,14 @@ class MotionPickerViewController: UITableViewController {
         
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             
-            guard segue.identifier == "SaveSelectedDirection",
+            guard segue.identifier == "SaveSelectedMotion",
                 let cell = sender as? UITableViewCell,
                 let indexPath = tableView.indexPath(for: cell) else {
                     return
             }
             
             let index = indexPath.row
-            selectedMotion = motions[index]
+            selectedMotion = jointMotions?[index]
         }
         
         override func viewDidLoad() {
@@ -59,13 +60,13 @@ class MotionPickerViewController: UITableViewController {
         
         // MARK: - Table view data source
         override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return motions.count
+            return jointMotions!.count
         }
         
         
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MotionCell", for: indexPath)
-            cell.textLabel?.text = motions[indexPath.row]
+            cell.textLabel?.text = jointMotions![indexPath.row].motion.common
             
             if indexPath.row == selectedMotionIndex {
                 cell.accessoryType = .checkmark
@@ -85,7 +86,7 @@ class MotionPickerViewController: UITableViewController {
                 cell?.accessoryType = .none
             }
             
-            selectedMotion = motions[indexPath.row]
+            selectedMotion = jointMotions![indexPath.row]
             
             // update the checkmark for the current row
             let cell = tableView.cellForRow(at: indexPath)

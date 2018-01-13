@@ -15,7 +15,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
 //    var joints = BodyJoints()
     
     //MARK: Properties
-    private var measurement = MeasurementsAPI.shared.newMeasurement()
+    private var measurement: Measurement?
     var angleTool = AngleTool()
     
     var imaging = Imaging()
@@ -39,14 +39,17 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     var imagePicker = UIImagePickerController()
     
+    //Delete the current measurement before replacing
     func setMeasurement(newMeasurement: Measurement) {
-        MeasurementsAPI.shared.deleteMeasurement(measurement: measurement)
+        if measurement != nil {
+            MeasurementsAPI.shared.deleteMeasurement(measurement: measurement!)
+        }
         self.measurement = newMeasurement
     }
 
     func updateValues() {
-        let jointMotion = measurement.jointMotion
-        nameLabel.text = measurement.name
+        let jointMotion = measurement?.jointMotion
+        nameLabel.text = measurement?.name
         let joint = jointMotion?.nameCommon
         let side = jointMotion?.side
         let motion = jointMotion?.motionCommon
@@ -54,7 +57,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
                
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        let dateObj = measurement.date
+        let dateObj = measurement?.date
         dateLabel.text = dateFormatter.string(from: dateObj!)
     }
     
@@ -81,15 +84,15 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         imageView.bounds = zeroOriginScrollBounds
         imageView.frame = zeroOriginScrollBounds
 
-        angleTool.setMeasurementObj(measurementObj: measurement)
+        angleTool.setMeasurementObj(measurementObj: measurement!)
         // Do any additional setup after loading the view, typically from a nib.
-        imaging.setMeasurementObj(measurementObj: measurement)
+        imaging.setMeasurementObj(measurementObj: measurement!)
         
         //Used to detect touches near the measuring dots
         scrollView.setAngleTool(theAngleTool: angleTool)
         
         //display the full resolution image
-        let fullResEntity = measurement.fullRes
+        let fullResEntity = measurement?.fullRes
         if let fullImageData = fullResEntity?.imageData {
             let fullImage = UIImage(data: fullImageData)
             imageView.image = fullImage
@@ -148,6 +151,20 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     // Return from editing joint and motion
     @IBAction func saveSelectJointMotion(_ segue: UIStoryboardSegue) {
+        //make JointMotion managed object and add to measurement and update values
+        let selectJointViewController = segue.source as? SelectJointViewController
+        
+        let joint = selectJointViewController?.joint
+        let motion = selectJointViewController?.motion
+        let side = selectJointViewController?.side
+        let jointMotion = MeasurementsAPI.shared.bodyJoints.newJointMotion(joint: joint!, motion: motion!, side: side!)
+
+        //Delete the current jointMotion managed Object if it exists
+        MeasurementsAPI.shared.deleteJointMotion(measurement: measurement!)
+
+        self.measurement?.jointMotion = jointMotion
+        
+        self.updateValues()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -156,17 +173,17 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         imageView.image = chosenImage
         dismiss(animated:true, completion: nil)
 
-        MeasurementsAPI.shared.deleteFullRes(measurement: measurement)
+        MeasurementsAPI.shared.deleteFullRes(measurement: measurement!)
 
         //clear the link to fullRes image
-        measurement.fullRes = nil
+        measurement?.fullRes = nil
         
         
         if let assertURL = info[UIImagePickerControllerReferenceURL] as? NSURL {
             let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assertURL as URL], options: nil)
             if let asset = fetchResult.firstObject { //PHUnauthorizedFetchResult in simulator
                 let photoDate = asset.creationDate
-                measurement.date = photoDate
+                measurement?.date = photoDate
             }
         }
         
@@ -175,7 +192,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     //Save last edit to image
     func completeEdit() {
         imaging.prepareImageForSaving(imageView: imageView)
-        measurement.angle = Float(angleTool.measuredAngle)
+        measurement?.angle = Float(angleTool.measuredAngle)
         angleTool.saveLocation()
     }
     
@@ -201,8 +218,13 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
             let nav = segue.destination as! UINavigationController
             let selectJointViewController = nav.topViewController as? SelectJointViewController
             
-            // Pass the selected object to the new view controller.
-            selectJointViewController?.measurement = measurement
+            //Create a Joint structure and motion structure from the jointMotion managed object
+            let jointMotion = measurement?.jointMotion
+            let joint = MeasurementsAPI.shared.bodyJoints.jointFromJointMotion(jointMotion: jointMotion!)
+            let motion = MeasurementsAPI.shared.bodyJoints.motionFromJointMotion(jointMotion: jointMotion!)
+            selectJointViewController?.joint = joint
+            selectJointViewController?.motion = motion
+            selectJointViewController?.side = (jointMotion?.side)!
         }
     }
     

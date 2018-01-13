@@ -13,6 +13,7 @@ import CoreData
 //A singleton class to contain the measurement data
 final class MeasurementsAPI {
     private let moc: NSManagedObjectContext
+    var bodyJoints = BodyJoints()
 
     static let shared =  MeasurementsAPI()
     
@@ -38,15 +39,19 @@ final class MeasurementsAPI {
         return measurements
     }
     
+    func newJointMotion(joint: Joint, motion: MotionStruct, side: String) -> JointMotion {
+        let jointMotion = bodyJoints.newJointMotion(joint: joint, motion: motion, side: side)
+        return jointMotion
+    }
+    
     func newMeasurement() -> Measurement {
         
         //Create a new measurement object
         let entity = NSEntityDescription.entity(forEntityName: "Measurement", in: moc)!
         let measurement = NSManagedObject(entity: entity, insertInto: moc) as! Measurement
 
-        //Create a new jointMotion object
-        let jointMotionEntity = NSEntityDescription.entity(forEntityName: "JointMotion", in: moc)!
-        let jointMotion = NSManagedObject(entity: jointMotionEntity, insertInto: moc) as! JointMotion
+        //Create a new jointMotion object, default to first knee motion
+        let jointMotion = bodyJoints.newJointMotion(joint: kneeJoint, motion: kneeJoint.motions[0], side: "Left")
         
         //set link to jointMotion
         measurement.jointMotion = jointMotion
@@ -62,14 +67,16 @@ final class MeasurementsAPI {
         }
     }
     
+//    func deleteJointMotion(jointMotion: JointMotion) {
+//        moc.delete(jointMotion)
+//    }
+
     //Note not saved so can be rolled back
     func deleteJointMotion(measurement: NSManagedObject) {
-        let jointMotionEntity = measurement.value(forKey: "jointMotion") as? NSManagedObject
-        
-        if jointMotionEntity != nil {
-            moc.delete(jointMotionEntity!)
-        }
+        guard let jointMotionEntity = measurement.value(forKey: "jointMotion") as? NSManagedObject else { return }
+            moc.delete(jointMotionEntity)
     }
+
     
     //Note not saved so can be rolled back
     func deleteFullRes(measurement: NSManagedObject) {

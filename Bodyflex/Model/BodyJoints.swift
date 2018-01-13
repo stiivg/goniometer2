@@ -84,7 +84,7 @@ let elbowJoint = Joint.init(name: .init(common: "Elbow", medical: ""),
                                 normalAAOS: "0.3,2.0",
                                 position: "")])
 
-let forearm = Joint.init(name: .init(common: "Elbow", medical: ""),
+let forearm = Joint.init(name: .init(common: "Forearm", medical: ""),
                             motions: [
                                 MotionStruct.init(motion: .init(common: "Palm Up", medical: "Supination"),
                                                        stationaryLabel: .init(common: "Parallel to Upper Arm", medical: "Parallel to Humerus"),
@@ -281,7 +281,7 @@ let ankleJoint = Joint.init(name: .init(common: "Knee", medical: ""),
                                                    normalAMA: "150",
                                                    normalAAOS: "141,5.3",
                                                    position: ""),
-                            MotionStruct.init(motion: .init(common: "Bend", medical: "Extension"),
+                            MotionStruct.init(motion: .init(common: "Straighten", medical: "Extension"),
                                                    stationaryLabel: .init(common: "Hip Bone", medical: "Greater Trochanter"),
                                                    axisLabel: .init(common: "Knee", medical: "Lateral Epicondyle"),
                                                    movingLabel: .init(common: "Ankle", medical: "Lateral Malleolus"),
@@ -289,27 +289,62 @@ let ankleJoint = Joint.init(name: .init(common: "Knee", medical: ""),
                                 normalAAOS: "0,10", //Guessed
                                 position: "")])
 
-let joints = [shoulderJoint, elbowJoint,  forearm, wristJoint, knuckleJoint, fingerJoint, thumb, hipJoint, kneeJoint]
 
 class BodyJoints {
-    
-    init() {
-        addJoints()
+    let joints = [shoulderJoint, elbowJoint,  forearm, wristJoint, knuckleJoint, fingerJoint, thumb, hipJoint, kneeJoint]
+
+    //Create a managed object for this joint, motion, and side
+    func newJointMotion(joint: Joint, motion: MotionStruct, side: String) -> JointMotion {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let moc =  appDelegate.persistentContainer.viewContext
+
+        let entity = NSEntityDescription.entity(forEntityName: "JointMotion", in: moc)!
+        let jointMotion = JointMotion(entity: entity, insertInto: moc)
+
+        jointMotion.nameCommon = joint.name.common
+        jointMotion.nameMedical = joint.name.medical
+        
+        jointMotion.motionCommon = motion.motion.common
+        jointMotion.motionMedical = motion.motion.medical
+        
+        jointMotion.stationaryLabelCommon = motion.stationaryLabel.common
+        jointMotion.stationaryLabelMedical = motion.stationaryLabel.medical
+        
+        jointMotion.axisLabelCommon = motion.axisLabel.common
+        jointMotion.axisLabelMedical = motion.axisLabel.medical
+        
+        jointMotion.movingLabelCommon = motion.movingLabel.common
+        jointMotion.movingLabelMedical = motion.movingLabel.medical
+        
+        jointMotion.side = side
+        
+        return jointMotion
     }
-    
+
     fileprivate func addJoints() {
         for joint in joints {
             addJoint(joint: joint)
         }
     }
+    
+    func jointFromJointMotion(jointMotion: JointMotion) -> Joint {
+        let joint = joints.first(where: { $0.name.common == jointMotion.nameCommon })
+        return joint!
+    }
+    
+    func motionFromJointMotion(jointMotion: JointMotion) -> MotionStruct {
+        let joint = jointFromJointMotion(jointMotion: jointMotion)
+        let motion = joint.motions.first(where: { $0.motion.common == jointMotion.motionCommon })
+        return motion!
+    }
+    
 
     fileprivate func addJoint(joint: Joint) {
-        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         let managedContext =  appDelegate.persistentContainer.viewContext
-
 
         for motion in joint.motions {
             //Create a new jointMotion object
@@ -331,13 +366,6 @@ class BodyJoints {
             jointMotion.movingLabelCommon = motion.movingLabel.common
             jointMotion.movingLabelMedical = motion.movingLabel.medical
         }
-        
-//        do {
-//            try managedContext.save()
-//        } catch let error as NSError {
-//            print("Could not save jointMotion. \(error), \(error.userInfo)")
-//        }
-
     }
     
     fileprivate func jointMotions() {
@@ -352,7 +380,7 @@ class BodyJoints {
         
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "JointMotion")
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "JointMotion")
+        let fetchRequest2 = NSFetchRequest<NSManagedObject>(entityName: "JointMotion")
         
         let filter = "Shoulder"
         let predicate = NSPredicate(format: "nameCommon = %@", filter)
@@ -386,43 +414,7 @@ class BodyJoints {
 //    - key : "motionCommon"
 //    - value : Arm Raise
 
-    
-    fileprivate func saveJoint() {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let managedContext =  appDelegate.persistentContainer.viewContext
-        
-        //Create a new jointMotion object
-        var jointMotion = JointMotion()
-        //        jointMotion.nameCommon = "Knee"
-        
-        
-        let entity = NSEntityDescription.entity(forEntityName: "JointMotion", in: managedContext)!
-        jointMotion = JointMotion(entity: entity, insertInto: managedContext)
-        
-        jointMotion.nameCommon = "Shoulder"
-        
-        jointMotion.motionCommon = "Arm Raise"
-        jointMotion.motionMedical = "Flexion"
-        
-        jointMotion.stationaryLabelCommon = "Back"
-        jointMotion.stationaryLabelMedical = "Mid-axillary Line"
-        
-        jointMotion.axisLabelCommon = "Shoulder"
-        jointMotion.axisLabelMedical = "Head of Humerus"
-        
-        jointMotion.movingLabelCommon = "Elbow"
-        jointMotion.movingLabelMedical = "Midline of Humerus"
-        
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Could not save jointMotion. \(error), \(error.userInfo)")
-        }
-        
-    }
+
 
 }
 

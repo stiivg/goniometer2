@@ -19,21 +19,21 @@ class MeasurementCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UITextField!
     
     // MARK: - Properties
-    var measurement: NSManagedObject? {
+    var measurement: Measurement? {
         didSet {
             guard let measurement = measurement else { return }
             
             nameLabel.text = measurement.value(forKeyPath: "name") as? String
             
-            let joint = measurement.value(forKeyPath: "joint") as? String
-            let side = measurement.value(forKeyPath: "side") as? String
-            let motion = measurement.value(forKeyPath: "motion") as? String
+            let joint = measurement.jointMotion?.nameCommon
+            let side = measurement.jointMotion?.side
+            let motion = measurement.jointMotion?.motionCommon
             jointLabel.text = side! + " " +  joint! + " " + motion!
-            angleLabel.text = String(format: "%.1f", (measurement.value(forKeyPath: "angle") as? Float)!) + "\u{00B0}"
-            
+            angleLabel.text = String(format: "%.1f", (measurement.angle)) + "\u{00B0}"
+
             //display the image
-            if let imageData = measurement.value(forKey: "thumbnail") {
-                let testImage = UIImage(data: imageData as! Data)
+            if let imageData = measurement.thumbnail {
+                let testImage = UIImage(data: imageData)
                 angleImageView.image = testImage
             }
             

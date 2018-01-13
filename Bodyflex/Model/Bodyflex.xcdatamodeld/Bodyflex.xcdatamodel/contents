@@ -29,14 +29,11 @@
         <attribute name="date" optional="YES" attributeType="Date" defaultDateTimeInterval="534021960" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="endX" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="endY" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="joint" attributeType="String" defaultValueString="Knee" syncable="YES"/>
         <attribute name="middleX" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="middleY" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="motion" attributeType="String" defaultValueString="Flexion" syncable="YES"/>
         <attribute name="name" attributeType="String" defaultValueString="name" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pose" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="side" attributeType="String" defaultValueString="Left" syncable="YES"/>
         <attribute name="thumbnail" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="fullRes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FullRes" inverseName="thumbnail" inverseEntity="FullRes" syncable="YES"/>
@@ -45,6 +42,6 @@
     <elements>
         <element name="FullRes" positionX="-333" positionY="-342" width="128" height="73"/>
         <element name="JointMotion" positionX="-333" positionY="-234" width="128" height="283"/>
-        <element name="Measurement" positionX="-558" positionY="-351" width="128" height="313"/>
+        <element name="Measurement" positionX="-558" positionY="-351" width="128" height="268"/>
     </elements>
 </model>

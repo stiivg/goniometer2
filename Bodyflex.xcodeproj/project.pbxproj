@@ -28,7 +28,7 @@
 		64A4325C1FBD1A94005D2FC2 /* knee_flexion.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */; };
 		64B58AE01FF0047000B64631 /* BodyJoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B58ADF1FF0046F00B64631 /* BodyJoints.swift */; };
 		64E626AE1FCC75A20068879F /* JointPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AD1FCC75A20068879F /* JointPickerViewController.swift */; };
-		64E626B01FCDEB4F0068879F /* DirectionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AF1FCDEB4F0068879F /* DirectionPickerViewController.swift */; };
+		64E626B01FCDEB4F0068879F /* MotionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +76,7 @@
 		64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = knee_flexion.png; path = ../../../../Desktop/knee_flexion.png; sourceTree = "<group>"; };
 		64B58ADF1FF0046F00B64631 /* BodyJoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyJoints.swift; sourceTree = "<group>"; };
 		64E626AD1FCC75A20068879F /* JointPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointPickerViewController.swift; sourceTree = "<group>"; };
-		64E626AF1FCDEB4F0068879F /* DirectionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionPickerViewController.swift; sourceTree = "<group>"; };
+		64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +149,7 @@
 				64A01D131FFEA469007A6C58 /* MeasurementCollectionCell.swift */,
 				64161F161FDB09A700DC25CF /* GestureScrollView.swift */,
 				64161F121FD9A22800DC25CF /* AngleTool.swift */,
-				64E626AF1FCDEB4F0068879F /* DirectionPickerViewController.swift */,
+				64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */,
 				64E626AD1FCC75A20068879F /* JointPickerViewController.swift */,
 				64A432321FBD141A005D2FC2 /* Assets.xcassets */,
 				64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */,
@@ -315,7 +315,7 @@
 			files = (
 				64B58AE01FF0047000B64631 /* BodyJoints.swift in Sources */,
 				64A4322E1FBD141A005D2FC2 /* MeasureAngleViewController.swift in Sources */,
-				64E626B01FCDEB4F0068879F /* DirectionPickerViewController.swift in Sources */,
+				64E626B01FCDEB4F0068879F /* MotionPickerViewController.swift in Sources */,
 				6426B9C31FC5F8EC00D81163 /* MeasurementTableViewController.swift in Sources */,
 				6426B9CB1FC602C800D81163 /* MeasurementCell.swift in Sources */,
 				64161F151FDA107800DC25CF /* Imaging.swift in Sources */,

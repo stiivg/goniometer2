@@ -13,17 +13,11 @@ class SelectJointViewController: UITableViewController {
 
    
     // MARK: - Properties
-    var measurement = Measurement()
+    var joint: Joint? //Joint struct with all possible motions
+    var motion: MotionStruct? //Selected motion
     
-    var side: String = "Right" {
-        didSet {
-            var index = 0  //assume Left
-            if side == "Right" {
-                index = 1
-            }
-            sideControl.selectedSegmentIndex = index
-        }
-    }
+    var side: String = "Right"
+    
     
     @IBOutlet weak var jointLabel: UILabel!
     @IBOutlet weak var motionLabel: UILabel!
@@ -32,29 +26,26 @@ class SelectJointViewController: UITableViewController {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
-        if segue.identifier == "AddToAngleMeasure" {
-            let nav = segue.destination as! UINavigationController
-            let measureAngleViewController = nav.topViewController as? MeasureAngleViewController
-            
-            // Pass the selected object to the new view controller.
-            measureAngleViewController?.setMeasurement(newMeasurement: measurement)
-        }
         if segue.identifier == "PickJoint",
             let jointPickerViewController = segue.destination as? JointPickerViewController {
-            jointPickerViewController.selectedJoint = measurement.joint
+            jointPickerViewController.selectedJoint = self.joint
         }
         if segue.identifier == "PickMotion",
             let motionPickerViewController = segue.destination as? MotionPickerViewController {
-            motionPickerViewController.selectedMotion = measurement.motion
+            motionPickerViewController.jointMotions = self.joint?.motions
+            motionPickerViewController.selectedMotion = self.motion
         }
-        //Save edit now so update on return has edited value
-        completeEdit()
     }
     
     func updateValues() {
-        jointLabel.text = measurement.joint
-        side = measurement.side!
-        motionLabel.text = measurement.motion
+        jointLabel.text = joint?.name.common
+        motionLabel.text = self.motion?.motion.common
+        var index = 0  //assume Left
+        if side == "Right" {
+            index = 1
+        }
+        sideControl.selectedSegmentIndex = index
+
     }
     
     
@@ -73,10 +64,6 @@ class SelectJointViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    //Save last edit to name field
-    func completeEdit() {
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -150,19 +137,19 @@ extension SelectJointViewController {
         if sender.selectedSegmentIndex == 0 {
             sideText = "Left"
         }
-        measurement.side = sideText
+        self.side = sideText
     }
 
     @IBAction func unwindWithSelectedJoint(segue: UIStoryboardSegue) {
         if let jointPickerViewController = segue.source as? JointPickerViewController,
             let selectedJoint = jointPickerViewController.selectedJoint {
-            measurement.joint = selectedJoint
+            self.joint = selectedJoint
         }
     }
-    @IBAction func unwindWithSelectedDirection(segue: UIStoryboardSegue) {
+    @IBAction func unwindWithSelectedMotion(segue: UIStoryboardSegue) {
         if let motionPickerViewController = segue.source as? MotionPickerViewController,
             let selectedMotion = motionPickerViewController.selectedMotion {
-            measurement.motion = selectedMotion
+            self.motion = selectedMotion
         }
     }
 }

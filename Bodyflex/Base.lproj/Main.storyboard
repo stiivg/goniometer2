@@ -499,7 +499,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="jQK-CJ-cA3" kind="unwind" identifier="SaveSelectedDirection" unwindAction="unwindWithSelectedDirectionWithSegue:" id="e4S-Du-PYg"/>
+                                    <segue destination="jQK-CJ-cA3" kind="unwind" identifier="SaveSelectedMotion" unwindAction="unwindWithSelectedMotionWithSegue:" id="e4S-Du-PYg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

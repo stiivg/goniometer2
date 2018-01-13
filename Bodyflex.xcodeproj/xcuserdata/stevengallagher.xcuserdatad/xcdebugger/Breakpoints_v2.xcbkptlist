@@ -760,11 +760,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasureAngleViewController.swift"
-            timestampString = "537397420.4840569"
+            timestampString = "537501352.456993"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "saveSelectJointMotion(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -776,11 +776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasureAngleViewController.swift"
-            timestampString = "537397420.484165"
+            timestampString = "537501352.457086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "cancelSelectJointMotion(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -792,11 +792,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasureAngleViewController.swift"
-            timestampString = "537397420.484244"
+            timestampString = "537501352.457155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "MeasurementTouchDown(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -872,7 +872,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasureAngleViewController.swift"
-            timestampString = "537397420.48439"
+            timestampString = "537501352.457281"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -950,11 +950,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasurementTableViewController.swift"
-            timestampString = "537397420.484452"
+            timestampString = "537501352.457346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -966,7 +966,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasurementTableViewController.swift"
-            timestampString = "537397420.484843"
+            timestampString = "537501352.4577039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -982,12 +982,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/Model/Measurements.swift"
-            timestampString = "537397420.4851069"
+            timestampString = "537501352.4579591"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "cancelMeasurementEdit()"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "deleteJointMotion(measurement:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -997,13 +997,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Bodyflex/Model/BodyJoints.swift"
-            timestampString = "537397420.485387"
+            filePath = "Bodyflex/SelectJointViewController.swift"
+            timestampString = "537501352.458263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "420"
-            endingLineNumber = "420"
-            landmarkName = "saveJoint()"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "updateValues()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bodyflex/SelectJointViewController.swift"
+            timestampString = "537501352.4586231"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "unwindWithSelectedMotion(segue:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bodyflex/DirectionPickerViewController.swift"
+            timestampString = "537494169.493899"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bodyflex/DirectionPickerViewController.swift"
+            timestampString = "537494169.493953"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

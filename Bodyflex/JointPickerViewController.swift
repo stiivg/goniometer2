@@ -10,39 +10,43 @@ import UIKit
 
 
 class JointPickerViewController: UITableViewController {
+    let allJoints = MeasurementsAPI.shared.bodyJoints.joints
+    
     
     // MARK: - Properties
-    var joints = [
-        //Upper Body
-        "Jaw",
-        "Neck",
-        "Back",
-        "Shoulder",
-        "Elbow",
-        "Forearm",
-        "Wrist",
-        "Knuckle",
-        "Finger",
-        "Thumb",
-        //Lower Body
-        "Hip",
-        "Knee",
-        "Ankle",
-        "Heel",
-        "Toe"
-    ]
+//    var joints = [
+//        //Upper Body
+//        "Jaw",
+//        "Neck",
+//        "Back",
+//        "Shoulder",
+//        "Elbow",
+//        "Forearm",
+//        "Wrist",
+//        "Knuckle",
+//        "Finger",
+//        "Thumb",
+//        //Lower Body
+//        "Hip",
+//        "Knee",
+//        "Ankle",
+//        "Heel",
+//        "Toe"
+//    ]
     
-    var selectedJoint: String? {
+
+    var selectedJointIndex: Int?
+
+    
+    var selectedJoint: Joint? {
         didSet {
             if let selectedJoint = selectedJoint,
-                let index = joints.index(of: selectedJoint) {
+                let index = allJoints.index(where: { $0.name.common == selectedJoint.name.common }) {
                 selectedJointIndex = index
             }
         }
     }
     
-    var selectedJointIndex: Int?
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard segue.identifier == "SaveSelectedJoint",
@@ -52,7 +56,7 @@ class JointPickerViewController: UITableViewController {
         }
         
         let index = indexPath.row
-        selectedJoint = joints[index]
+        selectedJoint = allJoints[index]
     }
     
     override func viewDidLoad() {
@@ -72,13 +76,13 @@ class JointPickerViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return joints.count
+        return allJoints.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "JointCell", for: indexPath)
-        cell.textLabel?.text = joints[indexPath.row]
+        cell.textLabel?.text = allJoints[indexPath.row].name.common
         
         if indexPath.row == selectedJointIndex {
             cell.accessoryType = .checkmark
@@ -98,7 +102,7 @@ class JointPickerViewController: UITableViewController {
             cell?.accessoryType = .none
         }
         
-        selectedJoint = joints[indexPath.row]
+        selectedJoint = allJoints[indexPath.row]
         
         // update the checkmark for the current row
         let cell = tableView.cellForRow(at: indexPath)

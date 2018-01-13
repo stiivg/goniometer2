@@ -22,9 +22,9 @@ class MeasurementCollectionCell: UICollectionViewCell {
         didSet {
             nameLabel.text = measurement?.name
             
-            let joint = measurement?.joint
-            let side = measurement?.side
-            let motion = measurement?.motion
+            let joint = measurement?.jointMotion?.nameCommon
+            let side = measurement?.jointMotion?.side
+            let motion = measurement?.jointMotion?.motionCommon
             jointLabel.text = side! + " " +  joint! + " " + motion!
             angleLabel.text = String(format: "%.1f", (measurement?.angle)!) + "\u{00B0}"
             

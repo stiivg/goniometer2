@@ -90,6 +90,7 @@ class MeasurementTableViewController: UITableViewController {
             // Delete the row from the data source
             let measurement = allMeasurements[indexPath.row]
             MeasurementsAPI.shared.deleteMeasurement(measurement: measurement)
+            MeasurementsAPI.shared.saveMeasurement() //Commit this deletion
             allMeasurements = MeasurementsAPI.shared.getMeasurements()
 
             tableView.deleteRows(at: [indexPath], with: .fade)
