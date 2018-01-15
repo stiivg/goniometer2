@@ -9,6 +9,22 @@
          contextName = "BodyJoints.jointMotions():BodyJoints.swift">
       </ContextState>
       <ContextState
+         contextName = "MeasureAngleViewController.viewWillLayoutSubviews():MeasureAngleViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.bounds">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementCell.measurement.didset:MeasurementCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "measurement.jointMotion">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MeasurementsAPI.cancelMeasurementEdit():Measurements.swift">
          <PersistentStrings>
             <PersistentString
@@ -36,7 +52,18 @@
          contextName = "MeasurementTableViewController.prepare(for:sender:):MeasurementTableViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "SelectJointViewController.side.didset:SelectJointViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "SelectJointViewController.unwindWithSelectedMotion(segue:):SelectJointViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MeasureAngleViewController.viewWillAppear(_:):MeasureAngleViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.bounds">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MeasurementCollectionViewController.viewWillAppear(_:):MeasurementCollectionViewController.swift">

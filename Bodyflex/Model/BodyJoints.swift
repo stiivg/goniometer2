@@ -69,7 +69,7 @@ let shoulderJoint = Joint.init(name: .init(common: "Shoulder", medical: ""),
 
 let elbowJoint = Joint.init(name: .init(common: "Elbow", medical: ""),
                            motions: [
-                            MotionStruct.init(motion: .init(common: " Arm Curl", medical: "Flexion"),
+                            MotionStruct.init(motion: .init(common: "Arm Curl", medical: "Flexion"),
                                 stationaryLabel: .init(common: "Shoulder", medical: "Acromion Process"),
                                 axisLabel: .init(common: "Elbow", medical: "Lateral Epicondyle"),
                                 movingLabel: .init(common: "Wrist", medical: "Radial Styloid"),

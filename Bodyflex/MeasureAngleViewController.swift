@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 import Photos
 
-class MeasureAngleViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate {
+class MeasureAngleViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate, UITextFieldDelegate {
 
 //    var joints = BodyJoints()
     
     //MARK: Properties
-    private var measurement: Measurement?
+    private var measurement = MeasurementsAPI.shared.newMeasurement()
     var angleTool = AngleTool()
     
     var imaging = Imaging()
@@ -42,14 +42,14 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     //Delete the current measurement before replacing
     func setMeasurement(newMeasurement: Measurement) {
         if measurement != nil {
-            MeasurementsAPI.shared.deleteMeasurement(measurement: measurement!)
+            MeasurementsAPI.shared.deleteMeasurement(measurement: measurement)
         }
         self.measurement = newMeasurement
     }
 
     func updateValues() {
-        let jointMotion = measurement?.jointMotion
-        nameLabel.text = measurement?.name
+        let jointMotion = measurement.jointMotion
+        nameLabel.text = measurement.name
         let joint = jointMotion?.nameCommon
         let side = jointMotion?.side
         let motion = jointMotion?.motionCommon
@@ -57,55 +57,51 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
                
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        let dateObj = measurement?.date
+        let dateObj = measurement.date
         dateLabel.text = dateFormatter.string(from: dateObj!)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        updateValues()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
     }
     
     //Scrollview bounds are not set in viewDidLoad need to wait for layout complete
     //May be called multiple times if layout changed such as screen rotate
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillAppear(_ animated: Bool) {
+        updateValues()
+        
         let imageWidth = scrollView.bounds.width
         let imageHeight = scrollView.bounds.height
         imageWidthConstraint.constant = imageWidth
         imageHeightConstraint.constant = imageHeight
-
+        
         //make the image view fill the scroll view 414 628
         let zeroOriginScrollBounds = CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight)
-
+        
         imageView.bounds = zeroOriginScrollBounds
         imageView.frame = zeroOriginScrollBounds
-
-        angleTool.setMeasurementObj(measurementObj: measurement!)
+        
+        angleTool.setMeasurementObj(measurementObj: measurement)
         // Do any additional setup after loading the view, typically from a nib.
-        imaging.setMeasurementObj(measurementObj: measurement!)
+        imaging.setMeasurementObj(measurementObj: measurement)
         
         //Used to detect touches near the measuring dots
         scrollView.setAngleTool(theAngleTool: angleTool)
         
         //display the full resolution image
-        let fullResEntity = measurement?.fullRes
+        let fullResEntity = measurement.fullRes
         if let fullImageData = fullResEntity?.imageData {
             let fullImage = UIImage(data: fullImageData)
             imageView.image = fullImage
         }
-
+        
         updateMinZoomScaleForSize(scrollView.bounds.size)
         
         //call after image has been loaded
         angleTool.setImageView(imageView: imageView)
-
+        
         imagePicker.delegate = self
+        
+        nameLabel.delegate = self
     }
     
+   
 //    func imageDetails(imageview: UIImageView) {
 //        print(String(describing: imageView))
 //        let mode = imageView.contentMode
@@ -129,6 +125,11 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
             
             self.present(imagePicker, animated: true, completion: nil)
         }
+    }
+    
+  
+    @IBAction func nameEditEnd(_ sender: UITextField) {
+        measurement.name = sender.text
     }
     
     @IBAction func photoFromLibrary(_ sender: UIBarButtonItem) {
@@ -160,11 +161,18 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         let jointMotion = MeasurementsAPI.shared.bodyJoints.newJointMotion(joint: joint!, motion: motion!, side: side!)
 
         //Delete the current jointMotion managed Object if it exists
-        MeasurementsAPI.shared.deleteJointMotion(measurement: measurement!)
+        MeasurementsAPI.shared.deleteJointMotion(measurement: measurement)
 
-        self.measurement?.jointMotion = jointMotion
+        self.measurement.jointMotion = jointMotion
         
         self.updateValues()
+    }
+    
+    //Dismiss keyboard on Enter
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return false
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -173,17 +181,17 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         imageView.image = chosenImage
         dismiss(animated:true, completion: nil)
 
-        MeasurementsAPI.shared.deleteFullRes(measurement: measurement!)
+        MeasurementsAPI.shared.deleteFullRes(measurement: measurement)
 
         //clear the link to fullRes image
-        measurement?.fullRes = nil
+        measurement.fullRes = nil
         
         
         if let assertURL = info[UIImagePickerControllerReferenceURL] as? NSURL {
             let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assertURL as URL], options: nil)
             if let asset = fetchResult.firstObject { //PHUnauthorizedFetchResult in simulator
                 let photoDate = asset.creationDate
-                measurement?.date = photoDate
+                measurement.date = photoDate
             }
         }
         
@@ -192,7 +200,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     //Save last edit to image
     func completeEdit() {
         imaging.prepareImageForSaving(imageView: imageView)
-        measurement?.angle = Float(angleTool.measuredAngle)
+        measurement.angle = Float(angleTool.measuredAngle)
         angleTool.saveLocation()
     }
     
@@ -219,7 +227,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
             let selectJointViewController = nav.topViewController as? SelectJointViewController
             
             //Create a Joint structure and motion structure from the jointMotion managed object
-            let jointMotion = measurement?.jointMotion
+            let jointMotion = measurement.jointMotion
             let joint = MeasurementsAPI.shared.bodyJoints.jointFromJointMotion(jointMotion: jointMotion!)
             let motion = MeasurementsAPI.shared.bodyJoints.motionFromJointMotion(jointMotion: jointMotion!)
             selectJointViewController?.joint = joint
