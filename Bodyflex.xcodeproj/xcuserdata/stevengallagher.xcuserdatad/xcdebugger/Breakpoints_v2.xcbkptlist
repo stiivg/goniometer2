@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasureAngleViewController.swift"
-            timestampString = "537822315.086628"
+            timestampString = "537823730.313926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "203"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/AngleTool.swift"
-            timestampString = "537822315.087541"
+            timestampString = "537823730.314232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/AngleTool.swift"
-            timestampString = "537822315.087798"
+            timestampString = "537823730.3144391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
@@ -58,12 +58,12 @@
                   moduleName = "Bodyflex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stevengallagher/Documents/Goniometer/goniometer/Bodyflex/AngleTool.swift"
-                  timestampString = "537822315.269107"
+                  timestampString = "537822938.6111979"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
                   endingLineNumber = "91"
-                  offsetFromSymbolStart = "6912">
+                  offsetFromSymbolStart = "5244">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -73,12 +73,12 @@
                   moduleName = "Bodyflex"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/stevengallagher/Documents/Goniometer/goniometer/Bodyflex/AngleTool.swift"
-                  timestampString = "537822315.272787"
+                  timestampString = "537822938.613084"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "91"
                   endingLineNumber = "91"
-                  offsetFromSymbolStart = "8455">
+                  offsetFromSymbolStart = "6432">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasureAngleViewController.swift"
-            timestampString = "537822315.087857"
+            timestampString = "537823730.314499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
@@ -106,12 +106,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasureAngleViewController.swift"
-            timestampString = "537822315.088227"
+            timestampString = "537823730.3145519"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
             landmarkName = "nameEditEnd(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bodyflex/MeasurementCollectionViewController.swift"
+            timestampString = "537823730.314605"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bodyflex/MeasurementCollectionViewController.swift"
+            timestampString = "537823730.3150719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

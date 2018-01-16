@@ -108,6 +108,9 @@
             <PersistentString
                value = "collectionView?.visibleCells">
             </PersistentString>
+            <PersistentString
+               value = "collectionView?.indexPathsForVisibleItems">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
