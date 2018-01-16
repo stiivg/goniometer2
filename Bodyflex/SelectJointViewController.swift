@@ -144,6 +144,7 @@ extension SelectJointViewController {
         if let jointPickerViewController = segue.source as? JointPickerViewController,
             let selectedJoint = jointPickerViewController.selectedJoint {
             self.joint = selectedJoint
+            self.motion = selectedJoint.motions[0] //Defaiult to the first motion
         }
     }
     @IBAction func unwindWithSelectedMotion(segue: UIStoryboardSegue) {

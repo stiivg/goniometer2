@@ -33,10 +33,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MeasurementCollectionViewController.collectionView(_:cellForItemAt:):MeasurementCollectionViewController.swift">
+         contextName = "MeasurementCollectionCell.measurement.didset:MeasurementCollectionCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MeasureAngleViewController.viewWillAppear(_:):MeasureAngleViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "cell.bounds">
+               value = "scrollView.bounds">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -58,10 +61,10 @@
          contextName = "SelectJointViewController.unwindWithSelectedMotion(segue:):SelectJointViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "MeasureAngleViewController.viewWillAppear(_:):MeasureAngleViewController.swift">
+         contextName = "MeasurementCollectionViewController.collectionView(_:cellForItemAt:):MeasurementCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "scrollView.bounds">
+               value = "cell.bounds">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -118,6 +121,9 @@
             </PersistentString>
             <PersistentString
                value = "collectionView.frame">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.adjustedContentInset">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

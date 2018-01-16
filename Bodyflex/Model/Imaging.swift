@@ -10,14 +10,8 @@ import UIKit
 import CoreData
 
 class Imaging {
-
-    var measurement: NSManagedObject?
-
-    func setMeasurementObj(measurementObj: NSManagedObject) {
-        measurement = measurementObj
-    }
     
-    func prepareImageForSaving(imageView:UIImageView) {
+    func prepareImageForSaving(imageView:UIImageView, measurement: Measurement) {
         
         // create NSData from UIImage
         guard let imageData = UIImageJPEGRepresentation(imageView.image!, 1) else {
@@ -37,28 +31,27 @@ class Imaging {
         }
         
         // send to save function
-        self.saveImage(imageData: imageData as NSData, thumbnailData: thumbnailData as NSData)
+        self.saveImage(imageData: imageData as NSData, thumbnailData: thumbnailData as NSData, measurement: measurement)
     }
     
-    fileprivate func saveImage(imageData:NSData, thumbnailData:NSData) {
+    fileprivate func saveImage(imageData:NSData, thumbnailData:NSData, measurement: Measurement) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         let managedContext =  appDelegate.persistentContainer.viewContext
         
-        let fullResEntity = measurement?.value(forKey: "fullRes") as? NSManagedObject
-        var fullRes = NSManagedObject()
+        let fullResEntity = measurement.value(forKey: "fullRes") as? NSManagedObject
         
         if (fullResEntity == nil) {
             //Create a new fulleRes object
             let entity = NSEntityDescription.entity(forEntityName: "FullRes", in: managedContext)!
-            fullRes = NSManagedObject(entity: entity, insertInto: managedContext)
+            let fullRes = NSManagedObject(entity: entity, insertInto: managedContext)
             
             //set image data of fullres
             fullRes.setValue(imageData, forKey: "imageData")
             //set link to fullRes image
-            measurement?.setValue(fullRes, forKey: "fullRes")
+            measurement.setValue(fullRes, forKey: "fullRes")
         } else {
             //set image data of existing fullres
             fullResEntity?.setValue(imageData, forKey: "imageData")
@@ -66,7 +59,7 @@ class Imaging {
 
         
         //set image data of thumbnail
-        measurement?.setValue(thumbnailData, forKey: "thumbnail")
+        measurement.setValue(thumbnailData, forKey: "thumbnail")
     }
     
     fileprivate func createThumbnail(imageView:UIImageView, toSize newSize:CGSize) -> UIImage {

@@ -78,8 +78,6 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         imageView.frame = zeroOriginScrollBounds
         
         angleTool.setMeasurementObj(measurementObj: measurement)
-        // Do any additional setup after loading the view, typically from a nib.
-        imaging.setMeasurementObj(measurementObj: measurement)
         
         //Used to detect touches near the measuring dots
         scrollView.setAngleTool(theAngleTool: angleTool)
@@ -199,7 +197,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     //Save last edit to image
     func completeEdit() {
-        imaging.prepareImageForSaving(imageView: imageView)
+        imaging.prepareImageForSaving(imageView: imageView, measurement: measurement)
         measurement.angle = Float(angleTool.measuredAngle)
         angleTool.saveLocation()
     }
