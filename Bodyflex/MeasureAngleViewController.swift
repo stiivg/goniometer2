@@ -37,13 +37,12 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         angleTool.doHandleDotPan(gestureRecognizer: gestureRecognizer, view: self.imageView)
     }
     
+    var firstViewAppearance = true
     var imagePicker = UIImagePickerController()
     
     //Delete the current measurement before replacing
     func setMeasurement(newMeasurement: Measurement) {
-        if measurement != nil {
-            MeasurementsAPI.shared.deleteMeasurement(measurement: measurement)
-        }
+        MeasurementsAPI.shared.deleteMeasurement(measurement: measurement)
         self.measurement = newMeasurement
     }
 
@@ -65,38 +64,42 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     //May be called multiple times if layout changed such as screen rotate
     override func viewWillAppear(_ animated: Bool) {
         updateValues()
-        
-        let imageWidth = scrollView.bounds.width
-        let imageHeight = scrollView.bounds.height
-        imageWidthConstraint.constant = imageWidth
-        imageHeightConstraint.constant = imageHeight
-        
-        //make the image view fill the scroll view 414 628
-        let zeroOriginScrollBounds = CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight)
-        
-        imageView.bounds = zeroOriginScrollBounds
-        imageView.frame = zeroOriginScrollBounds
-        
-        angleTool.setMeasurementObj(measurementObj: measurement)
-        
-        //Used to detect touches near the measuring dots
-        scrollView.setAngleTool(theAngleTool: angleTool)
-        
-        //display the full resolution image
-        let fullResEntity = measurement.fullRes
-        if let fullImageData = fullResEntity?.imageData {
-            let fullImage = UIImage(data: fullImageData)
-            imageView.image = fullImage
+        //Only call this set up once, if called after image zoomed it goes very wrong
+        if firstViewAppearance {
+            firstViewAppearance = false
+            
+            let imageWidth = scrollView.bounds.width
+            let imageHeight = scrollView.bounds.height
+            imageWidthConstraint.constant = imageWidth
+            imageHeightConstraint.constant = imageHeight
+            
+            //make the image view fill the scroll view 414 628
+            let zeroOriginScrollBounds = CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight)
+            
+            imageView.bounds = zeroOriginScrollBounds
+            imageView.frame = zeroOriginScrollBounds
+            
+            angleTool.setMeasurementObj(measurementObj: measurement)
+            
+            //Used to detect touches near the measuring dots
+            scrollView.setAngleTool(theAngleTool: angleTool)
+            
+            //display the full resolution image
+            let fullResEntity = measurement.fullRes
+            if let fullImageData = fullResEntity?.imageData {
+                let fullImage = UIImage(data: fullImageData)
+                imageView.image = fullImage
+            }
+            
+            updateMinZoomScaleForSize(scrollView.bounds.size)
+            
+            //call after image has been loaded
+            angleTool.setImageView(imageView: imageView)
+            
+            imagePicker.delegate = self
+            
+            nameLabel.delegate = self
         }
-        
-        updateMinZoomScaleForSize(scrollView.bounds.size)
-        
-        //call after image has been loaded
-        angleTool.setImageView(imageView: imageView)
-        
-        imagePicker.delegate = self
-        
-        nameLabel.delegate = self
     }
     
    
@@ -162,8 +165,6 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         MeasurementsAPI.shared.deleteJointMotion(measurement: measurement)
 
         self.measurement.jointMotion = jointMotion
-        
-        self.updateValues()
     }
     
     //Dismiss keyboard on Enter
@@ -209,10 +210,6 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         let heightScale = size.height / imageView.bounds.height
         let minScale = min(widthScale, heightScale)
 
-//        print(scrollView.bounds)
-//        print(imageView.bounds)
-//        print(minScale)
-
         scrollView.minimumZoomScale = minScale
         //Default to the full image in view
         scrollView.zoomScale = minScale
@@ -231,6 +228,8 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
             selectJointViewController?.joint = joint
             selectJointViewController?.motion = motion
             selectJointViewController?.side = (jointMotion?.side)!
+            
+            completeEdit()
         }
     }
     
