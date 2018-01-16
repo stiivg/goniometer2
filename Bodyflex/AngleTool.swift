@@ -88,7 +88,7 @@ class AngleTool {
         } else {
             dotPositions[1] = (imageView?.center)!
             dotPositions[0] = dotPositions[1]
-            dotPositions[0].y += (imageView?.frame.height)!/3
+            dotPositions[0].y += (imageView?.frame.height)!/6
 
             dotPositions[2] = dotPositions[1]
             dotPositions[2].x += (imageView?.frame.width)!/5

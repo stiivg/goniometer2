@@ -201,6 +201,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         imaging.prepareImageForSaving(imageView: imageView, measurement: measurement)
         measurement.angle = Float(angleTool.measuredAngle)
         angleTool.saveLocation()
+        nameLabel.endEditing(true)
     }
     
 

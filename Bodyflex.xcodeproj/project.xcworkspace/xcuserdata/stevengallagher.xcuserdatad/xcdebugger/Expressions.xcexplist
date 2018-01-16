@@ -133,6 +133,9 @@
             <PersistentString
                value = "dotPositions[0]">
             </PersistentString>
+            <PersistentString
+               value = "imageView?.frame">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
