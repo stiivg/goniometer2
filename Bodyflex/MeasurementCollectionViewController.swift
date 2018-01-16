@@ -26,7 +26,17 @@ class MeasurementCollectionViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        tap.numberOfTapsRequired = 2
+        view.addGestureRecognizer(tap)
+
     }
+    
+    @objc func doubleTapped() {
+        //Segue modally to angle measure
+        performSegue(withIdentifier: "CollectionToAngleMeasure", sender: nil)
+    }
+    
     // MARK: - Properties
     var allMeasurements = MeasurementsAPI.shared.getMeasurements()
         

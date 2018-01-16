@@ -37,17 +37,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="dxb-rM-Zgw">
-                            <size key="itemSize" width="310" height="329"/>
+                            <size key="itemSize" width="310" height="265"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="MeasurementCollectionCell" id="j6a-Gp-ea0" customClass="MeasurementCollectionCell" customModule="Bodyflex" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="310" height="329"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MeasurementCollectionCell" id="j6a-Gp-ea0" customClass="MeasurementCollectionCell" customModule="Bodyflex" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="265"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="310" height="329"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="310" height="265"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="nfR-FN-Esn" userLabel="Text Stack View">
@@ -672,6 +672,6 @@
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cKH-wP-YSi"/>
+        <segue reference="I2D-vl-wmx"/>
     </inferredMetricsTieBreakers>
 </document>
