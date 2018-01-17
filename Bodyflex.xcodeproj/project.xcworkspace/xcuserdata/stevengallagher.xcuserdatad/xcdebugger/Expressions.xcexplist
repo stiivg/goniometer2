@@ -147,6 +147,15 @@
             <PersistentString
                value = "imageView.image">
             </PersistentString>
+            <PersistentString
+               value = "asset.creationDate">
+            </PersistentString>
+            <PersistentString
+               value = "measurement.date">
+            </PersistentString>
+            <PersistentString
+               value = "info[UIImagePickerControllerReferenceURL]">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState

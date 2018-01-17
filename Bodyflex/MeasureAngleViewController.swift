@@ -136,7 +136,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     @IBAction func photoFromLibrary(_ sender: UIBarButtonItem) {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             imagePicker.sourceType = .savedPhotosAlbum;
-            imagePicker.allowsEditing = false
+            imagePicker.allowsEditing = true
             
             self.present(imagePicker, animated: true, completion: nil)
         }
@@ -174,8 +174,15 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         return false
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        if info[UIImagePickerControllerEditedImage] != nil {
+            chosenImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        }
         imageView.contentMode = .scaleAspectFit
         imageView.image = chosenImage
         dismiss(animated:true, completion: nil)
@@ -185,13 +192,13 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         //clear the link to fullRes image
         measurement.fullRes = nil
         
+        //Assume current date and time
+        measurement.date = Date()
         
-        if let assertURL = info[UIImagePickerControllerReferenceURL] as? NSURL {
-            let fetchResult = PHAsset.fetchAssets(withALAssetURLs: [assertURL as URL], options: nil)
-            if let asset = fetchResult.firstObject { //PHUnauthorizedFetchResult in simulator
-                let photoDate = asset.creationDate
-                measurement.date = photoDate
-            }
+        //Works for library but no PHAsset for photo
+        if let asset = info[UIImagePickerControllerPHAsset] as? PHAsset {
+            let photoDate = asset.creationDate
+            measurement.date = photoDate
         }
         
     }

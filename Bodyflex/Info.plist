@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>for joint angle measuremnt</string>
+	<string>for joint angle measurement</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>for joint angle measurement</string>
 	<key>UILaunchStoryboardName</key>
