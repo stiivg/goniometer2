@@ -14,7 +14,7 @@ class AngleTool {
     
     var imageView: UIImageView?
 
-    var measurement: NSManagedObject?
+    var measurement: Measurement?
     
     var beginDotPosition = CGPoint(x: 100, y: 300)
     var middleDotPosition = CGPoint(x: 100, y: 200)
@@ -62,28 +62,28 @@ class AngleTool {
         initTextLayer()
     }
     
-    func setMeasurementObj(measurementObj: NSManagedObject) {
+    func setMeasurementObj(measurementObj: Measurement) {
         measurement = measurementObj
     }
 
     //Restore dot positions from core data or use default
     fileprivate func restoreLocation() {
-        let fullResEntity = measurement?.value(forKey: "fullRes") as? NSManagedObject
+        let fullResEntity = measurement?.fullRes
         if fullResEntity != nil {
             //convert pixel positions to image view locations
             let imageTransform = calculateImageTransform(imageView: imageView!)
             var pixelPosition = CGPoint()
             
-            pixelPosition.x = measurement?.value(forKeyPath: "beginX") as! CGFloat
-            pixelPosition.y = measurement?.value(forKeyPath: "beginY") as! CGFloat
+            pixelPosition.x = CGFloat((measurement?.beginX)!)
+            pixelPosition.y = CGFloat((measurement?.beginY)!)
             dotPositions[0] = convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
             
-            pixelPosition.x = measurement?.value(forKeyPath: "middleX") as! CGFloat
-            pixelPosition.y = measurement?.value(forKeyPath: "middleY") as! CGFloat
+            pixelPosition.x = CGFloat((measurement?.middleX)!)
+            pixelPosition.y = CGFloat((measurement?.middleY)!)
             dotPositions[1] = convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
             
-            pixelPosition.x = measurement?.value(forKeyPath: "endX") as! CGFloat
-            pixelPosition.y = measurement?.value(forKeyPath: "endY") as! CGFloat
+            pixelPosition.x = CGFloat((measurement?.endX)!)
+            pixelPosition.y = CGFloat((measurement?.endY)!)
             dotPositions[2] = convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
         } else {
             dotPositions[1] = (imageView?.center)!
@@ -101,16 +101,16 @@ class AngleTool {
         var pixelDotPosition = CGPoint()
         
         pixelDotPosition = convertLocationToPixel(location: dotPositions[0], origin: imageTransform.rect.origin, scale: imageTransform.scale)
-        measurement?.setValue(pixelDotPosition.x, forKey: "beginX")
-        measurement?.setValue(pixelDotPosition.y, forKey: "beginY")
+        measurement?.beginX = Float(pixelDotPosition.x)
+        measurement?.beginY = Float(pixelDotPosition.y)
 
         pixelDotPosition = convertLocationToPixel(location: dotPositions[1], origin: imageTransform.rect.origin, scale: imageTransform.scale)
-        measurement?.setValue(pixelDotPosition.x, forKey: "middleX")
-        measurement?.setValue(pixelDotPosition.y, forKey: "middleY")
+        measurement?.middleX = Float(pixelDotPosition.x)
+        measurement?.middleY = Float(pixelDotPosition.y)
 
         pixelDotPosition = convertLocationToPixel(location: dotPositions[2], origin: imageTransform.rect.origin, scale: imageTransform.scale)
-        measurement?.setValue(pixelDotPosition.x, forKey: "endX")
-        measurement?.setValue(pixelDotPosition.y, forKey: "endY")
+        measurement?.endX = Float(pixelDotPosition.x)
+        measurement?.endY = Float(pixelDotPosition.y)
     }
  
     //Scale the pixel position to a location in the image view
@@ -194,6 +194,16 @@ class AngleTool {
 
     }
     
+    //Detect touches close to angle text
+    func pointInAngleText(inside point: CGPoint) -> Bool {
+        let textLocation = textPoint()
+        let distance = hypot(textLocation.x - point.x, textLocation.y - point.y)
+        if distance < 30 { //Touch within 30 units
+            return true
+        }
+        return false
+    }
+
     //Detect touches close to tool point
     func pointInTool(inside point: CGPoint) -> Bool {
         for position in dotPositions {
@@ -205,6 +215,22 @@ class AngleTool {
         return false
     }
 
+    func doHandleDoubleTap(gestureRecognizer: UIPanGestureRecognizer, view: UIView) {
+        let tapLocation = gestureRecognizer.location(in: view)
+        if self.pointInAngleText(inside: tapLocation) {
+            invertRotation()
+            drawTool()
+        }
+    }
+    
+    fileprivate func invertRotation() {
+        let rotation = measurement?.jointMotion?.rotation
+        if rotation == "CW" {
+            measurement?.jointMotion?.rotation = "CCW"
+        } else {
+            measurement?.jointMotion?.rotation = "CW"
+        }
+    }
     
     func doHandleDotPan(gestureRecognizer: UIPanGestureRecognizer, view: UIView) {
         if gestureRecognizer.state == .began {
@@ -417,9 +443,9 @@ class AngleTool {
     
     fileprivate func drawAngleArc() {
         let arcLineOrigin = CGPoint(x: dotPositions[1].x, y: dotPositions[1].y)
-        var clockwise = true
-        if measuredAngle > 0 {
-            clockwise = false
+        var clockwise = measurement?.jointMotion?.rotation == "CW"
+        if measuredAngle < 0 {
+            clockwise = !clockwise
         }
         let arcLinePath = UIBezierPath.init(arcCenter: arcLineOrigin, radius: arcRadius, startAngle: mainArmAngle(), endAngle: minorArmAngle() , clockwise: clockwise)
         
@@ -450,7 +476,11 @@ class AngleTool {
 //    }
     
     fileprivate func textPoint() -> CGPoint {
-        let textAngle =  mainArmAngle() - measuredAngle / 2 * CGFloat(CGFloat.pi / 180)
+        let measuredAngleRadians = measuredAngle / 2 * CGFloat(CGFloat.pi / 180)
+        var textAngle =  mainArmAngle() - measuredAngleRadians
+        if measurement?.jointMotion?.rotation == "CW" {
+            textAngle =  mainArmAngle() + measuredAngleRadians
+        }
         let textOffset = CGPoint(x: angleTextDistance * cos(textAngle), y: angleTextDistance * sin(textAngle))
         let textPoint = CGPoint(x: dotPositions[1].x + textOffset.x, y: dotPositions[1].y + textOffset.y)
         
@@ -468,6 +498,11 @@ class AngleTool {
             if diff > 0 { //change sign if original large angle was positive
                 measuredAngle = -measuredAngle
             }
+        }
+        //Angle default is CCW so change sign if CW is required
+//        if measurement?.jointMotion?.rotation == "CW" {
+        if measurement?.jointMotion?.rotation == "CW" {
+            measuredAngle = -measuredAngle
         }
     }
     

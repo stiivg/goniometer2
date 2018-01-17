@@ -40,6 +40,20 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     var firstViewAppearance = true
     var imagePicker = UIImagePickerController()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        tap.numberOfTapsRequired = 2
+        view.addGestureRecognizer(tap)
+        
+    }
+    
+    @objc func doubleTapped(_ gestureRecognizer: UIPanGestureRecognizer) {
+        angleTool.doHandleDoubleTap(gestureRecognizer: gestureRecognizer, view: self.imageView)
+    }
+    
     //Delete the current measurement before replacing
     func setMeasurement(newMeasurement: Measurement) {
         MeasurementsAPI.shared.deleteMeasurement(measurement: measurement)

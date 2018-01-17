@@ -15,6 +15,7 @@
         <attribute name="movingLabelMedical" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nameCommon" optional="YES" attributeType="String" defaultValueString="Knee" syncable="YES"/>
         <attribute name="nameMedical" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rotation" optional="YES" attributeType="String" defaultValueString="CCW" syncable="YES"/>
         <attribute name="side" optional="YES" attributeType="String" defaultValueString="Left" syncable="YES"/>
         <attribute name="stationaryAlignment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stationaryLabelCommon" optional="YES" attributeType="String" syncable="YES"/>
@@ -42,7 +43,7 @@
     </entity>
     <elements>
         <element name="FullRes" positionX="-333" positionY="-342" width="128" height="75"/>
-        <element name="JointMotion" positionX="-333" positionY="-234" width="128" height="283"/>
+        <element name="JointMotion" positionX="-333" positionY="-234" width="128" height="300"/>
         <element name="Measurement" positionX="-558" positionY="-351" width="128" height="285"/>
     </elements>
 </model>
