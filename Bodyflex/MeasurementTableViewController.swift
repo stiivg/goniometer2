@@ -16,7 +16,7 @@ class MeasurementTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -27,6 +27,8 @@ class MeasurementTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
                 
+        self.sortList()
+        
         //TEMP to clear core data
 //        clearCoreDate()
         
@@ -36,6 +38,12 @@ class MeasurementTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func sortList() {
+        self.allMeasurements.sort {
+            return $0.photoDate! > $1.photoDate!
+        }
     }
     
     // MARK: - IBActions
@@ -55,9 +63,11 @@ class MeasurementTableViewController: UITableViewController {
         //Notify the edit view to complete all edits
         let measureAngleViewController = segue.source as! MeasureAngleViewController
         measureAngleViewController.completeEdit()
+        measureAngleViewController.setCreatedDate()
         
         MeasurementsAPI.shared.saveMeasurement()
         allMeasurements = MeasurementsAPI.shared.getMeasurements()
+        self.sortList()
 
          // update the tableView
         self.tableView.reloadData()
@@ -92,6 +102,7 @@ class MeasurementTableViewController: UITableViewController {
             MeasurementsAPI.shared.deleteMeasurement(measurement: measurement)
             MeasurementsAPI.shared.saveMeasurement() //Commit this deletion
             allMeasurements = MeasurementsAPI.shared.getMeasurements()
+            self.sortList()
 
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

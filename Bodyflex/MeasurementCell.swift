@@ -39,7 +39,7 @@ class MeasurementCell: UITableViewCell {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy"
-            let dateObj = measurement.date
+            let dateObj = measurement.photoDate
             dateLabel.text = dateFormatter.string(from: dateObj!)
         }
     }

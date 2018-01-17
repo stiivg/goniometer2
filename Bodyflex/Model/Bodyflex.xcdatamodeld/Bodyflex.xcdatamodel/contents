@@ -26,13 +26,14 @@
         <attribute name="angle" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="beginX" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="beginY" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" defaultDateTimeInterval="534021960" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="endX" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="endY" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="middleX" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="middleY" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photoDate" optional="YES" attributeType="Date" defaultDateTimeInterval="534021960" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="pose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnail" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
@@ -42,6 +43,6 @@
     <elements>
         <element name="FullRes" positionX="-333" positionY="-342" width="128" height="75"/>
         <element name="JointMotion" positionX="-333" positionY="-234" width="128" height="283"/>
-        <element name="Measurement" positionX="-558" positionY="-351" width="128" height="270"/>
+        <element name="Measurement" positionX="-558" positionY="-351" width="128" height="285"/>
     </elements>
 </model>

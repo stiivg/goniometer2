@@ -56,7 +56,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
                
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        let dateObj = measurement.date
+        let dateObj = measurement.photoDate
         dateLabel.text = dateFormatter.string(from: dateObj!)
     }
     
@@ -193,12 +193,12 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         measurement.fullRes = nil
         
         //Assume current date and time
-        measurement.date = Date()
+        measurement.photoDate = Date()
         
         //Works for library but no PHAsset for photo
         if let asset = info[UIImagePickerControllerPHAsset] as? PHAsset {
             let photoDate = asset.creationDate
-            measurement.date = photoDate
+            measurement.photoDate = photoDate
         }
         
     }
@@ -209,6 +209,10 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         measurement.angle = Float(angleTool.measuredAngle)
         angleTool.saveLocation()
         nameLabel.endEditing(true)
+    }
+    
+    func setCreatedDate() {
+        measurement.createdDate = Date()
     }
     
 
