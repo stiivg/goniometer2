@@ -69,6 +69,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MeasurementsAPI.newMeasurement():Measurements.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "measurement.name">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MeasurementCollectionViewController.viewWillAppear(_:):MeasurementCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString

@@ -23,7 +23,7 @@ class MeasurementCell: UITableViewCell {
         didSet {
             guard let measurement = measurement else { return }
             
-            nameLabel.text = measurement.value(forKeyPath: "name") as? String
+            nameLabel.text = measurement.name
             
             let joint = measurement.jointMotion?.nameCommon
             let side = measurement.jointMotion?.side
@@ -39,7 +39,7 @@ class MeasurementCell: UITableViewCell {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy"
-            let dateObj = measurement.value(forKeyPath: "date") as? Date
+            let dateObj = measurement.date
             dateLabel.text = dateFormatter.string(from: dateObj!)
         }
     }

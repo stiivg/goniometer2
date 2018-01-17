@@ -31,7 +31,7 @@
         <attribute name="endY" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="middleX" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="middleY" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" attributeType="String" defaultValueString="name" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pose" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnail" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
@@ -40,8 +40,8 @@
         <relationship name="jointMotion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JointMotion" inverseName="measurement" inverseEntity="JointMotion" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FullRes" positionX="-333" positionY="-342" width="128" height="73"/>
+        <element name="FullRes" positionX="-333" positionY="-342" width="128" height="75"/>
         <element name="JointMotion" positionX="-333" positionY="-234" width="128" height="283"/>
-        <element name="Measurement" positionX="-558" positionY="-351" width="128" height="268"/>
+        <element name="Measurement" positionX="-558" positionY="-351" width="128" height="270"/>
     </elements>
 </model>
