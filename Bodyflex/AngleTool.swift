@@ -187,8 +187,6 @@ class AngleTool {
         
         restoreLocation()
         
-        print(imageView.bounds)
-        
         //777 magic number that makes the scale look good
         scaleTool(scale: imageView.bounds.height / 777)
 
