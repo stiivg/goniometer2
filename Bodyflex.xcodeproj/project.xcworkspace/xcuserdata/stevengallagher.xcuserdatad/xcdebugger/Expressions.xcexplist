@@ -34,6 +34,11 @@
       </ContextState>
       <ContextState
          contextName = "MeasurementCollectionCell.measurement.didset:MeasurementCollectionCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "measurement.jointMotion">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MeasureAngleViewController.viewWillAppear(_:):MeasureAngleViewController.swift">
@@ -61,18 +66,18 @@
          contextName = "SelectJointViewController.unwindWithSelectedMotion(segue:):SelectJointViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "MeasurementCollectionViewController.collectionView(_:cellForItemAt:):MeasurementCollectionViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "cell.bounds">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "MeasurementsAPI.newMeasurement():Measurements.swift">
          <PersistentStrings>
             <PersistentString
                value = "measurement.name">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementCollectionViewController.collectionView(_:cellForItemAt:):MeasurementCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.bounds">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -153,13 +158,13 @@
          contextName = "MeasureAngleViewController.imagePickerController(_:didFinishPickingMediaWithInfo:):MeasureAngleViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "measurement.date">
+            </PersistentString>
+            <PersistentString
                value = "imageView.image">
             </PersistentString>
             <PersistentString
                value = "asset.creationDate">
-            </PersistentString>
-            <PersistentString
-               value = "measurement.date">
             </PersistentString>
             <PersistentString
                value = "info[UIImagePickerControllerReferenceURL]">
