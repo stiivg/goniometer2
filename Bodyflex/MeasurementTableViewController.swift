@@ -143,6 +143,8 @@ class MeasurementTableViewController: UITableViewController {
             let nav = segue.destination as! UINavigationController
             let mCollectionView = nav.topViewController as! MeasurementCollectionViewController
             mCollectionView.displayIndex = indexPath!
+            //Set to the latest list
+            mCollectionView.allMeasurements = self.allMeasurements
         }
     }
 

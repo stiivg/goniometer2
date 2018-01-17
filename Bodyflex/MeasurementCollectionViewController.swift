@@ -38,7 +38,7 @@ class MeasurementCollectionViewController: UICollectionViewController {
     }
     
     // MARK: - Properties
-    var allMeasurements = MeasurementsAPI.shared.getMeasurements()
+    var allMeasurements = [Measurement]()
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
