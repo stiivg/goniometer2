@@ -27,7 +27,10 @@ class AngleTool {
     var measuredAngle = CGFloat(0.0)
 
     var dotLayer = CAShapeLayer()
-    var dotStartPosition = CGPoint(x: 100, y: 200)
+    var dotStartPosition = CGPoint()
+    var panBeginStartPosition = CGPoint()
+    var panMiddleStartPosition = CGPoint()
+    var panEndStartPosition = CGPoint()
 
     //tool dimensions
     var dotDiameter = CGFloat(20)
@@ -241,26 +244,67 @@ class AngleTool {
             
             //   Set movingDotIndex to the nearest dot to move
             let nearestDot = min(min(beginDistance, middleDistance), endDistance)
-            switch nearestDot {
-            case beginDistance:
-                movingDotIndex = 0
-            case middleDistance:
-                movingDotIndex = 1
-            case endDistance:
-                movingDotIndex = 2
-            default:
-                movingDotIndex = 0
+            if nearestDot < 30 {
+                switch nearestDot {
+                case beginDistance:
+                    movingDotIndex = 0
+                case middleDistance:
+                    movingDotIndex = 1
+                case endDistance:
+                    movingDotIndex = 2
+                default:
+                    movingDotIndex = 0
+                }
+                dotStartPosition = dotPositions[movingDotIndex]
+            } else {
+                let beginLinePosition = linePosition(startPoint: dotPositions[0], endPoint: dotPositions[1])
+                let beginLineDistance = hypot(beginLinePosition.x - panStart.x, beginLinePosition.y - panStart.y)
+
+                let endLinePosition = linePosition(startPoint: dotPositions[1], endPoint: dotPositions[2])
+                let endLineDistance = hypot(endLinePosition.x - panStart.x, endLinePosition.y - panStart.y)
+                
+                movingDotIndex = -3 //Assume no line close
+                if beginLineDistance < 30 {
+                    movingDotIndex = -1
+                    panBeginStartPosition = dotPositions[0]
+                    panMiddleStartPosition = dotPositions[1]
+                }
+                
+                if endLineDistance < 30 {
+                    movingDotIndex = -2
+                    panMiddleStartPosition = dotPositions[1]
+                    panEndStartPosition = dotPositions[2]
+                }
             }
             
-            dotStartPosition = dotPositions[movingDotIndex]
         } else if gestureRecognizer.state == .changed {
             let translation = gestureRecognizer.translation(in: view)
-            dotPositions[movingDotIndex] = CGPoint(x: dotStartPosition.x + translation.x, y: dotStartPosition.y + translation.y)
             
-            drawTool()
+            if movingDotIndex >= 0 {
+                dotPositions[movingDotIndex] = CGPoint(x: dotStartPosition.x + translation.x, y: dotStartPosition.y + translation.y)
+                drawTool()
+            } else {
+                if movingDotIndex == -1 {
+                    //move the begin line
+                    dotPositions[0] = CGPoint(x: panBeginStartPosition.x + translation.x, y: panBeginStartPosition.y + translation.y)
+                    dotPositions[1] = CGPoint(x: panMiddleStartPosition.x + translation.x, y: panMiddleStartPosition.y + translation.y)
+                    drawTool()
+                } else if movingDotIndex == -2 {
+                    //move the end line
+                    dotPositions[1] = CGPoint(x: panMiddleStartPosition.x + translation.x, y: panMiddleStartPosition.y + translation.y)
+                    dotPositions[2] = CGPoint(x: panEndStartPosition.x + translation.x, y: panEndStartPosition.y + translation.y)
+                    drawTool()
+                }
+            }
         }
     }
     
+    //Calculate the midpoint of the line
+    fileprivate func linePosition(startPoint: CGPoint, endPoint: CGPoint) -> CGPoint {
+        let linePosition = CGPoint(x: startPoint.x + (endPoint.x - startPoint.x) / 2, y: startPoint.y + (endPoint.y - startPoint.y) / 2)
+        return linePosition
+    }
+        
     func drawTool() {
         calcAngle()
 
