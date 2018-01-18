@@ -8,6 +8,7 @@
         <attribute name="axisAlignment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="axisLabelCommon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="axisLabelMedical" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="insideOutside" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="motionCommon" optional="YES" attributeType="String" defaultValueString="Bend" syncable="YES"/>
         <attribute name="motionMedical" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="movingAlignment" optional="YES" attributeType="String" syncable="YES"/>
@@ -43,7 +44,7 @@
     </entity>
     <elements>
         <element name="FullRes" positionX="-333" positionY="-342" width="128" height="75"/>
-        <element name="JointMotion" positionX="-333" positionY="-234" width="128" height="300"/>
+        <element name="JointMotion" positionX="-333" positionY="-234" width="128" height="315"/>
         <element name="Measurement" positionX="-558" positionY="-351" width="128" height="285"/>
     </elements>
 </model>

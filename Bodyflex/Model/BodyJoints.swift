@@ -22,6 +22,9 @@ struct MotionStruct {
     var normalAMA: String
     var normalAAOS: String
     var position: String
+    var description: String
+    var rotation: String
+    var insideOutside: String
 }
 
 struct Joint {
@@ -37,35 +40,50 @@ let shoulderJoint = Joint.init(name: .init(common: "Shoulder", medical: ""),
                                     movingLabel: .init(common: "Elbow", medical: "Midline of Humerus"),
                                     normalAMA: "150",
                                     normalAAOS: "167,4.7",
-                                    position: ""),
+                                    position: "",
+                                    description: "",
+                                    rotation: "CW",
+                                    insideOutside: "Inside"),
                                 MotionStruct.init(motion: .init(common: "Arm Reverse Raise", medical: "Extension"),
                                     stationaryLabel: .init(common: "Back", medical: "Mid-axillary Line"),
                                     axisLabel: .init(common: "Shoulder", medical: "Acromium Process (center of humeral head)"),
                                     movingLabel: .init(common: "Elbow", medical: "Lateral Epicondyle"),
                                     normalAMA: "50",
                                     normalAAOS: "62,9.5",
-                                    position: ""),
+                                    position: "",
+                                    description: "",
+                                    rotation: "CCW",
+                                    insideOutside: "Inside"),
                                 MotionStruct.init(motion: .init(common: "Arm Raise to Side", medical: "Abduction"),
                                     stationaryLabel: .init(common: "Side", medical: "Parallel to Sternum"),
                                     axisLabel: .init(common: "Shoulder", medical: "Humeral Head"),
                                     movingLabel: .init(common: "Elbow", medical: "Midline of Humerus"),
                                     normalAMA: "180",
                                     normalAAOS: "184,7.0",
-                                    position: ""),
+                                    position: "",
+                                    description: "",
+                                    rotation: "CCW",
+                                    insideOutside: "Inside"),
                                 MotionStruct.init(motion: .init(common: "Bent Arm Lower", medical: "Medial Rotation"),
                                     stationaryLabel: .init(common: "Vertical", medical: ""),
                                     axisLabel: .init(common: "Elbow", medical: "Olecranon Process"),
                                     movingLabel: .init(common: "Wrist", medical: "Ulnar Styloid"),
                                     normalAMA: "90",
                                     normalAAOS: "69,4.6",
-                                    position: ""),
+                                    position: "",
+                                    description: "",
+                                    rotation: "CCW",
+                                    insideOutside: "Inside"),
                                 MotionStruct.init(motion: .init(common: "Bent Arm Raise", medical: "Lateral Rotation"),
                                     stationaryLabel: .init(common: "Vertical", medical: ""),
                                     axisLabel: .init(common: "Elbow", medical: "Olecranon Process"),
                                     movingLabel: .init(common: "Wrist", medical: "Ulnar Styloid"),
                                     normalAMA: "90",
                                     normalAAOS: "104,8.5",
-                                    position: "")])
+                                    position: "",
+                                    description: "",
+                                    rotation: "CW",
+                                    insideOutside: "Inside")])
 
 let elbowJoint = Joint.init(name: .init(common: "Elbow", medical: ""),
                            motions: [
@@ -75,14 +93,20 @@ let elbowJoint = Joint.init(name: .init(common: "Elbow", medical: ""),
                                 movingLabel: .init(common: "Wrist", medical: "Radial Styloid"),
                                 normalAMA: "140",
                                 normalAAOS: "141,4.9",
-                                position: ""),
+                                position: "",
+                                description: "",
+                                rotation: "CW",
+                                insideOutside: "Outside"),
                             MotionStruct.init(motion: .init(common: "Straighten Arm", medical: "Extension"),
                                 stationaryLabel: .init(common: "Shoulder", medical: "Acromion Process"),
                                 axisLabel: .init(common: "Elbow", medical: "Lateral Epicondyle"),
                                 movingLabel: .init(common: "Wrist", medical: "Radial Styloid"),
                                 normalAMA: "0",
                                 normalAAOS: "0.3,2.0",
-                                position: "")])
+                                position: "",
+                                description: "",
+                                rotation: "CCW",
+                                insideOutside: "Outside")])
 
 let forearm = Joint.init(name: .init(common: "Forearm", medical: ""),
                             motions: [
@@ -92,14 +116,20 @@ let forearm = Joint.init(name: .init(common: "Forearm", medical: ""),
                                                        movingLabel: .init(common: "Outside Wrist", medical: "Ventral Aspect of Distal Radius"),
                                                        normalAMA: "80",
                                                        normalAAOS: "81,4.0",
-                                                       position: ""),
+                                                       position: "",
+                                                       description: "",
+                                                       rotation: "CW",
+                                                       insideOutside: "Inside"),
                                 MotionStruct.init(motion: .init(common: "Palm Down", medical: "Pronation"),
                                                        stationaryLabel: .init(common: "Parallel to Upper Arm", medical: "Parallel to Humerus"),
                                                        axisLabel: .init(common: "Outside Wrist", medical: "Lateral to Ulnar Styloid"),
                                                        movingLabel: .init(common: "Inside Wrist", medical: "Dorsal Aspect of Distal Radius"),
                                                        normalAMA: "80",
                                                        normalAAOS: "75,5.3",
-                                                       position: "")])
+                                                       position: "",
+                                                       description: "",
+                                                       rotation: "CCW",
+                                                       insideOutside: "Inside")])
 
 let wristJoint = Joint.init(name: .init(common: "Wrist", medical: ""),
                          motions: [
@@ -109,28 +139,40 @@ let wristJoint = Joint.init(name: .init(common: "Wrist", medical: ""),
                                                    movingLabel: .init(common: "Hand", medical: "5th Metacarpal"),
                                                    normalAMA: "60",
                                                    normalAAOS: "75,6.6",
-                                                   position: ""),
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CCW",
+                                                   insideOutside: "Outside"),
                             MotionStruct.init(motion: .init(common: "Hand Raised", medical: "Extension"),
                                                    stationaryLabel: .init(common: "Parallel to Lower Arm", medical: "Ulna"),
                                                    axisLabel: .init(common: "Wrist", medical: "Triquetum"),
                                                    movingLabel: .init(common: "Hand", medical: "5th Metacarpal"),
                                                    normalAMA: "60",
                                                    normalAAOS: "74,6.6",
-                                                   position: ""),
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CW",
+                                                   insideOutside: "Outside"),
                             MotionStruct.init(motion: .init(common: "Hand Out", medical: "Radial Deviation"),
                                                    stationaryLabel: .init(common: "Elbow", medical: "Lateral Epicondyle"),
                                                    axisLabel: .init(common: "Wrist", medical: "Capitate"),
                                                    movingLabel: .init(common: "Middle Finger", medical: "Middle Metacarpal"),
                                                    normalAMA: "20",
                                                    normalAAOS: "21,4.0",
-                                                   position: ""),
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CW",
+                                                   insideOutside: "Outside"),
                             MotionStruct.init(motion: .init(common: "Hand In", medical: "Ulnar Deviation"),
                                                    stationaryLabel: .init(common: "Elbow", medical: "Lateral Epicondyle"),
                                                    axisLabel: .init(common: "Wrist", medical: "Capitate"),
                                                    movingLabel: .init(common: "Middle Finger", medical: "Middle Metacarpal"),
                                                    normalAMA: "30",
                                                    normalAAOS: "35,3.8",
-                                                   position: "")])
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CCW",
+                                                   insideOutside: "Outside")])
 
 let knuckleJoint = Joint.init(name: .init(common: "Knuckle", medical: "Metacarpophalangeal"),
                               motions: [
@@ -140,28 +182,41 @@ let knuckleJoint = Joint.init(name: .init(common: "Knuckle", medical: "Metacarpo
                                                        movingLabel: .init(common: "Finger", medical: "Aligned with Proximal Phalange"),
                                                        normalAMA: "90",
                                                        normalAAOS: "86",
-                                                       position: ""),
+                                                       position: "",
+                                                       description: "",
+                                                       rotation: "CW",
+                                                       insideOutside: "Outside"),
                                 MotionStruct.init(motion: .init(common: "Raise Fingers", medical: "Extension"),
                                                        stationaryLabel: .init(common: "Back of Hand", medical: "Aligned with Metacarpal"),
                                                        axisLabel: .init(common: "Knuckle", medical: "Dorsal Metacarpophalangeal Joint"),
                                                        movingLabel: .init(common: "Finger", medical: "Aligned with Proximal Phalange"),
                                                        normalAMA: "20",
                                                        normalAAOS: "22",
-                                                       position: ""),
+                                                       position: "",
+                                                       description: "",
+                                                       rotation: "CCW",
+                                                       insideOutside: "Outside"),
                                 MotionStruct.init(motion: .init(common: "Separate Fingers", medical: "Abduction"),
                                                        stationaryLabel: .init(common: "Back of Hand", medical: "Aligned with Metacarpal"),
                                                        axisLabel: .init(common: "Knuckle", medical: "Dorsal Metacarpophalangeal Joint"),
                                                        movingLabel: .init(common: "Finger", medical: "Aligned with Proximal Phalange"),
                                                        normalAMA: "",
                                                        normalAAOS: "",
-                                                       position: ""),
+                                                       position: "",
+                                                       description: "",
+                                                       rotation: "CW",
+                                                       insideOutside: "Outside"),
                                 MotionStruct.init(motion: .init(common: "Fingers from Thumb", medical: "Adduction"),
                                                        stationaryLabel: .init(common: "Back of Hand", medical: "Aligned with Metacarpal"),
                                                        axisLabel: .init(common: "Knuckle", medical: "Dorsal Metacarpophalangeal Joint"),
                                                        movingLabel: .init(common: "Finger", medical: "Aligned with Proximal Phalange"),
                                                        normalAMA: "",
                                                        normalAAOS: "",
-                                                       position: "")])
+                                                       position: "",
+                                                       description: "",
+                                                       rotation: "CCW",
+                                                       insideOutside: "Outside")])
+
 let fingerJoint = Joint.init(name: .init(common: "Finger", medical: "Interphalangeal"),
                              motions: [
                                 MotionStruct.init(motion: .init(common: "Bend Finger", medical: "Flexion"),
@@ -170,14 +225,20 @@ let fingerJoint = Joint.init(name: .init(common: "Finger", medical: "Interphalan
                                                        movingLabel: .init(common: "Upper Finger Joint", medical: "Aligned with Middle Phalange"),
                                                        normalAMA: "100", //Various for each finger
                                     normalAAOS: "102", //Various for each finger
-                                    position: ""),
+                                    position: "",
+                                    description: "",
+                                    rotation: "CW",
+                                    insideOutside: "Outside"),
                                 MotionStruct.init(motion: .init(common: "Straighten Finger", medical: "Extension"),
                                                        stationaryLabel: .init(common: "Base of Finger", medical: "Aligned with Proximal Phalange"),
                                                        axisLabel: .init(common: "Finger Joint", medical: "Dorsal Proximal Interphalangeal Joint"),
                                                        movingLabel: .init(common: "Upper Finger Joint", medical: "Aligned with Middle Phalange"),
                                                        normalAMA: "0", //Various for each finger
                                     normalAAOS: "7", //Various for each finger
-                                    position: "")])
+                                    position: "",
+                                    description: "",
+                                    rotation: "CW",
+                                    insideOutside: "Outside")])
 
 let thumb = Joint.init(name: .init(common: "Thumb", medical: "Thumb Carpometacarpal"),
                              motions: [
@@ -187,28 +248,40 @@ let thumb = Joint.init(name: .init(common: "Thumb", medical: "Thumb Carpometacar
                                                        movingLabel: .init(common: "Base of Thumb", medical: "Thumb Metacarpal"),
                                                        normalAMA: "",
                                                        normalAAOS: "",
-                                                       position: ""),
+                                                       position: "",
+                                                       description: "",
+                                                       rotation: "CW",
+                                                       insideOutside: "Outside"),
                                 MotionStruct.init(motion: .init(common: "Thumb Out", medical: "Extension"),
                                                        stationaryLabel: .init(common: "Aligned with Arm", medical: "Aligned with Radius"),
                                                        axisLabel: .init(common: "Wrist", medical: "Carpometacarpal Joint"),
                                                        movingLabel: .init(common: "Base of Thumb", medical: "Thumb Metacarpal"),
                                                        normalAMA: "",
                                                        normalAAOS: "",
-                                                       position: ""),
+                                                       position: "",
+                                                       description: "",
+                                                       rotation: "CCW",
+                                                       insideOutside: "Outside"),
                                 MotionStruct.init(motion: .init(common: "Thumb Down", medical: "Abduction"),
                                                        stationaryLabel: .init(common: "Finger", medical: "Finger Metacarpal"),
                                                        axisLabel: .init(common: "Wrist", medical: "Radial Styloid"),
                                                        movingLabel: .init(common: "Base of Thumb", medical: "Thumb Metacarpal"),
                                                        normalAMA: "",
                                                        normalAAOS: "",
-                                                       position: ""),
+                                                       position: "",
+                                                       description: "",
+                                                       rotation: "CW",
+                                                       insideOutside: "Inside"),
                                 MotionStruct.init(motion: .init(common: "Thumb Down", medical: "Adduction"),
                                                        stationaryLabel: .init(common: "Finger", medical: "Finger Metacarpal"),
                                                        axisLabel: .init(common: "Wrist", medical: "Radial Styloid"),
                                                        movingLabel: .init(common: "Base of Thumb", medical: "Thumb Metacarpal"),
                                                        normalAMA: "",
                                                        normalAAOS: "",
-                                                       position: "")])
+                                                       position: "",
+                                                       description: "",
+                                                       rotation: "CCW",
+                                                       insideOutside: "Inside")])
 
 let hipJoint = Joint.init(name: .init(common: "Hip", medical: ""),
                            motions: [
@@ -218,42 +291,60 @@ let hipJoint = Joint.init(name: .init(common: "Hip", medical: ""),
                                                    movingLabel: .init(common: "Knee", medical: "Lateral Epicondyle"),
                                                    normalAMA: "100",
                                                    normalAAOS: "121,6.4",
-                                                   position: ""),
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CW",
+                                                   insideOutside: "Outside"),
                             MotionStruct.init(motion: .init(common: "Thigh Back", medical: "Extension"),
                                                    stationaryLabel: .init(common: "Body Line", medical: "Midline of Pelvis"),
                                                    axisLabel: .init(common: "Hip Bone", medical: "Greater Trochanter"),
                                                    movingLabel: .init(common: "Knee", medical: "Lateral Epicondyle"),
                                                    normalAMA: "30",
                                                    normalAAOS: "12,5.4",
-                                                   position: ""),
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CCW",
+                                                   insideOutside: "Outside"),
                             MotionStruct.init(motion: .init(common: "Thigh Out", medical: "Abduction"),
                                                    stationaryLabel: .init(common: "Opposite Hip Bone", medical: "Aligned with Opposite ASIS"),
                                                    axisLabel: .init(common: "Hip Bone", medical: "Anterior Superior Iliac Spine (ASIS)"),
                                                    movingLabel: .init(common: "Knee", medical: "Center of Patella"),
                                                    normalAMA: "40",
                                                    normalAAOS: "41,6.0",
-                                                   position: ""),
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CCW",
+                                                   insideOutside: "Inside-90"),
                             MotionStruct.init(motion: .init(common: "Thigh In", medical: "Adduction"),
                                                    stationaryLabel: .init(common: "Opposite Hip Bone", medical: "Aligned with Opposite ASIS"),
                                                    axisLabel: .init(common: "Hip Bone", medical: "Anterior Superior Iliac Spine (ASIS)"),
                                                    movingLabel: .init(common: "Knee", medical: "Center of Patella"),
                                                    normalAMA: "20",
                                                    normalAAOS: "27,3.6",
-                                                   position: ""),
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CW",
+                                                   insideOutside: "Inside-90"),
                             MotionStruct.init(motion: .init(common: "Leg Out", medical: "Medial (Internal) Rotation"),
                                                    stationaryLabel: .init(common: "Aligned Vertically", medical: ""),
                                                    axisLabel: .init(common: "Knee", medical: "Center of Patella"),
                                                    movingLabel: .init(common: "Ankle", medical: "Crest of Tibia"),
                                                    normalAMA: "40",
                                                    normalAAOS: "44,4.3",
-                                                   position: ""),
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CW",
+                                                   insideOutside: "Inside"),
                             MotionStruct.init(motion: .init(common: "Leg In", medical: "Lateral (External) Rotation"),
                                                    stationaryLabel: .init(common: "Aligned Vertically", medical: ""),
                                                    axisLabel: .init(common: "Knee", medical: "Center of Patella"),
                                                    movingLabel: .init(common: "Ankle", medical: "Crest of Tibia"),
                                                    normalAMA: "50",
                                                    normalAAOS: "44,4.8",
-                                                   position: "")])
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CCW",
+                                                   insideOutside: "Inside")])
 
 let kneeJoint = Joint.init(name: .init(common: "Knee", medical: ""),
                            motions: [
@@ -263,14 +354,20 @@ let kneeJoint = Joint.init(name: .init(common: "Knee", medical: ""),
                                                    movingLabel: .init(common: "Ankle", medical: "Lateral Malleolus"),
                                                    normalAMA: "150",
                                                    normalAAOS: "141,5.3",
-                                                   position: ""),
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CCW",
+                                                   insideOutside: "Outside"),
                             MotionStruct.init(motion: .init(common: "Straighten", medical: "Extension"),
                                                    stationaryLabel: .init(common: "Hip Bone", medical: "Greater Trochanter"),
                                                    axisLabel: .init(common: "Knee", medical: "Lateral Epicondyle"),
                                                    movingLabel: .init(common: "Ankle", medical: "Lateral Malleolus"),
                                                    normalAMA: "0", //Guessed
                                                    normalAAOS: "0,10", //Guessed
-                                                   position: "")])
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CW",
+                                                   insideOutside: "Outside")])
 
 let ankleJoint = Joint.init(name: .init(common: "Knee", medical: ""),
                            motions: [
@@ -280,14 +377,20 @@ let ankleJoint = Joint.init(name: .init(common: "Knee", medical: ""),
                                                    movingLabel: .init(common: "Ankle", medical: "Lateral Malleolus"),
                                                    normalAMA: "150",
                                                    normalAAOS: "141,5.3",
-                                                   position: ""),
+                                                   position: "",
+                                                   description: "",
+                                                   rotation: "CW",
+                                                   insideOutside: "Outside-90"),
                             MotionStruct.init(motion: .init(common: "Straighten", medical: "Extension"),
                                                    stationaryLabel: .init(common: "Hip Bone", medical: "Greater Trochanter"),
                                                    axisLabel: .init(common: "Knee", medical: "Lateral Epicondyle"),
                                                    movingLabel: .init(common: "Ankle", medical: "Lateral Malleolus"),
                                                    normalAMA: "0", //Guessed
                                 normalAAOS: "0,10", //Guessed
-                                position: "")])
+                                position: "",
+                                description: "",
+                                rotation: "CCW",
+                                insideOutside: "Inside-90")])
 
 
 class BodyJoints {
@@ -317,9 +420,23 @@ class BodyJoints {
         jointMotion.movingLabelCommon = motion.movingLabel.common
         jointMotion.movingLabelMedical = motion.movingLabel.medical
         
+        jointMotion.rotation = motion.rotation //default for left side of body
+        jointMotion.insideOutside = motion.insideOutside
+        
         jointMotion.side = side
+        if side == "Right" {
+            reverseRotation(jointMotion: jointMotion)
+        }
         
         return jointMotion
+    }
+    
+    fileprivate func reverseRotation(jointMotion: JointMotion) {
+        if jointMotion.rotation == "CW" {
+            jointMotion.rotation = "CCW"
+        } else {
+            jointMotion.rotation = "CW"
+        }
     }
 
     fileprivate func addJoints() {

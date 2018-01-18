@@ -179,6 +179,9 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         MeasurementsAPI.shared.deleteJointMotion(measurement: measurement)
 
         self.measurement.jointMotion = jointMotion
+        
+        //Redraw tool in case angle geometry changed
+        angleTool.drawTool()
     }
     
     //Dismiss keyboard on Enter

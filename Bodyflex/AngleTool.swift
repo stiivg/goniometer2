@@ -447,7 +447,20 @@ class AngleTool {
         if measuredAngle < 0 {
             clockwise = !clockwise
         }
-        let arcLinePath = UIBezierPath.init(arcCenter: arcLineOrigin, radius: arcRadius, startAngle: mainArmAngle(), endAngle: minorArmAngle() , clockwise: clockwise)
+        
+        var startAngle = mainArmAngle()
+        var endAngle = minorArmAngle()
+        
+        if measurement?.jointMotion?.insideOutside == "Inside" {
+            if startAngle < CGFloat.pi {
+                startAngle = startAngle + CGFloat.pi
+            } else {
+                startAngle = startAngle - CGFloat.pi
+            }
+        }
+        
+        let arcLinePath = UIBezierPath.init(arcCenter: arcLineOrigin, radius: arcRadius, startAngle: startAngle, endAngle: endAngle , clockwise: clockwise)
+        
         
         arcLineLayer.path = arcLinePath.cgPath
         arcLineLayer.lineWidth = arcLineWidth
@@ -481,6 +494,10 @@ class AngleTool {
         if measurement?.jointMotion?.rotation == "CW" {
             textAngle =  mainArmAngle() + measuredAngleRadians
         }
+        //If inside angle move 180
+        if measurement?.jointMotion?.insideOutside == "Inside" {
+            textAngle = textAngle + CGFloat.pi
+        }
         let textOffset = CGPoint(x: angleTextDistance * cos(textAngle), y: angleTextDistance * sin(textAngle))
         let textPoint = CGPoint(x: dotPositions[1].x + textOffset.x, y: dotPositions[1].y + textOffset.y)
         
@@ -500,9 +517,17 @@ class AngleTool {
             }
         }
         //Angle default is CCW so change sign if CW is required
-//        if measurement?.jointMotion?.rotation == "CW" {
         if measurement?.jointMotion?.rotation == "CW" {
             measuredAngle = -measuredAngle
+        }
+        //Change if inside angle
+        if measurement?.jointMotion?.insideOutside == "Inside" {
+            let insideAngle = 180 - abs(measuredAngle)
+            if measuredAngle > 0 {
+                measuredAngle = -insideAngle
+            } else {
+                measuredAngle = insideAngle
+            }
         }
     }
     
