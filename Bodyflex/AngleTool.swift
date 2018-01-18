@@ -44,6 +44,8 @@ class AngleTool {
     var fontFrameSize = CGSize(width: 60, height: 20)
     var angleFontSize = CGFloat(16)
     
+    let touchRadius = CGFloat(30)
+    
     let beginDotLayer = CAShapeLayer()
     let middleDotLayer = CAShapeLayer()
     let endDotLayer = CAShapeLayer()
@@ -191,7 +193,7 @@ class AngleTool {
         restoreLocation()
         
         //777 magic number that makes the scale look good
-        scaleTool(scale: imageView.bounds.height / 777)
+        scaleTool(scale: imageView.bounds.height / 1000)
 
         drawTool()
 
@@ -201,21 +203,38 @@ class AngleTool {
     func pointInAngleText(inside point: CGPoint) -> Bool {
         let textLocation = textPoint()
         let distance = hypot(textLocation.x - point.x, textLocation.y - point.y)
-        if distance < 30 { //Touch within 30 units
+        if distance < touchRadius { //Touch within touchRadius units
             return true
         }
         return false
     }
 
-    //Detect touches close to tool point
+    //Detect touches close to tool points and center of lines
     func pointInTool(inside point: CGPoint) -> Bool {
+        var inTool = false
+        //check for end points
         for position in dotPositions {
             let distance = hypot(position.x - point.x, position.y - point.y)
-            if distance < 30 { //Touch within 30 units
-                return true
+            if distance < touchRadius { //Touch within touchRadius units
+                inTool = true
             }
         }
-        return false
+        //check for mid lines
+        let beginLinePosition = linePosition(startPoint: dotPositions[0], endPoint: dotPositions[1])
+        let endLinePosition = linePosition(startPoint: dotPositions[1], endPoint: dotPositions[2])
+        
+        let beginLineDistance = hypot(beginLinePosition.x - point.x, beginLinePosition.y - point.y)
+        let endLineDistance = hypot(endLinePosition.x - panStart.x, endLinePosition.y - panStart.y)
+
+        if beginLineDistance < touchRadius {
+            inTool = true
+        }
+        
+        if endLineDistance < touchRadius {
+            inTool = true
+        }
+
+        return inTool
     }
 
     func doHandleDoubleTap(gestureRecognizer: UIPanGestureRecognizer, view: UIView) {
@@ -244,7 +263,7 @@ class AngleTool {
             
             //   Set movingDotIndex to the nearest dot to move
             let nearestDot = min(min(beginDistance, middleDistance), endDistance)
-            if nearestDot < 30 {
+            if nearestDot < touchRadius {
                 switch nearestDot {
                 case beginDistance:
                     movingDotIndex = 0
@@ -262,18 +281,18 @@ class AngleTool {
 
                 let endLinePosition = linePosition(startPoint: dotPositions[1], endPoint: dotPositions[2])
                 let endLineDistance = hypot(endLinePosition.x - panStart.x, endLinePosition.y - panStart.y)
-                
+
+                panBeginStartPosition = dotPositions[0]
+                panMiddleStartPosition = dotPositions[1]
+                panEndStartPosition = dotPositions[2]
+
                 movingDotIndex = -3 //Assume no line close
-                if beginLineDistance < 30 {
+                if beginLineDistance < touchRadius {
                     movingDotIndex = -1
-                    panBeginStartPosition = dotPositions[0]
-                    panMiddleStartPosition = dotPositions[1]
                 }
                 
                 if endLineDistance < 30 {
                     movingDotIndex = -2
-                    panMiddleStartPosition = dotPositions[1]
-                    panEndStartPosition = dotPositions[2]
                 }
             }
             
@@ -287,16 +306,45 @@ class AngleTool {
                 if movingDotIndex == -1 {
                     //move the begin line
                     dotPositions[0] = CGPoint(x: panBeginStartPosition.x + translation.x, y: panBeginStartPosition.y + translation.y)
-                    dotPositions[1] = CGPoint(x: panMiddleStartPosition.x + translation.x, y: panMiddleStartPosition.y + translation.y)
+                    //recalculate the axis position keeping the arms at the original angle
+                    let translatedMiddleDot = CGPoint(x: panMiddleStartPosition.x + translation.x, y: panMiddleStartPosition.y + translation.y)
+                    dotPositions[1] = intersectPosition(p1: dotPositions[0], p2: translatedMiddleDot, p3: panEndStartPosition, p4: panMiddleStartPosition)
                     drawTool()
                 } else if movingDotIndex == -2 {
                     //move the end line
-                    dotPositions[1] = CGPoint(x: panMiddleStartPosition.x + translation.x, y: panMiddleStartPosition.y + translation.y)
                     dotPositions[2] = CGPoint(x: panEndStartPosition.x + translation.x, y: panEndStartPosition.y + translation.y)
+                    //recalculate the axis position keeping the arms at the original angle
+                    let translatedMiddleDot = CGPoint(x: panMiddleStartPosition.x + translation.x, y: panMiddleStartPosition.y + translation.y)
+                    dotPositions[1] = intersectPosition(p1: dotPositions[2], p2: translatedMiddleDot, p3: panBeginStartPosition, p4:panMiddleStartPosition)
                     drawTool()
                 }
             }
         }
+    }
+    
+    /*
+     If both lines are each given by two points, first line points:     (x1 , y1) , (x2 , y2) and the second line is given by two points:
+     (x3 , y3) , (x4 , y4)
+ 
+     The intersection point (x , y) is found by the equation:
+
+    */
+    fileprivate func intersectPosition(p1: CGPoint, p2: CGPoint, p3: CGPoint, p4: CGPoint) -> CGPoint {
+        var middlePosition = CGPoint()
+        
+        let xNum1 = ((p2.x * p1.y) - (p1.x * p2.y)) * (p4.x - p3.x)
+        let xNum2 = ((p4.x * p3.y) - (p3.x * p4.y)) * (p2.x - p1.x)
+        
+        let denom = (p2.x - p1.x) * (p4.y - p3.y) - (p4.x - p3.x) * (p2.y - p1.y)
+        
+        middlePosition.x = (xNum1 - xNum2) / denom
+
+        let yNum1 = ((p2.x * p1.y) - (p1.x * p2.y)) * (p4.y - p3.y)
+        let yNum2 = ((p4.x * p3.y) - (p3.x * p4.y)) * (p2.y - p1.y)
+        
+        middlePosition.y = (yNum1 - yNum2) / denom
+
+        return middlePosition
     }
     
     //Calculate the midpoint of the line
@@ -493,7 +541,7 @@ class AngleTool {
         }
         
         var startAngle = mainArmAngle()
-        var endAngle = minorArmAngle()
+        let endAngle = minorArmAngle()
         
         if measurement?.jointMotion?.insideOutside == "Inside" {
             if startAngle < CGFloat.pi {
