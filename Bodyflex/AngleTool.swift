@@ -192,7 +192,7 @@ class AngleTool {
         
         restoreLocation()
         
-        //777 magic number that makes the scale look good
+        //1000 magic number that makes the scale look good
         scaleTool(scale: imageView.bounds.height / 1000)
 
         drawTool()
@@ -224,7 +224,7 @@ class AngleTool {
         let endLinePosition = linePosition(startPoint: dotPositions[1], endPoint: dotPositions[2])
         
         let beginLineDistance = hypot(beginLinePosition.x - point.x, beginLinePosition.y - point.y)
-        let endLineDistance = hypot(endLinePosition.x - panStart.x, endLinePosition.y - panStart.y)
+        let endLineDistance = hypot(endLinePosition.x - point.x, endLinePosition.y - point.y)
 
         if beginLineDistance < touchRadius {
             inTool = true
@@ -423,11 +423,12 @@ class AngleTool {
     }
     
     fileprivate func dotAnimation() {
-
+        //Common end size
+        let endSize = CGSize(width: dotDiameter * 2.5, height: dotDiameter * 2.5)
+        
         //  setup for begin dot animation
         let startOrigin = CGPoint(x: dotPositions[0].x - dotRadius, y: dotPositions[0].y - dotRadius)
         let startPath = UIBezierPath(ovalIn: CGRect(origin: startOrigin , size: CGSize(width: dotDiameter, height: dotDiameter)))
-        let endSize = CGSize(width: dotDiameter * 2.5, height: dotDiameter * 2.5)
         let endOrigin = CGPoint(x:dotPositions[0].x - endSize.width / 2, y:dotPositions[0].y - endSize.height / 2)
         
         let endPath = UIBezierPath(ovalIn: CGRect(origin: endOrigin, size: endSize))
@@ -435,18 +436,16 @@ class AngleTool {
         //  setup for middle dot animation
         let startOrigin1 = CGPoint(x: dotPositions[1].x - dotRadius, y: dotPositions[1].y - dotRadius)
         let startPath1 = UIBezierPath(ovalIn: CGRect(origin: startOrigin1 , size: CGSize(width: dotDiameter, height: dotDiameter)))
-        let endSize1 = CGSize(width: dotDiameter * 2.5, height: dotDiameter * 2.5)
-        let endOrigin1 = CGPoint(x:dotPositions[1].x - endSize1.width / 2, y:dotPositions[1].y - endSize1.height / 2)
+        let endOrigin1 = CGPoint(x:dotPositions[1].x - endSize.width / 2, y:dotPositions[1].y - endSize.height / 2)
         
-        let endPath1 = UIBezierPath(ovalIn: CGRect(origin: endOrigin1, size: endSize1))
+        let endPath1 = UIBezierPath(ovalIn: CGRect(origin: endOrigin1, size: endSize))
         
         //  setup for end dot animation
         let startOrigin2 = CGPoint(x: dotPositions[2].x - dotRadius, y: dotPositions[2].y - dotRadius)
         let startPath2 = UIBezierPath(ovalIn: CGRect(origin: startOrigin2 , size: CGSize(width: dotDiameter, height: dotDiameter)))
-        let endSize2 = CGSize(width: dotDiameter * 2.5, height: dotDiameter * 2.5)
-        let endOrigin2 = CGPoint(x:dotPositions[2].x - endSize2.width / 2, y:dotPositions[2].y - endSize2.height / 2)
+        let endOrigin2 = CGPoint(x:dotPositions[2].x - endSize.width / 2, y:dotPositions[2].y - endSize.height / 2)
         
-        let endPath2 = UIBezierPath(ovalIn: CGRect(origin: endOrigin2, size: endSize2))
+        let endPath2 = UIBezierPath(ovalIn: CGRect(origin: endOrigin2, size: endSize))
 
         // Combine all three start and end paths
         startPath.append(startPath1)
@@ -454,6 +453,26 @@ class AngleTool {
         endPath.append(endPath1)
         endPath.append(endPath2)
         
+        //Main arm midline animation
+        let majorLinePosition = self.linePosition(startPoint: dotPositions[0], endPoint: dotPositions[1])
+        let mainOrigin = CGPoint(x: majorLinePosition.x - dotRadius, y: majorLinePosition.y - dotRadius)
+        let mainStartPath = UIBezierPath(ovalIn: CGRect(origin: mainOrigin , size: CGSize(width: dotDiameter, height: dotDiameter)))
+        let mainEndOrigin = CGPoint(x:majorLinePosition.x - endSize.width / 2, y:majorLinePosition.y - endSize.height / 2)
+        let mainEndPath = UIBezierPath(ovalIn: CGRect(origin: mainEndOrigin, size: endSize))
+        
+        startPath.append(mainStartPath)
+        endPath.append(mainEndPath)
+        
+        //Minor arm midline animation
+        let minorLinePosition = self.linePosition(startPoint: dotPositions[1], endPoint: dotPositions[2])
+        let minorOrigin = CGPoint(x: minorLinePosition.x - dotRadius, y: minorLinePosition.y - dotRadius)
+        let minorStartPath = UIBezierPath(ovalIn: CGRect(origin: minorOrigin , size: CGSize(width: dotDiameter, height: dotDiameter)))
+        let minorEndOrigin = CGPoint(x:minorLinePosition.x - endSize.width / 2, y:minorLinePosition.y - endSize.height / 2)
+        let minorEndPath = UIBezierPath(ovalIn: CGRect(origin: minorEndOrigin, size: endSize))
+        
+        startPath.append(minorStartPath)
+        endPath.append(minorEndPath)
+
         // Create the path animation
         let animation = CABasicAnimation(keyPath: "path")
         
@@ -485,16 +504,19 @@ class AngleTool {
     fileprivate func drawLines() {
         let beginPath = UIBezierPath()
         beginPath.move(to: dotPositions[0])
+        beginPath.addLine(to: dotPositions[1])
         
-        //calculate extended end point
-        let dX = dotPositions[1].x - dotPositions[0].x
-        let dY = dotPositions[1].y - dotPositions[0].y
-        let length = hypot(dX, dY)
-        let ratio = ExtensionLength / length
+        if measurement?.jointMotion?.insideOutside == "Outside" {
+            //calculate extended end point
+            let dX = dotPositions[1].x - dotPositions[0].x
+            let dY = dotPositions[1].y - dotPositions[0].y
+            let length = hypot(dX, dY)
+            let ratio = ExtensionLength / length
 
-        let extensionEndPosition = CGPoint(x: dotPositions[1].x + ratio * dX, y: dotPositions[1].y + ratio * dY)
-        
-        beginPath.addLine(to: extensionEndPosition)
+            let extensionEndPosition = CGPoint(x: dotPositions[1].x + ratio * dX, y: dotPositions[1].y + ratio * dY)
+            
+            beginPath.addLine(to: extensionEndPosition)
+        }
         
         beginLineLayer.mask = beginLineMask
         beginLineLayer.path = beginPath.cgPath

@@ -219,7 +219,7 @@ let knuckleJoint = Joint.init(name: .init(common: "Knuckle", medical: "Metacarpo
 
 let fingerJoint = Joint.init(name: .init(common: "Finger", medical: "Interphalangeal"),
                              motions: [
-                                MotionStruct.init(motion: .init(common: "Bend Finger", medical: "Flexion"),
+                                MotionStruct.init(motion: .init(common: "Bend", medical: "Flexion"),
                                                        stationaryLabel: .init(common: "Base of Finger", medical: "Aligned with Proximal Phalange"),
                                                        axisLabel: .init(common: "Finger Joint", medical: "Dorsal Proximal Interphalangeal Joint"),
                                                        movingLabel: .init(common: "Upper Finger Joint", medical: "Aligned with Middle Phalange"),
@@ -229,7 +229,7 @@ let fingerJoint = Joint.init(name: .init(common: "Finger", medical: "Interphalan
                                     description: "",
                                     rotation: "CW",
                                     insideOutside: "Outside"),
-                                MotionStruct.init(motion: .init(common: "Straighten Finger", medical: "Extension"),
+                                MotionStruct.init(motion: .init(common: "Straighten", medical: "Extension"),
                                                        stationaryLabel: .init(common: "Base of Finger", medical: "Aligned with Proximal Phalange"),
                                                        axisLabel: .init(common: "Finger Joint", medical: "Dorsal Proximal Interphalangeal Joint"),
                                                        movingLabel: .init(common: "Upper Finger Joint", medical: "Aligned with Middle Phalange"),
