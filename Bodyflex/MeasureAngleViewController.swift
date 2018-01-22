@@ -42,16 +42,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
-        tap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(tap)
-        
-    }
-    
-    @objc func doubleTapped(_ gestureRecognizer: UIPanGestureRecognizer) {
-        angleTool.doHandleDoubleTap(gestureRecognizer: gestureRecognizer, view: self.imageView)
+                
     }
     
     //Delete the current measurement before replacing
@@ -181,7 +172,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         self.measurement.jointMotion = jointMotion
         
         //Redraw tool in case angle geometry changed
-        angleTool.drawTool()
+        angleTool.setJointMotion(jointMotion: measurement.jointMotion!)
     }
     
     //Dismiss keyboard on Enter
@@ -223,7 +214,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     //Save last edit to image
     func completeEdit() {
         imaging.prepareImageForSaving(imageView: imageView, measurement: measurement)
-        measurement.angle = Float(angleTool.measuredAngle)
+        measurement.angle = Float(angleTool.measuredAngle())
         angleTool.saveLocation()
         nameLabel.endEditing(true)
     }

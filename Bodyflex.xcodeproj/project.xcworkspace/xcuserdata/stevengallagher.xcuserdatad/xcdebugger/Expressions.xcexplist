@@ -3,48 +3,47 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "MeasureAngleViewController.setMeasurement(newMeasurement:):MeasureAngleViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "BodyJoints.jointMotions():BodyJoints.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MeasureAngleViewController.viewWillLayoutSubviews():MeasureAngleViewController.swift">
+         contextName = "AngleToolDrawing.calcAngle():AngleToolDrawing.swift">
          <PersistentStrings>
             <PersistentString
-               value = "scrollView.bounds">
+               value = "mainArmAngle() * 180 / 3.14">
+            </PersistentString>
+            <PersistentString
+               value = "measuredAngle">
+            </PersistentString>
+            <PersistentString
+               value = "minorArmAngle() * 180 / 3.14">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasureAngleViewController.viewDidLayoutSubviews():MeasureAngleViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "imageView.bounds">
+            </PersistentString>
+            <PersistentString
+               value = "imageView.frame">
+            </PersistentString>
+            <PersistentString
+               value = "imageView.image">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AngleToolDrawing.setDotPositions(thePositions:):AngleToolDrawing.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SelectJointViewController.side.didset:SelectJointViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SelectJointViewController.unwindWithSelectedMotion(segue:):SelectJointViewController.swift">
       </ContextState>
       <ContextState
          contextName = "MeasurementCell.measurement.didset:MeasurementCell.swift">
          <PersistentStrings>
             <PersistentString
                value = "measurement.jointMotion">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MeasurementsAPI.cancelMeasurementEdit():Measurements.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "moc.hasChanges()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MeasurementCollectionCell.measurement.didset:MeasurementCollectionCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "measurement.jointMotion">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MeasureAngleViewController.viewWillAppear(_:):MeasureAngleViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "scrollView.bounds">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -57,19 +56,94 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MeasurementTableViewController.prepare(for:sender:):MeasurementTableViewController.swift">
+         contextName = "AngleToolDrawing.drawTool():AngleToolDrawing.swift">
       </ContextState>
       <ContextState
-         contextName = "SelectJointViewController.side.didset:SelectJointViewController.swift">
+         contextName = "SelectJointViewController.updateValues():SelectJointViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "SelectJointViewController.unwindWithSelectedMotion(segue:):SelectJointViewController.swift">
+         contextName = "MeasureAngleViewController.saveSelectJointMotion(_:):MeasureAngleViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementCollectionCell.measurement.didset:MeasurementCollectionCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "measurement.jointMotion">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BodyJoints.saveJoint():BodyJoints.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementsAPI.cancelMeasurementEdit():Measurements.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "moc.hasChanges()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AngleTool.restoreLocation():AngleTool.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dotPositions[0]">
+            </PersistentString>
+            <PersistentString
+               value = "&amp;dotPositions">
+            </PersistentString>
+            <PersistentString
+               value = "imageView?.frame">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MeasurementsAPI.newMeasurement():Measurements.swift">
          <PersistentStrings>
             <PersistentString
                value = "measurement.name">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AngleTool.setJointMotion(jointMotion:):AngleTool.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "jointMotion.insideOutside">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AngleTool.setImageView(imageView:):AngleTool.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementCollectionViewController.collectionView(_:layout:sizeForItemAt:):MeasurementCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView.bounds">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.frame">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.adjustedContentInset">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementTableViewController.prepare(for:sender:):MeasurementTableViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AngleToolDrawing.dotPositions.setter:AngleToolDrawing.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AngleTool.init():AngleTool.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MeasureAngleViewController.viewWillLayoutSubviews():MeasureAngleViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.bounds">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -90,30 +164,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AngleTool.setImageView(imageView:):AngleTool.swift">
+         contextName = "BodyJoints.jointMotions():BodyJoints.swift">
       </ContextState>
       <ContextState
-         contextName = "BodyJoints.motionFromJointMotion(jointMotion:):BodyJoints.swift">
-      </ContextState>
-      <ContextState
-         contextName = "BodyJoints.saveJoint():BodyJoints.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MeasurementCollectionViewController.scrollToIndex(index:):MeasurementCollectionViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MeasureAngleViewController.viewDidLayoutSubviews():MeasureAngleViewController.swift">
+         contextName = "MeasureAngleViewController.prepare(for:sender:):MeasureAngleViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "imageView.bounds">
-            </PersistentString>
-            <PersistentString
-               value = "imageView.frame">
-            </PersistentString>
-            <PersistentString
-               value = "imageView.image">
+               value = "jointMotion.side">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AngleToolDrawing.init():AngleToolDrawing.swift">
       </ContextState>
       <ContextState
          contextName = "MeasurementCollectionViewController.prepare(for:sender:):MeasurementCollectionViewController.swift">
@@ -127,30 +189,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MeasurementCollectionViewController.scrollToIndex(index:):MeasurementCollectionViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "MeasurementTableViewController.saveMeasurementEdit(_:):MeasurementTableViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "MeasurementCollectionViewController.collectionView(_:layout:sizeForItemAt:):MeasurementCollectionViewController.swift">
+         contextName = "MeasureAngleViewController.viewWillAppear(_:):MeasureAngleViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "collectionView.bounds">
-            </PersistentString>
-            <PersistentString
-               value = "collectionView.frame">
-            </PersistentString>
-            <PersistentString
-               value = "collectionView.adjustedContentInset">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "AngleTool.restoreLocation():AngleTool.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "dotPositions[0]">
-            </PersistentString>
-            <PersistentString
-               value = "imageView?.frame">
+               value = "scrollView.bounds">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -158,13 +206,13 @@
          contextName = "MeasureAngleViewController.imagePickerController(_:didFinishPickingMediaWithInfo:):MeasureAngleViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "measurement.date">
-            </PersistentString>
-            <PersistentString
                value = "imageView.image">
             </PersistentString>
             <PersistentString
                value = "asset.creationDate">
+            </PersistentString>
+            <PersistentString
+               value = "measurement.date">
             </PersistentString>
             <PersistentString
                value = "info[UIImagePickerControllerReferenceURL]">
@@ -172,18 +220,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MeasureAngleViewController.prepare(for:sender:):MeasureAngleViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "jointMotion.side">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "BodyJoints.motionFromJointMotion(jointMotion:):BodyJoints.swift">
       </ContextState>
       <ContextState
-         contextName = "SelectJointViewController.updateValues():SelectJointViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MeasureAngleViewController.saveSelectJointMotion(_:):MeasureAngleViewController.swift">
+         contextName = "MeasureAngleViewController.setMeasurement(newMeasurement:):MeasureAngleViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
