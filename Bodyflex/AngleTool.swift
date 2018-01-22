@@ -37,7 +37,7 @@ class AngleTool {
     var dotRadius = CGFloat(10)
     var dotLineWidth = CGFloat(2)
     var lineWidth = CGFloat(5)
-    var ExtensionLength = CGFloat(60)
+    var extensionLength = CGFloat(60)
     var angleTextDistance = CGFloat(65)
     var arcRadius = CGFloat(40)
     var arcLineWidth = CGFloat(1)
@@ -370,7 +370,7 @@ class AngleTool {
         dotRadius *= scale
         dotLineWidth *= scale
         lineWidth *= scale
-        ExtensionLength *= scale
+        extensionLength *= scale
         angleTextDistance *= scale
         arcRadius *= scale
         arcLineWidth *= scale
@@ -506,22 +506,39 @@ class AngleTool {
         beginPath.move(to: dotPositions[0])
         beginPath.addLine(to: dotPositions[1])
         
-        if measurement?.jointMotion?.insideOutside == "Outside" {
+        let insideOutside = measurement?.jointMotion?.insideOutside
+        if insideOutside != "Inside" {
+            //Add Straight extension for outside measurement
             //calculate extended end point
             let dX = dotPositions[1].x - dotPositions[0].x
             let dY = dotPositions[1].y - dotPositions[0].y
             let length = hypot(dX, dY)
-            let ratio = ExtensionLength / length
-
-            let extensionEndPosition = CGPoint(x: dotPositions[1].x + ratio * dX, y: dotPositions[1].y + ratio * dY)
-            
+            let ratio = extensionLength / length
+            //Assume extension inline with arm
+            var extensionX = ratio * dX
+            var extensionY = ratio * dY
+            let rotation = measurement?.jointMotion?.rotation
+        
+            if insideOutside == "Outside-90" && rotation! == "CW" || insideOutside == "Inside-90" && rotation! == "CCW" {
+                //extension 90 degree clockwise
+                extensionX = -ratio * dY
+                extensionY = ratio * dX
+            } else if insideOutside == "Outside-90" && rotation! == "CCW" || insideOutside == "Inside-90" && rotation! == "CW" {
+                //extension 90 degree counter clockwise
+                extensionX = ratio * dY
+                extensionY = -ratio * dX
+            }
+            let extensionEndPosition = CGPoint(x: dotPositions[1].x + extensionX, y: dotPositions[1].y + extensionY)
             beginPath.addLine(to: extensionEndPosition)
         }
+
+
         
         beginLineLayer.mask = beginLineMask
         beginLineLayer.path = beginPath.cgPath
         beginLineLayer.lineWidth = lineWidth
         beginLineLayer.strokeColor = UIColor.magenta.cgColor
+        beginLineLayer.fillColor = UIColor.clear.cgColor //Prevent auto closing of path and filling with black
         beginLineLayer.lineCap = kCALineJoinRound
 
         let endPath = UIBezierPath()

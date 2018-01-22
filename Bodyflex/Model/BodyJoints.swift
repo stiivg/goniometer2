@@ -501,8 +501,28 @@ let neckJoint = Joint.init(name: .init(common: "Neck", medical: "Cervical Spine"
                                               normalAAOS: "70.5,7.5",
                                               position: "",
                                               description: "",
+                                              rotation: "CW",
+                                              insideOutside: "Outside-90"),
+                            MotionStruct.init(motion: .init(common: "Side Bending", medical: ""),
+                                              stationaryLabel: .init(common: "Backbone", medical: "Spinous Processes of Thoracic Spine"),
+                                              axisLabel: .init(common: "Neck", medical: "Spinous Process of C7"),
+                                              movingLabel: .init(common: "Center of Back of Head", medical: "Posterior Midline of Head at Occipital Protuberance"),
+                                              normalAMA: "45",
+                                              normalAAOS: "46.5,6.5",
+                                              position: "",
+                                              description: "",
                                               rotation: "CCW",
-                                              insideOutside: "Inside-90")])
+                                              insideOutside: "Outside"),
+                            MotionStruct.init(motion: .init(common: "Rotation", medical: ""),
+                                              stationaryLabel: .init(common: "Shoulder", medical: "Aligned with Acromion Processes"),
+                                              axisLabel: .init(common: "Center of Top of Head", medical: "Center of Superior Aspect of Head"),
+                                              movingLabel: .init(common: "Aligned with Tip of Nose", medical: ""),
+                                              normalAMA: "80",
+                                              normalAAOS: "81,6.5",
+                                              position: "",
+                                              description: "",
+                                              rotation: "CCW",
+                                              insideOutside: "Outside-90")])
 
 
 class BodyJoints {
