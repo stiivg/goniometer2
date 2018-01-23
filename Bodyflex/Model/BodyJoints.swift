@@ -524,9 +524,53 @@ let neckJoint = Joint.init(name: .init(common: "Neck", medical: "Cervical Spine"
                                               rotation: "CCW",
                                               insideOutside: "Outside-90")])
 
+let testJoint = Joint.init(name: .init(common: "Test", medical: "Cervical Spine"),
+                           motions: [
+                            MotionStruct.init(motion: .init(common: "Inside-90 CW Q90", medical: "Flexion"),
+                                              stationaryLabel: .init(common: "Vertical", medical: ""),
+                                              axisLabel: .init(common: "Ear", medical: "External Auditory Meatus"),
+                                              movingLabel: .init(common: "Aligned with Nostrils", medical: ""),
+                                              normalAMA: "60",
+                                              normalAAOS: "70.5,7.5",
+                                              position: "",
+                                              description: "",
+                                              rotation: "CW",
+                                              insideOutside: "Inside-90"),
+                            MotionStruct.init(motion: .init(common: "CW Outside-90 Q270", medical: "Eversion"),
+                                              stationaryLabel: .init(common: "Vertical", medical: ""),
+                                              axisLabel: .init(common: "Ear", medical: "External Auditory Meatus"),
+                                              movingLabel: .init(common: "Aligned with Nostrils", medical: ""),
+                                              normalAMA: "75",
+                                              normalAAOS: "70.5,7.5",
+                                              position: "",
+                                              description: "",
+                                              rotation: "CW",
+                                              insideOutside: "Outside-90"),
+                            MotionStruct.init(motion: .init(common: "CW Outside Q180", medical: ""),
+                                              stationaryLabel: .init(common: "Backbone", medical: "Spinous Processes of Thoracic Spine"),
+                                              axisLabel: .init(common: "Neck", medical: "Spinous Process of C7"),
+                                              movingLabel: .init(common: "Center of Back of Head", medical: "Posterior Midline of Head at Occipital Protuberance"),
+                                              normalAMA: "45",
+                                              normalAAOS: "46.5,6.5",
+                                              position: "",
+                                              description: "",
+                                              rotation: "CW",
+                                              insideOutside: "Outside"),
+                            MotionStruct.init(motion: .init(common: "CW Inside Q0", medical: ""),
+                                              stationaryLabel: .init(common: "Shoulder", medical: "Aligned with Acromion Processes"),
+                                              axisLabel: .init(common: "Center of Top of Head", medical: "Center of Superior Aspect of Head"),
+                                              movingLabel: .init(common: "Aligned with Tip of Nose", medical: ""),
+                                              normalAMA: "80",
+                                              normalAAOS: "81,6.5",
+                                              position: "",
+                                              description: "",
+                                              rotation: "CW",
+                                              insideOutside: "Inside")])
+
+
 
 class BodyJoints {
-    let joints = [shoulderJoint, elbowJoint,  forearm, wristJoint, knuckleJoint, fingerJoint, thumb, hipJoint, kneeJoint, ankleJoint, heelJoint, footJoint, toeJoint, neckJoint]
+    let joints = [testJoint, shoulderJoint, elbowJoint,  forearm, wristJoint, knuckleJoint, fingerJoint, thumb, hipJoint, kneeJoint, ankleJoint, heelJoint, footJoint, toeJoint, neckJoint]
 
     //Create a managed object for this joint, motion, and side
     func newJointMotion(joint: Joint, motion: MotionStruct, side: String) -> JointMotion {

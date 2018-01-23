@@ -42,6 +42,9 @@ class AngleTool {
         angleToolDrawing.rotationCW = rotationCW
         let quadrant = calcQuadrant(rotationCW: rotationCW, insideOutside: jointMotion.insideOutside!)
         angleToolDrawing.angleQuadrant = quadrant
+        if self.imageView != nil {
+            angleToolDrawing.drawTool(dotPositions: dotPositions)
+        }
 
     }
     
@@ -53,10 +56,10 @@ class AngleTool {
         }
         if insideOutside == "Outside-90" && rotationCW || insideOutside == "Inside-90" && !rotationCW {
             //extension 90 degree clockwise
-            quadrant = "Quadrant90"
+            quadrant = "Quadrant270"
         } else if insideOutside == "Outside-90" && !rotationCW || insideOutside == "Inside-90" && rotationCW {
             //extension 90 degree counter clockwise
-            quadrant = "Quadrant270"
+            quadrant = "Quadrant90"
         }
         return quadrant
     }

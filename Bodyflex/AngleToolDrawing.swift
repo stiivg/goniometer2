@@ -236,12 +236,12 @@ class AngleToolDrawing {
         switch angleQuadrant {
         case "Quadrant90":
             //extension 90 degree clockwise
-            extensionX = -ratio * dY
-            extensionY = ratio * dX
-        case "Quadrant270":
-            //extension 90 degree counter clockwise
             extensionX = ratio * dY
             extensionY = -ratio * dX
+        case "Quadrant270":
+            //extension 90 degree counter clockwise
+            extensionX = -ratio * dY
+            extensionY = ratio * dX
         case "Quadrant180":
             extensionX = ratio * dX
             extensionY = ratio * dY
@@ -300,14 +300,30 @@ class AngleToolDrawing {
         var startAngle = mainArmAngle()
         let endAngle = minorArmAngle()
         
-        if angleQuadrant == "Quadrant0" {
+        switch angleQuadrant {
+        case "Quadrant0":
+            //zero is down main arm
             if startAngle < CGFloat.pi {
                 startAngle = startAngle + CGFloat.pi
             } else {
                 startAngle = startAngle - CGFloat.pi
             }
+        case "Quadrant90":
+            //90 CW from main arm
+            if startAngle > CGFloat.pi / 2 {
+                startAngle = startAngle -  CGFloat.pi / 2
+            } else {
+                startAngle = startAngle +  CGFloat.pi * 3 / 2
+            }
+        case "Quadrant270":
+            if startAngle > CGFloat.pi * 3 / 2 {
+                startAngle = startAngle - CGFloat.pi * 3 / 2
+            } else {
+                startAngle = startAngle + CGFloat.pi / 2
+            }
+        default: break
         }
-        
+
         let arcLinePath = UIBezierPath.init(arcCenter: arcLineOrigin, radius: arcRadius, startAngle: startAngle, endAngle: endAngle , clockwise: clockwise)
         
         
@@ -343,43 +359,21 @@ class AngleToolDrawing {
         if rotationCW {
             textAngle =  mainArmAngle() + measuredAngleRadians
         }
-        //If inside angle move 180
-        if angleQuadrant == "Quadrant0" {
+        //Adjust for which quadrant is zero
+        switch angleQuadrant {
+        case "Quadrant0":
+            //zero is down main arm
             textAngle = textAngle + CGFloat.pi
+        case "Quadrant90":
+            textAngle = textAngle - CGFloat.pi / 2
+        case "Quadrant270":
+            textAngle = textAngle + CGFloat.pi / 2
+        default: break
         }
         let textOffset = CGPoint(x: angleTextDistance * cos(textAngle), y: angleTextDistance * sin(textAngle))
         let textPoint = CGPoint(x: dotPositions[1].x + textOffset.x, y: dotPositions[1].y + textOffset.y)
         
         return textPoint
-    }
-
-
-    //use difference of main arm angle and minor arm angle +/-180 degrees in the chosen quadrant
-    fileprivate func testcalcAngle() {
-        let diff = (minorArmAngle() - mainArmAngle()) * CGFloat(180 / CGFloat.pi) //convert radians to degrees
-        var quadrantOffset = CGFloat(0)
-        //Adjust for which quadrant is zero
-        switch angleQuadrant {
-        case "Quadrant0":
-            //zero is down main arm
-            quadrantOffset = 0
-        case "Quadrant90":
-            //90 CW from main arm
-            quadrantOffset = 90
-        case "Quadrant180":
-            //Extended from main arm
-            quadrantOffset = 180
-        case "Quadrant270":
-            //90 CCW from main arm
-            quadrantOffset = 270
-        default: break
-        }
-        measuredAngle = diff - quadrantOffset
-        if !rotationCW {
-            measuredAngle = -measuredAngle
-        }
-        print("Meas= " + String(format: "%.1f", measuredAngle))
-
     }
 
     //use difference of main arm angle and minor arm angle +/-180 degrees
@@ -405,17 +399,17 @@ class AngleToolDrawing {
                 measuredAngle = insideAngle
             }
         case "Quadrant90":
-            //90 CW from main arm
-            let insideAngle = measuredAngle + 90
-            if measuredAngle > 90 {
-                measuredAngle = insideAngle - 360
+            let insideAngle = measuredAngle - 90
+            if measuredAngle < -90 {
+                measuredAngle = insideAngle + 360
             } else {
                 measuredAngle = insideAngle
             }
         case "Quadrant270":
-            let insideAngle = measuredAngle - 90
-            if measuredAngle < -90 {
-                measuredAngle = insideAngle + 360
+            //90 CW from main arm
+            let insideAngle = measuredAngle + 90
+            if measuredAngle > 90 {
+                measuredAngle = insideAngle - 360
             } else {
                 measuredAngle = insideAngle
             }
@@ -427,7 +421,8 @@ class AngleToolDrawing {
         }
 
     }
-    
+    //TODO make this the Q0 angle and correct all usage
+    //Angle to the Q180 extension!
     //Right is zero, positive is clockwise 0 to 2xPI
     fileprivate func mainArmAngle() -> CGFloat {
         let dX = dotPositions[1].x - dotPositions[0].x

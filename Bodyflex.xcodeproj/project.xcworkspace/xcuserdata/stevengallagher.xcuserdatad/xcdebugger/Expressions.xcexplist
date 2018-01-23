@@ -65,6 +65,22 @@
          contextName = "MeasureAngleViewController.saveSelectJointMotion(_:):MeasureAngleViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "AngleToolDrawing.drawAngleArc():AngleToolDrawing.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "startAngle * 180 / 3.14">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AngleToolDrawing.textPoint():AngleToolDrawing.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "textAngle  * 180 / 3.14">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MeasurementCollectionCell.measurement.didset:MeasurementCollectionCell.swift">
          <PersistentStrings>
             <PersistentString
