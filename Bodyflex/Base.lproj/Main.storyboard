@@ -189,13 +189,13 @@
                                 </connections>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ekt-9f-bnb" userLabel="Text Stack View">
-                                <rect key="frame" x="15" y="79" width="384" height="60.333333333333343"/>
+                                <rect key="frame" x="5" y="79" width="404" height="60.333333333333343"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iP3-9F-H9T">
-                                        <rect key="frame" x="0.0" y="0.0" width="384" height="29.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="29.666666666666668"/>
                                         <subviews>
                                             <textField opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Measurement" placeholder="Left Knee Bend" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w93-k2-Def">
-                                                <rect key="frame" x="0.0" y="0.0" width="384" height="29.666666666666668"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="404" height="29.666666666666668"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -208,10 +208,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="T6z-Vf-LeF">
-                                        <rect key="frame" x="0.0" y="30.666666666666671" width="384" height="29.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="30.666666666666671" width="404" height="29.666666666666671"/>
                                         <subviews>
                                             <textField autoresizesSubviews="NO" opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HN1-1q-w89">
-                                                <rect key="frame" x="0.0" y="0.0" width="192" height="29.666666666666668"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="202" height="29.666666666666668"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -221,7 +221,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="Date" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="SbR-51-3sV">
-                                                <rect key="frame" x="192" y="0.0" width="192" height="29.666666666666668"/>
+                                                <rect key="frame" x="202" y="0.0" width="202" height="29.666666666666668"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -238,29 +238,33 @@
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="yKA-BX-KEd"/>
                                 </constraints>
                             </stackView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="right" translatesAutoresizingMaskIntoConstraints="NO" id="Ab4-9S-2or">
+                            <toolbar clearsContextBeforeDrawing="NO" contentMode="right" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ab4-9S-2or">
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <items>
-                                    <barButtonItem title="Photo" id="jcs-rJ-xIs">
-                                        <connections>
-                                            <action selector="shootPhoto:" destination="BYZ-38-t0r" id="aId-o2-8vM"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jlv-2Q-f90"/>
                                     <barButtonItem title="Library" width="106.5" id="R13-hB-WVG">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="photoFromLibrary:" destination="BYZ-38-t0r" id="7zO-Un-YCB"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jlv-2Q-f90"/>
+                                    <barButtonItem systemItem="camera" id="jcs-rJ-xIs">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="shootPhoto:" destination="BYZ-38-t0r" id="aId-o2-8vM"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
+                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5el-JK-Ixk"/>
                             <constraint firstItem="ekt-9f-bnb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" priority="750" constant="15" id="LTn-ef-Pb1"/>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="bottom" secondItem="Ab4-9S-2or" secondAttribute="top" id="Oe3-kr-Fha"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ekt-9f-bnb" secondAttribute="trailing" constant="5" id="ctj-DT-F4D"/>
                             <constraint firstItem="Ab4-9S-2or" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dYL-3N-9HD"/>
                             <constraint firstItem="ekt-9f-bnb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gin-vk-ryp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ekt-9f-bnb" secondAttribute="trailing" priority="750" constant="15" id="jOv-5G-rLp"/>
@@ -567,7 +571,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jf7-5M-Dwo" userLabel="Text Stack View">
                                                             <rect key="frame" x="0.0" y="29.999999999999996" width="314" height="39.666666666666657"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" placeholder="Name" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="28F-al-8ZO">
+                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="28F-al-8ZO">
                                                                     <rect key="frame" x="0.0" y="0.0" width="156.66666666666666" height="23"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
