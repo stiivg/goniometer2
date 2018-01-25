@@ -11,5 +11,6 @@ import UIKit
 class MotionCell: UITableViewCell {
 
  
+    @IBOutlet weak var motionLabelMedical: UILabel!
     @IBOutlet weak var motionLabel: UILabel!
 }

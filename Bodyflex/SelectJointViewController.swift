@@ -27,11 +27,13 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: "JointCell")!
             (cell as! JointCell).jointLabel.text = (joint?.name.common)!
-            
+            (cell as! JointCell).jointLabelMedical.text = (joint?.name.medical)
+
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: "MotionCell")!
             (cell as! MotionCell).motionLabel.text = (motion?.motion.common)!
-            
+            (cell as! MotionCell).motionLabelMedical.text = (motion?.motion.medical)
+
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: "SideCell")!
             var index = 0  //assume Left

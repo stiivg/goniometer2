@@ -369,7 +369,7 @@ let kneeJoint = Joint.init(name: .init(common: "Knee", medical: ""),
                                                    rotation: "CW",
                                                    insideOutside: "Outside")])
 
-let ankleJoint = Joint.init(name: .init(common: "Ankle", medical: ""),
+let ankleJoint = Joint.init(name: .init(common: "Ankle", medical: "Talocrural Joint"),
                            motions: [
                             MotionStruct.init(motion: .init(common: "Raise Foot", medical: "Dorsiflexion"),
                                                    stationaryLabel: .init(common: "Knee", medical: "Fibular Head"),
@@ -378,7 +378,7 @@ let ankleJoint = Joint.init(name: .init(common: "Ankle", medical: ""),
                                                    normalAMA: "20",
                                                    normalAAOS: "13,4.4",
                                                    position: "",
-                                                   description: "",
+                                                   description: "Bend ankle so toes point up",
                                                    rotation: "CW",
                                                    insideOutside: "Outside-90"),
                             MotionStruct.init(motion: .init(common: "Lower Foot", medical: "Plantarflexion"),
@@ -388,7 +388,7 @@ let ankleJoint = Joint.init(name: .init(common: "Ankle", medical: ""),
                                                    normalAMA: "50",
                                                    normalAAOS: "56,6.1",
                                                    position: "",
-                                                   description: "",
+                                                   description: "Bend ankle so toes point down",
                                                    rotation: "CCW",
                                                    insideOutside: "Inside-90")])
 
