@@ -9,7 +9,43 @@
 import UIKit
 import CoreData
 
-class SelectJointViewController: UITableViewController {
+class SelectJointViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var jointMotionTable: UITableView!
+    //    let jointCell = self.tableView.dequeueReusableCell(withIdentifier: "JointCell")
+//    let motionCell = MotionCell()
+//    let sideCell = SideCell()
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell: UITableViewCell
+        
+        switch indexPath.row {
+        case 0:
+            cell = tableView.dequeueReusableCell(withIdentifier: "JointCell")!
+            (cell as! JointCell).jointLabel.text = (joint?.name.common)!
+            
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: "MotionCell")!
+            (cell as! MotionCell).motionLabel.text = (motion?.motion.common)!
+            
+        case 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: "SideCell")!
+            var index = 0  //assume Left
+            if side == "Right" {
+                index = 1
+            }
+            (cell as! SideCell).sideControl.selectedSegmentIndex = index
+        default:
+            cell = UITableViewCell()
+        }
+        
+        return cell
+    }
+    
 
    
     // MARK: - Properties
@@ -18,10 +54,10 @@ class SelectJointViewController: UITableViewController {
     
     var side: String = "Right"
     
-    
-    @IBOutlet weak var jointLabel: UILabel!
-    @IBOutlet weak var motionLabel: UILabel!
-    @IBOutlet weak var sideControl: UISegmentedControl!
+//    @IBOutlet weak var jointLabel: UILabel!
+//    @IBOutlet weak var motionLabel: UILabel!
+//    
+//    @IBOutlet weak var sideControl: UISegmentedControl!
     
 
     // MARK: - Navigation
@@ -38,19 +74,19 @@ class SelectJointViewController: UITableViewController {
     }
     
     func updateValues() {
-        jointLabel.text = joint?.name.common
-        motionLabel.text = self.motion?.motion.common
-        var index = 0  //assume Left
-        if side == "Right" {
-            index = 1
-        }
-        sideControl.selectedSegmentIndex = index
+//        jointCell.jointText = (joint?.name.common)!
+//        motionCell.motionText = (self.motion?.motion.common)!
+//        var index = 0  //assume Left
+//        if side == "Right" {
+//            index = 1
+//        }
+//        sideCell.sideIndex = index
 
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        updateValues()
+        jointMotionTable.reloadData()
     }
   
 

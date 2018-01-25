@@ -645,13 +645,19 @@ class BodyJoints {
     }
     
     func jointFromJointMotion(jointMotion: JointMotion) -> Joint {
-        let joint = joints.first(where: { $0.name.common == jointMotion.nameCommon })
+        var joint = joints.first(where: { $0.name.common == jointMotion.nameCommon })
+        if joint == nil { //If joint not found default to the first joint
+            joint = joints[0]
+        }
         return joint!
     }
     
     func motionFromJointMotion(jointMotion: JointMotion) -> MotionStruct {
         let joint = jointFromJointMotion(jointMotion: jointMotion)
-        let motion = joint.motions.first(where: { $0.motion.common == jointMotion.motionCommon })
+        var motion = joint.motions.first(where: { $0.motion.common == jointMotion.motionCommon })
+        if motion == nil { //If motion not found default to the first motion
+            motion = joint.motions[0]
+        }
         return motion!
     }
     

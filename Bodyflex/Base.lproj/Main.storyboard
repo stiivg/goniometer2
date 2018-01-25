@@ -312,26 +312,29 @@
             </objects>
             <point key="canvasLocation" x="1198" y="1155"/>
         </scene>
-        <!--Select Measurement-->
-        <scene sceneID="NZj-U0-s18">
+        <!--Joint Motion-->
+        <scene sceneID="0hW-w0-LJ0">
             <objects>
-                <tableViewController title="Select Measurement" automaticallyAdjustsScrollViewInsets="NO" id="4Cq-03-mwV" customClass="SelectJointViewController" customModule="Bodyflex" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="nn7-Tf-Ked">
+                <viewController id="Njm-sI-DBT" customClass="SelectJointViewController" customModule="Bodyflex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="870-pa-uYD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <inset key="separatorInset" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <sections>
-                            <tableViewSection id="nJ2-v0-hlv">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="1l7-aB-YtC" detailTextLabel="2pS-X0-8zy" style="IBUITableViewCellStyleValue1" id="eDQ-Sa-JIb">
-                                        <rect key="frame" x="0.0" y="35" width="414" height="44"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iRU-8P-jZt">
+                                <rect key="frame" x="0.0" y="64" width="414" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="daa-2G-Ye1"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="JointCell" textLabel="1l7-aB-YtC" detailTextLabel="2pS-X0-8zy" style="IBUITableViewCellStyleValue1" id="eDQ-Sa-JIb" customClass="JointCell" customModule="Bodyflex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eDQ-Sa-JIb" id="9lu-BT-c1l">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Joint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1l7-aB-YtC">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Joint" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1l7-aB-YtC">
                                                     <rect key="frame" x="14.999999999999996" y="11.999999999999998" width="37.666666666666664" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -339,7 +342,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2pS-X0-8zy">
-                                                    <rect key="frame" x="332" y="11.999999999999998" width="44" height="20.333333333333332"/>
+                                                    <rect key="frame" x="335" y="11.999999999999998" width="44" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -348,14 +351,15 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="jointLabel" destination="2pS-X0-8zy" id="9JC-l6-m6g"/>
                                             <segue destination="Mfa-Wt-D90" kind="show" identifier="PickJoint" id="O3q-KL-J2c"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="a56-Za-KvF" detailTextLabel="Kom-bF-FHX" style="IBUITableViewCellStyleValue1" id="wBV-UG-RJ4">
-                                        <rect key="frame" x="0.0" y="79" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MotionCell" textLabel="a56-Za-KvF" detailTextLabel="Kom-bF-FHX" style="IBUITableViewCellStyleValue1" id="wBV-UG-RJ4" customClass="MotionCell" customModule="Bodyflex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wBV-UG-RJ4" id="mf7-TI-5Q2">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Motion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a56-Za-KvF">
@@ -366,7 +370,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kom-bF-FHX" userLabel="Motion Label">
-                                                    <rect key="frame" x="332" y="11.999999999999998" width="44" height="20.333333333333332"/>
+                                                    <rect key="frame" x="335" y="11.999999999999998" width="44" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -375,18 +379,19 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="motionLabel" destination="Kom-bF-FHX" id="qNq-0o-spg"/>
                                             <segue destination="Hvo-Ej-K1q" kind="show" identifier="PickMotion" id="BNd-1P-vDo"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="WGx-Dp-Ctt" style="IBUITableViewCellStyleDefault" id="zTw-MK-W2m">
-                                        <rect key="frame" x="0.0" y="123" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SideCell" textLabel="WGx-Dp-Ctt" style="IBUITableViewCellStyleDefault" id="zTw-MK-W2m" customClass="SideCell" customModule="Bodyflex" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="116" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="right" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zTw-MK-W2m" id="Kuv-cl-yri">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="right" insetsLayoutMarginsFromSafeArea="NO" text="Side" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WGx-Dp-Ctt">
-                                                    <rect key="frame" x="15" y="0.0" width="379" height="43.666666666666664"/>
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -400,46 +405,56 @@
                                                         <segment title="Right"/>
                                                     </segments>
                                                     <connections>
-                                                        <action selector="sideControl:" destination="4Cq-03-mwV" eventType="valueChanged" id="oiG-UY-JqA"/>
+                                                        <action selector="sideControl:" destination="Njm-sI-DBT" eventType="valueChanged" id="n5J-ty-x4t"/>
                                                     </connections>
                                                 </segmentedControl>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="sideControl" destination="Lot-SH-zl3" id="eVC-h9-Twa"/>
+                                        </connections>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="4Cq-03-mwV" id="Y7j-dW-vo0"/>
-                            <outlet property="delegate" destination="4Cq-03-mwV" id="NOc-jk-Lx3"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Joint Motion" id="oUU-N6-McE">
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Njm-sI-DBT" id="lIF-TC-aAw"/>
+                                    <outlet property="delegate" destination="Njm-sI-DBT" id="gYW-Fb-4HD"/>
+                                </connections>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ankle Lower Foot.png" translatesAutoresizingMaskIntoConstraints="NO" id="rfR-hk-9vf">
+                                <rect key="frame" x="87" y="288" width="240" height="234"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iRU-8P-jZt" firstAttribute="leading" secondItem="qNb-Me-YTm" secondAttribute="leading" id="0Ll-c8-PYT"/>
+                            <constraint firstItem="qNb-Me-YTm" firstAttribute="trailing" secondItem="iRU-8P-jZt" secondAttribute="trailing" id="jSD-Rl-bpO"/>
+                            <constraint firstItem="iRU-8P-jZt" firstAttribute="top" secondItem="qNb-Me-YTm" secondAttribute="top" id="v7v-Nk-C4u"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qNb-Me-YTm"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Joint Motion" id="q23-76-tFl">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Vze-Y6-2BI">
                             <connections>
-                                <action selector="cancelSelectJointMotion:" destination="LCm-7a-oL4" id="gQa-39-99y"/>
-                                <segue destination="LCm-7a-oL4" kind="unwind" unwindAction="cancelSelectJointMotion:" id="Qjc-lG-274"/>
+                                <segue destination="1YP-VR-OA1" kind="unwind" unwindAction="cancelSelectJointMotion:" id="Zht-Pi-Xk7"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="n5Z-tb-bDq">
                             <connections>
-                                <action selector="saveSelectJointMotion:" destination="LCm-7a-oL4" id="jaa-ez-vee"/>
-                                <segue destination="LCm-7a-oL4" kind="unwind" unwindAction="saveSelectJointMotion:" id="8v1-1g-TQ0"/>
+                                <segue destination="1YP-VR-OA1" kind="unwind" unwindAction="saveSelectJointMotion:" id="oiZ-TD-eSE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="jointLabel" destination="2pS-X0-8zy" id="9U0-uc-8WW"/>
-                        <outlet property="motionLabel" destination="Kom-bF-FHX" id="Lfn-un-fxa"/>
-                        <outlet property="sideControl" destination="Lot-SH-zl3" id="mzD-Dm-429"/>
+                        <outlet property="jointMotionTable" destination="iRU-8P-jZt" id="Aav-Wv-a1x"/>
                     </connections>
-                </tableViewController>
-                <exit id="LCm-7a-oL4" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ECl-I0-dhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TxE-xx-ZSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="1YP-VR-OA1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3448" y="1126"/>
+            <point key="canvasLocation" x="3624.6376811594205" y="1125.8152173913045"/>
         </scene>
         <!--Choose Joint-->
         <scene sceneID="fKL-P6-Kqg">
@@ -648,7 +663,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="4Cq-03-mwV" kind="relationship" relationship="rootViewController" id="Srw-DE-pNn"/>
+                        <segue destination="Njm-sI-DBT" kind="relationship" relationship="rootViewController" id="SXn-bJ-VfN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rJz-nF-2pX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -673,6 +688,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Ankle Lower Foot.png" width="1254" height="1734"/>
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>

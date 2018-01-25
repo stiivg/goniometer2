@@ -3,18 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "AngleToolDrawing.calcAngle():AngleToolDrawing.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "mainArmAngle() * 180 / 3.14">
-            </PersistentString>
-            <PersistentString
-               value = "measuredAngle">
-            </PersistentString>
-            <PersistentString
-               value = "minorArmAngle() * 180 / 3.14">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "MeasureAngleViewController.setMeasurement(newMeasurement:):MeasureAngleViewController.swift">
       </ContextState>
       <ContextState
          contextName = "MeasureAngleViewController.viewDidLayoutSubviews():MeasureAngleViewController.swift">
@@ -56,15 +45,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AngleToolDrawing.drawTool():AngleToolDrawing.swift">
-      </ContextState>
-      <ContextState
-         contextName = "SelectJointViewController.updateValues():SelectJointViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MeasureAngleViewController.saveSelectJointMotion(_:):MeasureAngleViewController.swift">
-      </ContextState>
-      <ContextState
          contextName = "AngleToolDrawing.drawAngleArc():AngleToolDrawing.swift">
          <PersistentStrings>
             <PersistentString
@@ -73,12 +53,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "AngleToolDrawing.drawTool():AngleToolDrawing.swift">
+      </ContextState>
+      <ContextState
          contextName = "AngleToolDrawing.textPoint():AngleToolDrawing.swift">
          <PersistentStrings>
             <PersistentString
                value = "textAngle  * 180 / 3.14">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SelectJointViewController.updateValues():SelectJointViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "joint">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasureAngleViewController.saveSelectJointMotion(_:):MeasureAngleViewController.swift">
       </ContextState>
       <ContextState
          contextName = "MeasurementCollectionCell.measurement.didset:MeasurementCollectionCell.swift">
@@ -106,18 +100,10 @@
                value = "dotPositions[0]">
             </PersistentString>
             <PersistentString
-               value = "&amp;dotPositions">
-            </PersistentString>
-            <PersistentString
                value = "imageView?.frame">
             </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MeasurementsAPI.newMeasurement():Measurements.swift">
-         <PersistentStrings>
             <PersistentString
-               value = "measurement.name">
+               value = "&amp;dotPositions">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -126,6 +112,14 @@
          <PersistentStrings>
             <PersistentString
                value = "jointMotion.insideOutside">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MeasurementsAPI.newMeasurement():Measurements.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "measurement.name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -194,6 +188,20 @@
          contextName = "AngleToolDrawing.init():AngleToolDrawing.swift">
       </ContextState>
       <ContextState
+         contextName = "AngleToolDrawing.calcAngle():AngleToolDrawing.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "minorArmAngle() * 180 / 3.14">
+            </PersistentString>
+            <PersistentString
+               value = "measuredAngle">
+            </PersistentString>
+            <PersistentString
+               value = "mainArmAngle() * 180 / 3.14">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MeasurementCollectionViewController.prepare(for:sender:):MeasurementCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -208,9 +216,6 @@
          contextName = "MeasurementCollectionViewController.scrollToIndex(index:):MeasurementCollectionViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "MeasurementTableViewController.saveMeasurementEdit(_:):MeasurementTableViewController.swift">
-      </ContextState>
-      <ContextState
          contextName = "MeasureAngleViewController.viewWillAppear(_:):MeasureAngleViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -219,16 +224,19 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MeasurementTableViewController.saveMeasurementEdit(_:):MeasurementTableViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "MeasureAngleViewController.imagePickerController(_:didFinishPickingMediaWithInfo:):MeasureAngleViewController.swift">
          <PersistentStrings>
+            <PersistentString
+               value = "measurement.date">
+            </PersistentString>
             <PersistentString
                value = "imageView.image">
             </PersistentString>
             <PersistentString
                value = "asset.creationDate">
-            </PersistentString>
-            <PersistentString
-               value = "measurement.date">
             </PersistentString>
             <PersistentString
                value = "info[UIImagePickerControllerReferenceURL]">
@@ -237,9 +245,6 @@
       </ContextState>
       <ContextState
          contextName = "BodyJoints.motionFromJointMotion(jointMotion:):BodyJoints.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MeasureAngleViewController.setMeasurement(newMeasurement:):MeasureAngleViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
