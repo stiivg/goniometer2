@@ -63,7 +63,7 @@
 		645C758C1FD1DAA800053C4F /* Bodyflex.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bodyflex.xcdatamodel; sourceTree = "<group>"; };
 		64613BFF1FC65CDE00362CBD /* SelectJointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectJointViewController.swift; sourceTree = "<group>"; };
 		64923DA520195057004E9A7E /* Ankle Lower Foot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ankle Lower Foot.png"; sourceTree = "<group>"; };
-		64923DA720195061004E9A7E /* Ankle Raise Foot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ankle Raise Foot.png"; sourceTree = "<group>"; };
+		64923DA720195061004E9A7E /* Ankle Raise Foot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Ankle Raise Foot.png"; path = "Bodyflex/JointImages/Ankle Raise Foot.png"; sourceTree = SOURCE_ROOT; };
 		64A01D111FFEA162007A6C58 /* MeasurementCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementCollectionViewController.swift; sourceTree = "<group>"; };
 		64A01D131FFEA469007A6C58 /* MeasurementCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementCollectionCell.swift; sourceTree = "<group>"; };
 		64A01D151FFEF6CD007A6C58 /* Measurements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurements.swift; sourceTree = "<group>"; };
@@ -134,8 +134,9 @@
 				64923DA720195061004E9A7E /* Ankle Raise Foot.png */,
 				64923DA520195057004E9A7E /* Ankle Lower Foot.png */,
 			);
-			path = JointImages;
-			sourceTree = "<group>";
+			name = JointImages;
+			path = Bodyflex/JointImages;
+			sourceTree = SOURCE_ROOT;
 		};
 		64A4321F1FBD141A005D2FC2 = {
 			isa = PBXGroup;

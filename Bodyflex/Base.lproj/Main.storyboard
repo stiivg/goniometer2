@@ -475,6 +475,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="jointImage" destination="rfR-hk-9vf" id="BmW-7v-ZN3"/>
                         <outlet property="jointMotionTable" destination="iRU-8P-jZt" id="Aav-Wv-a1x"/>
                     </connections>
                 </viewController>

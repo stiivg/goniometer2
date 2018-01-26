@@ -11,10 +11,8 @@ import CoreData
 
 class SelectJointViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var jointImage: UIImageView!
     @IBOutlet weak var jointMotionTable: UITableView!
-    //    let jointCell = self.tableView.dequeueReusableCell(withIdentifier: "JointCell")
-//    let motionCell = MotionCell()
-//    let sideCell = SideCell()
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -75,20 +73,21 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
         }
     }
     
-    func updateValues() {
-//        jointCell.jointText = (joint?.name.common)!
-//        motionCell.motionText = (self.motion?.motion.common)!
-//        var index = 0  //assume Left
-//        if side == "Right" {
-//            index = 1
-//        }
-//        sideCell.sideIndex = index
-
+   fileprivate func updateJointImage() {
+        let imageName = (joint?.name.common)! + " " + (motion?.motion.common)!
+        var img = loadImage(fileName: imageName)
+        if side == "Left" && img != nil {
+            //Flip image
+            img = UIImage(cgImage: (img?.cgImage!)!, scale: 1.0, orientation: UIImageOrientation.upMirrored)
+        }
+        jointImage.image = img
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         jointMotionTable.reloadData()
+        
+        updateJointImage()
     }
   
 
@@ -166,6 +165,14 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
     
     
 }
+
+private func loadImage(fileName: String) -> UIImage? {
+//    let imageURL = Bundle.main.url(forResource: fileName, withExtension: "png")
+    guard let imageURL = Bundle.main.url(forResource: fileName, withExtension: "png") else { return nil }
+    let newImage = UIImage(contentsOfFile: (imageURL.path))!
+    return newImage
+}
+
 // MARK: - IBActions
 extension SelectJointViewController {
 
@@ -176,6 +183,8 @@ extension SelectJointViewController {
             sideText = "Left"
         }
         self.side = sideText
+        
+        updateJointImage()
     }
 
     @IBAction func unwindWithSelectedJoint(segue: UIStoryboardSegue) {
