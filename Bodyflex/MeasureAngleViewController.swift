@@ -28,6 +28,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var scrollView: GestureScrollView!
     @IBOutlet weak var cameraButton: UIButton!
     
+    @IBOutlet weak var medicalJointLabel: UILabel!
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var jointLabel: UITextField!
     @IBOutlet weak var dateLabel: UITextField!
@@ -58,7 +59,18 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         let side = jointMotion?.side
         let motion = jointMotion?.motionCommon
         jointLabel.text = side! + " " +  joint! + " " + motion!
-               
+        
+        var mJoint = jointMotion?.nameMedical
+        var mMotion = jointMotion?.motionMedical
+        //if no medical term use common term
+        if mJoint == "" {
+            mJoint = joint
+        }
+        if mMotion == "" {
+            mMotion = motion
+        }
+        medicalJointLabel.text = side! + " " +  mJoint! + " " + mMotion!
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
         let dateObj = measurement.photoDate
