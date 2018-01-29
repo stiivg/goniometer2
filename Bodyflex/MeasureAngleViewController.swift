@@ -153,7 +153,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     @IBAction func photoFromLibrary(_ sender: UIBarButtonItem) {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             imagePicker.sourceType = .photoLibrary;
-            imagePicker.allowsEditing = true
+            imagePicker.allowsEditing = false
             
             self.present(imagePicker, animated: true, completion: nil)
         }

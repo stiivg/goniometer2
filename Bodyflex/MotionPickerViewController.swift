@@ -23,7 +23,7 @@ class MotionPickerViewController: UITableViewController {
         var selectedMotion: MotionStruct? {
             didSet {
                 if let selectedMotion = selectedMotion,
-                    let index = jointMotions?.index(where: { $0.motion.common == selectedMotion.motion.common }) {
+                    let index = jointMotions?.index(where: { $0.name.common == selectedMotion.name.common }) {
                     selectedMotionIndex = index
                 }
             }
@@ -66,7 +66,7 @@ class MotionPickerViewController: UITableViewController {
         
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MotionCell", for: indexPath)
-            cell.textLabel?.text = jointMotions![indexPath.row].motion.common
+            cell.textLabel?.text = jointMotions![indexPath.row].name.common
             
             if indexPath.row == selectedMotionIndex {
                 cell.accessoryType = .checkmark

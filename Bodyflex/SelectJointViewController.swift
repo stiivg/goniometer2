@@ -15,6 +15,7 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
     @IBOutlet weak var jointImage: UIImageView!
     @IBOutlet weak var jointMotionTable: UITableView!
 
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -30,8 +31,8 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
 
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: "MotionCell")!
-            (cell as! MotionCell).motionLabel.text = (motion?.motion.common)!
-            (cell as! MotionCell).motionLabelMedical.text = (motion?.motion.medical)
+            (cell as! MotionCell).motionLabel.text = (motion?.name.common)!
+            (cell as! MotionCell).motionLabelMedical.text = (motion?.name.medical)
 
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: "SideCell")!
@@ -55,10 +56,8 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
     
     var side: String = "Right"
     
-//    @IBOutlet weak var jointLabel: UILabel!
-//    @IBOutlet weak var motionLabel: UILabel!
-//    
-//    @IBOutlet weak var sideControl: UISegmentedControl!
+    private var angleToolDrawing = AngleToolDrawing()
+    private var dotPositions = [CGPoint]()
     
 
     // MARK: - Navigation
@@ -75,7 +74,7 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
     }
     
    fileprivate func updateJointImage() {
-        let imageName = (joint?.name.common)! + " " + (motion?.motion.common)!
+        let imageName = (joint?.name.common)! + " " + (motion?.name.common)!
         var img = loadImage(fileName: imageName)
         if side == "Left" && img != nil {
             //Flip image
@@ -84,6 +83,7 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
         jointImage.image = img
     
         jointDescriptionLabel.text = motion?.description
+        setAngleToolDrawing()
     }
     
     
@@ -91,11 +91,26 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
         jointMotionTable.reloadData()
         
         updateJointImage()
+
     }
-  
+    
+   fileprivate func  setAngleToolDrawing() {
+        let rotationCW = motion?.rotation == "CW"
+        angleToolDrawing.rotationCW = rotationCW
+        angleToolDrawing.setQuadrant(rotationCW: rotationCW, insideOutside: motion!.insideOutside)
+    
+        dotPositions = (motion?.defaultDotPoints)!
+        if jointImage.image != nil {
+            angleToolDrawing.drawTool(dotPositions: dotPositions)
+        }
+        
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        angleToolDrawing.setImageView(imageView: jointImage)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

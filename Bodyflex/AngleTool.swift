@@ -40,8 +40,7 @@ class AngleTool {
     func  setJointMotion(jointMotion: JointMotion) {
         let rotationCW = jointMotion.rotation == "CW"
         angleToolDrawing.rotationCW = rotationCW
-        let quadrant = calcQuadrant(rotationCW: rotationCW, insideOutside: jointMotion.insideOutside!)
-        angleToolDrawing.angleQuadrant = quadrant
+        angleToolDrawing.setQuadrant(rotationCW: rotationCW, insideOutside: jointMotion.insideOutside!)
         if self.imageView != nil {
             angleToolDrawing.drawTool(dotPositions: dotPositions)
         }
@@ -81,9 +80,6 @@ class AngleTool {
         
         angleToolDrawing.setImageView(imageView: imageView)
         restoreLocation()
-        
-        //1000 magic number that makes the scale look good
-        angleToolDrawing.scaleTool(scale: imageView.bounds.height / 1000)
         
         angleToolDrawing.drawTool(dotPositions: dotPositions)
         

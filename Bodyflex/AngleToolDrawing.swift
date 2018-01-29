@@ -10,7 +10,20 @@ import UIKit
 
 class AngleToolDrawing {
 
-    //tool dimensions
+    //Default tool dimensions
+    let dotDiameterDefault = CGFloat(20)
+    let dotRadiusDefault = CGFloat(10)
+    let dotLineWidthDefault = CGFloat(2)
+    let lineWidthDefault = CGFloat(5)
+    let extensionLengthDefault = CGFloat(60)
+    let angleTextDistanceDefault = CGFloat(65)
+    let arcRadiusDefault = CGFloat(40)
+    let arcLineWidthDefault = CGFloat(1)
+    
+    let fontFrameSizeDefault = CGSize(width: 60, height: 20)
+    let angleFontSizeDefault = CGFloat(16)
+
+    //working tool dimensions
     var dotDiameter = CGFloat(20)
     var dotRadius = CGFloat(10)
     var dotLineWidth = CGFloat(2)
@@ -19,6 +32,7 @@ class AngleToolDrawing {
     var angleTextDistance = CGFloat(65)
     var arcRadius = CGFloat(40)
     var arcLineWidth = CGFloat(1)
+    
     var fontFrameSize = CGSize(width: 60, height: 20)
     var angleFontSize = CGFloat(16)
 
@@ -67,11 +81,16 @@ class AngleToolDrawing {
         imageView.layer.addSublayer(textLayer)
         
         beginLineLayer.addSublayer(animationLayer) //Animation obeys the line mask to keep the dot clear
+        
+        //1000 magic number that makes the scale look good
+//        scaleTool(scale: imageView.bounds.height / 1000)
+//        scaleTool(scale: 628 / 1000)
     }
 
 
     func drawTool(dotPositions: [CGPoint]) {
         self.dotPositions = dotPositions
+        scaleToLineLength()
         calcAngle()
         
         drawDots()
@@ -82,20 +101,46 @@ class AngleToolDrawing {
         dotAnimation()
     }
 
+    fileprivate func scaleToLineLength() {
+        let dX = dotPositions[1].x - dotPositions[0].x
+        let dY = dotPositions[1].y - dotPositions[0].y
+        let mainLength = hypot(dX, dY)
+
+        var scale = 0.17 + mainLength / 350
+        scale = max(scale, 0.3) //limit minimum scale
+        scaleTool(scale: scale)
+        
+    }
+    
     //Scale the angle tool
     func scaleTool(scale: CGFloat) {
-        dotDiameter *= scale
-        dotRadius *= scale
-        dotLineWidth *= scale
-        lineWidth *= scale
-        extensionLength *= scale
-        angleTextDistance *= scale
-        arcRadius *= scale
-        arcLineWidth *= scale
+        dotDiameter = dotDiameterDefault * scale
+        dotRadius = dotRadiusDefault * scale
+        dotLineWidth = dotLineWidthDefault * scale
+        lineWidth = lineWidthDefault * scale
+        extensionLength = extensionLengthDefault * scale
+        angleTextDistance = angleTextDistanceDefault * scale
+        arcRadius = arcRadiusDefault * scale
+        arcLineWidth = arcLineWidthDefault * scale
         
         scaleTextLayer(scale: scale)
     }
 
+    //Quadrant0 is main arm, Quadrant180 is main arm extended, angle is CW
+    func setQuadrant(rotationCW: Bool, insideOutside: String) {
+        var quadrant = "Quadrant0"
+        if insideOutside == "Outside" {
+            quadrant = "Quadrant180"
+        }
+        if insideOutside == "Outside-90" && rotationCW || insideOutside == "Inside-90" && !rotationCW {
+            //extension 90 degree clockwise
+            quadrant = "Quadrant270"
+        } else if insideOutside == "Outside-90" && !rotationCW || insideOutside == "Inside-90" && rotationCW {
+            //extension 90 degree counter clockwise
+            quadrant = "Quadrant90"
+        }
+        angleQuadrant = quadrant
+    }
 
     fileprivate func drawDots() {
         let beginOrigin = CGPoint(x: dotPositions[0].x - dotRadius, y: dotPositions[0].y - dotRadius)
@@ -283,8 +328,8 @@ class AngleToolDrawing {
     }
 
     fileprivate func scaleTextLayer(scale: CGFloat) {
-        fontFrameSize = CGSize(width: fontFrameSize.width * scale, height: fontFrameSize.height * scale)
-        angleFontSize *= scale
+        fontFrameSize = CGSize(width: fontFrameSizeDefault.width * scale, height: fontFrameSizeDefault.height * scale)
+        angleFontSize = angleFontSizeDefault * scale
         
         textLayer.frame.size = fontFrameSize
         textLayer.fontSize = angleFontSize
