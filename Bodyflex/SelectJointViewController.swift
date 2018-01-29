@@ -11,6 +11,7 @@ import CoreData
 
 class SelectJointViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var jointDescriptionLabel: UILabel!
     @IBOutlet weak var jointImage: UIImageView!
     @IBOutlet weak var jointMotionTable: UITableView!
 
@@ -81,6 +82,8 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
             img = UIImage(cgImage: (img?.cgImage!)!, scale: 1.0, orientation: UIImageOrientation.upMirrored)
         }
         jointImage.image = img
+    
+        jointDescriptionLabel.text = motion?.description
     }
     
     
