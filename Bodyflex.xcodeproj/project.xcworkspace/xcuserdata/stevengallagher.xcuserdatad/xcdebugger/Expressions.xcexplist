@@ -26,6 +26,14 @@
          contextName = "loadImage(fileName:):SelectJointViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "AngleToolDrawing.calculateImageTransform(imageView:):AngleToolDrawing.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "imageView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AngleToolDrawing.setDotPositions(thePositions:):AngleToolDrawing.swift">
       </ContextState>
       <ContextState
@@ -159,6 +167,29 @@
          contextName = "MeasurementTableViewController.prepare(for:sender:):MeasurementTableViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "AngleTool.saveLocation():AngleTool.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "measurement?.endY">
+            </PersistentString>
+            <PersistentString
+               value = "measurement?.beginX">
+            </PersistentString>
+            <PersistentString
+               value = "measurement?.endX">
+            </PersistentString>
+            <PersistentString
+               value = "measurement?.beginY">
+            </PersistentString>
+            <PersistentString
+               value = "measurement?.middleY">
+            </PersistentString>
+            <PersistentString
+               value = "measurement?.middleX">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AngleToolDrawing.dotPositions.setter:AngleToolDrawing.swift">
       </ContextState>
       <ContextState
@@ -195,6 +226,9 @@
                value = "imageView.bounds">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SelectJointViewController.restoreLocation():SelectJointViewController.swift">
       </ContextState>
       <ContextState
          contextName = "BodyJoints.jointMotions():BodyJoints.swift">

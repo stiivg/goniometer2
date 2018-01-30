@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasureAngleViewController.swift"
-            timestampString = "538947322.907896"
+            timestampString = "539020747.6347589"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasureAngleViewController.swift"
-            timestampString = "538947322.907984"
+            timestampString = "539020747.6348259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "184"
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/Model/BodyJoints.swift"
-            timestampString = "538947322.908051"
+            timestampString = "539020747.634879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "655"
-            endingLineNumber = "655"
+            startingLineNumber = "707"
+            endingLineNumber = "707"
             landmarkName = "newJointMotion(joint:motion:side:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/AngleToolDrawing.swift"
-            timestampString = "538947322.908119"
+            timestampString = "539020747.635196"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
             landmarkName = "drawAngleArc()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/AngleToolDrawing.swift"
-            timestampString = "538947322.9085571"
+            timestampString = "539020747.63526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
             landmarkName = "drawAngleArc()"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/AngleToolDrawing.swift"
-            timestampString = "538947322.908872"
+            timestampString = "539020747.6353149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "drawLines()"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/AngleTool.swift"
-            timestampString = "538947322.909199"
+            timestampString = "539020747.635372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/MeasureAngleViewController.swift"
-            timestampString = "538947322.90927"
+            timestampString = "539020747.635424"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "252"
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/SelectJointViewController.swift"
-            timestampString = "538947322.9093339"
+            timestampString = "539020747.635471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "sideControl(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/SelectJointViewController.swift"
-            timestampString = "538947322.909421"
+            timestampString = "539020747.635545"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "unwindWithSelectedJoint(segue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/SelectJointViewController.swift"
-            timestampString = "538947322.909497"
+            timestampString = "539020747.635615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "setAngleToolDrawing()"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/SelectJointViewController.swift"
-            timestampString = "538947322.9095531"
+            timestampString = "539020747.635663"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/AngleToolDrawing.swift"
-            timestampString = "538947322.90961"
+            timestampString = "539020747.635713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "setImageView(imageView:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -230,16 +230,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/AngleToolDrawing.swift"
-            timestampString = "538947322.9099211"
+            timestampString = "539020747.635761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "scaleTool(scale:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bodyflex/AngleToolDrawing.swift"
+            timestampString = "539020747.635808"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "scaleToLineLength()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bodyflex/AngleTool.swift"
+            timestampString = "539020747.635856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "saveLocation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bodyflex/SelectJointViewController.swift"
+            timestampString = "539020747.635896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "restoreLocation()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -250,12 +298,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Bodyflex/AngleToolDrawing.swift"
-            timestampString = "538947322.910212"
+            timestampString = "539020747.63594"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "scaleToLineLength()"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "calculateImageTransform(imageView:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Bodyflex/AngleToolDrawing.swift"
+            timestampString = "539020747.635981"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "convertPixelToLocation(position:origin:scale:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

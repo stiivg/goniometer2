@@ -16,6 +16,14 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
     @IBOutlet weak var jointMotionTable: UITableView!
 
 
+    @IBOutlet weak var stationaryCommon: UILabel!
+    @IBOutlet weak var stationaryMedical: UILabel!
+    @IBOutlet weak var axisCommon: UILabel!
+    @IBOutlet weak var axisMedical: UILabel!
+    @IBOutlet weak var movingCommon: UILabel!
+    @IBOutlet weak var movingMedical: UILabel!
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -57,7 +65,7 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
     var side: String = "Right"
     
     private var angleToolDrawing = AngleToolDrawing()
-    private var dotPositions = [CGPoint]()
+    private var dotPositions = [CGPoint(), CGPoint(), CGPoint()]
     
 
     // MARK: - Navigation
@@ -94,22 +102,53 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
 
     }
     
-   fileprivate func  setAngleToolDrawing() {
-        let rotationCW = motion?.rotation == "CW"
+    //Restore dot positions from core data or use default
+    fileprivate func restoreLocation() {
+        //convert pixel positions to image view locations
+        let imageTransform = angleToolDrawing.calculateImageTransform(imageView: jointImage!)
+        dotPositions[0] = angleToolDrawing.convertPixelToLocation(position: (motion?.defaultDotPoints[0])!, origin: imageTransform.rect.origin, scale: imageTransform.scale)
+            
+        dotPositions[1] = angleToolDrawing.convertPixelToLocation(position: (motion?.defaultDotPoints[1])!, origin: imageTransform.rect.origin, scale: imageTransform.scale)
+            
+        dotPositions[2] = angleToolDrawing.convertPixelToLocation(position: (motion?.defaultDotPoints[2])!, origin: imageTransform.rect.origin, scale: imageTransform.scale)
+   
+        //Demo image and dot locations assumes right side
+        if side == "Left" {
+            dotPositions[0].x = jointImage.bounds.width - dotPositions[0].x
+            dotPositions[1].x = jointImage.bounds.width - dotPositions[1].x
+            dotPositions[2].x = jointImage.bounds.width - dotPositions[2].x
+        }
+
+    }
+    
+    fileprivate func  setAngleToolDrawing() {
+        var rotationCW = motion?.rotation == "CW"
+        //
+        if side == "Right" {
+            rotationCW = !rotationCW
+        }
+        
         angleToolDrawing.rotationCW = rotationCW
         angleToolDrawing.setQuadrant(rotationCW: rotationCW, insideOutside: motion!.insideOutside)
     
-        dotPositions = (motion?.defaultDotPoints)!
+        restoreLocation()
         if jointImage.image != nil {
             angleToolDrawing.drawTool(dotPositions: dotPositions)
         }
         
-    }
+        stationaryCommon.text = motion?.stationaryLabel.common
+        stationaryMedical.text = motion?.stationaryLabel.medical
+        axisCommon.text = motion?.axisLabel.common
+        axisMedical.text = motion?.axisLabel.medical
+        movingCommon.text = motion?.movingLabel.common
+        movingMedical.text = motion?.movingLabel.medical
 
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        angleToolDrawing.animation = false
         angleToolDrawing.setImageView(imageView: jointImage)
         
         // Uncomment the following line to preserve selection between presentations

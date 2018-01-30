@@ -10,27 +10,28 @@ import UIKit
 import CoreData
 
 struct NameType {
-    var common: String
-    var medical: String
+    let common: String
+    let medical: String
 }
 
 struct MotionStruct {
-    var name: NameType
-    var stationaryLabel: NameType
-    var axisLabel: NameType
-    var movingLabel: NameType
-    var normalAMA: String
-    var normalAAOS: String
-    var position: String
-    var description: String
-    var rotation: String
-    var insideOutside: String
-    var defaultDotPoints: [CGPoint]
+    let name: NameType
+    let stationaryLabel: NameType
+    let axisLabel: NameType
+    let movingLabel: NameType
+    let normalAMA: String
+    let normalAAOS: String
+    let position: String
+    let description: String
+    let rotation: String
+    let insideOutside: String
+    let defaultDotPoints: [CGPoint]
+    let labelOffsets: [String]
 }
 
 struct Joint {
-    var name: NameType
-    var motions: [MotionStruct]
+    let name: NameType
+    let motions: [MotionStruct]
 }
 
 let shoulderJoint = Joint.init(name: .init(common: "Shoulder", medical: ""),
@@ -45,7 +46,8 @@ let shoulderJoint = Joint.init(name: .init(common: "Shoulder", medical: ""),
                                     description: "Raise arm forward over head",
                                     rotation: "CW",
                                     insideOutside: "Inside",
-                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                    labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Arm Reverse Raise", medical: "Extension"),
                                     stationaryLabel: .init(common: "Back", medical: "Mid-axillary Line"),
                                     axisLabel: .init(common: "Shoulder", medical: "Acromium Process (center of humeral head)"),
@@ -54,9 +56,10 @@ let shoulderJoint = Joint.init(name: .init(common: "Shoulder", medical: ""),
                                     normalAAOS: "62,9.5",
                                     position: "",
                                     description: "Raise arm backward",
-                                    rotation: "CCW",
+                                    rotation: "CW",
                                     insideOutside: "Inside",
-                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                    labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Arm Raise to Side", medical: "Abduction"),
                                     stationaryLabel: .init(common: "Side", medical: "Parallel to Sternum"),
                                     axisLabel: .init(common: "Shoulder", medical: "Humeral Head"),
@@ -65,9 +68,10 @@ let shoulderJoint = Joint.init(name: .init(common: "Shoulder", medical: ""),
                                     normalAAOS: "184,7.0",
                                     position: "",
                                     description: "Raise arm away from body above head",
-                                    rotation: "CCW",
+                                    rotation: "CW",
                                     insideOutside: "Inside",
-                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                    labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Bent Arm Lower", medical: "Medial Rotation"),
                                     stationaryLabel: .init(common: "Vertical", medical: ""),
                                     axisLabel: .init(common: "Elbow", medical: "Olecranon Process"),
@@ -76,9 +80,10 @@ let shoulderJoint = Joint.init(name: .init(common: "Shoulder", medical: ""),
                                     normalAAOS: "69,4.6",
                                     position: "",
                                     description: "",
-                                    rotation: "CCW",
+                                    rotation: "CW",
                                     insideOutside: "Inside",
-                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                    labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Bent Arm Raise", medical: "Lateral Rotation"),
                                     stationaryLabel: .init(common: "Vertical", medical: ""),
                                     axisLabel: .init(common: "Elbow", medical: "Olecranon Process"),
@@ -89,7 +94,8 @@ let shoulderJoint = Joint.init(name: .init(common: "Shoulder", medical: ""),
                                     description: "",
                                     rotation: "CW",
                                     insideOutside: "Inside",
-                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]) ])
+                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                    labelOffsets: ["Up", "Up", "Up"]) ])
 
 let elbowJoint = Joint.init(name: .init(common: "Elbow", medical: ""),
                            motions: [
@@ -103,7 +109,8 @@ let elbowJoint = Joint.init(name: .init(common: "Elbow", medical: ""),
                                 description: "Bend arm bringing wrist to shoulder",
                                 rotation: "CW",
                                 insideOutside: "Outside",
-                                defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Straighten Arm", medical: "Extension"),
                                 stationaryLabel: .init(common: "Shoulder", medical: "Acromion Process"),
                                 axisLabel: .init(common: "Elbow", medical: "Lateral Epicondyle"),
@@ -112,9 +119,10 @@ let elbowJoint = Joint.init(name: .init(common: "Elbow", medical: ""),
                                 normalAAOS: "0.3,2.0",
                                 position: "",
                                 description: "Straighten arm from curl",
-                                rotation: "CCW",
+                                rotation: "CW",
                                 insideOutside: "Outside",
-                            defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)])
+                                defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                labelOffsets: ["Up", "Up", "Up"])
     ])
 
 let forearm = Joint.init(name: .init(common: "Forearm", medical: ""),
@@ -129,7 +137,8 @@ let forearm = Joint.init(name: .init(common: "Forearm", medical: ""),
                                                        description: "Turn lower palm so arm faces up",
                                                        rotation: "CW",
                                                        insideOutside: "Inside",
-                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                       labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Palm Down", medical: "Pronation"),
                                                        stationaryLabel: .init(common: "Parallel to Upper Arm", medical: "Parallel to Humerus"),
                                                        axisLabel: .init(common: "Outside Wrist", medical: "Lateral to Ulnar Styloid"),
@@ -138,9 +147,10 @@ let forearm = Joint.init(name: .init(common: "Forearm", medical: ""),
                                                        normalAAOS: "75,5.3",
                                                        position: "",
                                                        description: "Turn lower arm so palm faces down",
-                                                       rotation: "CCW",
+                                                       rotation: "CW",
                                                        insideOutside: "Inside",
-                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                       labelOffsets: ["Up", "Up", "Up"]),])
 
 let wristJoint = Joint.init(name: .init(common: "Wrist", medical: ""),
                          motions: [
@@ -152,9 +162,10 @@ let wristJoint = Joint.init(name: .init(common: "Wrist", medical: ""),
                                                    normalAAOS: "75,6.6",
                                                    position: "",
                                                    description: "",
-                                                   rotation: "CCW",
+                                                   rotation: "CW",
                                                    insideOutside: "Outside",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Hand Raised", medical: "Extension"),
                                                    stationaryLabel: .init(common: "Parallel to Lower Arm", medical: "Ulna"),
                                                    axisLabel: .init(common: "Wrist", medical: "Triquetum"),
@@ -165,7 +176,8 @@ let wristJoint = Joint.init(name: .init(common: "Wrist", medical: ""),
                                                    description: "",
                                                    rotation: "CW",
                                                    insideOutside: "Outside",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Hand Out", medical: "Radial Deviation"),
                                                    stationaryLabel: .init(common: "Elbow", medical: "Lateral Epicondyle"),
                                                    axisLabel: .init(common: "Wrist", medical: "Capitate"),
@@ -176,7 +188,8 @@ let wristJoint = Joint.init(name: .init(common: "Wrist", medical: ""),
                                                    description: "",
                                                    rotation: "CW",
                                                    insideOutside: "Outside",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Hand In", medical: "Ulnar Deviation"),
                                                    stationaryLabel: .init(common: "Elbow", medical: "Lateral Epicondyle"),
                                                    axisLabel: .init(common: "Wrist", medical: "Capitate"),
@@ -185,9 +198,10 @@ let wristJoint = Joint.init(name: .init(common: "Wrist", medical: ""),
                                                    normalAAOS: "35,3.8",
                                                    position: "",
                                                    description: "",
-                                                   rotation: "CCW",
+                                                   rotation: "CW",
                                                    insideOutside: "Outside",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),])
 
 let knuckleJoint = Joint.init(name: .init(common: "Knuckle", medical: "Metacarpophalangeal"),
                               motions: [
@@ -201,7 +215,8 @@ let knuckleJoint = Joint.init(name: .init(common: "Knuckle", medical: "Metacarpo
                                                        description: "",
                                                        rotation: "CW",
                                                        insideOutside: "Outside",
-                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                       labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Raise Fingers", medical: "Extension"),
                                                        stationaryLabel: .init(common: "Back of Hand", medical: "Aligned with Metacarpal"),
                                                        axisLabel: .init(common: "Knuckle", medical: "Dorsal Metacarpophalangeal Joint"),
@@ -210,9 +225,10 @@ let knuckleJoint = Joint.init(name: .init(common: "Knuckle", medical: "Metacarpo
                                                        normalAAOS: "22",
                                                        position: "",
                                                        description: "",
-                                                       rotation: "CCW",
+                                                       rotation: "CW",
                                                        insideOutside: "Outside",
-                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                       labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Separate Fingers", medical: "Abduction"),
                                                        stationaryLabel: .init(common: "Back of Hand", medical: "Aligned with Metacarpal"),
                                                        axisLabel: .init(common: "Knuckle", medical: "Dorsal Metacarpophalangeal Joint"),
@@ -223,7 +239,8 @@ let knuckleJoint = Joint.init(name: .init(common: "Knuckle", medical: "Metacarpo
                                                        description: "",
                                                        rotation: "CW",
                                                        insideOutside: "Outside",
-                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                       labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Fingers from Thumb", medical: "Adduction"),
                                                        stationaryLabel: .init(common: "Back of Hand", medical: "Aligned with Metacarpal"),
                                                        axisLabel: .init(common: "Knuckle", medical: "Dorsal Metacarpophalangeal Joint"),
@@ -232,9 +249,10 @@ let knuckleJoint = Joint.init(name: .init(common: "Knuckle", medical: "Metacarpo
                                                        normalAAOS: "",
                                                        position: "",
                                                        description: "",
-                                                       rotation: "CCW",
+                                                       rotation: "CW",
                                                        insideOutside: "Outside",
-                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                       labelOffsets: ["Up", "Up", "Up"]),])
 
 let fingerJoint = Joint.init(name: .init(common: "Finger", medical: "Interphalangeal"),
                              motions: [
@@ -248,7 +266,8 @@ let fingerJoint = Joint.init(name: .init(common: "Finger", medical: "Interphalan
                                     description: "",
                                     rotation: "CW",
                                     insideOutside: "Outside",
-                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                    labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Straighten", medical: "Extension"),
                                                        stationaryLabel: .init(common: "Base of Finger", medical: "Aligned with Proximal Phalange"),
                                                        axisLabel: .init(common: "Finger Joint", medical: "Dorsal Proximal Interphalangeal Joint"),
@@ -259,7 +278,8 @@ let fingerJoint = Joint.init(name: .init(common: "Finger", medical: "Interphalan
                                     description: "",
                                     rotation: "CW",
                                     insideOutside: "Outside",
-                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                    defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                    labelOffsets: ["Up", "Up", "Up"]),])
 
 let thumb = Joint.init(name: .init(common: "Thumb", medical: "Thumb Carpometacarpal"),
                              motions: [
@@ -273,7 +293,8 @@ let thumb = Joint.init(name: .init(common: "Thumb", medical: "Thumb Carpometacar
                                                        description: "",
                                                        rotation: "CW",
                                                        insideOutside: "Outside",
-                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                       labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Thumb Out", medical: "Extension"),
                                                        stationaryLabel: .init(common: "Aligned with Arm", medical: "Aligned with Radius"),
                                                        axisLabel: .init(common: "Wrist", medical: "Carpometacarpal Joint"),
@@ -282,9 +303,10 @@ let thumb = Joint.init(name: .init(common: "Thumb", medical: "Thumb Carpometacar
                                                        normalAAOS: "",
                                                        position: "",
                                                        description: "",
-                                                       rotation: "CCW",
+                                                       rotation: "CW",
                                                        insideOutside: "Outside",
-                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                       labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Thumb Down", medical: "Abduction"),
                                                        stationaryLabel: .init(common: "Finger", medical: "Finger Metacarpal"),
                                                        axisLabel: .init(common: "Wrist", medical: "Radial Styloid"),
@@ -295,7 +317,8 @@ let thumb = Joint.init(name: .init(common: "Thumb", medical: "Thumb Carpometacar
                                                        description: "",
                                                        rotation: "CW",
                                                        insideOutside: "Inside",
-                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                       labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Thumb Down", medical: "Adduction"),
                                                        stationaryLabel: .init(common: "Finger", medical: "Finger Metacarpal"),
                                                        axisLabel: .init(common: "Wrist", medical: "Radial Styloid"),
@@ -304,9 +327,10 @@ let thumb = Joint.init(name: .init(common: "Thumb", medical: "Thumb Carpometacar
                                                        normalAAOS: "",
                                                        position: "",
                                                        description: "",
-                                                       rotation: "CCW",
+                                                       rotation: "CW",
                                                        insideOutside: "Inside",
-                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                                       defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                       labelOffsets: ["Up", "Up", "Up"]),])
 
 let hipJoint = Joint.init(name: .init(common: "Hip", medical: ""),
                            motions: [
@@ -320,7 +344,8 @@ let hipJoint = Joint.init(name: .init(common: "Hip", medical: ""),
                                                    description: "",
                                                    rotation: "CW",
                                                    insideOutside: "Outside",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Thigh Back", medical: "Extension"),
                                                    stationaryLabel: .init(common: "Body Line", medical: "Midline of Pelvis"),
                                                    axisLabel: .init(common: "Hip Bone", medical: "Greater Trochanter"),
@@ -329,9 +354,10 @@ let hipJoint = Joint.init(name: .init(common: "Hip", medical: ""),
                                                    normalAAOS: "12,5.4",
                                                    position: "",
                                                    description: "",
-                                                   rotation: "CCW",
+                                                   rotation: "CW",
                                                    insideOutside: "Outside",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Thigh Out", medical: "Abduction"),
                                                    stationaryLabel: .init(common: "Opposite Hip Bone", medical: "Aligned with Opposite ASIS"),
                                                    axisLabel: .init(common: "Hip Bone", medical: "Anterior Superior Iliac Spine (ASIS)"),
@@ -340,9 +366,10 @@ let hipJoint = Joint.init(name: .init(common: "Hip", medical: ""),
                                                    normalAAOS: "41,6.0",
                                                    position: "",
                                                    description: "",
-                                                   rotation: "CCW",
+                                                   rotation: "CW",
                                                    insideOutside: "Inside-90",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Thigh In", medical: "Adduction"),
                                                    stationaryLabel: .init(common: "Opposite Hip Bone", medical: "Aligned with Opposite ASIS"),
                                                    axisLabel: .init(common: "Hip Bone", medical: "Anterior Superior Iliac Spine (ASIS)"),
@@ -353,7 +380,8 @@ let hipJoint = Joint.init(name: .init(common: "Hip", medical: ""),
                                                    description: "",
                                                    rotation: "CW",
                                                    insideOutside: "Inside-90",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Leg Out", medical: "Medial (Internal) Rotation"),
                                                    stationaryLabel: .init(common: "Aligned Vertically", medical: ""),
                                                    axisLabel: .init(common: "Knee", medical: "Center of Patella"),
@@ -364,7 +392,8 @@ let hipJoint = Joint.init(name: .init(common: "Hip", medical: ""),
                                                    description: "",
                                                    rotation: "CW",
                                                    insideOutside: "Inside",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Leg In", medical: "Lateral (External) Rotation"),
                                                    stationaryLabel: .init(common: "Aligned Vertically", medical: ""),
                                                    axisLabel: .init(common: "Knee", medical: "Center of Patella"),
@@ -373,9 +402,10 @@ let hipJoint = Joint.init(name: .init(common: "Hip", medical: ""),
                                                    normalAAOS: "44,4.8",
                                                    position: "",
                                                    description: "",
-                                                   rotation: "CCW",
+                                                   rotation: "CW",
                                                    insideOutside: "Inside",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),])
 
 let kneeJoint = Joint.init(name: .init(common: "Knee", medical: ""),
                            motions: [
@@ -387,9 +417,10 @@ let kneeJoint = Joint.init(name: .init(common: "Knee", medical: ""),
                                                    normalAAOS: "141,5.3",
                                                    position: "",
                                                    description: "",
-                                                   rotation: "CCW",
+                                                   rotation: "CW",
                                                    insideOutside: "Outside",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Straighten", medical: "Extension"),
                                                    stationaryLabel: .init(common: "Hip Bone", medical: "Greater Trochanter"),
                                                    axisLabel: .init(common: "Knee", medical: "Lateral Epicondyle"),
@@ -400,7 +431,8 @@ let kneeJoint = Joint.init(name: .init(common: "Knee", medical: ""),
                                                    description: "",
                                                    rotation: "CW",
                                                    insideOutside: "Outside",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),])
 
 let ankleJoint = Joint.init(name: .init(common: "Ankle", medical: "Talocrural Joint"),
                            motions: [
@@ -414,7 +446,8 @@ let ankleJoint = Joint.init(name: .init(common: "Ankle", medical: "Talocrural Jo
                                                    description: "Bend ankle so toes point up",
                                                    rotation: "CW",
                                                    insideOutside: "Outside-90",
-                                                   defaultDotPoints: [CGPoint(x: 200, y: 60), CGPoint(x: 200, y: 210), CGPoint(x: 250, y: 260)]),
+                                                   defaultDotPoints: [CGPoint(x: 745, y: 346), CGPoint(x: 770, y: 1136), CGPoint(x: 981, y: 1405)],
+                                                   labelOffsets: ["Right", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Lower Foot", medical: "Plantarflexion"),
                                                    stationaryLabel: .init(common: "Knee", medical: "Fibular Head"),
                                                    axisLabel: .init(common: "Ankle", medical: "Lateral Malleolus"),
@@ -423,9 +456,10 @@ let ankleJoint = Joint.init(name: .init(common: "Ankle", medical: "Talocrural Jo
                                                    normalAAOS: "56,6.1",
                                                    position: "",
                                                    description: "Bend ankle so toes point down",
-                                                   rotation: "CCW",
+                                                   rotation: "CW",
                                                    insideOutside: "Inside-90",
-                                                   defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                                   defaultDotPoints: [CGPoint(x: 745, y: 346), CGPoint(x: 770, y: 1136), CGPoint(x: 981, y: 1405)],
+                                                   labelOffsets: ["Up", "Up", "Up"]),])
 
 let heelJoint = Joint.init(name: .init(common: "Heel", medical: "Calcaneal (subtalar - hindfoot)"),
                            motions: [
@@ -439,7 +473,8 @@ let heelJoint = Joint.init(name: .init(common: "Heel", medical: "Calcaneal (subt
                                               description: "",
                                               rotation: "CW",
                                               insideOutside: "Outside",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Roll In", medical: "Eversion"),
                                               stationaryLabel: .init(common: "Midline of Leg", medical: ""),
                                               axisLabel: .init(common: "", medical: ""),
@@ -450,7 +485,8 @@ let heelJoint = Joint.init(name: .init(common: "Heel", medical: "Calcaneal (subt
                                               description: "",
                                               rotation: "CW",
                                               insideOutside: "Outside",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),])
 
 let footJoint = Joint.init(name: .init(common: "Foot", medical: "Midtarsal (transverse tarsal) "),
                            motions: [
@@ -464,7 +500,8 @@ let footJoint = Joint.init(name: .init(common: "Foot", medical: "Midtarsal (tran
                                               description: "",
                                               rotation: "CW",
                                               insideOutside: "Outside-90",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Rotate In", medical: "Eversion"),
                                               stationaryLabel: .init(common: "Midline of Leg", medical: ""),
                                               axisLabel: .init(common: "", medical: ""),
@@ -475,7 +512,8 @@ let footJoint = Joint.init(name: .init(common: "Foot", medical: "Midtarsal (tran
                                               description: "",
                                               rotation: "CW",
                                               insideOutside: "Outside-90",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),])
 
 let toeJoint = Joint.init(name: .init(common: "Toe", medical: "Metatarsophalangeal"),
                            motions: [
@@ -487,9 +525,10 @@ let toeJoint = Joint.init(name: .init(common: "Toe", medical: "Metatarsophalange
                                               normalAAOS: "",
                                               position: "",
                                               description: "",
-                                              rotation: "CCW",
+                                              rotation: "CW",
                                               insideOutside: "Outside",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Lower", medical: "Plantarflexion"),
                                               stationaryLabel: .init(common: "Ankle", medical: "Aligned to Metatarsal"),
                                               axisLabel: .init(common: "Base of Toe", medical: "Medial to Center of Metararsal Head"),
@@ -498,9 +537,10 @@ let toeJoint = Joint.init(name: .init(common: "Toe", medical: "Metatarsophalange
                                               normalAAOS: "",
                                               position: "",
                                               description: "",
-                                              rotation: "CCW",
+                                              rotation: "CW",
                                               insideOutside: "Outside",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Out", medical: "Abduction"),
                                               stationaryLabel: .init(common: "Aligned with Foot", medical: "Aligned to Metatarsal"),
                                               axisLabel: .init(common: "Base of Toe", medical: "Center of Metararsal Head"),
@@ -509,9 +549,10 @@ let toeJoint = Joint.init(name: .init(common: "Toe", medical: "Metatarsophalange
                                               normalAAOS: "",
                                               position: "",
                                               description: "",
-                                              rotation: "CCW",
+                                              rotation: "CW",
                                               insideOutside: "Outside",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "In", medical: "Adduction"),
                                               stationaryLabel: .init(common: "Aligned with Foot", medical: "Aligned to Metatarsal"),
                                               axisLabel: .init(common: "Base of Toe", medical: "Center of Metararsal Head"),
@@ -522,7 +563,8 @@ let toeJoint = Joint.init(name: .init(common: "Toe", medical: "Metatarsophalange
                                               description: "",
                                               rotation: "CW",
                                               insideOutside: "Outside",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),])
 
 let neckJoint = Joint.init(name: .init(common: "Neck", medical: "Cervical Spine"),
                            motions: [
@@ -534,9 +576,10 @@ let neckJoint = Joint.init(name: .init(common: "Neck", medical: "Cervical Spine"
                                               normalAAOS: "70.5,7.5",
                                               position: "",
                                               description: "",
-                                              rotation: "CCW",
+                                              rotation: "CW",
                                               insideOutside: "Inside-90",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                                 labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Head Back", medical: "Eversion"),
                                               stationaryLabel: .init(common: "Vertical", medical: ""),
                                               axisLabel: .init(common: "Ear", medical: "External Auditory Meatus"),
@@ -547,7 +590,8 @@ let neckJoint = Joint.init(name: .init(common: "Neck", medical: "Cervical Spine"
                                               description: "",
                                               rotation: "CW",
                                               insideOutside: "Outside-90",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Side Bending", medical: ""),
                                               stationaryLabel: .init(common: "Backbone", medical: "Spinous Processes of Thoracic Spine"),
                                               axisLabel: .init(common: "Neck", medical: "Spinous Process of C7"),
@@ -556,9 +600,10 @@ let neckJoint = Joint.init(name: .init(common: "Neck", medical: "Cervical Spine"
                                               normalAAOS: "46.5,6.5",
                                               position: "",
                                               description: "",
-                                              rotation: "CCW",
+                                              rotation: "CW",
                                               insideOutside: "Outside",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Rotation", medical: ""),
                                               stationaryLabel: .init(common: "Shoulder", medical: "Aligned with Acromion Processes"),
                                               axisLabel: .init(common: "Center Top of Head", medical: "Center of Superior Aspect of Head"),
@@ -567,9 +612,10 @@ let neckJoint = Joint.init(name: .init(common: "Neck", medical: "Cervical Spine"
                                               normalAAOS: "81,6.5",
                                               position: "",
                                               description: "",
-                                              rotation: "CCW",
+                                              rotation: "CW",
                                               insideOutside: "Outside-90",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),])
 
 let backJoint = Joint.init(name: .init(common: "Back", medical: "Thoraco-Lumber Spine"),
                            motions: [
@@ -581,9 +627,10 @@ let backJoint = Joint.init(name: .init(common: "Back", medical: "Thoraco-Lumber 
                                               normalAAOS: "27.1,6.5",
                                               position: "",
                                               description: "",
-                                              rotation: "CCW",
+                                              rotation: "CW",
                                               insideOutside: "Outside",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "Rotation", medical: ""),
                                               stationaryLabel: .init(common: "Aligned with Hip Bones", medical: "Aligned with ASISs"),
                                               axisLabel: .init(common: "Center Top of Head", medical: "Center of Superior Aspect of Head"),
@@ -594,7 +641,8 @@ let backJoint = Joint.init(name: .init(common: "Back", medical: "Thoraco-Lumber 
                                               description: "",
                                               rotation: "CW",
                                               insideOutside: "Outside-90",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),])
 
 let testJoint = Joint.init(name: .init(common: "Test", medical: "Cervical Spine"),
                            motions: [
@@ -608,7 +656,8 @@ let testJoint = Joint.init(name: .init(common: "Test", medical: "Cervical Spine"
                                               description: "",
                                               rotation: "CW",
                                               insideOutside: "Inside-90",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "CW Outside-90 Q270", medical: "Eversion"),
                                               stationaryLabel: .init(common: "Vertical", medical: ""),
                                               axisLabel: .init(common: "Ear", medical: "External Auditory Meatus"),
@@ -619,7 +668,8 @@ let testJoint = Joint.init(name: .init(common: "Test", medical: "Cervical Spine"
                                               description: "",
                                               rotation: "CW",
                                               insideOutside: "Outside-90",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "CW Outside Q180", medical: ""),
                                               stationaryLabel: .init(common: "Backbone", medical: "Spinous Processes of Thoracic Spine"),
                                               axisLabel: .init(common: "Neck", medical: "Spinous Process of C7"),
@@ -630,7 +680,8 @@ let testJoint = Joint.init(name: .init(common: "Test", medical: "Cervical Spine"
                                               description: "",
                                               rotation: "CW",
                                               insideOutside: "Outside",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),
                             MotionStruct.init(name: .init(common: "CW Inside Q0", medical: ""),
                                               stationaryLabel: .init(common: "Shoulder", medical: "Aligned with Acromion Processes"),
                                               axisLabel: .init(common: "Center of Top of Head", medical: "Center of Superior Aspect of Head"),
@@ -641,7 +692,8 @@ let testJoint = Joint.init(name: .init(common: "Test", medical: "Cervical Spine"
                                               description: "",
                                               rotation: "CW",
                                               insideOutside: "Inside",
-                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)]),])
+                                              defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                              labelOffsets: ["Up", "Up", "Up"]),])
 
 
 
@@ -685,7 +737,7 @@ class BodyJoints {
     
     fileprivate func reverseRotation(jointMotion: JointMotion) {
         if jointMotion.rotation == "CW" {
-            jointMotion.rotation = "CCW"
+            jointMotion.rotation = "CW"
         } else {
             jointMotion.rotation = "CW"
         }

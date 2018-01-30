@@ -94,20 +94,20 @@ class AngleTool {
         let fullResEntity = measurement?.fullRes
         if fullResEntity != nil {
             //convert pixel positions to image view locations
-            let imageTransform = calculateImageTransform(imageView: imageView!)
+            let imageTransform = angleToolDrawing.calculateImageTransform(imageView: imageView!)
             var pixelPosition = CGPoint()
             
             pixelPosition.x = CGFloat((measurement?.beginX)!)
             pixelPosition.y = CGFloat((measurement?.beginY)!)
-            dotPositions[0] = convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
+            dotPositions[0] = angleToolDrawing.convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
             
             pixelPosition.x = CGFloat((measurement?.middleX)!)
             pixelPosition.y = CGFloat((measurement?.middleY)!)
-            dotPositions[1] = convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
+            dotPositions[1] = angleToolDrawing.convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
             
             pixelPosition.x = CGFloat((measurement?.endX)!)
             pixelPosition.y = CGFloat((measurement?.endY)!)
-            dotPositions[2] = convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
+            dotPositions[2] = angleToolDrawing.convertPixelToLocation(position: pixelPosition, origin: imageTransform.rect.origin, scale: imageTransform.scale)
         } else {
             dotPositions[1] = (imageView?.center)!
             dotPositions[0] = dotPositions[1]
@@ -120,71 +120,25 @@ class AngleTool {
     
     //Save dot positions as image pixels to core data
     func saveLocation() {
-        let imageTransform = calculateImageTransform(imageView: imageView!)
+        let imageTransform = angleToolDrawing.calculateImageTransform(imageView: imageView!)
         var pixelDotPosition = CGPoint()
         
-        pixelDotPosition = convertLocationToPixel(location: dotPositions[0], origin: imageTransform.rect.origin, scale: imageTransform.scale)
+        pixelDotPosition = angleToolDrawing.convertLocationToPixel(location: dotPositions[0], origin: imageTransform.rect.origin, scale: imageTransform.scale)
         measurement?.beginX = Float(pixelDotPosition.x)
         measurement?.beginY = Float(pixelDotPosition.y)
 
-        pixelDotPosition = convertLocationToPixel(location: dotPositions[1], origin: imageTransform.rect.origin, scale: imageTransform.scale)
+        pixelDotPosition = angleToolDrawing.convertLocationToPixel(location: dotPositions[1], origin: imageTransform.rect.origin, scale: imageTransform.scale)
         measurement?.middleX = Float(pixelDotPosition.x)
         measurement?.middleY = Float(pixelDotPosition.y)
 
-        pixelDotPosition = convertLocationToPixel(location: dotPositions[2], origin: imageTransform.rect.origin, scale: imageTransform.scale)
+        pixelDotPosition = angleToolDrawing.convertLocationToPixel(location: dotPositions[2], origin: imageTransform.rect.origin, scale: imageTransform.scale)
         measurement?.endX = Float(pixelDotPosition.x)
         measurement?.endY = Float(pixelDotPosition.y)
     }
  
-    //Scale the pixel position to a location in the image view
-    fileprivate func convertPixelToLocation(position: CGPoint, origin: CGPoint, scale: CGFloat) -> CGPoint {
-        var location = CGPoint()
-        
-        location.x = position.x * scale + origin.x
-        location.y = position.y * scale + origin.y
-        
-        return location
-    }
-    
-    //Scale the location in the image view to a pixel location
-    fileprivate func convertLocationToPixel(location: CGPoint, origin: CGPoint, scale: CGFloat) -> CGPoint {
-        var pixelDotPosition = CGPoint()
 
-        pixelDotPosition.x = (location.x - origin.x) / scale
-        pixelDotPosition.y = (location.y - origin.y) / scale
-        
-        return pixelDotPosition
-    }
     
-    // Assumes the image is aspectFit in imageview
-    //centered with either width or height the same
-    fileprivate func calculateImageTransform(imageView: UIImageView) -> (rect:CGRect, scale:CGFloat) {
-        let imageViewSize = imageView.bounds.size
-        let imgSize = imageView.image?.size
-        
-        guard let imageSize = imgSize, imgSize != nil else {
-            return (CGRect.zero, CGFloat(1))
-        }
-        
-        let scaleWidth = imageViewSize.width / imageSize.width
-        let scaleHeight = imageViewSize.height / imageSize.height
-        var aspect = fmin(scaleWidth, scaleHeight) // assume aspectFit
-        if imageView.contentMode == .scaleAspectFill {
-            aspect = fmax(scaleWidth, scaleHeight)
-        }
 
-        var imageRect = CGRect(x: 0, y: 0, width: imageSize.width * aspect, height: imageSize.height * aspect)
-        // Center image
-        imageRect.origin.x = (imageViewSize.width - imageRect.size.width) / 2
-        imageRect.origin.y = (imageViewSize.height - imageRect.size.height) / 2
-        
-        // Add imageView offset
-        imageRect.origin.x += imageView.frame.origin.x
-        imageRect.origin.y += imageView.frame.origin.y
-        
-        return (imageRect, aspect)
-    }
-    
     //Detect touches close to tool points and center of lines
     func pointInTool(inside point: CGPoint) -> Bool {
         var inTool = false
@@ -211,15 +165,6 @@ class AngleTool {
         }
 
         return inTool
-    }
-    
-    fileprivate func invertRotation() {
-        let rotation = measurement?.jointMotion?.rotation
-        if rotation == "CW" {
-            measurement?.jointMotion?.rotation = "CCW"
-        } else {
-            measurement?.jointMotion?.rotation = "CW"
-        }
     }
     
     func doHandleDotPan(gestureRecognizer: UIPanGestureRecognizer, view: UIView) {

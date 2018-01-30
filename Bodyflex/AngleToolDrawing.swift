@@ -50,6 +50,8 @@ class AngleToolDrawing {
     let beginLineLayer = CAShapeLayer()
     let endLineLayer = CAShapeLayer()
     let arcLineLayer = CAShapeLayer()
+    
+    var animation = true
 
     var angleLabel = UILabel()
 
@@ -98,9 +100,12 @@ class AngleToolDrawing {
         drawAngleArc()
         drawAngle()
         
-        dotAnimation()
+        if animation {
+            dotAnimation()
+        }
     }
 
+    
     fileprivate func scaleToLineLength() {
         let dX = dotPositions[1].x - dotPositions[0].x
         let dY = dotPositions[1].y - dotPositions[0].y
@@ -140,6 +145,52 @@ class AngleToolDrawing {
             quadrant = "Quadrant90"
         }
         angleQuadrant = quadrant
+    }
+    
+    // MARK: - Utilities
+
+    //Scale the pixel position to a location in the image view
+    func convertPixelToLocation(position: CGPoint, origin: CGPoint, scale: CGFloat) -> CGPoint {
+        var location = CGPoint()
+        
+        location.x = position.x * scale + origin.x
+        location.y = position.y * scale + origin.y
+        
+        return location
+    }
+    
+    //Scale the location in the image view to a pixel location
+    func convertLocationToPixel(location: CGPoint, origin: CGPoint, scale: CGFloat) -> CGPoint {
+        var pixelDotPosition = CGPoint()
+        
+        pixelDotPosition.x = (location.x - origin.x) / scale
+        pixelDotPosition.y = (location.y - origin.y) / scale
+        
+        return pixelDotPosition
+    }
+    
+    //image centered with either width or height the same
+    func calculateImageTransform(imageView: UIImageView) -> (rect:CGRect, scale:CGFloat) {
+        let imageViewSize = imageView.bounds.size
+        let imgSize = imageView.image?.size
+        
+        guard let imageSize = imgSize, imgSize != nil else {
+            return (CGRect.zero, CGFloat(1))
+        }
+        
+        let scaleWidth = imageViewSize.width / imageSize.width
+        let scaleHeight = imageViewSize.height / imageSize.height
+        var aspect = fmin(scaleWidth, scaleHeight) // assume aspectFit
+        if imageView.contentMode == .scaleAspectFill {
+            aspect = fmax(scaleWidth, scaleHeight)
+        }
+        
+        var imageRect = CGRect(x: 0, y: 0, width: imageSize.width * aspect, height: imageSize.height * aspect)
+        // Center image
+        imageRect.origin.x = (imageViewSize.width - imageRect.size.width) / 2
+        imageRect.origin.y = (imageViewSize.height - imageRect.size.height) / 2
+                
+        return (imageRect, aspect)
     }
 
     fileprivate func drawDots() {
