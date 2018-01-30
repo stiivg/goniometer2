@@ -42,7 +42,7 @@ class AngleToolDrawing {
     let endDotLayer = CAShapeLayer()
     let animationLayer = CAShapeLayer()
     let textLayer = CATextLayer()
-
+    
     let beginLineMask = CAShapeLayer()
     let endLineMask = CAShapeLayer()
 
@@ -52,8 +52,7 @@ class AngleToolDrawing {
     let arcLineLayer = CAShapeLayer()
     
     var animation = true
-
-    var angleLabel = UILabel()
+    var addLabels = false
 
     var dotPositions = [CGPoint]()
 
@@ -63,6 +62,8 @@ class AngleToolDrawing {
 
     var rotationCW = true
     var angleQuadrant = "Quadrant0"
+    
+    let angleToolLabels = AngleToolLabels()
 
     init() {
         initTextLayer()
@@ -82,6 +83,8 @@ class AngleToolDrawing {
         
         imageView.layer.addSublayer(textLayer)
         
+        angleToolLabels.setImageView(imageView: imageView)
+
         beginLineLayer.addSublayer(animationLayer) //Animation obeys the line mask to keep the dot clear
         
         //1000 magic number that makes the scale look good
@@ -89,7 +92,14 @@ class AngleToolDrawing {
 //        scaleTool(scale: 628 / 1000)
     }
 
-
+    func setMotion(motion: MotionStruct) {
+        angleToolLabels.setMotion(motion: motion)
+    }
+    
+    func setSide(side: String) {
+        angleToolLabels.side = side
+    }
+    
     func drawTool(dotPositions: [CGPoint]) {
         self.dotPositions = dotPositions
         scaleToLineLength()
@@ -99,6 +109,10 @@ class AngleToolDrawing {
         drawLines()
         drawAngleArc()
         drawAngle()
+        
+        if addLabels {
+            angleToolLabels.drawLabels(dotPositions: dotPositions)
+        }
         
         if animation {
             dotAnimation()
@@ -377,7 +391,7 @@ class AngleToolDrawing {
         
         scaleTextLayer(scale: 1.0)
     }
-
+    
     fileprivate func scaleTextLayer(scale: CGFloat) {
         fontFrameSize = CGSize(width: fontFrameSizeDefault.width * scale, height: fontFrameSizeDefault.height * scale)
         angleFontSize = angleFontSizeDefault * scale
@@ -436,7 +450,7 @@ class AngleToolDrawing {
         textLayer.string = angleText
         textLayer.position = textPoint()
     }
-
+    
     //    fileprivate func drawTextFill(textOrigin: CGPoint) {
     //        let fillWidth = textLayer.frame.width
     //        let fillHeight = textLayer.frame.height

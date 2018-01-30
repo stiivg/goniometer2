@@ -7,6 +7,11 @@
       </ContextState>
       <ContextState
          contextName = "SelectJointViewController.setAngleToolDrawing():SelectJointViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "stationaryView.frame">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MeasureAngleViewController.viewDidLayoutSubviews():MeasureAngleViewController.swift">
@@ -23,13 +28,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "loadImage(fileName:):SelectJointViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "AngleToolDrawing.calculateImageTransform(imageView:):AngleToolDrawing.swift">
+         contextName = "AngleToolLabels.initStationaryTextLayer():AngleToolLabels.swift">
          <PersistentStrings>
             <PersistentString
-               value = "imageView.frame">
+               value = "stationaryTextLayer.contentsScale">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -100,12 +102,6 @@
          contextName = "BodyJoints.saveJoint():BodyJoints.swift">
       </ContextState>
       <ContextState
-         contextName = "SelectJointViewController.viewDidLoad():SelectJointViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "SelectJointViewController.tableView(_:cellForRowAt:):SelectJointViewController.swift">
-      </ContextState>
-      <ContextState
          contextName = "MeasurementsAPI.cancelMeasurementEdit():Measurements.swift">
          <PersistentStrings>
             <PersistentString
@@ -126,9 +122,6 @@
                value = "imageView?.frame">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "JointCell.awakeFromNib():JointCell.swift">
       </ContextState>
       <ContextState
          contextName = "AngleTool.setJointMotion(jointMotion:):AngleTool.swift">
@@ -167,29 +160,6 @@
          contextName = "MeasurementTableViewController.prepare(for:sender:):MeasurementTableViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "AngleTool.saveLocation():AngleTool.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "measurement?.endY">
-            </PersistentString>
-            <PersistentString
-               value = "measurement?.beginX">
-            </PersistentString>
-            <PersistentString
-               value = "measurement?.endX">
-            </PersistentString>
-            <PersistentString
-               value = "measurement?.beginY">
-            </PersistentString>
-            <PersistentString
-               value = "measurement?.middleY">
-            </PersistentString>
-            <PersistentString
-               value = "measurement?.middleX">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "AngleToolDrawing.dotPositions.setter:AngleToolDrawing.swift">
       </ContextState>
       <ContextState
@@ -220,15 +190,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AngleToolDrawing.setImageView(imageView:):AngleToolDrawing.swift">
+         contextName = "AngleToolDrawing.drawAngle():AngleToolDrawing.swift">
          <PersistentStrings>
             <PersistentString
-               value = "imageView.bounds">
+               value = "textLayer.position">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "SelectJointViewController.restoreLocation():SelectJointViewController.swift">
       </ContextState>
       <ContextState
          contextName = "BodyJoints.jointMotions():BodyJoints.swift">

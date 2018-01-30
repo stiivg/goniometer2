@@ -16,13 +16,6 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
     @IBOutlet weak var jointMotionTable: UITableView!
 
 
-    @IBOutlet weak var stationaryCommon: UILabel!
-    @IBOutlet weak var stationaryMedical: UILabel!
-    @IBOutlet weak var axisCommon: UILabel!
-    @IBOutlet weak var axisMedical: UILabel!
-    @IBOutlet weak var movingCommon: UILabel!
-    @IBOutlet weak var movingMedical: UILabel!
-
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -123,8 +116,8 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
     
     fileprivate func  setAngleToolDrawing() {
         var rotationCW = motion?.rotation == "CW"
-        //
-        if side == "Right" {
+        // Defaults to the right side
+        if side == "Left" {
             rotationCW = !rotationCW
         }
         
@@ -133,22 +126,17 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
     
         restoreLocation()
         if jointImage.image != nil {
+            angleToolDrawing.setMotion(motion: motion!)
+            angleToolDrawing.setSide(side: side)
             angleToolDrawing.drawTool(dotPositions: dotPositions)
         }
-        
-        stationaryCommon.text = motion?.stationaryLabel.common
-        stationaryMedical.text = motion?.stationaryLabel.medical
-        axisCommon.text = motion?.axisLabel.common
-        axisMedical.text = motion?.axisLabel.medical
-        movingCommon.text = motion?.movingLabel.common
-        movingMedical.text = motion?.movingLabel.medical
-
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         angleToolDrawing.animation = false
+        angleToolDrawing.addLabels = true
         angleToolDrawing.setImageView(imageView: jointImage)
         
         // Uncomment the following line to preserve selection between presentations

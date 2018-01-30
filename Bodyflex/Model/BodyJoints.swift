@@ -444,10 +444,10 @@ let ankleJoint = Joint.init(name: .init(common: "Ankle", medical: "Talocrural Jo
                                                    normalAAOS: "13,4.4",
                                                    position: "",
                                                    description: "Bend ankle so toes point up",
-                                                   rotation: "CW",
+                                                   rotation: "CCW",
                                                    insideOutside: "Outside-90",
-                                                   defaultDotPoints: [CGPoint(x: 745, y: 346), CGPoint(x: 770, y: 1136), CGPoint(x: 981, y: 1405)],
-                                                   labelOffsets: ["Right", "Up", "Up"]),
+                                                   defaultDotPoints: [CGPoint(x: 745, y: 346), CGPoint(x: 770, y: 1136), CGPoint(x: 1020, y: 1000)],
+                                                   labelOffsets: ["Right", "Left", "Right"]),
                             MotionStruct.init(name: .init(common: "Lower Foot", medical: "Plantarflexion"),
                                                    stationaryLabel: .init(common: "Knee", medical: "Fibular Head"),
                                                    axisLabel: .init(common: "Ankle", medical: "Lateral Malleolus"),
@@ -459,7 +459,7 @@ let ankleJoint = Joint.init(name: .init(common: "Ankle", medical: "Talocrural Jo
                                                    rotation: "CW",
                                                    insideOutside: "Inside-90",
                                                    defaultDotPoints: [CGPoint(x: 745, y: 346), CGPoint(x: 770, y: 1136), CGPoint(x: 981, y: 1405)],
-                                                   labelOffsets: ["Up", "Up", "Up"]),])
+                                                   labelOffsets: ["Right", "Right", "Down"]),])
 
 let heelJoint = Joint.init(name: .init(common: "Heel", medical: "Calcaneal (subtalar - hindfoot)"),
                            motions: [

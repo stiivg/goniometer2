@@ -33,6 +33,7 @@
 		64A4325C1FBD1A94005D2FC2 /* knee_flexion.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */; };
 		64A7FAD2201645AF00079646 /* AngleToolDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A7FAD1201645AF00079646 /* AngleToolDrawing.swift */; };
 		64B58AE01FF0047000B64631 /* BodyJoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B58ADF1FF0046F00B64631 /* BodyJoints.swift */; };
+		64B5CBE32020DD0600DB848B /* AngleToolLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B5CBE22020DD0600DB848B /* AngleToolLabels.swift */; };
 		64E626AE1FCC75A20068879F /* JointPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AD1FCC75A20068879F /* JointPickerViewController.swift */; };
 		64E626B01FCDEB4F0068879F /* MotionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = knee_flexion.png; path = ../../../../Desktop/knee_flexion.png; sourceTree = "<group>"; };
 		64A7FAD1201645AF00079646 /* AngleToolDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleToolDrawing.swift; sourceTree = "<group>"; };
 		64B58ADF1FF0046F00B64631 /* BodyJoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyJoints.swift; sourceTree = "<group>"; };
+		64B5CBE22020DD0600DB848B /* AngleToolLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleToolLabels.swift; sourceTree = "<group>"; };
 		64E626AD1FCC75A20068879F /* JointPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointPickerViewController.swift; sourceTree = "<group>"; };
 		64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +176,7 @@
 				64A01D131FFEA469007A6C58 /* MeasurementCollectionCell.swift */,
 				64161F161FDB09A700DC25CF /* GestureScrollView.swift */,
 				64A7FAD1201645AF00079646 /* AngleToolDrawing.swift */,
+				64B5CBE22020DD0600DB848B /* AngleToolLabels.swift */,
 				64161F121FD9A22800DC25CF /* AngleTool.swift */,
 				64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */,
 				64E626AD1FCC75A20068879F /* JointPickerViewController.swift */,
@@ -355,6 +358,7 @@
 				64A0BCB6201A48A700F63E3C /* JointCell.swift in Sources */,
 				64613C001FC65CDE00362CBD /* SelectJointViewController.swift in Sources */,
 				645C758D1FD1DAA800053C4F /* Bodyflex.xcdatamodeld in Sources */,
+				64B5CBE32020DD0600DB848B /* AngleToolLabels.swift in Sources */,
 				64161F131FD9A22800DC25CF /* AngleTool.swift in Sources */,
 				64A4322C1FBD141A005D2FC2 /* AppDelegate.swift in Sources */,
 				64A01D181FFEFB45007A6C58 /* PersistencyManager.swift in Sources */,
