@@ -13,12 +13,17 @@ class AngleToolLabels {
     let stationaryCommonTextLayer = CATextLayer()
     let axisCommonTextLayer = CATextLayer()
     let movingCommonTextLayer = CATextLayer()
-
+    
+    let stationaryMedicalTextLayer = CATextLayer()
+    let axisMedicalTextLayer = CATextLayer()
+    let movingMedicalTextLayer = CATextLayer()
+    
     let fontFrameSizeDefault = CGSize(width: 140, height: 20)
     let commonFontSizeDefault = CGFloat(12)
     let medicalFontSizeDefault = CGFloat(9)
     
-    let labelOffset = CGFloat(30)
+    let labelOffset = CGFloat(32)
+    let medicalOffset = CGFloat(15)
 
     var fontFrameSize = CGSize(width: 60, height: 20)
     var commonFontSize = CGFloat(12)
@@ -31,12 +36,20 @@ class AngleToolLabels {
         initTextLayer(textLayer: stationaryCommonTextLayer)
         initTextLayer(textLayer: axisCommonTextLayer)
         initTextLayer(textLayer: movingCommonTextLayer)
+        
+        initTextLayer(textLayer: stationaryMedicalTextLayer)
+        initTextLayer(textLayer: axisMedicalTextLayer)
+        initTextLayer(textLayer: movingMedicalTextLayer)
     }
 
     func setImageView(imageView: UIImageView) {
         imageView.layer.addSublayer(stationaryCommonTextLayer)
         imageView.layer.addSublayer(axisCommonTextLayer)
         imageView.layer.addSublayer(movingCommonTextLayer)
+        
+        imageView.layer.addSublayer(stationaryMedicalTextLayer)
+        imageView.layer.addSublayer(axisMedicalTextLayer)
+        imageView.layer.addSublayer(movingMedicalTextLayer)
     }
     
     func setMotion(motion: MotionStruct) {
@@ -49,7 +62,7 @@ class AngleToolLabels {
         textLayer.opacity = 1.0
         
         textLayer.foregroundColor = UIColor.black.cgColor
-        textLayer.backgroundColor = UIColor.cyan.cgColor
+//        textLayer.backgroundColor = UIColor.cyan.cgColor
         textLayer.alignmentMode = kCAAlignmentLeft
         textLayer.contentsScale = UIScreen.main.scale
     }
@@ -67,6 +80,16 @@ class AngleToolLabels {
         
         movingCommonTextLayer.frame.size = fontFrameSize
         movingCommonTextLayer.fontSize = commonFontSize
+        
+        stationaryMedicalTextLayer.frame.size = fontFrameSize
+        stationaryMedicalTextLayer.fontSize = medicalFontSize
+        
+        axisMedicalTextLayer.frame.size = fontFrameSize
+        axisMedicalTextLayer.fontSize = medicalFontSize
+        
+        movingMedicalTextLayer.frame.size = fontFrameSize
+        movingMedicalTextLayer.fontSize = medicalFontSize
+        
     }
 
 
@@ -82,6 +105,23 @@ class AngleToolLabels {
         
         movingCommonTextLayer.string = theMotion.movingLabel.common
         movingCommonTextLayer.position = labelPosition(offset: theMotion.labelOffsets[2], textLayer: movingCommonTextLayer, dotPosition: dotPositions[2])
+        
+        var medicalPosition: CGPoint
+        
+        stationaryMedicalTextLayer.string = theMotion.stationaryLabel.medical
+        medicalPosition = labelPosition(offset: theMotion.labelOffsets[0], textLayer: stationaryMedicalTextLayer, dotPosition: dotPositions[0])
+        medicalPosition.y += medicalOffset
+        stationaryMedicalTextLayer.position = medicalPosition
+        
+        axisMedicalTextLayer.string = theMotion.axisLabel.medical
+        medicalPosition = labelPosition(offset: theMotion.labelOffsets[1], textLayer: axisMedicalTextLayer, dotPosition: dotPositions[1])
+        medicalPosition.y += medicalOffset
+        axisMedicalTextLayer.position = medicalPosition
+        
+        movingMedicalTextLayer.string = theMotion.movingLabel.medical
+        medicalPosition = labelPosition(offset: theMotion.labelOffsets[2], textLayer: movingMedicalTextLayer, dotPosition: dotPositions[2])
+        medicalPosition.y += medicalOffset
+        movingMedicalTextLayer.position = medicalPosition
         
     }
     
@@ -99,12 +139,15 @@ class AngleToolLabels {
                 offsetWithSide = "Left"
             }
         }
-        
+        textLayer.cornerRadius = 5
+
         switch offsetWithSide {
         case "Up":
             yOffset = -labelOffset
+            textLayer.alignmentMode = kCAAlignmentCenter
         case "Down":
             yOffset = labelOffset
+            textLayer.alignmentMode = kCAAlignmentCenter
         case "Left":
             xOffset = -labelOffset - textLayer.bounds.width / 2
             textLayer.alignmentMode = kCAAlignmentRight

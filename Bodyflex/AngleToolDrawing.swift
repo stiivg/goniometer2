@@ -18,7 +18,7 @@ class AngleToolDrawing {
     let extensionLengthDefault = CGFloat(60)
     let angleTextDistanceDefault = CGFloat(65)
     let arcRadiusDefault = CGFloat(40)
-    let arcLineWidthDefault = CGFloat(1)
+    let arcLineWidthDefault = CGFloat(10)
     
     let fontFrameSizeDefault = CGSize(width: 60, height: 20)
     let angleFontSizeDefault = CGFloat(16)
@@ -53,6 +53,7 @@ class AngleToolDrawing {
     
     var animation = true
     var addLabels = false
+    var addAngle = true
 
     var dotPositions = [CGPoint]()
 
@@ -108,7 +109,10 @@ class AngleToolDrawing {
         drawDots()
         drawLines()
         drawAngleArc()
-        drawAngle()
+        
+        if addAngle {
+            drawAngle()
+        }
         
         if addLabels {
             angleToolLabels.drawLabels(dotPositions: dotPositions)

@@ -137,6 +137,7 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
         
         angleToolDrawing.animation = false
         angleToolDrawing.addLabels = true
+        angleToolDrawing.addAngle = false
         angleToolDrawing.setImageView(imageView: jointImage)
         
         // Uncomment the following line to preserve selection between presentations
