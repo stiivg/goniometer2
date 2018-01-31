@@ -51,7 +51,7 @@ final class MeasurementsAPI {
         let measurement = NSManagedObject(entity: entity, insertInto: moc) as! Measurement
 
         //Create a new jointMotion object, default to first knee motion
-        let jointMotion = bodyJoints.newJointMotion(joint: kneeJoint, motion: kneeJoint.motions[0], side: "Left")
+        let jointMotion = bodyJoints.newJointMotion(joint: kneeJoint, motion: kneeJoint.motions[0], side: "Right")
         
         //set link to jointMotion
         measurement.jointMotion = jointMotion

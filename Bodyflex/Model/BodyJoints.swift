@@ -728,7 +728,7 @@ class BodyJoints {
         jointMotion.insideOutside = motion.insideOutside
         
         jointMotion.side = side
-        if side == "Right" {
+        if side == "Left" {
             reverseRotation(jointMotion: jointMotion)
         }
         
@@ -737,7 +737,7 @@ class BodyJoints {
     
     fileprivate func reverseRotation(jointMotion: JointMotion) {
         if jointMotion.rotation == "CW" {
-            jointMotion.rotation = "CW"
+            jointMotion.rotation = "CCW"
         } else {
             jointMotion.rotation = "CW"
         }

@@ -17,8 +17,8 @@ class AngleToolDrawing {
     let lineWidthDefault = CGFloat(5)
     let extensionLengthDefault = CGFloat(60)
     let angleTextDistanceDefault = CGFloat(65)
-    let arcRadiusDefault = CGFloat(40)
-    let arcLineWidthDefault = CGFloat(10)
+    let arcRadiusDefault = CGFloat(20)
+    let arcLineWidthDefault = CGFloat(20)
     
     let fontFrameSizeDefault = CGSize(width: 60, height: 20)
     let angleFontSizeDefault = CGFloat(16)
@@ -443,7 +443,8 @@ class AngleToolDrawing {
         
         arcLineLayer.path = arcLinePath.cgPath
         arcLineLayer.lineWidth = arcLineWidth
-        arcLineLayer.strokeColor = UIColor.black.cgColor
+        arcLineLayer.strokeColor = UIColor.green.cgColor
+        arcLineLayer.opacity = 0.6
         arcLineLayer.fillColor = UIColor.clear.cgColor
         
     }
