@@ -6,6 +6,9 @@
          contextName = "BodyJoints.motionFromJointMotion(jointMotion:):BodyJoints.swift">
       </ContextState>
       <ContextState
+         contextName = "AngleToolDrawing.scaleTool(scale:):AngleToolDrawing.swift">
+      </ContextState>
+      <ContextState
          contextName = "SelectJointViewController.setAngleToolDrawing():SelectJointViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -100,6 +103,14 @@
       </ContextState>
       <ContextState
          contextName = "BodyJoints.saveJoint():BodyJoints.swift">
+      </ContextState>
+      <ContextState
+         contextName = "BodyJoints.jointFromJointMotion(jointMotion:):BodyJoints.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "jointMotion.nameCommon">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MeasurementsAPI.cancelMeasurementEdit():Measurements.swift">

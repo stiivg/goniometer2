@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 struct NameType {
-    let common: String
+    var common: String
     let medical: String
 }
 
@@ -30,7 +30,7 @@ struct MotionStruct {
 }
 
 struct Joint {
-    let name: NameType
+    var name: NameType
     let motions: [MotionStruct]
 }
 
@@ -644,9 +644,9 @@ let backJoint = Joint.init(name: .init(common: "Back", medical: "Thoraco-Lumber 
                                               defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
                                               labelOffsets: ["Up", "Up", "Up"]),])
 
-let testJoint = Joint.init(name: .init(common: "Test", medical: "Cervical Spine"),
+let customJoint = Joint.init(name: .init(common: "Custom", medical: "Custom Measurement"),
                            motions: [
-                            MotionStruct.init(name: .init(common: "Inside-90 CW Q90", medical: "Flexion"),
+                            MotionStruct.init(name: .init(common: "Q1", medical: "first quadrant"),
                                               stationaryLabel: .init(common: "Vertical", medical: ""),
                                               axisLabel: .init(common: "Ear", medical: "External Auditory Meatus"),
                                               movingLabel: .init(common: "Aligned with Nostrils", medical: ""),
@@ -655,11 +655,11 @@ let testJoint = Joint.init(name: .init(common: "Test", medical: "Cervical Spine"
                                               position: "",
                                               description: "",
                                               rotation: "CW",
-                                              insideOutside: "Inside-90",
+                                              insideOutside: "Inside",
                                               defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
                                               labelOffsets: ["Up", "Up", "Up"]),
-                            MotionStruct.init(name: .init(common: "CW Outside-90 Q270", medical: "Eversion"),
-                                              stationaryLabel: .init(common: "Vertical", medical: ""),
+                            MotionStruct.init(name: .init(common: "Q2", medical: "second quadrant"),
+                                              stationaryLabel: .init(common: "Vertical", medical: "second quadrant"),
                                               axisLabel: .init(common: "Ear", medical: "External Auditory Meatus"),
                                               movingLabel: .init(common: "Aligned with Nostrils", medical: ""),
                                               normalAMA: "75",
@@ -667,10 +667,10 @@ let testJoint = Joint.init(name: .init(common: "Test", medical: "Cervical Spine"
                                               position: "",
                                               description: "",
                                               rotation: "CW",
-                                              insideOutside: "Outside-90",
+                                              insideOutside: "Inside-90",
                                               defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
                                               labelOffsets: ["Up", "Up", "Up"]),
-                            MotionStruct.init(name: .init(common: "CW Outside Q180", medical: ""),
+                            MotionStruct.init(name: .init(common: "Q3", medical: "third quadrant"),
                                               stationaryLabel: .init(common: "Backbone", medical: "Spinous Processes of Thoracic Spine"),
                                               axisLabel: .init(common: "Neck", medical: "Spinous Process of C7"),
                                               movingLabel: .init(common: "Center of Back of Head", medical: "Posterior Midline of Head at Occipital Protuberance"),
@@ -682,7 +682,7 @@ let testJoint = Joint.init(name: .init(common: "Test", medical: "Cervical Spine"
                                               insideOutside: "Outside",
                                               defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
                                               labelOffsets: ["Up", "Up", "Up"]),
-                            MotionStruct.init(name: .init(common: "CW Inside Q0", medical: ""),
+                            MotionStruct.init(name: .init(common: "Q4", medical: "fourth quadrant"),
                                               stationaryLabel: .init(common: "Shoulder", medical: "Aligned with Acromion Processes"),
                                               axisLabel: .init(common: "Center of Top of Head", medical: "Center of Superior Aspect of Head"),
                                               movingLabel: .init(common: "Aligned with Tip of Nose", medical: ""),
@@ -691,14 +691,14 @@ let testJoint = Joint.init(name: .init(common: "Test", medical: "Cervical Spine"
                                               position: "",
                                               description: "",
                                               rotation: "CW",
-                                              insideOutside: "Inside",
+                                              insideOutside: "Outside-90",
                                               defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
                                               labelOffsets: ["Up", "Up", "Up"]),])
 
 
 
 class BodyJoints {
-    let joints = [testJoint, neckJoint, backJoint, shoulderJoint, elbowJoint,  forearm, wristJoint, knuckleJoint, fingerJoint, thumb, hipJoint, kneeJoint, ankleJoint, heelJoint, footJoint, toeJoint]
+    let joints = [customJoint, neckJoint, backJoint, shoulderJoint, elbowJoint,  forearm, wristJoint, knuckleJoint, fingerJoint, thumb, hipJoint, kneeJoint, ankleJoint, heelJoint, footJoint, toeJoint]
 
     //Create a managed object for this joint, motion, and side
     func newJointMotion(joint: Joint, motion: MotionStruct, side: String) -> JointMotion {
@@ -724,7 +724,7 @@ class BodyJoints {
         jointMotion.movingLabelCommon = motion.movingLabel.common
         jointMotion.movingLabelMedical = motion.movingLabel.medical
         
-        jointMotion.rotation = motion.rotation //default for left side of body
+        jointMotion.rotation = motion.rotation //default for right side of body
         jointMotion.insideOutside = motion.insideOutside
         
         jointMotion.side = side
@@ -751,8 +751,9 @@ class BodyJoints {
     
     func jointFromJointMotion(jointMotion: JointMotion) -> Joint {
         var joint = joints.first(where: { $0.name.common == jointMotion.nameCommon })
-        if joint == nil { //If joint not found default to the first joint
-            joint = joints[0]
+        if joint == nil { //If joint not found assume it is a custom joint name
+            joint = joints[0] //Custom joint is first
+            joint?.name.common = jointMotion.nameCommon!
         }
         return joint!
     }

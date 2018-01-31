@@ -17,8 +17,8 @@ class AngleToolDrawing {
     let lineWidthDefault = CGFloat(5)
     let extensionLengthDefault = CGFloat(60)
     let angleTextDistanceDefault = CGFloat(65)
-    let arcRadiusDefault = CGFloat(20)
-    let arcLineWidthDefault = CGFloat(20)
+    let arcRadiusDefault = CGFloat(25)
+    let arcLineWidthDefault = CGFloat(30)
     
     let fontFrameSizeDefault = CGSize(width: 60, height: 20)
     let angleFontSizeDefault = CGFloat(16)
@@ -74,8 +74,8 @@ class AngleToolDrawing {
         self.imageView = imageView
         
         //Add all the tool layers and the animation layer
-        imageView.layer.addSublayer(arcLineLayer)
         imageView.layer.addSublayer(beginLineLayer)
+        imageView.layer.addSublayer(arcLineLayer)
         imageView.layer.addSublayer(endLineLayer)
         
         imageView.layer.addSublayer(beginDotLayer)
@@ -388,6 +388,7 @@ class AngleToolDrawing {
         textLayer.font = CTFontCreateWithName(fontName, 8, nil)
         textLayer.opacity = 0.6
         
+        textLayer.cornerRadius = 3
         textLayer.foregroundColor = UIColor.black.cgColor
         textLayer.backgroundColor = UIColor.white.cgColor
         textLayer.alignmentMode = kCAAlignmentCenter
@@ -406,9 +407,16 @@ class AngleToolDrawing {
 
     fileprivate func drawAngleArc() {
         let arcLineOrigin = CGPoint(x: dotPositions[1].x, y: dotPositions[1].y)
+        
+        arcLineLayer.lineWidth = arcLineWidth
+        arcLineLayer.strokeColor = UIColor.green.cgColor
+        arcLineLayer.opacity = 0.6
+        arcLineLayer.fillColor = UIColor.clear.cgColor
+
         var clockwise = rotationCW
         if measuredAngle < 0 {
             clockwise = !clockwise
+            arcLineLayer.strokeColor = UIColor.red.cgColor
         }
         
         var startAngle = mainArmAngle()
@@ -439,14 +447,8 @@ class AngleToolDrawing {
         }
 
         let arcLinePath = UIBezierPath.init(arcCenter: arcLineOrigin, radius: arcRadius, startAngle: startAngle, endAngle: endAngle , clockwise: clockwise)
-        
-        
         arcLineLayer.path = arcLinePath.cgPath
-        arcLineLayer.lineWidth = arcLineWidth
-        arcLineLayer.strokeColor = UIColor.green.cgColor
-        arcLineLayer.opacity = 0.6
-        arcLineLayer.fillColor = UIColor.clear.cgColor
-        
+
     }
 
     fileprivate func drawAngle() {

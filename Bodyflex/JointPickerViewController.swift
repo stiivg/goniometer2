@@ -14,34 +14,17 @@ class JointPickerViewController: UITableViewController {
     
     
     // MARK: - Properties
-//    var joints = [
-//        //Upper Body
-//        "Jaw",
-//        "Neck",
-//        "Back",
-//        "Shoulder",
-//        "Elbow",
-//        "Forearm",
-//        "Wrist",
-//        "Knuckle",
-//        "Finger",
-//        "Thumb",
-//        //Lower Body
-//        "Hip",
-//        "Knee",
-//        "Ankle",
-//        "Heel",
-//        "Toe"
-//    ]
-    
-
     var selectedJointIndex: Int?
 
     
     var selectedJoint: Joint? {
         didSet {
-            if let selectedJoint = selectedJoint,
-                let index = allJoints.index(where: { $0.name.common == selectedJoint.name.common }) {
+            if let selectedJoint = selectedJoint {
+                var index = allJoints.index(where: { $0.name.common == selectedJoint.name.common })
+                //If name not found assume custom name
+                if index == nil {
+                    index = 0 //Index of custom entry
+                }
                 selectedJointIndex = index
             }
         }

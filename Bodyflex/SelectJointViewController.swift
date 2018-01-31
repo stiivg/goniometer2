@@ -9,12 +9,27 @@
 import UIKit
 import CoreData
 
-class SelectJointViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
+class SelectJointViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var jointDescriptionLabel: UILabel!
     @IBOutlet weak var jointImage: UIImageView!
     @IBOutlet weak var jointMotionTable: UITableView!
+    
+    
+    // MARK: - Properties
+    var joint: Joint? //Joint struct with all possible motions
+    var motion: MotionStruct? //Selected motion
+    
+    var side: String = "Right"
+    
+    private var angleToolDrawing = AngleToolDrawing()
+    private var dotPositions = [CGPoint(), CGPoint(), CGPoint()]
+    
+    
 
+    @IBAction func jointTextEditEnd(_ sender: UITextField) {
+        joint?.name.common = sender.text!
+    }
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,8 +42,18 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
         switch indexPath.row {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: "JointCell")!
-            (cell as! JointCell).jointLabel.text = (joint?.name.common)!
-            (cell as! JointCell).jointLabelMedical.text = (joint?.name.medical)
+            //if custom joint enable editing
+            if joint?.name.medical == "Custom Measurement" {
+                (cell as! JointCell).jointText.isEnabled = true
+                (cell as! JointCell).jointText.borderStyle = .roundedRect
+                (cell as! JointCell).jointText.text = joint?.name.common //Restore custom name
+                (cell as! JointCell).jointText.delegate = self
+            } else {
+                (cell as! JointCell).jointText.isEnabled = false
+                (cell as! JointCell).jointText.borderStyle = .none
+                (cell as! JointCell).jointText.text = (joint?.name.common)!
+            }
+            (cell as! JointCell).jointLabelMedical.text = joint?.name.medical
 
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: "MotionCell")!
@@ -49,18 +74,20 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
         return cell
     }
     
+    //Dismiss keyboard on Enter
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return false
+    }
+    
+    //Save last edit to custom joint
+    func completeEdit() {
+        let cell = jointMotionTable.cellForRow(at: IndexPath(row: 0, section: 0))
+        (cell as! JointCell).jointText.endEditing(true)
+    }
 
    
-    // MARK: - Properties
-    var joint: Joint? //Joint struct with all possible motions
-    var motion: MotionStruct? //Selected motion
-    
-    var side: String = "Right"
-    
-    private var angleToolDrawing = AngleToolDrawing()
-    private var dotPositions = [CGPoint(), CGPoint(), CGPoint()]
-    
-
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         if segue.identifier == "PickJoint",
@@ -139,6 +166,8 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
         angleToolDrawing.addLabels = true
         angleToolDrawing.addAngle = false
         angleToolDrawing.setImageView(imageView: jointImage)
+        
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -237,7 +266,7 @@ extension SelectJointViewController {
         if let jointPickerViewController = segue.source as? JointPickerViewController,
             let selectedJoint = jointPickerViewController.selectedJoint {
             self.joint = selectedJoint
-            self.motion = selectedJoint.motions[0] //Defaiult to the first motion of new joint selected
+            self.motion = selectedJoint.motions[0] //Default to the first motion of new joint selected
         }
     }
     @IBAction func unwindWithSelectedMotion(segue: UIStoryboardSegue) {

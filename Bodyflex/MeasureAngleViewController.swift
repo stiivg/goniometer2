@@ -1,3 +1,5 @@
+
+
 //
 //  MeasureAngleViewController
 //  bodyflex
@@ -58,7 +60,12 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         let joint = jointMotion?.nameCommon
         let side = jointMotion?.side
         let motion = jointMotion?.motionCommon
-        jointLabel.text = side! + " " +  joint! + " " + motion!
+        
+        if jointMotion?.nameMedical == "Custom Measurement" {
+            jointLabel.text = joint!
+        } else {
+            jointLabel.text = side! + " " +  joint! + " " + motion!
+        }
         
         var mJoint = jointMotion?.nameMedical
         var mMotion = jointMotion?.motionMedical
@@ -69,12 +76,20 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         if mMotion == "" {
             mMotion = motion
         }
-        medicalJointLabel.text = side! + " " +  mJoint! + " " + mMotion!
+        if jointMotion?.nameMedical == "Custom Measurement" {
+            medicalJointLabel.text = mJoint!
+        } else {
+            medicalJointLabel.text = side! + " " +  mJoint! + " " + mMotion!
+        }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
         let dateObj = measurement.photoDate
         dateLabel.text = dateFormatter.string(from: dateObj!)
+    }
+    
+    fileprivate func makeJointLabels() {
+        
     }
     
     //Scrollview bounds are not set in viewDidLoad need to wait for layout complete
@@ -172,6 +187,9 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     @IBAction func saveSelectJointMotion(_ segue: UIStoryboardSegue) {
         //make JointMotion managed object and add to measurement and update values
         let selectJointViewController = segue.source as? SelectJointViewController
+        
+        //End edit of custom joint name if in progress
+        selectJointViewController?.completeEdit()
         
         let joint = selectJointViewController?.joint
         let motion = selectJointViewController?.motion

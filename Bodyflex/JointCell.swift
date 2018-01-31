@@ -11,6 +11,8 @@ import UIKit
 class JointCell: UITableViewCell {
     
     @IBOutlet weak var jointLabelMedical: UILabel!
-    @IBOutlet weak var jointLabel: UILabel!
+    @IBOutlet weak var jointText: UITextField!
     
+    
+
 }

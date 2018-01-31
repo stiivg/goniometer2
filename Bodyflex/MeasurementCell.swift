@@ -28,7 +28,11 @@ class MeasurementCell: UITableViewCell {
             let joint = measurement.jointMotion?.nameCommon
             let side = measurement.jointMotion?.side
             let motion = measurement.jointMotion?.motionCommon
-            jointLabel.text = side! + " " +  joint! + " " + motion!
+            if measurement.jointMotion?.nameMedical == "Custom Measurement" {
+                jointLabel.text = joint!
+            } else {
+                jointLabel.text = side! + " " +  joint! + " " + motion!
+            }
             angleLabel.text = String(format: "%.1f", (measurement.angle)) + "\u{00B0}"
 
             //display the image
