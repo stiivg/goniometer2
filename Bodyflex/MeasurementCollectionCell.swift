@@ -21,6 +21,8 @@ class MeasurementCollectionCell: UICollectionViewCell {
     var measurement: Measurement? {
         didSet {
             nameLabel.text = measurement?.name
+            //DEBUG: show tool position
+            nameLabel.text = positionString()
             
             let joint = measurement?.jointMotion?.nameCommon
             let side = measurement?.jointMotion?.side
@@ -44,6 +46,18 @@ class MeasurementCollectionCell: UICollectionViewCell {
             let dateObj = measurement?.photoDate
             dateLabel.text = dateFormatter.string(from: dateObj!)
         }
+    }
+
+    //for debug display of tool location
+    fileprivate func positionString() -> String {
+        var positionString = ""
+        let theMeasurement = measurement!
+        let stationaryPosition = String(format: "%.0f", theMeasurement.beginX) + ", " + String(format: "%.0f", theMeasurement.beginY)
+        let axisPosition = String(format: "%.0f", theMeasurement.middleX) + ", " + String(format: "%.0f", theMeasurement.middleY)
+        let movingPosition = String(format: "%.0f", theMeasurement.endX) + ", " + String(format: "%.0f", theMeasurement.endY)
+        
+        positionString = "(" + stationaryPosition + "), " + "(" + axisPosition + "), " + "(" + movingPosition + ")"
+        return positionString
     }
 
 }

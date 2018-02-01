@@ -34,6 +34,11 @@
 		64A7FAD2201645AF00079646 /* AngleToolDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A7FAD1201645AF00079646 /* AngleToolDrawing.swift */; };
 		64B58AE01FF0047000B64631 /* BodyJoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B58ADF1FF0046F00B64631 /* BodyJoints.swift */; };
 		64B5CBE32020DD0600DB848B /* AngleToolLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B5CBE22020DD0600DB848B /* AngleToolLabels.swift */; };
+		64B5CBE9202369D400DB848B /* Hip Leg In.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B5CBE4202369CF00DB848B /* Hip Leg In.png */; };
+		64B5CBEA202369D400DB848B /* Forearm Palm Up.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B5CBE5202369D200DB848B /* Forearm Palm Up.png */; };
+		64B5CBEB202369D400DB848B /* Wrist Hand Raised.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B5CBE6202369D300DB848B /* Wrist Hand Raised.png */; };
+		64B5CBEC202369D400DB848B /* Hip Leg Out.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B5CBE7202369D300DB848B /* Hip Leg Out.png */; };
+		64B5CBED202369D400DB848B /* Wrist Hand Lowered.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B5CBE8202369D400DB848B /* Wrist Hand Lowered.png */; };
 		64E626AE1FCC75A20068879F /* JointPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AD1FCC75A20068879F /* JointPickerViewController.swift */; };
 		64E626B01FCDEB4F0068879F /* MotionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +94,11 @@
 		64A7FAD1201645AF00079646 /* AngleToolDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleToolDrawing.swift; sourceTree = "<group>"; };
 		64B58ADF1FF0046F00B64631 /* BodyJoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyJoints.swift; sourceTree = "<group>"; };
 		64B5CBE22020DD0600DB848B /* AngleToolLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleToolLabels.swift; sourceTree = "<group>"; };
+		64B5CBE4202369CF00DB848B /* Hip Leg In.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hip Leg In.png"; sourceTree = "<group>"; };
+		64B5CBE5202369D200DB848B /* Forearm Palm Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Forearm Palm Up.png"; sourceTree = "<group>"; };
+		64B5CBE6202369D300DB848B /* Wrist Hand Raised.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wrist Hand Raised.png"; sourceTree = "<group>"; };
+		64B5CBE7202369D300DB848B /* Hip Leg Out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hip Leg Out.png"; sourceTree = "<group>"; };
+		64B5CBE8202369D400DB848B /* Wrist Hand Lowered.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wrist Hand Lowered.png"; sourceTree = "<group>"; };
 		64E626AD1FCC75A20068879F /* JointPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointPickerViewController.swift; sourceTree = "<group>"; };
 		64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +143,11 @@
 		64923DA42019501B004E9A7E /* JointImages */ = {
 			isa = PBXGroup;
 			children = (
+				64B5CBE5202369D200DB848B /* Forearm Palm Up.png */,
+				64B5CBE4202369CF00DB848B /* Hip Leg In.png */,
+				64B5CBE7202369D300DB848B /* Hip Leg Out.png */,
+				64B5CBE8202369D400DB848B /* Wrist Hand Lowered.png */,
+				64B5CBE6202369D300DB848B /* Wrist Hand Raised.png */,
 				64923DA720195061004E9A7E /* Ankle Raise Foot.png */,
 				64923DA520195057004E9A7E /* Ankle Lower Foot.png */,
 			);
@@ -316,7 +331,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				64923DA820195061004E9A7E /* Ankle Raise Foot.png in Resources */,
+				64B5CBEA202369D400DB848B /* Forearm Palm Up.png in Resources */,
 				64A432361FBD141A005D2FC2 /* LaunchScreen.storyboard in Resources */,
+				64B5CBED202369D400DB848B /* Wrist Hand Lowered.png in Resources */,
+				64B5CBEC202369D400DB848B /* Hip Leg Out.png in Resources */,
+				64B5CBE9202369D400DB848B /* Hip Leg In.png in Resources */,
+				64B5CBEB202369D400DB848B /* Wrist Hand Raised.png in Resources */,
 				64A432331FBD141A005D2FC2 /* Assets.xcassets in Resources */,
 				64923DA620195058004E9A7E /* Ankle Lower Foot.png in Resources */,
 				64A4325C1FBD1A94005D2FC2 /* knee_flexion.png in Resources */,

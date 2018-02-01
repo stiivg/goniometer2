@@ -88,13 +88,9 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         dateLabel.text = dateFormatter.string(from: dateObj!)
     }
     
-    fileprivate func makeJointLabels() {
-        
-    }
-    
     //Scrollview bounds are not set in viewDidLoad need to wait for layout complete
     //May be called multiple times if layout changed such as screen rotate
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLayoutSubviews() {
         updateValues()
         //Only call this set up once, if called after image zoomed it goes very wrong
         if firstViewAppearance {
@@ -110,7 +106,9 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
             
             imageView.bounds = zeroOriginScrollBounds
             imageView.frame = zeroOriginScrollBounds
+            scrollView.minimumZoomScale = 1.0
             
+
             angleTool.setMeasurementObj(measurementObj: measurement)
             
             //Used to detect touches near the measuring dots
@@ -123,8 +121,6 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
                 imageView.image = fullImage
             }
             
-            updateMinZoomScaleForSize(scrollView.bounds.size)
-            
             //call after image has been loaded
             angleTool.setImageView(imageView: imageView)
             
@@ -134,24 +130,6 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         }
     }
     
-   
-//    func imageDetails(imageview: UIImageView) {
-//        print(String(describing: imageView))
-//        let mode = imageView.contentMode
-//        let screenScale = UIScreen.main.scale
-//        let width = imageView.frame.width
-//        let height = imageView.frame.height
-//        let widthInPixels = imageView.frame.width * UIScreen.main.scale
-//        let heightInPixels = imageView.frame.height * UIScreen.main.scale
-//
-//        let image = imageview.image
-//        let imageScale = (image?.scale)!
-//        let imsgeWidthInPixels = (image?.size.width)! * (image?.scale)!
-//        let imageHeightInPixels = (image?.size.height)! * (image?.scale)!
-//        let imsgeWidth = (image?.size.width)!
-//        let imageHeight = (image?.size.height)!
-//
-//    }
     @IBAction func shootPhoto(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             imagePicker.sourceType = .camera;
@@ -253,18 +231,6 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         measurement.createdDate = Date()
     }
     
-
-    //Limit zoom out to Aspect Fit
-    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
-        let widthScale = size.width / imageView.bounds.width
-        let heightScale = size.height / imageView.bounds.height
-        let minScale = min(widthScale, heightScale)
-
-        scrollView.minimumZoomScale = minScale
-        //Default to the full image in view
-        scrollView.zoomScale = minScale
-    }
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "measurementToEditor" {

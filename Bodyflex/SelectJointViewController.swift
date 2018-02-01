@@ -152,11 +152,11 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
         angleToolDrawing.setQuadrant(rotationCW: rotationCW, insideOutside: motion!.insideOutside)
     
         restoreLocation()
-        if jointImage.image != nil {
+//        if jointImage.image != nil {
             angleToolDrawing.setMotion(motion: motion!)
             angleToolDrawing.setSide(side: side)
             angleToolDrawing.drawTool(dotPositions: dotPositions)
-        }
+//        }
     }
 
     override func viewDidLoad() {
