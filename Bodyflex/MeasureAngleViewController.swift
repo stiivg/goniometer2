@@ -54,7 +54,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         self.measurement = newMeasurement
     }
 
-    func updateValues() {
+     fileprivate func updateValues() {
         let jointMotion = measurement.jointMotion
         nameLabel.text = measurement.name
         let joint = jointMotion?.nameCommon
@@ -88,10 +88,13 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         dateLabel.text = dateFormatter.string(from: dateObj!)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        updateValues()
+    }
+    
     //Scrollview bounds are not set in viewDidLoad need to wait for layout complete
     //May be called multiple times if layout changed such as screen rotate
     override func viewDidLayoutSubviews() {
-        updateValues()
         //Only call this set up once, if called after image zoomed it goes very wrong
         if firstViewAppearance {
             firstViewAppearance = false

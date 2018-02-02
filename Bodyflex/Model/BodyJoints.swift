@@ -319,7 +319,7 @@ let thumb = Joint.init(name: .init(common: "Thumb", medical: "Thumb Carpometacar
                                                        insideOutside: "Inside",
                                                        defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
                                                        labelOffsets: ["Up", "Up", "Up"]),
-                                MotionStruct.init(name: .init(common: "Thumb Down", medical: "Adduction"),
+                                MotionStruct.init(name: .init(common: "Thumb Up", medical: "Adduction"),
                                                        stationaryLabel: .init(common: "Finger", medical: "Finger Metacarpal"),
                                                        axisLabel: .init(common: "Wrist", medical: "Radial Styloid"),
                                                        movingLabel: .init(common: "Base of Thumb", medical: "Thumb Metacarpal"),
