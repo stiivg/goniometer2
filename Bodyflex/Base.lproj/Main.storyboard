@@ -611,16 +611,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="739-Me-BDq">
-                                            <rect key="frame" x="5" y="9.9999999999999982" width="235" height="20.333333333333329"/>
+                                            <rect key="frame" x="5" y="9.9999999999999982" width="37.666666666666664" height="20.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Angle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqp-x3-dJD">
-                                            <rect key="frame" x="240" y="9.9999999999999982" width="80" height="20.333333333333329"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="zAa-9t-gbj"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Angle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqp-x3-dJD">
+                                            <rect key="frame" x="42.666666666666657" y="9.9999999999999982" width="277.33333333333337" height="20.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -632,16 +629,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAJ-DF-Fgs">
-                                            <rect key="frame" x="5" y="43.666666666666664" width="195" height="20.333333333333336"/>
+                                            <rect key="frame" x="5" y="43.666666666666664" width="45" height="20.333333333333336"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzF-pM-WgU">
-                                            <rect key="frame" x="200" y="43.666666666666664" width="120" height="20.999999999999993"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="120" id="Inx-1q-fLD"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzF-pM-WgU">
+                                            <rect key="frame" x="50" y="43.666666666666664" width="270" height="20.999999999999993"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -743,6 +737,6 @@
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="I2D-vl-wmx"/>
+        <segue reference="cKH-wP-YSi"/>
     </inferredMetricsTieBreakers>
 </document>
