@@ -17,15 +17,13 @@ class MeasurementCollectionCell: UICollectionViewCell {
     @IBOutlet weak var angleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var medicalJointLabel: UILabel!
-    @IBOutlet weak var debugLabel: UILabel!
+    @IBOutlet weak var debugText: UITextField!
+   
     
     // MARK: - Properties
     var measurement: Measurement? {
         didSet {
             nameLabel.text = measurement?.name
-            //DEBUG: show tool position
-            debugLabel.text = positionString()
-            
             let joint = measurement?.jointMotion?.nameCommon
             let side = measurement?.jointMotion?.side
             let motion = measurement?.jointMotion?.motionCommon
@@ -62,18 +60,21 @@ class MeasurementCollectionCell: UICollectionViewCell {
             dateFormatter.dateFormat = "MM-dd-yyyy"
             let dateObj = measurement?.photoDate
             dateLabel.text = dateFormatter.string(from: dateObj!)
+            
+            //DEBUG: show tool position
+            debugText.text = positionString()
+            
         }
     }
 
     //for debug display of tool location
     fileprivate func positionString() -> String {
-        var positionString = ""
+        var positionString = jointLabel.text! + ": "
         let theMeasurement = measurement!
-        let stationaryPosition = String(format: "%.0f", theMeasurement.beginX) + ", " + String(format: "%.0f", theMeasurement.beginY)
-        let axisPosition = String(format: "%.0f", theMeasurement.middleX) + ", " + String(format: "%.0f", theMeasurement.middleY)
-        let movingPosition = String(format: "%.0f", theMeasurement.endX) + ", " + String(format: "%.0f", theMeasurement.endY)
-        
-        positionString = "(" + stationaryPosition + "), " + "(" + axisPosition + "), " + "(" + movingPosition + ")"
+        let stationaryPosition = "CGPoint(x: " + String(format: "%.0f", theMeasurement.beginX) + ", y: " + String(format: "%.0f", theMeasurement.beginY) + ")"
+        let axisPosition = "CGPoint(x: " + String(format: "%.0f", theMeasurement.middleX) + ", y: " + String(format: "%.0f", theMeasurement.middleY) + ")"
+        let movingPosition = "CGPoint(x: " + String(format: "%.0f", theMeasurement.endX) + ", y: " + String(format: "%.0f", theMeasurement.endY) + ")"
+        positionString += "[" + stationaryPosition + ", " + axisPosition + ", " + movingPosition + "]"
         return positionString
     }
 

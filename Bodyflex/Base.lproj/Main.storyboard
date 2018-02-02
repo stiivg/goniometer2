@@ -82,33 +82,32 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="300" verticalCompressionResistancePriority="700" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="SaQ-Uw-Qby">
                                             <rect key="frame" x="8" y="71" width="294" height="134"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="200" verticalCompressionResistancePriority="600" text="Debug Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHt-hw-jCN">
-                                            <rect key="frame" x="8" y="149" width="294" height="21"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Debug position" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2bX-AM-kpu">
+                                            <rect key="frame" x="8" y="135" width="294" height="30"/>
                                             <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="VWg-EC-hKW" firstAttribute="top" secondItem="7OV-Rq-CPY" secondAttribute="bottom" id="7Od-b1-KcE"/>
                                     <constraint firstItem="SaQ-Uw-Qby" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="Bu7-LA-nru"/>
                                     <constraint firstItem="MRn-rk-nA2" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="EPd-t0-k74"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="2bX-AM-kpu" secondAttribute="trailing" id="Enb-RL-FnS"/>
                                     <constraint firstItem="k6g-S2-SeU" firstAttribute="top" secondItem="j6a-Gp-ea0" secondAttribute="topMargin" id="GVQ-4D-jao"/>
                                     <constraint firstItem="VWg-EC-hKW" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="IEY-qu-exv"/>
+                                    <constraint firstItem="2bX-AM-kpu" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="KwB-dl-6LD"/>
                                     <constraint firstItem="k6g-S2-SeU" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="LQa-EZ-I1u"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="QOo-GD-PV2" secondAttribute="trailing" id="MXV-cE-rp9"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="CHt-hw-jCN" secondAttribute="trailing" id="PaT-At-0mQ"/>
                                     <constraint firstItem="SaQ-Uw-Qby" firstAttribute="top" secondItem="VWg-EC-hKW" secondAttribute="bottom" constant="10" id="QfT-xH-UzK"/>
-                                    <constraint firstItem="CHt-hw-jCN" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="R5t-7z-eQC"/>
                                     <constraint firstItem="SaQ-Uw-Qby" firstAttribute="bottom" secondItem="j6a-Gp-ea0" secondAttribute="bottom" id="R6i-gD-8jf"/>
                                     <constraint firstItem="7OV-Rq-CPY" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="Vv5-AK-V2a"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="VWg-EC-hKW" secondAttribute="trailing" id="X0h-7d-Ekx"/>
                                     <constraint firstItem="7OV-Rq-CPY" firstAttribute="top" secondItem="k6g-S2-SeU" secondAttribute="bottom" id="Zgw-Ix-pDV"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="CHt-hw-jCN" secondAttribute="bottom" constant="27" id="aJO-qJ-an1"/>
                                     <constraint firstItem="SaQ-Uw-Qby" firstAttribute="trailing" secondItem="j6a-Gp-ea0" secondAttribute="trailingMargin" id="aq8-Hi-xbF"/>
                                     <constraint firstItem="MRn-rk-nA2" firstAttribute="top" secondItem="VWg-EC-hKW" secondAttribute="top" id="bUS-wc-0bQ"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="2bX-AM-kpu" secondAttribute="bottom" constant="32" id="e6P-2P-2xf"/>
                                     <constraint firstItem="QOo-GD-PV2" firstAttribute="top" secondItem="k6g-S2-SeU" secondAttribute="top" id="eSN-7a-RzX"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="7OV-Rq-CPY" secondAttribute="trailing" id="fsI-XJ-Jhb"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="MRn-rk-nA2" secondAttribute="trailing" id="lWf-J2-Uww"/>
@@ -121,7 +120,7 @@
                                     <outlet property="angleImageView" destination="SaQ-Uw-Qby" id="Tw8-n3-4fQ"/>
                                     <outlet property="angleLabel" destination="QOo-GD-PV2" id="0gf-g4-cp8"/>
                                     <outlet property="dateLabel" destination="MRn-rk-nA2" id="Bps-Pl-OK9"/>
-                                    <outlet property="debugLabel" destination="CHt-hw-jCN" id="DLk-gh-AUq"/>
+                                    <outlet property="debugText" destination="2bX-AM-kpu" id="YmM-MQ-qWs"/>
                                     <outlet property="jointLabel" destination="k6g-S2-SeU" id="ynY-uK-AGi"/>
                                     <outlet property="medicalJointLabel" destination="7OV-Rq-CPY" id="9KP-Iv-Amg"/>
                                     <outlet property="nameLabel" destination="VWg-EC-hKW" id="eli-Kz-yWx"/>

@@ -294,6 +294,7 @@ let thumb = Joint.init(name: .init(common: "Thumb", medical: "Thumb Carpometacar
                                                        rotation: "CW",
                                                        insideOutside: "Outside",
                                                        defaultDotPoints: [CGPoint(x: 100, y: 300), CGPoint(x: 100, y: 200), CGPoint(x: 150, y: 200)],
+                                                       
                                                        labelOffsets: ["Up", "Up", "Up"]),
                                 MotionStruct.init(name: .init(common: "Thumb Out", medical: "Extension"),
                                                        stationaryLabel: .init(common: "Aligned with Arm", medical: "Aligned with Radius"),
@@ -796,33 +797,33 @@ class BodyJoints {
         }
     }
     
-    fileprivate func jointMotions() {
-        var jointData: [JointMotion] = []
-        // Our result is going to be an array of dictionaries.
-        var results:[[String:AnyObject]]?
-
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "JointMotion")
-        let fetchRequest2 = NSFetchRequest<NSManagedObject>(entityName: "JointMotion")
-        
-        let filter = "Shoulder"
-        let predicate = NSPredicate(format: "nameCommon = %@", filter)
-        fetchRequest.predicate = predicate
-        fetchRequest.resultType = .dictionaryResultType
-        fetchRequest.propertiesToFetch = ["motionCommon", "motionMedical"]
-
-        do {
-            results = try managedContext.fetch(fetchRequest) as? [[String : AnyObject]]
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-    }
+//    fileprivate func jointMotions() {
+//        var jointData: [JointMotion] = []
+//        // Our result is going to be an array of dictionaries.
+//        var results:[[String:AnyObject]]?
+//
+//        guard let appDelegate =
+//            UIApplication.shared.delegate as? AppDelegate else {
+//                return
+//        }
+//        
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "JointMotion")
+//        let fetchRequest2 = NSFetchRequest<NSManagedObject>(entityName: "JointMotion")
+//        
+//        let filter = "Shoulder"
+//        let predicate = NSPredicate(format: "nameCommon = %@", filter)
+//        fetchRequest.predicate = predicate
+//        fetchRequest.resultType = .dictionaryResultType
+//        fetchRequest.propertiesToFetch = ["motionCommon", "motionMedical"]
+//
+//        do {
+//            results = try managedContext.fetch(fetchRequest) as? [[String : AnyObject]]
+//        } catch let error as NSError {
+//            print("Could not fetch. \(error), \(error.userInfo)")
+//        }
+//        
+//    }
     
 //    Printing description of results:
 //    ▿ Optional<Array<Dictionary<String, AnyObject>>>
