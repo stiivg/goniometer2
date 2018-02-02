@@ -12,17 +12,19 @@ import CoreData
 class MeasurementCollectionCell: UICollectionViewCell {
     // MARK: - IBOutlets
     @IBOutlet weak var angleImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UITextField!
-    @IBOutlet weak var jointLabel: UITextField!
-    @IBOutlet weak var angleLabel: UITextField!
-    @IBOutlet weak var dateLabel: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var jointLabel: UILabel!
+    @IBOutlet weak var angleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var medicalJointLabel: UILabel!
+    @IBOutlet weak var debugLabel: UILabel!
     
     // MARK: - Properties
     var measurement: Measurement? {
         didSet {
             nameLabel.text = measurement?.name
             //DEBUG: show tool position
-            nameLabel.text = positionString()
+            debugLabel.text = positionString()
             
             let joint = measurement?.jointMotion?.nameCommon
             let side = measurement?.jointMotion?.side
@@ -31,6 +33,21 @@ class MeasurementCollectionCell: UICollectionViewCell {
                 jointLabel.text = joint!
             } else {
                 jointLabel.text = side! + " " +  joint! + " " + motion!
+            }
+
+            var mJoint = measurement?.jointMotion?.nameMedical
+            var mMotion = measurement?.jointMotion?.motionMedical
+            //if no medical term use common term
+            if mJoint == "" {
+                mJoint = joint
+            }
+            if mMotion == "" {
+                mMotion = motion
+            }
+            if measurement?.jointMotion?.nameMedical == "Custom Measurement" {
+                medicalJointLabel.text = mJoint!
+            } else {
+                medicalJointLabel.text = side! + " " +  mJoint! + " " + mMotion!
             }
 
             angleLabel.text = String(format: "%.1f", (measurement?.angle)!) + "\u{00B0}"
