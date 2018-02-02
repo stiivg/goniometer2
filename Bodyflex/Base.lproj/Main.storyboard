@@ -202,7 +202,7 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MedicalJoint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZZ-EG-I7l">
-                                        <rect key="frame" x="5" y="27.999999999999996" width="67" height="13.333333333333332"/>
+                                        <rect key="frame" x="5" y="27.999999999999996" width="409" height="13.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -227,6 +227,7 @@
                                 <constraints>
                                     <constraint firstItem="HN1-1q-w89" firstAttribute="top" secondItem="kZZ-EG-I7l" secondAttribute="bottom" constant="4" id="0PL-eT-6GZ"/>
                                     <constraint firstItem="kZZ-EG-I7l" firstAttribute="top" secondItem="w93-k2-Def" secondAttribute="bottom" id="5H0-Li-4gU"/>
+                                    <constraint firstItem="kZZ-EG-I7l" firstAttribute="trailing" secondItem="w93-k2-Def" secondAttribute="trailing" constant="5" id="5vr-Ea-PfR"/>
                                     <constraint firstItem="w93-k2-Def" firstAttribute="top" secondItem="PQI-Sy-tlg" secondAttribute="top" constant="5" id="7wC-xq-fGj"/>
                                     <constraint firstItem="kZZ-EG-I7l" firstAttribute="leading" secondItem="w93-k2-Def" secondAttribute="leading" id="98h-fn-B26"/>
                                     <constraint firstItem="HN1-1q-w89" firstAttribute="leading" secondItem="w93-k2-Def" secondAttribute="leading" id="Cdo-C1-UgF"/>
@@ -335,7 +336,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medical" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEQ-Ba-HCo">
-                                                    <rect key="frame" x="340" y="28.666666666666668" width="41" height="13.333333333333332"/>
+                                                    <rect key="frame" x="15" y="28.666666666666668" width="366" height="13.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -361,6 +362,7 @@
                                                 <constraint firstItem="wCK-FL-ddL" firstAttribute="leading" secondItem="9lu-BT-c1l" secondAttribute="leadingMargin" id="QDc-4h-vZP"/>
                                                 <constraint firstItem="k6Q-uO-feN" firstAttribute="centerY" secondItem="9lu-BT-c1l" secondAttribute="centerY" constant="-4" id="UMc-b3-aAe"/>
                                                 <constraint firstItem="lEQ-Ba-HCo" firstAttribute="trailing" secondItem="k6Q-uO-feN" secondAttribute="trailing" id="bPj-dG-6MK"/>
+                                                <constraint firstItem="lEQ-Ba-HCo" firstAttribute="leading" secondItem="9lu-BT-c1l" secondAttribute="leadingMargin" id="dad-H3-9hc"/>
                                                 <constraint firstItem="lEQ-Ba-HCo" firstAttribute="top" secondItem="k6Q-uO-feN" secondAttribute="bottom" id="esO-6F-Ghn"/>
                                                 <constraint firstItem="k6Q-uO-feN" firstAttribute="trailing" secondItem="9lu-BT-c1l" secondAttribute="trailing" id="pVB-0S-zSv"/>
                                                 <constraint firstItem="k6Q-uO-feN" firstAttribute="leading" secondItem="wCK-FL-ddL" secondAttribute="trailing" constant="10" id="rnR-ZN-9fu"/>
@@ -379,31 +381,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="381" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3Y-mu-7oa">
-                                                    <rect key="frame" x="337" y="9.3333333333333357" width="44" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3Y-mu-7oa">
+                                                    <rect key="frame" x="68" y="9.3333333333333357" width="313" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Motion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3g-wp-1QC">
-                                                    <rect key="frame" x="15" y="11" width="58" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Motion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3g-wp-1QC">
+                                                    <rect key="frame" x="15" y="11" width="53" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medical" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txn-AV-13Y">
-                                                    <rect key="frame" x="340" y="30.333333333333332" width="41" height="13.333333333333332"/>
+                                                    <rect key="frame" x="15" y="30.333333333333332" width="366" height="13.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="y3Y-mu-7oa" firstAttribute="trailing" secondItem="Txn-AV-13Y" secondAttribute="trailing" id="RaK-5p-Tsv"/>
+                                                <constraint firstItem="t3g-wp-1QC" firstAttribute="trailing" secondItem="y3Y-mu-7oa" secondAttribute="leading" id="45B-oE-hvS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Txn-AV-13Y" secondAttribute="trailing" id="IfZ-oZ-K4i"/>
+                                                <constraint firstItem="t3g-wp-1QC" firstAttribute="centerY" secondItem="mf7-TI-5Q2" secondAttribute="centerY" id="PwY-ea-BqP"/>
+                                                <constraint firstItem="y3Y-mu-7oa" firstAttribute="trailing" secondItem="mf7-TI-5Q2" secondAttribute="trailing" id="RaK-5p-Tsv"/>
                                                 <constraint firstItem="y3Y-mu-7oa" firstAttribute="centerY" secondItem="mf7-TI-5Q2" secondAttribute="centerY" constant="-2" id="Rxi-PA-xyx"/>
+                                                <constraint firstItem="Txn-AV-13Y" firstAttribute="leading" secondItem="mf7-TI-5Q2" secondAttribute="leadingMargin" id="Xn7-wQ-P1p"/>
                                                 <constraint firstAttribute="trailing" secondItem="y3Y-mu-7oa" secondAttribute="trailing" id="xPk-Gf-cfI"/>
                                                 <constraint firstItem="Txn-AV-13Y" firstAttribute="top" secondItem="y3Y-mu-7oa" secondAttribute="bottom" id="ylI-90-FrR"/>
+                                                <constraint firstItem="t3g-wp-1QC" firstAttribute="leading" secondItem="mf7-TI-5Q2" secondAttribute="leadingMargin" id="ynv-X8-e9Z"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -474,7 +480,6 @@
                             <constraint firstItem="iRU-8P-jZt" firstAttribute="leading" secondItem="qNb-Me-YTm" secondAttribute="leading" id="0Ll-c8-PYT"/>
                             <constraint firstItem="xsE-dr-cj5" firstAttribute="leading" secondItem="qNb-Me-YTm" secondAttribute="leading" constant="10" id="0lg-w2-BnK"/>
                             <constraint firstItem="rfR-hk-9vf" firstAttribute="leading" secondItem="870-pa-uYD" secondAttribute="leading" id="BCd-O8-7KK"/>
-                            <constraint firstItem="xsE-dr-cj5" firstAttribute="centerX" secondItem="870-pa-uYD" secondAttribute="centerX" id="ZRi-hR-6c2"/>
                             <constraint firstItem="xsE-dr-cj5" firstAttribute="top" secondItem="rfR-hk-9vf" secondAttribute="bottom" constant="20" id="bha-vJ-s7R"/>
                             <constraint firstAttribute="trailing" secondItem="rfR-hk-9vf" secondAttribute="trailing" id="f1t-jH-2AE"/>
                             <constraint firstItem="qNb-Me-YTm" firstAttribute="trailing" secondItem="iRU-8P-jZt" secondAttribute="trailing" id="jSD-Rl-bpO"/>
@@ -738,6 +743,6 @@
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cKH-wP-YSi"/>
+        <segue reference="I2D-vl-wmx"/>
     </inferredMetricsTieBreakers>
 </document>
