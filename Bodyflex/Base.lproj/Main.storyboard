@@ -83,7 +83,7 @@
                                             <rect key="frame" x="8" y="71" width="294" height="134"/>
                                         </imageView>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Debug position" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2bX-AM-kpu">
-                                            <rect key="frame" x="8" y="135" width="294" height="30"/>
+                                            <rect key="frame" x="8" y="181" width="294" height="30"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -97,6 +97,7 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="2bX-AM-kpu" secondAttribute="trailing" id="Enb-RL-FnS"/>
                                     <constraint firstItem="k6g-S2-SeU" firstAttribute="top" secondItem="j6a-Gp-ea0" secondAttribute="topMargin" id="GVQ-4D-jao"/>
                                     <constraint firstItem="VWg-EC-hKW" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="IEY-qu-exv"/>
+                                    <constraint firstItem="2bX-AM-kpu" firstAttribute="top" secondItem="VWg-EC-hKW" secondAttribute="bottom" constant="120" id="KQZ-Rc-uYS"/>
                                     <constraint firstItem="2bX-AM-kpu" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="KwB-dl-6LD"/>
                                     <constraint firstItem="k6g-S2-SeU" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="LQa-EZ-I1u"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="QOo-GD-PV2" secondAttribute="trailing" id="MXV-cE-rp9"/>
@@ -107,7 +108,6 @@
                                     <constraint firstItem="7OV-Rq-CPY" firstAttribute="top" secondItem="k6g-S2-SeU" secondAttribute="bottom" id="Zgw-Ix-pDV"/>
                                     <constraint firstItem="SaQ-Uw-Qby" firstAttribute="trailing" secondItem="j6a-Gp-ea0" secondAttribute="trailingMargin" id="aq8-Hi-xbF"/>
                                     <constraint firstItem="MRn-rk-nA2" firstAttribute="top" secondItem="VWg-EC-hKW" secondAttribute="top" id="bUS-wc-0bQ"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="2bX-AM-kpu" secondAttribute="bottom" constant="32" id="e6P-2P-2xf"/>
                                     <constraint firstItem="QOo-GD-PV2" firstAttribute="top" secondItem="k6g-S2-SeU" secondAttribute="top" id="eSN-7a-RzX"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="7OV-Rq-CPY" secondAttribute="trailing" id="fsI-XJ-Jhb"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="MRn-rk-nA2" secondAttribute="trailing" id="lWf-J2-Uww"/>
