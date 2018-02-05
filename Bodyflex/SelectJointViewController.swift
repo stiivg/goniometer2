@@ -114,13 +114,18 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
         setAngleToolDrawing()
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLayoutSubviews() {
         jointMotionTable.reloadData()
         
         updateJointImage()
-
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        jointMotionTable.reloadData()
+//
+//        updateJointImage()
+//
+//    }
     
     //Restore dot positions from core data or use default
     fileprivate func restoreLocation() {
@@ -267,12 +272,20 @@ extension SelectJointViewController {
             let selectedJoint = jointPickerViewController.selectedJoint {
             self.joint = selectedJoint
             self.motion = selectedJoint.motions[0] //Default to the first motion of new joint selected
+            jointMotionTable.reloadData()
+            
+            updateJointImage()
+
         }
     }
     @IBAction func unwindWithSelectedMotion(segue: UIStoryboardSegue) {
         if let motionPickerViewController = segue.source as? MotionPickerViewController,
             let selectedMotion = motionPickerViewController.selectedMotion {
             self.motion = selectedMotion
+            jointMotionTable.reloadData()
+            
+            updateJointImage()
+
         }
     }
 }

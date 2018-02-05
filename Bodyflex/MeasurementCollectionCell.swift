@@ -62,7 +62,8 @@ class MeasurementCollectionCell: UICollectionViewCell {
             dateLabel.text = dateFormatter.string(from: dateObj!)
             
             //DEBUG: show tool position
-            debugText.text = positionString()
+//            debugText.text = positionString()
+            debugText.isHidden = true
             
         }
     }
