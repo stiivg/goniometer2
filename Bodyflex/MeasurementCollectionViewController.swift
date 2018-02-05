@@ -163,6 +163,7 @@ extension MeasurementCollectionViewController : UICollectionViewDelegateFlowLayo
 {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
+        print(collectionView.bounds.height)
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
     }
     

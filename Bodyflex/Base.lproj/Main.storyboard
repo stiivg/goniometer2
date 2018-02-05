@@ -345,7 +345,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medical" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEQ-Ba-HCo">
-                                                    <rect key="frame" x="15" y="28.666666666666668" width="366" height="13.333333333333332"/>
+                                                    <rect key="frame" x="15" y="30.333333333333332" width="366" height="13.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -357,7 +357,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Detail" placeholder="Custom" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="k6Q-uO-feN">
-                                                    <rect key="frame" x="62.666666666666657" y="7.6666666666666679" width="318.33333333333337" height="21"/>
+                                                    <rect key="frame" x="62.666666666666657" y="5.9999999999999982" width="318.33333333333337" height="24.333333333333329"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -367,12 +367,14 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="wCK-FL-ddL" firstAttribute="centerY" secondItem="9lu-BT-c1l" secondAttribute="centerY" id="7hE-UW-Iem"/>
+                                                <constraint firstAttribute="bottom" secondItem="lEQ-Ba-HCo" secondAttribute="bottom" id="JCO-uC-hDP"/>
                                                 <constraint firstItem="wCK-FL-ddL" firstAttribute="leading" secondItem="9lu-BT-c1l" secondAttribute="leadingMargin" id="QDc-4h-vZP"/>
-                                                <constraint firstItem="k6Q-uO-feN" firstAttribute="centerY" secondItem="9lu-BT-c1l" secondAttribute="centerY" constant="-4" id="UMc-b3-aAe"/>
+                                                <constraint firstItem="wCK-FL-ddL" firstAttribute="top" secondItem="9lu-BT-c1l" secondAttribute="top" constant="11" id="UT6-cE-BCr"/>
+                                                <constraint firstItem="k6Q-uO-feN" firstAttribute="top" secondItem="9lu-BT-c1l" secondAttribute="top" constant="6" id="XN5-TF-tq4"/>
                                                 <constraint firstItem="lEQ-Ba-HCo" firstAttribute="trailing" secondItem="k6Q-uO-feN" secondAttribute="trailing" id="bPj-dG-6MK"/>
                                                 <constraint firstItem="lEQ-Ba-HCo" firstAttribute="leading" secondItem="9lu-BT-c1l" secondAttribute="leadingMargin" id="dad-H3-9hc"/>
                                                 <constraint firstItem="lEQ-Ba-HCo" firstAttribute="top" secondItem="k6Q-uO-feN" secondAttribute="bottom" id="esO-6F-Ghn"/>
+                                                <constraint firstAttribute="bottom" secondItem="wCK-FL-ddL" secondAttribute="bottom" constant="11.67" id="iN6-Ts-w0X"/>
                                                 <constraint firstItem="k6Q-uO-feN" firstAttribute="trailing" secondItem="9lu-BT-c1l" secondAttribute="trailing" id="pVB-0S-zSv"/>
                                                 <constraint firstItem="k6Q-uO-feN" firstAttribute="leading" secondItem="wCK-FL-ddL" secondAttribute="trailing" constant="10" id="rnR-ZN-9fu"/>
                                             </constraints>
@@ -412,10 +414,12 @@
                                             <constraints>
                                                 <constraint firstItem="t3g-wp-1QC" firstAttribute="trailing" secondItem="y3Y-mu-7oa" secondAttribute="leading" id="45B-oE-hvS"/>
                                                 <constraint firstAttribute="trailing" secondItem="Txn-AV-13Y" secondAttribute="trailing" id="IfZ-oZ-K4i"/>
-                                                <constraint firstItem="t3g-wp-1QC" firstAttribute="centerY" secondItem="mf7-TI-5Q2" secondAttribute="centerY" id="PwY-ea-BqP"/>
+                                                <constraint firstItem="y3Y-mu-7oa" firstAttribute="top" secondItem="mf7-TI-5Q2" secondAttribute="top" constant="9.3300000000000001" id="PNP-DC-ERy"/>
                                                 <constraint firstItem="y3Y-mu-7oa" firstAttribute="trailing" secondItem="mf7-TI-5Q2" secondAttribute="trailing" id="RaK-5p-Tsv"/>
-                                                <constraint firstItem="y3Y-mu-7oa" firstAttribute="centerY" secondItem="mf7-TI-5Q2" secondAttribute="centerY" constant="-2" id="Rxi-PA-xyx"/>
                                                 <constraint firstItem="Txn-AV-13Y" firstAttribute="leading" secondItem="mf7-TI-5Q2" secondAttribute="leadingMargin" id="Xn7-wQ-P1p"/>
+                                                <constraint firstItem="t3g-wp-1QC" firstAttribute="top" secondItem="mf7-TI-5Q2" secondAttribute="topMargin" id="ab6-Gi-XYt"/>
+                                                <constraint firstAttribute="bottom" secondItem="Txn-AV-13Y" secondAttribute="bottom" id="f0C-XV-V6g"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="t3g-wp-1QC" secondAttribute="bottom" constant="1" id="rwN-JE-JeN"/>
                                                 <constraint firstAttribute="trailing" secondItem="y3Y-mu-7oa" secondAttribute="trailing" id="xPk-Gf-cfI"/>
                                                 <constraint firstItem="Txn-AV-13Y" firstAttribute="top" secondItem="y3Y-mu-7oa" secondAttribute="bottom" id="ylI-90-FrR"/>
                                                 <constraint firstItem="t3g-wp-1QC" firstAttribute="leading" secondItem="mf7-TI-5Q2" secondAttribute="leadingMargin" id="ynv-X8-e9Z"/>
@@ -453,7 +457,8 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Lot-SH-zl3" firstAttribute="centerY" secondItem="Kuv-cl-yri" secondAttribute="centerY" id="YkL-bk-0kE"/>
+                                                <constraint firstItem="Lot-SH-zl3" firstAttribute="top" secondItem="Kuv-cl-yri" secondAttribute="top" constant="7" id="FjM-08-FaJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="Lot-SH-zl3" secondAttribute="bottom" constant="8.6699999999999999" id="YYj-fr-l1j"/>
                                                 <constraint firstItem="Lot-SH-zl3" firstAttribute="centerX" secondItem="Kuv-cl-yri" secondAttribute="centerX" id="eL3-0L-qSd"/>
                                             </constraints>
                                         </tableViewCellContentView>
