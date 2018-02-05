@@ -23,7 +23,11 @@ class GestureScrollView: UIScrollView , UIGestureRecognizerDelegate{
     }
     
     //Returns false if in the tool points and should be ignored by this scroll view
+    //Also return flase if not in scroll view
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        if point.y < 0 {
+            return false //ignore touches above the scroll view
+        }
         let toolPoint = self.convert(point, to: self.subviews[0])
         if angleTool.pointInTool(inside: toolPoint) {
             return false

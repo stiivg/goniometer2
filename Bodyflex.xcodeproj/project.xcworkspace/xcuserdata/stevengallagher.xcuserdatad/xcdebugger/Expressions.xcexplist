@@ -3,24 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "MeasureAngleViewController.imagePickerController(_:didFinishPickingMediaWithInfo:):MeasureAngleViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "measurement.date">
-            </PersistentString>
-            <PersistentString
-               value = "imageView.image">
-            </PersistentString>
-            <PersistentString
-               value = "asset.creationDate">
-            </PersistentString>
-            <PersistentString
-               value = "info[UIImagePickerControllerReferenceURL]">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "BodyJoints.motionFromJointMotion(jointMotion:):BodyJoints.swift">
       </ContextState>
       <ContextState
-         contextName = "MeasureAngleViewController.setMeasurement(newMeasurement:):MeasureAngleViewController.swift">
+         contextName = "MeasurementTableViewController.saveMeasurementEdit(_:):MeasurementTableViewController.swift">
       </ContextState>
       <ContextState
          contextName = "SelectJointViewController.setAngleToolDrawing():SelectJointViewController.swift">
@@ -34,13 +20,16 @@
          contextName = "MeasureAngleViewController.viewDidLayoutSubviews():MeasureAngleViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "imageView.bounds">
+               value = "imageView.image">
             </PersistentString>
             <PersistentString
                value = "imageView.frame">
             </PersistentString>
             <PersistentString
-               value = "imageView.image">
+               value = "imageView.bounds">
+            </PersistentString>
+            <PersistentString
+               value = "scrollView.frame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -141,10 +130,10 @@
                value = "dotPositions[0]">
             </PersistentString>
             <PersistentString
-               value = "imageView?.frame">
+               value = "&amp;dotPositions">
             </PersistentString>
             <PersistentString
-               value = "&amp;dotPositions">
+               value = "imageView?.frame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -234,6 +223,9 @@
          contextName = "AngleToolLabels.drawLabels(dotPositions:):AngleToolLabels.swift">
       </ContextState>
       <ContextState
+         contextName = "SelectJointViewController.restoreLocation():SelectJointViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "BodyJoints.jointMotions():BodyJoints.swift">
       </ContextState>
       <ContextState
@@ -254,13 +246,13 @@
          contextName = "AngleToolDrawing.calcAngle():AngleToolDrawing.swift">
          <PersistentStrings>
             <PersistentString
-               value = "minorArmAngle() * 180 / 3.14">
+               value = "mainArmAngle() * 180 / 3.14">
             </PersistentString>
             <PersistentString
                value = "measuredAngle">
             </PersistentString>
             <PersistentString
-               value = "mainArmAngle() * 180 / 3.14">
+               value = "minorArmAngle() * 180 / 3.14">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -279,6 +271,23 @@
          contextName = "MeasurementCollectionViewController.scrollToIndex(index:):MeasurementCollectionViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "MeasureAngleViewController.imagePickerController(_:didFinishPickingMediaWithInfo:):MeasureAngleViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "imageView.image">
+            </PersistentString>
+            <PersistentString
+               value = "asset.creationDate">
+            </PersistentString>
+            <PersistentString
+               value = "measurement.date">
+            </PersistentString>
+            <PersistentString
+               value = "info[UIImagePickerControllerReferenceURL]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MeasureAngleViewController.viewWillAppear(_:):MeasureAngleViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -290,10 +299,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "BodyJoints.motionFromJointMotion(jointMotion:):BodyJoints.swift">
-      </ContextState>
-      <ContextState
-         contextName = "MeasurementTableViewController.saveMeasurementEdit(_:):MeasurementTableViewController.swift">
+         contextName = "MeasureAngleViewController.setMeasurement(newMeasurement:):MeasureAngleViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
