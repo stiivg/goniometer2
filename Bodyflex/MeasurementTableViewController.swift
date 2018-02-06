@@ -148,7 +148,6 @@ class MeasurementTableViewController: UITableViewController {
             let newMeasurement = MeasurementsAPI.shared.newMeasurement()
             // Pass a new object to the addMeasurement view controller.
             measureAngleViewController.setMeasurement(newMeasurement: newMeasurement)
-//            measureAngleViewController.measurementToEditorSegue()
         }
         
         if segue.identifier == "CellToSingleMeasurement" {
