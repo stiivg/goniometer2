@@ -133,7 +133,7 @@
                         </connections>
                     </collectionView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Measurement" id="eiT-oC-X23">
+                    <navigationItem key="navigationItem" title="Review" id="eiT-oC-X23">
                         <barButtonItem key="leftBarButtonItem" title="List" id="uSx-YE-TI1">
                             <connections>
                                 <segue destination="TF4-8U-wdb" kind="unwind" unwindAction="cancelToMeasurementsViewController:" id="7mU-wi-PW0"/>
@@ -287,7 +287,7 @@
                             <outletCollection property="gestureRecognizers" destination="7Qn-Bd-reb" appends="YES" id="esP-gb-xlg"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Measurement" leftItemsSupplementBackButton="YES" id="AJ7-s2-Afn">
+                    <navigationItem key="navigationItem" title="Measure" leftItemsSupplementBackButton="YES" id="AJ7-s2-Afn">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JKJ-aK-vCV">
                             <connections>
                                 <segue destination="6Nm-aJ-mXO" kind="unwind" unwindAction="cancelMeasurementEdit:" id="XSv-Ds-esV"/>
@@ -504,7 +504,7 @@
                         <viewLayoutGuide key="safeArea" id="qNb-Me-YTm"/>
                     </view>
                     <navigationItem key="navigationItem" title="Joint Motion" id="q23-76-tFl">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Vze-Y6-2BI">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="Vze-Y6-2BI">
                             <connections>
                                 <segue destination="1YP-VR-OA1" kind="unwind" unwindAction="cancelSelectJointMotion:" id="Zht-Pi-Xk7"/>
                             </connections>
@@ -692,7 +692,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Measurements" id="TpC-TP-4ZC">
+                    <navigationItem key="navigationItem" title="Bodyflex" id="TpC-TP-4ZC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HIm-Zk-f28">
                             <connections>
                                 <segue destination="Kn6-kf-16v" kind="presentation" identifier="ListToAddMeasurement" id="cKH-wP-YSi"/>
@@ -701,13 +701,6 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTQ-My-aF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationBar contentMode="scaleToFill" id="zyh-5Q-RoP">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <items>
-                        <navigationItem title="Title" id="XSn-nV-wCR"/>
-                    </items>
-                </navigationBar>
             </objects>
             <point key="canvasLocation" x="-1852.1739130434785" y="157.33695652173915"/>
         </scene>
@@ -751,6 +744,6 @@
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="I2D-vl-wmx"/>
+        <segue reference="cKH-wP-YSi"/>
     </inferredMetricsTieBreakers>
 </document>

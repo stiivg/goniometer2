@@ -224,6 +224,9 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     //Save last edit to image
     func completeEdit() {
+        if imageView == nil {
+            return
+        }
         imaging.prepareImageForSaving(imageView: imageView, measurement: measurement)
         measurement.angle = Float(angleTool.measuredAngle())
         angleTool.saveLocation()
@@ -232,6 +235,10 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     func setCreatedDate() {
         measurement.createdDate = Date()
+    }
+    
+    func measurementToEditorSegue () {
+        self.performSegue(withIdentifier: "measurementToEditor", sender: self)
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation

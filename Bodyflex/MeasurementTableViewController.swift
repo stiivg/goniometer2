@@ -17,6 +17,8 @@ class MeasurementTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -146,6 +148,7 @@ class MeasurementTableViewController: UITableViewController {
             let newMeasurement = MeasurementsAPI.shared.newMeasurement()
             // Pass a new object to the addMeasurement view controller.
             measureAngleViewController.setMeasurement(newMeasurement: newMeasurement)
+//            measureAngleViewController.measurementToEditorSegue()
         }
         
         if segue.identifier == "CellToSingleMeasurement" {
