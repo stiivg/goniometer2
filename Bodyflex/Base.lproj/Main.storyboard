@@ -79,7 +79,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="300" verticalCompressionResistancePriority="700" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="SaQ-Uw-Qby">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="300" verticalCompressionResistancePriority="700" translatesAutoresizingMaskIntoConstraints="NO" id="SaQ-Uw-Qby">
                                             <rect key="frame" x="8" y="71" width="294" height="134"/>
                                         </imageView>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Debug position" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2bX-AM-kpu">
@@ -179,7 +179,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="-3" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="SSW-rO-n9c" customClass="GestureScrollView" customModule="Bodyflex" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="80" width="414" height="548"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-6O-yXR" userLabel="Image View">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-6O-yXR" userLabel="Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -728,7 +728,6 @@
     </scenes>
     <resources>
         <image name="Ankle Lower Foot.png" width="1254" height="1734"/>
-        <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="I2D-vl-wmx"/>

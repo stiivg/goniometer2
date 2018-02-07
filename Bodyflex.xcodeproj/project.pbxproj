@@ -30,7 +30,6 @@
 		64A432361FBD141A005D2FC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64A432341FBD141A005D2FC2 /* LaunchScreen.storyboard */; };
 		64A432411FBD141B005D2FC2 /* BodyflexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A432401FBD141B005D2FC2 /* BodyflexTests.swift */; };
 		64A4324C1FBD141B005D2FC2 /* BodyflexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A4324B1FBD141B005D2FC2 /* BodyflexUITests.swift */; };
-		64A4325C1FBD1A94005D2FC2 /* knee_flexion.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */; };
 		64A7FAD2201645AF00079646 /* AngleToolDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A7FAD1201645AF00079646 /* AngleToolDrawing.swift */; };
 		64B58AE01FF0047000B64631 /* BodyJoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B58ADF1FF0046F00B64631 /* BodyJoints.swift */; };
 		64B5CBE32020DD0600DB848B /* AngleToolLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B5CBE22020DD0600DB848B /* AngleToolLabels.swift */; };
@@ -97,7 +96,6 @@
 		64A432471FBD141B005D2FC2 /* BodyflexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BodyflexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64A4324B1FBD141B005D2FC2 /* BodyflexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyflexUITests.swift; sourceTree = "<group>"; };
 		64A4324D1FBD141B005D2FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = knee_flexion.png; path = ../../../../Desktop/knee_flexion.png; sourceTree = "<group>"; };
 		64A7FAD1201645AF00079646 /* AngleToolDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleToolDrawing.swift; sourceTree = "<group>"; };
 		64B58ADF1FF0046F00B64631 /* BodyJoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyJoints.swift; sourceTree = "<group>"; };
 		64B5CBE22020DD0600DB848B /* AngleToolLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleToolLabels.swift; sourceTree = "<group>"; };
@@ -219,7 +217,6 @@
 				64923DA42019501B004E9A7E /* JointImages */,
 				64A432321FBD141A005D2FC2 /* Assets.xcassets */,
 				64A01D111FFEA162007A6C58 /* MeasurementCollectionViewController.swift */,
-				64A4325B1FBD1A94005D2FC2 /* knee_flexion.png */,
 				64A432371FBD141A005D2FC2 /* Info.plist */,
 				6426B9C21FC5F8EC00D81163 /* MeasurementTableViewController.swift */,
 			);
@@ -365,7 +362,6 @@
 				64C064272026A3A100897EF1 /* Neck Head Back.png in Resources */,
 				64923DA620195058004E9A7E /* Ankle Lower Foot.png in Resources */,
 				64C06422202687CE00897EF1 /* Shoulder Bent Arm Lower.png in Resources */,
-				64A4325C1FBD1A94005D2FC2 /* knee_flexion.png in Resources */,
 				64C06424202697AF00897EF1 /* Forearm Palm Down.png in Resources */,
 				64C0642C20278AEF00897EF1 /* Wrist Hand Out.png in Resources */,
 				64A432311FBD141A005D2FC2 /* Main.storyboard in Resources */,

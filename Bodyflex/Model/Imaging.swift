@@ -12,7 +12,9 @@ import CoreData
 class Imaging {
     
     func prepareImageForSaving(imageView:UIImageView, measurement: Measurement) {
-        
+        if imageView.image == nil {
+            return
+        }
         // create NSData from UIImage
         guard let imageData = UIImageJPEGRepresentation(imageView.image!, 1) else {
             // handle failed conversion
