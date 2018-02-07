@@ -155,7 +155,8 @@
         <scene sceneID="0hi-1E-88x">
             <objects>
                 <navigationController modalTransitionStyle="crossDissolve" id="Kn6-kf-16v" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wwW-Ct-cP6">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="wwW-Ct-cP6">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -172,11 +173,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" userLabel="Measure Angle View Controller" customClass="MeasureAngleViewController" customModule="Bodyflex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="-3" maximumZoomScale="4" translatesAutoresizingMaskIntoConstraints="NO" id="SSW-rO-n9c" customClass="GestureScrollView" customModule="Bodyflex" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="144" width="414" height="548"/>
+                                <rect key="frame" x="0.0" y="80" width="414" height="548"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knee_flexion.png" translatesAutoresizingMaskIntoConstraints="NO" id="vQa-6O-yXR" userLabel="Image View">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
@@ -198,10 +199,10 @@
                                 </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQI-Sy-tlg">
-                                <rect key="frame" x="0.0" y="64" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Measurement" placeholder="Left Knee Bend" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w93-k2-Def">
-                                        <rect key="frame" x="5" y="5" width="404" height="23"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Measurement" placeholder="Left Knee Bend" adjustsFontForContentSizeCategory="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w93-k2-Def">
+                                        <rect key="frame" x="5" y="5" width="304" height="23"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -211,13 +212,13 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MedicalJoint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZZ-EG-I7l">
-                                        <rect key="frame" x="5" y="27.999999999999996" width="409" height="13.333333333333332"/>
+                                        <rect key="frame" x="5" y="27.999999999999996" width="309" height="13.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nametext" borderStyle="roundedRect" placeholder="Name" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HN1-1q-w89">
-                                        <rect key="frame" x="5" y="45.333333333333329" width="355" height="30"/>
+                                        <rect key="frame" x="5" y="45.333333333333329" width="255" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -226,30 +227,42 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="Date" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="SbR-51-3sV">
-                                        <rect key="frame" x="370" y="45.333333333333329" width="39" height="20"/>
+                                        <rect key="frame" x="270" y="45.333333333333329" width="39" height="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9X-EN-Drr">
+                                        <rect key="frame" x="309" y="5" width="100" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="lk0-lN-DEN"/>
+                                        </constraints>
+                                        <state key="normal" title="Select">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="HN1-1q-w89" firstAttribute="top" secondItem="kZZ-EG-I7l" secondAttribute="bottom" constant="4" id="0PL-eT-6GZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="V9X-EN-Drr" secondAttribute="trailing" constant="5" id="1tc-W0-bQt"/>
                                     <constraint firstItem="kZZ-EG-I7l" firstAttribute="top" secondItem="w93-k2-Def" secondAttribute="bottom" id="5H0-Li-4gU"/>
                                     <constraint firstItem="kZZ-EG-I7l" firstAttribute="trailing" secondItem="w93-k2-Def" secondAttribute="trailing" constant="5" id="5vr-Ea-PfR"/>
                                     <constraint firstItem="w93-k2-Def" firstAttribute="top" secondItem="PQI-Sy-tlg" secondAttribute="top" constant="5" id="7wC-xq-fGj"/>
                                     <constraint firstItem="kZZ-EG-I7l" firstAttribute="leading" secondItem="w93-k2-Def" secondAttribute="leading" id="98h-fn-B26"/>
                                     <constraint firstItem="HN1-1q-w89" firstAttribute="leading" secondItem="w93-k2-Def" secondAttribute="leading" id="Cdo-C1-UgF"/>
+                                    <constraint firstItem="V9X-EN-Drr" firstAttribute="leading" secondItem="w93-k2-Def" secondAttribute="trailing" id="IvP-5Z-LjD"/>
                                     <constraint firstItem="SbR-51-3sV" firstAttribute="trailing" secondItem="w93-k2-Def" secondAttribute="trailing" id="TF5-Ip-ehJ"/>
+                                    <constraint firstItem="V9X-EN-Drr" firstAttribute="top" secondItem="PQI-Sy-tlg" secondAttribute="top" constant="5" id="Xro-3h-KLG"/>
                                     <constraint firstAttribute="height" constant="80" id="hwO-ui-Bto"/>
                                     <constraint firstItem="SbR-51-3sV" firstAttribute="leading" secondItem="HN1-1q-w89" secondAttribute="trailing" constant="10" id="kuF-Op-bgu"/>
                                     <constraint firstItem="w93-k2-Def" firstAttribute="leading" secondItem="PQI-Sy-tlg" secondAttribute="leading" constant="5" id="prG-8m-by4"/>
-                                    <constraint firstAttribute="trailing" secondItem="w93-k2-Def" secondAttribute="trailing" constant="5" id="qBV-gN-m5v"/>
                                     <constraint firstItem="SbR-51-3sV" firstAttribute="top" secondItem="HN1-1q-w89" secondAttribute="top" id="qbM-eY-Dpw"/>
                                 </constraints>
                             </view>
                             <toolbar clearsContextBeforeDrawing="NO" contentMode="right" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ab4-9S-2or">
-                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="628" width="414" height="44"/>
                                 <items>
                                     <barButtonItem title="Library" width="106.5" id="R13-hB-WVG">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -268,7 +281,6 @@
                                 <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="top" secondItem="PQI-Sy-tlg" secondAttribute="bottom" id="5el-JK-Ixk"/>
@@ -327,11 +339,11 @@
             <objects>
                 <viewController id="Njm-sI-DBT" customClass="SelectJointViewController" customModule="Bodyflex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="870-pa-uYD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iRU-8P-jZt">
-                                <rect key="frame" x="0.0" y="64" width="414" height="160"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="160"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="daa-2G-Ye1"/>
@@ -356,7 +368,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Detail" placeholder="Custom" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="k6Q-uO-feN">
+                                                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Detail" placeholder="Custom" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k6Q-uO-feN">
                                                     <rect key="frame" x="62.666666666666657" y="5.9999999999999982" width="318.33333333333337" height="24.333333333333329"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -473,14 +485,14 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ankle Lower Foot.png" translatesAutoresizingMaskIntoConstraints="NO" id="rfR-hk-9vf">
-                                <rect key="frame" x="0.0" y="234" width="414" height="360"/>
+                                <rect key="frame" x="0.0" y="170" width="414" height="360"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="360" id="cAS-0K-npg"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsE-dr-cj5">
-                                <rect key="frame" x="10" y="614" width="394" height="60"/>
+                                <rect key="frame" x="10" y="550" width="394" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="ne5-XU-LZf"/>
                                 </constraints>
@@ -521,7 +533,7 @@
             <objects>
                 <tableViewController title="Choose Joint" id="Mfa-Wt-D90" customClass="JointPickerViewController" customModule="Bodyflex" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="center" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3bS-A0-rCm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -562,7 +574,7 @@
             <objects>
                 <tableViewController title="Choose Motion" id="Hvo-Ej-K1q" customClass="MotionPickerViewController" customModule="Bodyflex" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="s92-bZ-sfj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -682,7 +694,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Bodyflex" id="TpC-TP-4ZC">
+                    <navigationItem key="navigationItem" title="Measurements" id="TpC-TP-4ZC">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HIm-Zk-f28">
                             <connections>
                                 <segue destination="Kn6-kf-16v" kind="presentation" identifier="ListToAddMeasurement" id="cKH-wP-YSi"/>
@@ -716,6 +728,6 @@
         <image name="knee_flexion.png" width="1728" height="1128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cKH-wP-YSi"/>
+        <segue reference="I2D-vl-wmx"/>
     </inferredMetricsTieBreakers>
 </document>
