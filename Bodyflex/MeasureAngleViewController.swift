@@ -156,16 +156,12 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     }
     
     @IBAction func MeasurementTouchDown(_ sender: Any) {
-        //Segue modally to joint editor
+        //Segue show to joint editor
         performSegue(withIdentifier: "measurementToEditor", sender: nil)
-        
-    }
-    
-    @IBAction func cancelSelectJointMotion(_ segue: UIStoryboardSegue) {
     }
     
     // Return from editing joint and motion
-    @IBAction func saveSelectJointMotion(_ segue: UIStoryboardSegue) {
+    @IBAction func saveSelectedJointMotion(_ segue: UIStoryboardSegue) {
         //make JointMotion managed object and add to measurement and update values
         let selectJointViewController = segue.source as? SelectJointViewController
         
@@ -240,8 +236,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "measurementToEditor" {
-            let nav = segue.destination as! UINavigationController
-            let selectJointViewController = nav.topViewController as? SelectJointViewController
+            let selectJointViewController = segue.destination as? SelectJointViewController
             
             //Create a Joint structure and motion structure from the jointMotion managed object
             let jointMotion = measurement.jointMotion

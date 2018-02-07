@@ -31,6 +31,14 @@ class SelectJointViewController: UIViewController , UITableViewDelegate, UITable
         joint?.name.common = sender.text!
     }
 
+    //Action to perform on back button
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParentViewController {
+            performSegue(withIdentifier: "unwindJointMotion", sender: nil)
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
