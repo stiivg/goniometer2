@@ -155,6 +155,11 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         }
     }
     
+    @IBAction func SelectTouchDown(_ sender: UIButton) {
+        //Segue show to joint editor
+        performSegue(withIdentifier: "measurementToEditor", sender: nil)
+    }
+    
     @IBAction func MeasurementTouchDown(_ sender: Any) {
         //Segue show to joint editor
         performSegue(withIdentifier: "measurementToEditor", sender: nil)

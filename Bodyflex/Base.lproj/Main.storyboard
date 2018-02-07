@@ -241,6 +241,9 @@
                                         <state key="normal" title="Select">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="SelectTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="kit-QQ-jYn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
