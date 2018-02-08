@@ -202,9 +202,11 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         if imageView.image == nil {
             selectHelpLabel.isHidden = false
             photoHelpLabel.isHidden = false
+            dateLabel.isHidden = true
         } else {
             selectHelpLabel.isHidden = true
             photoHelpLabel.isHidden = true
+            dateLabel.isHidden = false
         }
     }
     
