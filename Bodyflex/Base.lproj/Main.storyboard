@@ -202,6 +202,18 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ggy-o0-cC2"/>
                                 </connections>
                             </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Help" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rh6-DJ-4nR">
+                                <rect key="frame" x="10" y="95" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo Help" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cg5-Xv-suc">
+                                <rect key="frame" x="10" y="592" width="394" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQI-Sy-tlg">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                 <subviews>
@@ -293,13 +305,19 @@
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="top" secondItem="PQI-Sy-tlg" secondAttribute="bottom" id="5el-JK-Ixk"/>
                             <constraint firstItem="PQI-Sy-tlg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AUK-Tn-G4S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PQI-Sy-tlg" secondAttribute="trailing" id="CMq-Hk-XWd"/>
+                            <constraint firstItem="Rh6-DJ-4nR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Iju-t3-OCF"/>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="bottom" secondItem="Ab4-9S-2or" secondAttribute="top" id="Oe3-kr-Fha"/>
+                            <constraint firstItem="Ab4-9S-2or" firstAttribute="top" secondItem="Cg5-Xv-suc" secondAttribute="bottom" constant="15" id="VXb-uP-2Lz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rh6-DJ-4nR" secondAttribute="trailing" constant="10" id="X8p-E5-cDv"/>
                             <constraint firstItem="Ab4-9S-2or" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dYL-3N-9HD"/>
                             <constraint firstItem="Ab4-9S-2or" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="o82-Eb-Hpk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cg5-Xv-suc" secondAttribute="trailing" constant="10" id="rO9-Dz-Waa"/>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tBD-BO-qw8"/>
                             <constraint firstItem="SSW-rO-n9c" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tiU-TW-eSB"/>
+                            <constraint firstItem="Rh6-DJ-4nR" firstAttribute="top" secondItem="PQI-Sy-tlg" secondAttribute="bottom" constant="15" id="ugA-hn-hz1"/>
                             <constraint firstItem="PQI-Sy-tlg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vP6-Yi-tVe"/>
                             <constraint firstItem="Ab4-9S-2or" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zT9-Zc-3Z1"/>
+                            <constraint firstItem="Cg5-Xv-suc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="zUI-mf-GxZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
@@ -328,7 +346,9 @@
                         <outlet property="medicalJointLabel" destination="kZZ-EG-I7l" id="ATX-qN-2tC"/>
                         <outlet property="nameLabel" destination="HN1-1q-w89" id="3hY-52-fGS"/>
                         <outlet property="panGesture" destination="7Qn-Bd-reb" id="8aj-FN-l0q"/>
+                        <outlet property="photoHelpLabel" destination="Cg5-Xv-suc" id="135-VF-zPb"/>
                         <outlet property="scrollView" destination="SSW-rO-n9c" id="BEr-Vz-i2F"/>
+                        <outlet property="selectHelpLabel" destination="Rh6-DJ-4nR" id="VBd-fo-rI2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -339,7 +359,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2365" y="1126"/>
+            <point key="canvasLocation" x="1114" y="1154"/>
         </scene>
         <!--Joint Motion-->
         <scene sceneID="0hW-w0-LJ0">
@@ -533,7 +553,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TxE-xx-ZSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="1YP-VR-OA1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3624.6376811594205" y="1125.8152173913045"/>
+            <point key="canvasLocation" x="2065" y="1154"/>
         </scene>
         <!--Choose Joint-->
         <scene sceneID="fKL-P6-Kqg">
@@ -574,7 +594,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KS7-M5-sHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="f7q-6v-x27" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4593" y="993"/>
+            <point key="canvasLocation" x="3530" y="827"/>
         </scene>
         <!--Choose Motion-->
         <scene sceneID="FTR-wD-5UU">
@@ -615,7 +635,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KgX-oE-jak" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="jQK-CJ-cA3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4593" y="1723"/>
+            <point key="canvasLocation" x="3530" y="1556"/>
         </scene>
         <!--Measurements View Controller-->
         <scene sceneID="iMu-KV-AtS">

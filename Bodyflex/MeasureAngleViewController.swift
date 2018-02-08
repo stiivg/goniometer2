@@ -36,6 +36,9 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var dateLabel: UITextField!
     
     
+    @IBOutlet weak var selectHelpLabel: UILabel!
+    @IBOutlet weak var photoHelpLabel: UILabel!
+    
     @IBAction func handleDotPan(_ gestureRecognizer: UIPanGestureRecognizer) {
         angleTool.doHandleDotPan(gestureRecognizer: gestureRecognizer, view: self.imageView)
     }
@@ -45,7 +48,14 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initHelpText()
                 
+    }
+    
+    fileprivate func initHelpText() {
+        selectHelpLabel.text = "Select the joint to measure"
+        photoHelpLabel.text = "Take a photo or use a library photo"
     }
     
     //Delete the current measurement before replacing
@@ -104,7 +114,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
             imageWidthConstraint.constant = imageWidth
             imageHeightConstraint.constant = imageHeight
             
-            //make the image view fill the scroll view 414 628
+            //make the image view fill the scroll view ie 414 628 for 8 Plue
             let zeroOriginScrollBounds = CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight)
             
             imageView.bounds = zeroOriginScrollBounds
@@ -126,6 +136,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
             
             //call after image has been loaded
             angleTool.setImageView(imageView: imageView)
+            showHelpIfNoImage()
             
             imagePicker.delegate = self
             
@@ -187,6 +198,16 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
         angleTool.setJointMotion(jointMotion: measurement.jointMotion!)
     }
     
+    fileprivate func showHelpIfNoImage() {
+        if imageView.image == nil {
+            selectHelpLabel.isHidden = false
+            photoHelpLabel.isHidden = false
+        } else {
+            selectHelpLabel.isHidden = true
+            photoHelpLabel.isHidden = true
+        }
+    }
+    
     //Dismiss keyboard on Enter
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -221,6 +242,7 @@ class MeasureAngleViewController: UIViewController, UINavigationControllerDelega
             measurement.photoDate = photoDate
         }
         
+        showHelpIfNoImage()
     }
     
     //Save last edit to image
