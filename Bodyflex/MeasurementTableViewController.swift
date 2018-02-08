@@ -13,7 +13,8 @@ class MeasurementTableViewController: UITableViewController {
 
     // MARK: - Properties
     var allMeasurements = MeasurementsAPI.shared.getMeasurements()
-
+    var helpLabel: UILabel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //support ios 11 large titles
@@ -24,6 +25,28 @@ class MeasurementTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
          self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        //add the empty list help text to the navigation view
+        createHelpLabel()
+        self.navigationController?.view.addSubview(helpLabel!)
+    }
+    
+    fileprivate func createHelpLabel() {
+        let helpSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        let helpOrigin = CGPoint(x: self.view.frame.width / 2 - helpSize.width / 2, y: self.view.frame.height / 2 - helpSize.height / 2)
+        helpLabel = UILabel(frame: CGRect(origin: helpOrigin, size: helpSize))
+        helpLabel?.textAlignment = .center
+        helpLabel?.text = "Use + to add a new measurement"
+        helpLabel?.isHidden = true
+    }
+    
+    //if list is empty display the help text
+    fileprivate func showHelpIfEmptyList() {
+        if allMeasurements.count == 0 {
+            helpLabel?.isHidden = false
+        } else {
+            helpLabel?.isHidden = true
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +58,8 @@ class MeasurementTableViewController: UITableViewController {
 //        clearCoreDate()
         
         self.tableView.reloadData()
+        
+        showHelpIfEmptyList()
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,8 +117,6 @@ class MeasurementTableViewController: UITableViewController {
             cell.measurement = measurement
         }
         return cell
-
- 
     }
 
     // Override to support editing the table view.
@@ -107,6 +130,8 @@ class MeasurementTableViewController: UITableViewController {
             self.sortList()
 
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            showHelpIfEmptyList()
         }
     }
 
