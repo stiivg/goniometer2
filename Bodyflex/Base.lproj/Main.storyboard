@@ -49,14 +49,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="310" height="269"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Joint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6g-S2-SeU">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Joint" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6g-S2-SeU">
                                             <rect key="frame" x="8" y="8" width="294" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Angle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOo-GD-PV2">
-                                            <rect key="frame" x="-16" y="8" width="318" height="20"/>
+                                            <rect key="frame" x="8" y="8" width="294" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -79,7 +79,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="300" verticalCompressionResistancePriority="700" translatesAutoresizingMaskIntoConstraints="NO" id="SaQ-Uw-Qby">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="200" verticalCompressionResistancePriority="700" translatesAutoresizingMaskIntoConstraints="NO" id="SaQ-Uw-Qby">
                                             <rect key="frame" x="8" y="71" width="294" height="134"/>
                                         </imageView>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Debug position" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2bX-AM-kpu">
@@ -111,7 +111,7 @@
                                     <constraint firstItem="QOo-GD-PV2" firstAttribute="top" secondItem="j6a-Gp-ea0" secondAttribute="topMargin" id="eSN-7a-RzX"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="7OV-Rq-CPY" secondAttribute="trailing" id="fsI-XJ-Jhb"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="MRn-rk-nA2" secondAttribute="trailing" id="lWf-J2-Uww"/>
-                                    <constraint firstItem="QOo-GD-PV2" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leading" constant="-16" id="mB6-aI-ZFy"/>
+                                    <constraint firstItem="QOo-GD-PV2" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="mB6-aI-ZFy"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="k6g-S2-SeU" secondAttribute="trailing" id="pn7-8g-cZ6"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="5OP-wz-rsH"/>
