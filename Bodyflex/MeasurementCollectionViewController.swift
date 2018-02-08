@@ -21,7 +21,8 @@ class MeasurementCollectionViewController: UICollectionViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        //Fixed layout problem on iPhone X where setting the cell height to the bounds height was 34 too high
+        collectionView?.contentInsetAdjustmentBehavior = .never
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 

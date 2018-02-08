@@ -9,6 +9,14 @@
          contextName = "MeasurementTableViewController.saveMeasurementEdit(_:):MeasurementTableViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "MeasurementCollectionViewController.collectionView(_:layout:insetForSectionAt:):MeasurementCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "SelectJointViewController.setAngleToolDrawing():SelectJointViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -138,6 +146,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MeasureAngleViewController.saveSelectedJointMotion(_:):MeasureAngleViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "AngleTool.setJointMotion(jointMotion:):AngleTool.swift">
          <PersistentStrings>
             <PersistentString
@@ -168,13 +179,22 @@
          contextName = "MeasurementCollectionViewController.collectionView(_:layout:sizeForItemAt:):MeasurementCollectionViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "collectionView.bounds">
+               value = "collectionView.contentSize">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.alignmentRectInsets">
             </PersistentString>
             <PersistentString
                value = "collectionView.frame">
             </PersistentString>
             <PersistentString
-               value = "collectionView.adjustedContentInset">
+               value = "collectionViewLayout.collectionViewContentSize">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.contentOffset">
+            </PersistentString>
+            <PersistentString
+               value = "collectionView.bounds">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -212,6 +232,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MeasurementCollectionViewController.viewWillLayoutSubviews():MeasurementCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView.bounds">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AngleToolDrawing.drawAngle():AngleToolDrawing.swift">
          <PersistentStrings>
             <PersistentString
@@ -224,6 +252,9 @@
       </ContextState>
       <ContextState
          contextName = "SelectJointViewController.restoreLocation():SelectJointViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MeasureAngleViewController.completeEdit():MeasureAngleViewController.swift">
       </ContextState>
       <ContextState
          contextName = "BodyJoints.jointMotions():BodyJoints.swift">
@@ -269,6 +300,11 @@
       </ContextState>
       <ContextState
          contextName = "MeasurementCollectionViewController.scrollToIndex(index:):MeasurementCollectionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView.contentSize">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MeasureAngleViewController.imagePickerController(_:didFinishPickingMediaWithInfo:):MeasureAngleViewController.swift">

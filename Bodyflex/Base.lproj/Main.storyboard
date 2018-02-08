@@ -49,14 +49,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="310" height="269"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Joint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6g-S2-SeU">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Joint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6g-S2-SeU">
                                             <rect key="frame" x="8" y="8" width="294" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Angle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOo-GD-PV2">
-                                            <rect key="frame" x="8" y="8" width="294" height="20"/>
+                                            <rect key="frame" x="-16" y="8" width="318" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -108,10 +108,10 @@
                                     <constraint firstItem="7OV-Rq-CPY" firstAttribute="top" secondItem="k6g-S2-SeU" secondAttribute="bottom" id="Zgw-Ix-pDV"/>
                                     <constraint firstItem="SaQ-Uw-Qby" firstAttribute="trailing" secondItem="j6a-Gp-ea0" secondAttribute="trailingMargin" id="aq8-Hi-xbF"/>
                                     <constraint firstItem="MRn-rk-nA2" firstAttribute="top" secondItem="VWg-EC-hKW" secondAttribute="top" id="bUS-wc-0bQ"/>
-                                    <constraint firstItem="QOo-GD-PV2" firstAttribute="top" secondItem="k6g-S2-SeU" secondAttribute="top" id="eSN-7a-RzX"/>
+                                    <constraint firstItem="QOo-GD-PV2" firstAttribute="top" secondItem="j6a-Gp-ea0" secondAttribute="topMargin" id="eSN-7a-RzX"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="7OV-Rq-CPY" secondAttribute="trailing" id="fsI-XJ-Jhb"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="MRn-rk-nA2" secondAttribute="trailing" id="lWf-J2-Uww"/>
-                                    <constraint firstItem="QOo-GD-PV2" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leadingMargin" id="mB6-aI-ZFy"/>
+                                    <constraint firstItem="QOo-GD-PV2" firstAttribute="leading" secondItem="j6a-Gp-ea0" secondAttribute="leading" constant="-16" id="mB6-aI-ZFy"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="k6g-S2-SeU" secondAttribute="trailing" id="pn7-8g-cZ6"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="5OP-wz-rsH"/>
@@ -132,7 +132,7 @@
                             <outlet property="delegate" destination="mGT-UR-tbf" id="QLm-NE-4wr"/>
                         </connections>
                     </collectionView>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Review" id="eiT-oC-X23">
                         <barButtonItem key="leftBarButtonItem" title="List" id="uSx-YE-TI1">
                             <connections>
