@@ -14,11 +14,15 @@
         <!--Navigation Controller-->
         <scene sceneID="eS9-5D-h0l">
             <objects>
-                <navigationController id="UJk-8q-RQO" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="UJk-8q-RQO" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2DV-HZ-nry">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zGU-2f-iCr">
+                        <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="0Ed-jh-zoF" kind="relationship" relationship="rootViewController" id="2bt-DG-AdW"/>
                     </connections>
@@ -697,13 +701,16 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Measurements" id="TpC-TP-4ZC">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HIm-Zk-f28">
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="sKh-BP-Re1"/>
+                        <barButtonItem systemItem="add" id="6WM-Ku-QLd">
                             <connections>
-                                <segue destination="Kn6-kf-16v" kind="presentation" identifier="ListToAddMeasurement" id="cKH-wP-YSi"/>
+                                <segue destination="Kn6-kf-16v" kind="presentation" identifier="ListToAddMeasurement" id="M2m-Zx-hi6"/>
                             </connections>
                         </barButtonItem>
-                    </navigationItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Measurements" id="TpC-TP-4ZC"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTQ-My-aF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -730,6 +737,6 @@
         <image name="Ankle Lower Foot.png" width="1254" height="1734"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="I2D-vl-wmx"/>
+        <segue reference="M2m-Zx-hi6"/>
     </inferredMetricsTieBreakers>
 </document>
