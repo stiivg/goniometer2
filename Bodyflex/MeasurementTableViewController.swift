@@ -9,11 +9,12 @@
 import UIKit
 import CoreData
 
-class MeasurementTableViewController: UITableViewController {
+class MeasurementTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
     // MARK: - Properties
     var allMeasurements = MeasurementsAPI.shared.getMeasurements()
     var helpLabel: UILabel?
+    var infoPopover: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,10 @@ class MeasurementTableViewController: UITableViewController {
         helpLabel?.textAlignment = .center
         helpLabel?.text = "Use + to add a new measurement"
         helpLabel?.isHidden = true
+    }
+    
+    fileprivate func createInfoPopover() {
+        
     }
     
     //if list is empty display the help text
@@ -75,6 +80,10 @@ class MeasurementTableViewController: UITableViewController {
     
     // MARK: - IBActions
 
+    @IBAction func showInfo(_ sender: UIBarButtonItem) {
+        
+    }
+    
     @IBAction func cancelToMeasurementsViewController(_ segue: UIStoryboardSegue) {
         // update the tableView
         self.tableView.reloadData()
@@ -159,12 +168,21 @@ class MeasurementTableViewController: UITableViewController {
     }
     */
     
-
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "infoPopover" {
+            let popoverViewController = segue.destination as UIViewController
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+            if let pop = popoverViewController.popoverPresentationController {
+                pop.delegate = self
+            }
+        }
+
         
         if segue.identifier == "ListToAddMeasurement" {
             let nav = segue.destination as! UINavigationController

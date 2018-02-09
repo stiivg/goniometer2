@@ -722,8 +722,17 @@
                         </prototypes>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem title="Info" id="sEF-jA-7gL">
+                            <connections>
+                                <action selector="showInfo:" destination="0Ed-jh-zoF" id="asi-2Q-ZPr"/>
+                                <segue destination="BVy-Xr-hnX" kind="popoverPresentation" identifier="infoPopover" popoverAnchorBarButtonItem="sEF-jA-7gL" id="tz2-bW-z5M">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="sKh-BP-Re1"/>
                         <barButtonItem systemItem="add" id="6WM-Ku-QLd">
+                            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Kn6-kf-16v" kind="presentation" identifier="ListToAddMeasurement" id="M2m-Zx-hi6"/>
                             </connections>
@@ -733,15 +742,42 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTQ-My-aF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R5u-Vb-jps">
-                    <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </objects>
             <point key="canvasLocation" x="-1852.1739130434785" y="157.33695652173915"/>
+        </scene>
+        <!--Info Popover-->
+        <scene sceneID="eCe-6o-B1D">
+            <objects>
+                <viewController title="Info Popover" id="BVy-Xr-hnX" customClass="InfoViewController" customModule="Bodyflex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r6n-iv-EET">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAa-Ob-r66">
+                                <rect key="frame" x="10" y="29.999999999999996" width="394" height="14.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zK7-4s-rok" firstAttribute="trailing" secondItem="hAa-Ob-r66" secondAttribute="trailing" constant="10" id="Azj-QO-SuX"/>
+                            <constraint firstItem="hAa-Ob-r66" firstAttribute="leading" secondItem="zK7-4s-rok" secondAttribute="leading" constant="10" id="ow6-yw-KNg"/>
+                            <constraint firstItem="hAa-Ob-r66" firstAttribute="top" secondItem="zK7-4s-rok" secondAttribute="top" constant="10" id="u67-Ow-f22"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zK7-4s-rok"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="200" height="100"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="versionLabel" destination="hAa-Ob-r66" id="BGI-qt-Jc9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kf3-t9-aqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1852" y="948"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lqJ-IA-O5o">
