@@ -74,6 +74,9 @@ class MeasurementTableViewController: UITableViewController, UIPopoverPresentati
     
     private func sortList() {
         self.allMeasurements.sort {
+            if $0.photoDate == nil || $1.photoDate == nil{
+                return false
+            }
             return $0.photoDate! > $1.photoDate!
         }
     }

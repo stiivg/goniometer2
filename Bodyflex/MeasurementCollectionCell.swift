@@ -54,13 +54,19 @@ class MeasurementCollectionCell: UICollectionViewCell {
             if let imageData = measurement?.thumbnail {
                 let testImage = UIImage(data: imageData)
                 angleImageView.image = testImage
+            } else {
+                angleImageView.image = nil
             }
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy"
             let dateObj = measurement?.photoDate
-            dateLabel.text = dateFormatter.string(from: dateObj!)
-            
+            if dateObj == nil {
+                dateLabel.text = ""
+            } else {
+                dateLabel.text = dateFormatter.string(from: dateObj!)
+            }
+
             //DEBUG: show tool position
 //            debugText.text = positionString()
             debugText.isHidden = true
