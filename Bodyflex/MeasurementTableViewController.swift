@@ -37,7 +37,7 @@ class MeasurementTableViewController: UITableViewController, UIPopoverPresentati
         let helpOrigin = CGPoint(x: self.view.frame.width / 2 - helpSize.width / 2, y: self.view.frame.height / 2 - helpSize.height / 2)
         helpLabel = UILabel(frame: CGRect(origin: helpOrigin, size: helpSize))
         helpLabel?.textAlignment = .center
-        helpLabel?.text = "Use + to add a new measurement"
+        helpLabel?.text = "Click + to add a new measurement"
         helpLabel?.isHidden = true
     }
     

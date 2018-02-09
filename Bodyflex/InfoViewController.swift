@@ -30,7 +30,7 @@ class InfoViewController: UIViewController {
     }
     
     fileprivate func sendEmail() {
-        let subject = "Feedback for Bodyflex"
+        let subject = "Feedback for Flexometer"
         let modelName = UIDevice.current.modelName
         let systemVersion = UIDevice.current.systemVersion
 
