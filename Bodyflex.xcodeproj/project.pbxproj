@@ -26,7 +26,6 @@
 		64A4322C1FBD141A005D2FC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A4322B1FBD141A005D2FC2 /* AppDelegate.swift */; };
 		64A4322E1FBD141A005D2FC2 /* MeasureAngleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A4322D1FBD141A005D2FC2 /* MeasureAngleViewController.swift */; };
 		64A432311FBD141A005D2FC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64A4322F1FBD141A005D2FC2 /* Main.storyboard */; };
-		64A432331FBD141A005D2FC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64A432321FBD141A005D2FC2 /* Assets.xcassets */; };
 		64A432361FBD141A005D2FC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64A432341FBD141A005D2FC2 /* LaunchScreen.storyboard */; };
 		64A432411FBD141B005D2FC2 /* BodyflexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A432401FBD141B005D2FC2 /* BodyflexTests.swift */; };
 		64A4324C1FBD141B005D2FC2 /* BodyflexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A4324B1FBD141B005D2FC2 /* BodyflexUITests.swift */; };
@@ -46,6 +45,7 @@
 		64C0642B20278AEF00897EF1 /* Wrist Hand In.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0642920278AEF00897EF1 /* Wrist Hand In.png */; };
 		64C0642C20278AEF00897EF1 /* Wrist Hand Out.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0642A20278AEF00897EF1 /* Wrist Hand Out.png */; };
 		64C0642E202D223B00897EF1 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C0642D202D223B00897EF1 /* InfoViewController.swift */; };
+		64C0645A202E4E6D00897EF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64C06459202E4E6D00897EF1 /* Assets.xcassets */; };
 		64E626AE1FCC75A20068879F /* JointPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AD1FCC75A20068879F /* JointPickerViewController.swift */; };
 		64E626B01FCDEB4F0068879F /* MotionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -88,7 +88,6 @@
 		64A4322B1FBD141A005D2FC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64A4322D1FBD141A005D2FC2 /* MeasureAngleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureAngleViewController.swift; sourceTree = "<group>"; };
 		64A432301FBD141A005D2FC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		64A432321FBD141A005D2FC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64A432351FBD141A005D2FC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64A432371FBD141A005D2FC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64A4323C1FBD141B005D2FC2 /* BodyflexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BodyflexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +112,7 @@
 		64C0642920278AEF00897EF1 /* Wrist Hand In.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wrist Hand In.png"; sourceTree = "<group>"; };
 		64C0642A20278AEF00897EF1 /* Wrist Hand Out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wrist Hand Out.png"; sourceTree = "<group>"; };
 		64C0642D202D223B00897EF1 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		64C06459202E4E6D00897EF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64E626AD1FCC75A20068879F /* JointPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointPickerViewController.swift; sourceTree = "<group>"; };
 		64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -216,9 +216,9 @@
 				64B5CBE22020DD0600DB848B /* AngleToolLabels.swift */,
 				64161F121FD9A22800DC25CF /* AngleTool.swift */,
 				64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */,
+				64C06459202E4E6D00897EF1 /* Assets.xcassets */,
 				64E626AD1FCC75A20068879F /* JointPickerViewController.swift */,
 				64923DA42019501B004E9A7E /* JointImages */,
-				64A432321FBD141A005D2FC2 /* Assets.xcassets */,
 				64A01D111FFEA162007A6C58 /* MeasurementCollectionViewController.swift */,
 				64A432371FBD141A005D2FC2 /* Info.plist */,
 				6426B9C21FC5F8EC00D81163 /* MeasurementTableViewController.swift */,
@@ -357,11 +357,11 @@
 				64A432361FBD141A005D2FC2 /* LaunchScreen.storyboard in Resources */,
 				64B5CBED202369D400DB848B /* Wrist Hand Lowered.png in Resources */,
 				64B5CBEC202369D400DB848B /* Hip Leg Out.png in Resources */,
+				64C0645A202E4E6D00897EF1 /* Assets.xcassets in Resources */,
 				64B5CBE9202369D400DB848B /* Hip Leg In.png in Resources */,
 				64C06421202687CE00897EF1 /* Shoulder Bent Arm Raise.png in Resources */,
 				64C0642B20278AEF00897EF1 /* Wrist Hand In.png in Resources */,
 				64B5CBEB202369D400DB848B /* Wrist Hand Raised.png in Resources */,
-				64A432331FBD141A005D2FC2 /* Assets.xcassets in Resources */,
 				64C064272026A3A100897EF1 /* Neck Head Back.png in Resources */,
 				64923DA620195058004E9A7E /* Ankle Lower Foot.png in Resources */,
 				64C06422202687CE00897EF1 /* Shoulder Bent Arm Lower.png in Resources */,
