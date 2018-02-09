@@ -759,11 +759,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mu-ZS-ocq">
+                                <rect key="frame" x="5" y="49.333333333333343" width="404" height="30"/>
+                                <state key="normal" title="Contact Us"/>
+                                <connections>
+                                    <action selector="contactBtn:" destination="BVy-Xr-hnX" eventType="touchUpInside" id="I4L-xU-PbT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zK7-4s-rok" firstAttribute="trailing" secondItem="hAa-Ob-r66" secondAttribute="trailing" constant="10" id="Azj-QO-SuX"/>
+                            <constraint firstItem="5mu-ZS-ocq" firstAttribute="top" secondItem="hAa-Ob-r66" secondAttribute="bottom" constant="5" id="Myj-Kg-W9D"/>
+                            <constraint firstItem="zK7-4s-rok" firstAttribute="trailing" secondItem="5mu-ZS-ocq" secondAttribute="trailing" constant="5" id="lcU-l5-RPT"/>
                             <constraint firstItem="hAa-Ob-r66" firstAttribute="leading" secondItem="zK7-4s-rok" secondAttribute="leading" constant="10" id="ow6-yw-KNg"/>
+                            <constraint firstItem="5mu-ZS-ocq" firstAttribute="leading" secondItem="zK7-4s-rok" secondAttribute="leading" constant="5" id="t9I-QK-Z4G"/>
                             <constraint firstItem="hAa-Ob-r66" firstAttribute="top" secondItem="zK7-4s-rok" secondAttribute="top" constant="10" id="u67-Ow-f22"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zK7-4s-rok"/>
