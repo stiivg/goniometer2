@@ -46,6 +46,27 @@
 		64C0642C20278AEF00897EF1 /* Wrist Hand Out.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0642A20278AEF00897EF1 /* Wrist Hand Out.png */; };
 		64C0642E202D223B00897EF1 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C0642D202D223B00897EF1 /* InfoViewController.swift */; };
 		64C0645A202E4E6D00897EF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64C06459202E4E6D00897EF1 /* Assets.xcassets */; };
+		64C0645D2030BEDF00897EF1 /* Toe Raise.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0645B2030BEDD00897EF1 /* Toe Raise.png */; };
+		64C0645E2030BEDF00897EF1 /* Toe Lower.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0645C2030BEDE00897EF1 /* Toe Lower.png */; };
+		64C064612030D42C00897EF1 /* Toe In.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0645F2030D42B00897EF1 /* Toe In.png */; };
+		64C064622030D42C00897EF1 /* Toe Out.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C064602030D42C00897EF1 /* Toe Out.png */; };
+		64C06466203118C700897EF1 /* Shoulder Arm Raise to Side.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C06463203118C600897EF1 /* Shoulder Arm Raise to Side.png */; };
+		64C06467203118C700897EF1 /* Shoulder Arm Raise.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C06464203118C600897EF1 /* Shoulder Arm Raise.png */; };
+		64C06468203118C700897EF1 /* Shoulder Arm Reverse Raise.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C06465203118C600897EF1 /* Shoulder Arm Reverse Raise.png */; };
+		64C0646B2031F1B900897EF1 /* Knee Straighten.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C064692031F1B900897EF1 /* Knee Straighten.png */; };
+		64C0646C2031F1B900897EF1 /* Knee Bend.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0646A2031F1B900897EF1 /* Knee Bend.png */; };
+		64C0646F203200A300897EF1 /* Hip Thigh Forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0646D203200A200897EF1 /* Hip Thigh Forward.png */; };
+		64C06470203200A300897EF1 /* Hip Thigh Out.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0646E203200A300897EF1 /* Hip Thigh Out.png */; };
+		64C0647320320A4100897EF1 /* Foot Rotate In.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647120320A4100897EF1 /* Foot Rotate In.png */; };
+		64C0647420320A4100897EF1 /* Foot Rotate Out.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647220320A4100897EF1 /* Foot Rotate Out.png */; };
+		64C0647720321D4500897EF1 /* Back Rotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647520321D4500897EF1 /* Back Rotation.png */; };
+		64C0647820321D4500897EF1 /* Neck Rotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647620321D4500897EF1 /* Neck Rotation.png */; };
+		64C0647D20323CD800897EF1 /* Knuckle Lower Fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647920323CD700897EF1 /* Knuckle Lower Fingers.png */; };
+		64C0647E20323CD800897EF1 /* Knuckle Separate Fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647A20323CD700897EF1 /* Knuckle Separate Fingers.png */; };
+		64C0647F20323CD800897EF1 /* Knuckle Raise Fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647B20323CD700897EF1 /* Knuckle Raise Fingers.png */; };
+		64C0648020323CD800897EF1 /* Knuckle Fingers from Thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647C20323CD800897EF1 /* Knuckle Fingers from Thumb.png */; };
+		64C064832032492900897EF1 /* Finger Bend.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C064812032492800897EF1 /* Finger Bend.png */; };
+		64C064842032492900897EF1 /* Finger Straighten.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C064822032492800897EF1 /* Finger Straighten.png */; };
 		64E626AE1FCC75A20068879F /* JointPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AD1FCC75A20068879F /* JointPickerViewController.swift */; };
 		64E626B01FCDEB4F0068879F /* MotionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +134,27 @@
 		64C0642A20278AEF00897EF1 /* Wrist Hand Out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wrist Hand Out.png"; sourceTree = "<group>"; };
 		64C0642D202D223B00897EF1 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		64C06459202E4E6D00897EF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		64C0645B2030BEDD00897EF1 /* Toe Raise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toe Raise.png"; sourceTree = "<group>"; };
+		64C0645C2030BEDE00897EF1 /* Toe Lower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toe Lower.png"; sourceTree = "<group>"; };
+		64C0645F2030D42B00897EF1 /* Toe In.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toe In.png"; sourceTree = "<group>"; };
+		64C064602030D42C00897EF1 /* Toe Out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toe Out.png"; sourceTree = "<group>"; };
+		64C06463203118C600897EF1 /* Shoulder Arm Raise to Side.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shoulder Arm Raise to Side.png"; sourceTree = "<group>"; };
+		64C06464203118C600897EF1 /* Shoulder Arm Raise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shoulder Arm Raise.png"; sourceTree = "<group>"; };
+		64C06465203118C600897EF1 /* Shoulder Arm Reverse Raise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shoulder Arm Reverse Raise.png"; sourceTree = "<group>"; };
+		64C064692031F1B900897EF1 /* Knee Straighten.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knee Straighten.png"; sourceTree = "<group>"; };
+		64C0646A2031F1B900897EF1 /* Knee Bend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knee Bend.png"; sourceTree = "<group>"; };
+		64C0646D203200A200897EF1 /* Hip Thigh Forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hip Thigh Forward.png"; sourceTree = "<group>"; };
+		64C0646E203200A300897EF1 /* Hip Thigh Out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hip Thigh Out.png"; sourceTree = "<group>"; };
+		64C0647120320A4100897EF1 /* Foot Rotate In.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Rotate In.png"; sourceTree = "<group>"; };
+		64C0647220320A4100897EF1 /* Foot Rotate Out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Foot Rotate Out.png"; sourceTree = "<group>"; };
+		64C0647520321D4500897EF1 /* Back Rotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back Rotation.png"; sourceTree = "<group>"; };
+		64C0647620321D4500897EF1 /* Neck Rotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Neck Rotation.png"; sourceTree = "<group>"; };
+		64C0647920323CD700897EF1 /* Knuckle Lower Fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knuckle Lower Fingers.png"; sourceTree = "<group>"; };
+		64C0647A20323CD700897EF1 /* Knuckle Separate Fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knuckle Separate Fingers.png"; sourceTree = "<group>"; };
+		64C0647B20323CD700897EF1 /* Knuckle Raise Fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knuckle Raise Fingers.png"; sourceTree = "<group>"; };
+		64C0647C20323CD800897EF1 /* Knuckle Fingers from Thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knuckle Fingers from Thumb.png"; sourceTree = "<group>"; };
+		64C064812032492800897EF1 /* Finger Bend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Finger Bend.png"; sourceTree = "<group>"; };
+		64C064822032492800897EF1 /* Finger Straighten.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Finger Straighten.png"; sourceTree = "<group>"; };
 		64E626AD1FCC75A20068879F /* JointPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointPickerViewController.swift; sourceTree = "<group>"; };
 		64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,8 +199,29 @@
 		64923DA42019501B004E9A7E /* JointImages */ = {
 			isa = PBXGroup;
 			children = (
+				64C0645C2030BEDE00897EF1 /* Toe Lower.png */,
+				64C0645B2030BEDD00897EF1 /* Toe Raise.png */,
+				64C0645F2030D42B00897EF1 /* Toe In.png */,
+				64C064602030D42C00897EF1 /* Toe Out.png */,
 				64B5CBE5202369D200DB848B /* Forearm Palm Up.png */,
 				64B5CBE4202369CF00DB848B /* Hip Leg In.png */,
+				64C0647520321D4500897EF1 /* Back Rotation.png */,
+				64C0647C20323CD800897EF1 /* Knuckle Fingers from Thumb.png */,
+				64C0647920323CD700897EF1 /* Knuckle Lower Fingers.png */,
+				64C0647B20323CD700897EF1 /* Knuckle Raise Fingers.png */,
+				64C0647A20323CD700897EF1 /* Knuckle Separate Fingers.png */,
+				64C0647620321D4500897EF1 /* Neck Rotation.png */,
+				64C064812032492800897EF1 /* Finger Bend.png */,
+				64C064822032492800897EF1 /* Finger Straighten.png */,
+				64C06463203118C600897EF1 /* Shoulder Arm Raise to Side.png */,
+				64C06464203118C600897EF1 /* Shoulder Arm Raise.png */,
+				64C0647120320A4100897EF1 /* Foot Rotate In.png */,
+				64C0647220320A4100897EF1 /* Foot Rotate Out.png */,
+				64C06465203118C600897EF1 /* Shoulder Arm Reverse Raise.png */,
+				64C0646D203200A200897EF1 /* Hip Thigh Forward.png */,
+				64C0646E203200A300897EF1 /* Hip Thigh Out.png */,
+				64C0646A2031F1B900897EF1 /* Knee Bend.png */,
+				64C064692031F1B900897EF1 /* Knee Straighten.png */,
 				64B5CBE7202369D300DB848B /* Hip Leg Out.png */,
 				64C06420202687CE00897EF1 /* Shoulder Bent Arm Lower.png */,
 				64C0641F202687CD00897EF1 /* Shoulder Bent Arm Raise.png */,
@@ -351,22 +414,43 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64C0647D20323CD800897EF1 /* Knuckle Lower Fingers.png in Resources */,
+				64C064832032492900897EF1 /* Finger Bend.png in Resources */,
 				64C064282026A3A100897EF1 /* Neck Head Forward.png in Resources */,
 				64923DA820195061004E9A7E /* Ankle Raise Foot.png in Resources */,
+				64C0645D2030BEDF00897EF1 /* Toe Raise.png in Resources */,
+				64C0647320320A4100897EF1 /* Foot Rotate In.png in Resources */,
 				64B5CBEA202369D400DB848B /* Forearm Palm Up.png in Resources */,
+				64C0646F203200A300897EF1 /* Hip Thigh Forward.png in Resources */,
+				64C064612030D42C00897EF1 /* Toe In.png in Resources */,
 				64A432361FBD141A005D2FC2 /* LaunchScreen.storyboard in Resources */,
 				64B5CBED202369D400DB848B /* Wrist Hand Lowered.png in Resources */,
+				64C06468203118C700897EF1 /* Shoulder Arm Reverse Raise.png in Resources */,
+				64C0646C2031F1B900897EF1 /* Knee Bend.png in Resources */,
 				64B5CBEC202369D400DB848B /* Hip Leg Out.png in Resources */,
 				64C0645A202E4E6D00897EF1 /* Assets.xcassets in Resources */,
+				64C0645E2030BEDF00897EF1 /* Toe Lower.png in Resources */,
+				64C06470203200A300897EF1 /* Hip Thigh Out.png in Resources */,
 				64B5CBE9202369D400DB848B /* Hip Leg In.png in Resources */,
 				64C06421202687CE00897EF1 /* Shoulder Bent Arm Raise.png in Resources */,
 				64C0642B20278AEF00897EF1 /* Wrist Hand In.png in Resources */,
+				64C06467203118C700897EF1 /* Shoulder Arm Raise.png in Resources */,
 				64B5CBEB202369D400DB848B /* Wrist Hand Raised.png in Resources */,
+				64C0647720321D4500897EF1 /* Back Rotation.png in Resources */,
+				64C0647820321D4500897EF1 /* Neck Rotation.png in Resources */,
 				64C064272026A3A100897EF1 /* Neck Head Back.png in Resources */,
 				64923DA620195058004E9A7E /* Ankle Lower Foot.png in Resources */,
 				64C06422202687CE00897EF1 /* Shoulder Bent Arm Lower.png in Resources */,
+				64C064622030D42C00897EF1 /* Toe Out.png in Resources */,
+				64C0647F20323CD800897EF1 /* Knuckle Raise Fingers.png in Resources */,
+				64C0648020323CD800897EF1 /* Knuckle Fingers from Thumb.png in Resources */,
 				64C06424202697AF00897EF1 /* Forearm Palm Down.png in Resources */,
+				64C06466203118C700897EF1 /* Shoulder Arm Raise to Side.png in Resources */,
+				64C0647E20323CD800897EF1 /* Knuckle Separate Fingers.png in Resources */,
 				64C0642C20278AEF00897EF1 /* Wrist Hand Out.png in Resources */,
+				64C0647420320A4100897EF1 /* Foot Rotate Out.png in Resources */,
+				64C0646B2031F1B900897EF1 /* Knee Straighten.png in Resources */,
+				64C064842032492900897EF1 /* Finger Straighten.png in Resources */,
 				64A432311FBD141A005D2FC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

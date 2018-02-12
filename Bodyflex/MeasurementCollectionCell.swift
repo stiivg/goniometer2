@@ -68,8 +68,8 @@ class MeasurementCollectionCell: UICollectionViewCell {
             }
 
             //DEBUG: show tool position
-//            debugText.text = positionString()
-            debugText.isHidden = true
+            debugText.text = positionString()
+//            debugText.isHidden = true
             
         }
     }
