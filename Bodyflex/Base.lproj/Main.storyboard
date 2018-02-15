@@ -217,10 +217,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQI-Sy-tlg">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Measurement" placeholder="Left Knee Bend" adjustsFontForContentSizeCategory="YES" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w93-k2-Def">
-                                        <rect key="frame" x="5" y="5" width="304" height="23"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Measurement" placeholder="Left Knee Bend" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w93-k2-Def">
+                                        <rect key="frame" x="5" y="5" width="304" height="21"/>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <action selector="MeasurementTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="OcP-Cf-KBX"/>
@@ -228,13 +228,13 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MedicalJoint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZZ-EG-I7l">
-                                        <rect key="frame" x="5" y="27.999999999999996" width="309" height="13.333333333333332"/>
+                                        <rect key="frame" x="5" y="25.999999999999996" width="309" height="13.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nametext" borderStyle="roundedRect" placeholder="Name" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HN1-1q-w89">
-                                        <rect key="frame" x="5" y="45.333333333333329" width="255" height="30"/>
+                                        <rect key="frame" x="5" y="43.333333333333329" width="255" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -243,7 +243,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" enabled="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="Date" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="SbR-51-3sV">
-                                        <rect key="frame" x="270" y="45.333333333333329" width="39" height="20"/>
+                                        <rect key="frame" x="270" y="43.333333333333329" width="39" height="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -289,8 +289,8 @@
                                             <action selector="photoFromLibrary:" destination="BYZ-38-t0r" id="7zO-Un-YCB"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jlv-2Q-f90"/>
-                                    <barButtonItem style="plain" systemItem="camera" id="jcs-rJ-xIs">
+                                    <barButtonItem systemItem="flexibleSpace" id="jlv-2Q-f90"/>
+                                    <barButtonItem systemItem="camera" id="jcs-rJ-xIs">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <action selector="shootPhoto:" destination="BYZ-38-t0r" id="aId-o2-8vM"/>
@@ -730,7 +730,7 @@
                                 </segue>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="sKh-BP-Re1"/>
+                        <barButtonItem systemItem="flexibleSpace" id="sKh-BP-Re1"/>
                         <barButtonItem systemItem="add" id="6WM-Ku-QLd">
                             <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -810,6 +810,6 @@
         <image name="Ankle Lower Foot.png" width="1254" height="1734"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="I2D-vl-wmx"/>
+        <segue reference="M2m-Zx-hi6"/>
     </inferredMetricsTieBreakers>
 </document>
