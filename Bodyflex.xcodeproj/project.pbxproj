@@ -67,6 +67,10 @@
 		64C0648020323CD800897EF1 /* Knuckle Fingers from Thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647C20323CD800897EF1 /* Knuckle Fingers from Thumb.png */; };
 		64C064832032492900897EF1 /* Finger Bend.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C064812032492800897EF1 /* Finger Bend.png */; };
 		64C064842032492900897EF1 /* Finger Straighten.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C064822032492800897EF1 /* Finger Straighten.png */; };
+		64C0648920326F7200897EF1 /* Thumb In.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0648520326F7100897EF1 /* Thumb In.png */; };
+		64C0648A20326F7200897EF1 /* Thumb Down.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0648620326F7200897EF1 /* Thumb Down.png */; };
+		64C0648B20326F7300897EF1 /* Thumb Out.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0648720326F7200897EF1 /* Thumb Out.png */; };
+		64C0648C20326F7300897EF1 /* Thumb Up.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0648820326F7200897EF1 /* Thumb Up.png */; };
 		64E626AE1FCC75A20068879F /* JointPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AD1FCC75A20068879F /* JointPickerViewController.swift */; };
 		64E626B01FCDEB4F0068879F /* MotionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -155,6 +159,10 @@
 		64C0647C20323CD800897EF1 /* Knuckle Fingers from Thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knuckle Fingers from Thumb.png"; sourceTree = "<group>"; };
 		64C064812032492800897EF1 /* Finger Bend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Finger Bend.png"; sourceTree = "<group>"; };
 		64C064822032492800897EF1 /* Finger Straighten.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Finger Straighten.png"; sourceTree = "<group>"; };
+		64C0648520326F7100897EF1 /* Thumb In.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumb In.png"; sourceTree = "<group>"; };
+		64C0648620326F7200897EF1 /* Thumb Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumb Down.png"; sourceTree = "<group>"; };
+		64C0648720326F7200897EF1 /* Thumb Out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumb Out.png"; sourceTree = "<group>"; };
+		64C0648820326F7200897EF1 /* Thumb Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumb Up.png"; sourceTree = "<group>"; };
 		64E626AD1FCC75A20068879F /* JointPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointPickerViewController.swift; sourceTree = "<group>"; };
 		64E626AF1FCDEB4F0068879F /* MotionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -210,6 +218,10 @@
 				64C0647920323CD700897EF1 /* Knuckle Lower Fingers.png */,
 				64C0647B20323CD700897EF1 /* Knuckle Raise Fingers.png */,
 				64C0647A20323CD700897EF1 /* Knuckle Separate Fingers.png */,
+				64C0648620326F7200897EF1 /* Thumb Down.png */,
+				64C0648520326F7100897EF1 /* Thumb In.png */,
+				64C0648720326F7200897EF1 /* Thumb Out.png */,
+				64C0648820326F7200897EF1 /* Thumb Up.png */,
 				64C0647620321D4500897EF1 /* Neck Rotation.png */,
 				64C064812032492800897EF1 /* Finger Bend.png */,
 				64C064822032492800897EF1 /* Finger Straighten.png */,
@@ -415,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64C0647D20323CD800897EF1 /* Knuckle Lower Fingers.png in Resources */,
+				64C0648A20326F7200897EF1 /* Thumb Down.png in Resources */,
 				64C064832032492900897EF1 /* Finger Bend.png in Resources */,
 				64C064282026A3A100897EF1 /* Neck Head Forward.png in Resources */,
 				64923DA820195061004E9A7E /* Ankle Raise Foot.png in Resources */,
@@ -425,10 +438,12 @@
 				64C064612030D42C00897EF1 /* Toe In.png in Resources */,
 				64A432361FBD141A005D2FC2 /* LaunchScreen.storyboard in Resources */,
 				64B5CBED202369D400DB848B /* Wrist Hand Lowered.png in Resources */,
+				64C0648C20326F7300897EF1 /* Thumb Up.png in Resources */,
 				64C06468203118C700897EF1 /* Shoulder Arm Reverse Raise.png in Resources */,
 				64C0646C2031F1B900897EF1 /* Knee Bend.png in Resources */,
 				64B5CBEC202369D400DB848B /* Hip Leg Out.png in Resources */,
 				64C0645A202E4E6D00897EF1 /* Assets.xcassets in Resources */,
+				64C0648920326F7200897EF1 /* Thumb In.png in Resources */,
 				64C0645E2030BEDF00897EF1 /* Toe Lower.png in Resources */,
 				64C06470203200A300897EF1 /* Hip Thigh Out.png in Resources */,
 				64B5CBE9202369D400DB848B /* Hip Leg In.png in Resources */,
@@ -446,6 +461,7 @@
 				64C0648020323CD800897EF1 /* Knuckle Fingers from Thumb.png in Resources */,
 				64C06424202697AF00897EF1 /* Forearm Palm Down.png in Resources */,
 				64C06466203118C700897EF1 /* Shoulder Arm Raise to Side.png in Resources */,
+				64C0648B20326F7300897EF1 /* Thumb Out.png in Resources */,
 				64C0647E20323CD800897EF1 /* Knuckle Separate Fingers.png in Resources */,
 				64C0642C20278AEF00897EF1 /* Wrist Hand Out.png in Resources */,
 				64C0647420320A4100897EF1 /* Foot Rotate Out.png in Resources */,
