@@ -150,8 +150,8 @@ class AngleTool {
             }
         }
         //check for mid lines
-        let beginLinePosition = linePosition(startPoint: dotPositions[0], endPoint: dotPositions[1])
-        let endLinePosition = linePosition(startPoint: dotPositions[1], endPoint: dotPositions[2])
+        let beginLinePosition = lineMidPoint(startPoint: dotPositions[0], endPoint: dotPositions[1])
+        let endLinePosition = lineMidPoint(startPoint: dotPositions[1], endPoint: dotPositions[2])
         
         let beginLineDistance = hypot(beginLinePosition.x - point.x, beginLinePosition.y - point.y)
         let endLineDistance = hypot(endLinePosition.x - point.x, endLinePosition.y - point.y)
@@ -189,10 +189,10 @@ class AngleTool {
                 }
                 dotStartPosition = dotPositions[movingDotIndex]
             } else {
-                let beginLinePosition = linePosition(startPoint: dotPositions[0], endPoint: dotPositions[1])
+                let beginLinePosition = lineMidPoint(startPoint: dotPositions[0], endPoint: dotPositions[1])
                 let beginLineDistance = hypot(beginLinePosition.x - panStart.x, beginLinePosition.y - panStart.y)
 
-                let endLinePosition = linePosition(startPoint: dotPositions[1], endPoint: dotPositions[2])
+                let endLinePosition = lineMidPoint(startPoint: dotPositions[1], endPoint: dotPositions[2])
                 let endLineDistance = hypot(endLinePosition.x - panStart.x, endLinePosition.y - panStart.y)
 
                 panBeginStartPosition = dotPositions[0]
@@ -222,6 +222,8 @@ class AngleTool {
                     //recalculate the axis position keeping the arms at the original angle
                     let translatedMiddleDot = CGPoint(x: panMiddleStartPosition.x + translation.x, y: panMiddleStartPosition.y + translation.y)
                     dotPositions[1] = intersectPosition(p1: dotPositions[0], p2: translatedMiddleDot, p3: panEndStartPosition, p4: panMiddleStartPosition)
+                    limitDotPosition(dot: &dotPositions[0])
+                    limitDotPosition(dot: &dotPositions[1])
                     angleToolDrawing.drawTool(dotPositions: dotPositions)
                 } else if movingDotIndex == -2 {
                     //move the end line
@@ -229,10 +231,20 @@ class AngleTool {
                     //recalculate the axis position keeping the arms at the original angle
                     let translatedMiddleDot = CGPoint(x: panMiddleStartPosition.x + translation.x, y: panMiddleStartPosition.y + translation.y)
                     dotPositions[1] = intersectPosition(p1: dotPositions[2], p2: translatedMiddleDot, p3: panBeginStartPosition, p4:panMiddleStartPosition)
+                    limitDotPosition(dot: &dotPositions[1])
+                    limitDotPosition(dot: &dotPositions[2])
                     angleToolDrawing.drawTool(dotPositions: dotPositions)
                 }
             }
         }
+    }
+    
+    fileprivate func limitDotPosition(dot: inout CGPoint) {
+        dot.x = max(dot.x, 0)
+        dot.y = max(dot.y, 0)
+        
+        dot.x = min(dot.x, (imageView?.bounds.maxX)!)
+        dot.y = min(dot.y, (imageView?.bounds.maxY)!)
     }
     
     /*
@@ -261,7 +273,7 @@ class AngleTool {
     }
     
     //Calculate the midpoint of the line
-    fileprivate func linePosition(startPoint: CGPoint, endPoint: CGPoint) -> CGPoint {
+    fileprivate func lineMidPoint(startPoint: CGPoint, endPoint: CGPoint) -> CGPoint {
         let linePosition = CGPoint(x: startPoint.x + (endPoint.x - startPoint.x) / 2, y: startPoint.y + (endPoint.y - startPoint.y) / 2)
         return linePosition
     }
