@@ -14,6 +14,11 @@
 		6426B9CB1FC602C800D81163 /* MeasurementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6426B9CA1FC602C800D81163 /* MeasurementCell.swift */; };
 		645C758D1FD1DAA800053C4F /* Bodyflex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 645C758B1FD1DAA800053C4F /* Bodyflex.xcdatamodeld */; };
 		64613C001FC65CDE00362CBD /* SelectJointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64613BFF1FC65CDE00362CBD /* SelectJointViewController.swift */; };
+		64904F4C20463C77005A4591 /* launchRow1.png in Resources */ = {isa = PBXBuildFile; fileRef = 64904F4720463C77005A4591 /* launchRow1.png */; };
+		64904F4D20463C77005A4591 /* launchRow2.png in Resources */ = {isa = PBXBuildFile; fileRef = 64904F4820463C77005A4591 /* launchRow2.png */; };
+		64904F4E20463C77005A4591 /* launchRow3.png in Resources */ = {isa = PBXBuildFile; fileRef = 64904F4920463C77005A4591 /* launchRow3.png */; };
+		64904F4F20463C77005A4591 /* launchRow4.png in Resources */ = {isa = PBXBuildFile; fileRef = 64904F4A20463C77005A4591 /* launchRow4.png */; };
+		64904F5020463C77005A4591 /* launchRow5.png in Resources */ = {isa = PBXBuildFile; fileRef = 64904F4B20463C77005A4591 /* launchRow5.png */; };
 		64923DA620195058004E9A7E /* Ankle Lower Foot.png in Resources */ = {isa = PBXBuildFile; fileRef = 64923DA520195057004E9A7E /* Ankle Lower Foot.png */; };
 		64923DA820195061004E9A7E /* Ankle Raise Foot.png in Resources */ = {isa = PBXBuildFile; fileRef = 64923DA720195061004E9A7E /* Ankle Raise Foot.png */; };
 		64A01D121FFEA162007A6C58 /* MeasurementCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A01D111FFEA162007A6C58 /* MeasurementCollectionViewController.swift */; };
@@ -104,6 +109,11 @@
 		6426B9CA1FC602C800D81163 /* MeasurementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementCell.swift; sourceTree = "<group>"; };
 		645C758C1FD1DAA800053C4F /* Bodyflex.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bodyflex.xcdatamodel; sourceTree = "<group>"; };
 		64613BFF1FC65CDE00362CBD /* SelectJointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectJointViewController.swift; sourceTree = "<group>"; };
+		64904F4720463C77005A4591 /* launchRow1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchRow1.png; path = Bodyflex/LaunchImages/launchRow1.png; sourceTree = SOURCE_ROOT; };
+		64904F4820463C77005A4591 /* launchRow2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchRow2.png; path = Bodyflex/LaunchImages/launchRow2.png; sourceTree = SOURCE_ROOT; };
+		64904F4920463C77005A4591 /* launchRow3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchRow3.png; path = Bodyflex/LaunchImages/launchRow3.png; sourceTree = SOURCE_ROOT; };
+		64904F4A20463C77005A4591 /* launchRow4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchRow4.png; path = Bodyflex/LaunchImages/launchRow4.png; sourceTree = SOURCE_ROOT; };
+		64904F4B20463C77005A4591 /* launchRow5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchRow5.png; path = Bodyflex/LaunchImages/launchRow5.png; sourceTree = SOURCE_ROOT; };
 		64923DA520195057004E9A7E /* Ankle Lower Foot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ankle Lower Foot.png"; sourceTree = "<group>"; };
 		64923DA720195061004E9A7E /* Ankle Raise Foot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Ankle Raise Foot.png"; path = "Bodyflex/JointImages/Ankle Raise Foot.png"; sourceTree = SOURCE_ROOT; };
 		64A01D111FFEA162007A6C58 /* MeasurementCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementCollectionViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +222,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		64904F4620463C29005A4591 /* LaunchImages */ = {
+			isa = PBXGroup;
+			children = (
+				64904F4720463C77005A4591 /* launchRow1.png */,
+				64904F4820463C77005A4591 /* launchRow2.png */,
+				64904F4920463C77005A4591 /* launchRow3.png */,
+				64904F4A20463C77005A4591 /* launchRow4.png */,
+				64904F4B20463C77005A4591 /* launchRow5.png */,
+			);
+			name = LaunchImages;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		64923DA42019501B004E9A7E /* JointImages */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +321,7 @@
 				64A0BCB9201A4B4200F63E3C /* SideCell.swift */,
 				64C0642D202D223B00897EF1 /* InfoViewController.swift */,
 				64A01D131FFEA469007A6C58 /* MeasurementCollectionCell.swift */,
+				64904F4620463C29005A4591 /* LaunchImages */,
 				64161F161FDB09A700DC25CF /* GestureScrollView.swift */,
 				64A7FAD1201645AF00079646 /* AngleToolDrawing.swift */,
 				64B5CBE22020DD0600DB848B /* AngleToolLabels.swift */,
@@ -454,11 +478,14 @@
 				64C06468203118C700897EF1 /* Shoulder Arm Reverse Raise.png in Resources */,
 				64C0646C2031F1B900897EF1 /* Knee Bend.png in Resources */,
 				64B5CBEC202369D400DB848B /* Hip Leg Out.png in Resources */,
+				64904F4F20463C77005A4591 /* launchRow4.png in Resources */,
 				64C0645A202E4E6D00897EF1 /* Assets.xcassets in Resources */,
 				64C0648920326F7200897EF1 /* Thumb In.png in Resources */,
 				64C0645E2030BEDF00897EF1 /* Toe Lower.png in Resources */,
+				64904F4C20463C77005A4591 /* launchRow1.png in Resources */,
 				64D14A842044E4D5009863DD /* Elbow Straighten Arm.png in Resources */,
 				64C06470203200A300897EF1 /* Hip Thigh Out.png in Resources */,
+				64904F5020463C77005A4591 /* launchRow5.png in Resources */,
 				64B5CBE9202369D400DB848B /* Hip Leg In.png in Resources */,
 				64C06421202687CE00897EF1 /* Shoulder Bent Arm Raise.png in Resources */,
 				64C0642B20278AEF00897EF1 /* Wrist Hand In.png in Resources */,
@@ -470,11 +497,13 @@
 				64C064272026A3A100897EF1 /* Neck Head Back.png in Resources */,
 				64923DA620195058004E9A7E /* Ankle Lower Foot.png in Resources */,
 				64D14A812044E4D5009863DD /* Back Sidebending.png in Resources */,
+				64904F4E20463C77005A4591 /* launchRow3.png in Resources */,
 				64C06422202687CE00897EF1 /* Shoulder Bent Arm Lower.png in Resources */,
 				64C064622030D42C00897EF1 /* Toe Out.png in Resources */,
 				64C0647F20323CD800897EF1 /* Knuckle Raise Fingers.png in Resources */,
 				64C0648020323CD800897EF1 /* Knuckle Fingers from Thumb.png in Resources */,
 				64C06424202697AF00897EF1 /* Forearm Palm Down.png in Resources */,
+				64904F4D20463C77005A4591 /* launchRow2.png in Resources */,
 				64C06466203118C700897EF1 /* Shoulder Arm Raise to Side.png in Resources */,
 				64C0648B20326F7300897EF1 /* Thumb Out.png in Resources */,
 				64D14A832044E4D5009863DD /* Neck Side Bending.png in Resources */,
