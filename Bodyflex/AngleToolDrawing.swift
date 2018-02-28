@@ -16,12 +16,12 @@ class AngleToolDrawing {
     let dotLineWidthDefault = CGFloat(2)
     let lineWidthDefault = CGFloat(5)
     let extensionLengthDefault = CGFloat(60)
-    let angleTextDistanceDefault = CGFloat(65)
+    let angleTextDistanceDefault = CGFloat(80)
     let arcRadiusDefault = CGFloat(25)
     let arcLineWidthDefault = CGFloat(30)
     
-    let fontFrameSizeDefault = CGSize(width: 60, height: 20)
-    let angleFontSizeDefault = CGFloat(16)
+    let fontFrameSizeDefault = CGSize(width: 120, height: 40)
+    let angleFontSizeDefault = CGFloat(32)
 
     //working tool dimensions
     var dotDiameter = CGFloat(20)
@@ -34,7 +34,7 @@ class AngleToolDrawing {
     var arcLineWidth = CGFloat(1)
     
     var fontFrameSize = CGSize(width: 60, height: 20)
-    var angleFontSize = CGFloat(16)
+    var angleFontSize = CGFloat(32)
 
 
     let beginDotLayer = CAShapeLayer()
