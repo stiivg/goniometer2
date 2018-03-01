@@ -67,9 +67,9 @@
 		64C0647720321D4500897EF1 /* Back Rotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647520321D4500897EF1 /* Back Rotation.png */; };
 		64C0647820321D4500897EF1 /* Neck Rotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647620321D4500897EF1 /* Neck Rotation.png */; };
 		64C0647D20323CD800897EF1 /* Knuckle Lower Fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647920323CD700897EF1 /* Knuckle Lower Fingers.png */; };
-		64C0647E20323CD800897EF1 /* Knuckle Separate Fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647A20323CD700897EF1 /* Knuckle Separate Fingers.png */; };
+		64C0647E20323CD800897EF1 /* Knuckle Finger Towards Thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647A20323CD700897EF1 /* Knuckle Finger Towards Thumb.png */; };
 		64C0647F20323CD800897EF1 /* Knuckle Raise Fingers.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647B20323CD700897EF1 /* Knuckle Raise Fingers.png */; };
-		64C0648020323CD800897EF1 /* Knuckle Fingers from Thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647C20323CD800897EF1 /* Knuckle Fingers from Thumb.png */; };
+		64C0648020323CD800897EF1 /* Knuckle Finger Away From Thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0647C20323CD800897EF1 /* Knuckle Finger Away From Thumb.png */; };
 		64C064832032492900897EF1 /* Finger Bend.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C064812032492800897EF1 /* Finger Bend.png */; };
 		64C064842032492900897EF1 /* Finger Straighten.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C064822032492800897EF1 /* Finger Straighten.png */; };
 		64C0648920326F7200897EF1 /* Thumb In.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C0648520326F7100897EF1 /* Thumb In.png */; };
@@ -168,9 +168,9 @@
 		64C0647520321D4500897EF1 /* Back Rotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back Rotation.png"; sourceTree = "<group>"; };
 		64C0647620321D4500897EF1 /* Neck Rotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Neck Rotation.png"; sourceTree = "<group>"; };
 		64C0647920323CD700897EF1 /* Knuckle Lower Fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knuckle Lower Fingers.png"; sourceTree = "<group>"; };
-		64C0647A20323CD700897EF1 /* Knuckle Separate Fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knuckle Separate Fingers.png"; sourceTree = "<group>"; };
+		64C0647A20323CD700897EF1 /* Knuckle Finger Towards Thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knuckle Finger Towards Thumb.png"; sourceTree = "<group>"; };
 		64C0647B20323CD700897EF1 /* Knuckle Raise Fingers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knuckle Raise Fingers.png"; sourceTree = "<group>"; };
-		64C0647C20323CD800897EF1 /* Knuckle Fingers from Thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knuckle Fingers from Thumb.png"; sourceTree = "<group>"; };
+		64C0647C20323CD800897EF1 /* Knuckle Finger Away From Thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Knuckle Finger Away From Thumb.png"; sourceTree = "<group>"; };
 		64C064812032492800897EF1 /* Finger Bend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Finger Bend.png"; sourceTree = "<group>"; };
 		64C064822032492800897EF1 /* Finger Straighten.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Finger Straighten.png"; sourceTree = "<group>"; };
 		64C0648520326F7100897EF1 /* Thumb In.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumb In.png"; sourceTree = "<group>"; };
@@ -249,10 +249,10 @@
 				64B5CBE5202369D200DB848B /* Forearm Palm Up.png */,
 				64B5CBE4202369CF00DB848B /* Hip Leg In.png */,
 				64C0647520321D4500897EF1 /* Back Rotation.png */,
-				64C0647C20323CD800897EF1 /* Knuckle Fingers from Thumb.png */,
+				64C0647C20323CD800897EF1 /* Knuckle Finger Away From Thumb.png */,
 				64C0647920323CD700897EF1 /* Knuckle Lower Fingers.png */,
 				64C0647B20323CD700897EF1 /* Knuckle Raise Fingers.png */,
-				64C0647A20323CD700897EF1 /* Knuckle Separate Fingers.png */,
+				64C0647A20323CD700897EF1 /* Knuckle Finger Towards Thumb.png */,
 				64C0648620326F7200897EF1 /* Thumb Down.png */,
 				64C0648520326F7100897EF1 /* Thumb In.png */,
 				64C0648720326F7200897EF1 /* Thumb Out.png */,
@@ -501,13 +501,13 @@
 				64C06422202687CE00897EF1 /* Shoulder Bent Arm Lower.png in Resources */,
 				64C064622030D42C00897EF1 /* Toe Out.png in Resources */,
 				64C0647F20323CD800897EF1 /* Knuckle Raise Fingers.png in Resources */,
-				64C0648020323CD800897EF1 /* Knuckle Fingers from Thumb.png in Resources */,
+				64C0648020323CD800897EF1 /* Knuckle Finger Away From Thumb.png in Resources */,
 				64C06424202697AF00897EF1 /* Forearm Palm Down.png in Resources */,
 				64904F4D20463C77005A4591 /* launchRow2.png in Resources */,
 				64C06466203118C700897EF1 /* Shoulder Arm Raise to Side.png in Resources */,
 				64C0648B20326F7300897EF1 /* Thumb Out.png in Resources */,
 				64D14A832044E4D5009863DD /* Neck Side Bending.png in Resources */,
-				64C0647E20323CD800897EF1 /* Knuckle Separate Fingers.png in Resources */,
+				64C0647E20323CD800897EF1 /* Knuckle Finger Towards Thumb.png in Resources */,
 				64C0642C20278AEF00897EF1 /* Wrist Hand Out.png in Resources */,
 				64C0647420320A4100897EF1 /* Foot Rotate Out.png in Resources */,
 				64C0646B2031F1B900897EF1 /* Knee Straighten.png in Resources */,
