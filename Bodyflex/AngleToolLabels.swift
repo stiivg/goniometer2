@@ -18,7 +18,7 @@ class AngleToolLabels {
     let axisMedicalTextLayer = CATextLayer()
     let movingMedicalTextLayer = CATextLayer()
     
-    let fontFrameSizeDefault = CGSize(width: 140, height: 20)
+    let fontFrameSizeDefault = CGSize(width: 140, height: 15)
     let commonFontSizeDefault = CGFloat(12)
     let medicalFontSizeDefault = CGFloat(9)
     
@@ -60,9 +60,10 @@ class AngleToolLabels {
         let fontName: CFString = "HelveticaNeue" as CFString
         textLayer.font = CTFontCreateWithName(fontName, 8, nil)
         textLayer.opacity = 1.0
+//        textLayer.cornerRadius = 5
+        textLayer.backgroundColor = UIColor.white.withAlphaComponent(0.5).cgColor
         
         textLayer.foregroundColor = UIColor.black.cgColor
-//        textLayer.backgroundColor = UIColor.cyan.cgColor
         textLayer.alignmentMode = kCAAlignmentLeft
         textLayer.contentsScale = UIScreen.main.scale
     }
@@ -139,7 +140,6 @@ class AngleToolLabels {
                 offsetWithSide = "Left"
             }
         }
-        textLayer.cornerRadius = 5
 
         switch offsetWithSide {
         case "Up":
